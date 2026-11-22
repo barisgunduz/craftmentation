@@ -177,3 +177,21 @@ confidence/distribution. check/doctor/custom-template/provider capabilities need
 specific user benefit before implementation. No runtime capability is added by this
 usability revision. Current validation results are recorded in the [roadmap](roadmap.md);
 prior macOS results do not establish native Linux/Windows or graphical behavior.
+
+
+## Practical workflow follow-up (2026-11-23)
+
+Revised Phase 8 adds a real default-preview update path with explicit ownership, reviewed
+candidate hash binding, exact custom-span preservation, and retained original-byte backups.
+Legacy READMEs remain protected and are routed to agent reconciliation; no heuristic adoption
+or automatic insertion/removal of sections is performed. --usage-file provides reviewed usage
+without a config-field exercise. Quick start/Getting started now satisfy Core usage, fixing
+a failure found by generating a draft for Craftmentation itself. BOM-aware Markdown offsets
+and UTF-8 reads support preservation rather than dropping the initial marker.
+
+Declared npm scripts can render as invocations with inspection/not-executed qualification.
+No new provider, template loader, check/doctor, website, localization engine, or dependency
+was added. The next work is release confidence, including native Linux/Windows execution.
+Current verification is recorded in the roadmap; native platform/source-understanding and
+uncooperative-writer limitations remain. See the [workflow](workflow.md) and
+[ADR 0010](decisions/0010-reviewed-managed-updates.md).

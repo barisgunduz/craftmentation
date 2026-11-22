@@ -2,11 +2,11 @@
 
 ## Implementation state
 
-Craftmentation implements the CLI MVP: init, analyze, generate, and offline validate.
+Craftmentation implements init, analyze, generate, offline validate, and preview-first update.
 TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas. The
 48-section library, fourteen profiles, manual AI workflows, and source-backed examples
 remain available. The development package is private at 0.0.0-dev.0; no public release,
-CI workflow, provider integration, localization engine, or advanced CLI command exists.
+CI workflow, provider integration, localization engine, check, or doctor command exists.
 Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). The active scope
 prioritizes an agent-based quick start and optional CLI, without a website or localization
 engine. See [ADR 0009](decisions/0009-usability-and-scope.md) and the
@@ -19,7 +19,7 @@ engine. See [ADR 0009](decisions/0009-usability-and-scope.md) and the
 | Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and fourteen evidence-gated profile recommendations |
 | Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
 | Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
-| CLI implementation | `src/cli/`, `src/configuration/`, `src/analyzer/`, `src/generator/`, `src/renderer/`, `src/validator/`, `src/filesystem/`, `src/shared/` | Four real commands, static provenance, literal rendering, offline checks, and no-clobber writes |
+| CLI implementation | `src/cli/`, `src/configuration/`, `src/analyzer/`, `src/generator/`, `src/renderer/`, `src/validator/`, `src/filesystem/`, `src/shared/` | Five real commands, static provenance, literal rendering, offline checks, no-clobber creation, and guarded managed updates |
 | CLI design contracts | `docs/cli-architecture.md`, `docs/cli-reference.md`, `docs/configuration.md`, `docs/safe-file-operations.md`, `schemas/` | Implemented MVP contracts with future capabilities explicitly marked |
 | Contract verification | `tests/schema_subset.py`, `tests/test_cli_contracts.py`, `tests/fixtures/contracts/` | Narrow structural oracle and synthetic instances, independent of actual Ajv compilation/runtime validation |
 | Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
@@ -49,7 +49,12 @@ no runtime font dependency is introduced.
 Humans/agents can compose documentation manually. The CLI also loads strict JSON,
 confines a static inventory, extracts supported package/README facts, resolves profile
 overrides, selects evidence, renders literal fields, validates Markdown, and creates
-a missing output through exclusive staging/no-clobber publication. It never executes
+a missing output through exclusive staging/no-clobber publication. Explicit --managed
+generation adds exact-body ownership hashes. Update composes verified replacements for
+existing unmodified regions, preserves custom spans, validates the complete candidate, and
+defaults to diff/preview. --write --expect binds application to the reviewed candidate;
+identity/hash checks, a cooperative lock, flushed stage, and retained original-byte backup
+precede replacement. It never executes
 repository scripts, loads provider code, or fetches external links.
 The analysis, generation, update, and translation prompts all reference a shared workflow
 policy, the standard, and the library contract. Operation prompts add scoped procedures;
@@ -81,10 +86,11 @@ and expected selections. The checker reads these declarative records and fragmen
 executing their contents, rejecting traversal and symlink fragment paths. It never renders
 or writes README files. Evidence truth and filled Markdown require human review.
 
-Internal interfaces and the installed CLI are implemented for the four MVP commands.
+Internal interfaces and the installed CLI are implemented for five commands.
 There is no stable import API, general source-code understanding, provider adapter,
-custom-template loader, localization engine, update/check/doctor implementation, or
-online link checker. JSON package fields and root Markdown provide initial facts;
+custom-template loader, localization engine, check/doctor implementation, or
+online link checker. JSON package fields and existing output/root Markdown provide initial facts;
+--usage-file adds explicitly reviewed Markdown without requiring configuration.
 unsupported formats remain unclassified/unknown unless explicitly configured.
 [Configuration](configuration.md) describes supported defaults, merge rules, source-backed
 fields, and rejected future capabilities. Four [schemas](../schemas/README.md) are compiled
@@ -115,5 +121,10 @@ See [AI integrations](ai-integrations.md) and [ADR 0002](decisions/0002-shared-a
 for workflow boundaries and source-backed compatibility assessment.
 Phase 5 decisions are indexed in [ADRs](decisions/README.md); [Development](development.md)
 defines the actual current checks and future implementation/test gates.
+
+See [ADR 0010](decisions/0010-reviewed-managed-updates.md) for update/ownership boundaries
+and the [practical workflow](workflow.md) for preview/review/save. The internal modules
+`renderer/managed.ts` and `generator/update.ts` parse ownership and plan edits without writing;
+`SafeFS.snapshot/replace` owns backup/publication and failure reporting.
 
 See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery order.

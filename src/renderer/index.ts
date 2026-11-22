@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { wrap } from './managed.js';
 import type { Content, Section } from '../shared/types.js';
 import { escapeMarkdown } from '../shared/safety.js';
 import { checkContent } from '../validator/index.js';
@@ -33,6 +34,7 @@ export function render(
   content: Content,
   fragments: Record<string, string>,
   output: string,
+  managed = false,
 ): string {
   return (
     selected
@@ -46,7 +48,7 @@ export function render(
           section.fields.some((f) => !tokens.includes(f))
         )
           throw new Failure('E_INTERNAL', 5, 'Bundled template field mismatch.');
-        return fragment
+        const rendered = fragment
           .replace(/\{\{([A-Z][A-Z0-9_]*)\}\}/g, (_, name: string) => {
             const field = fields[name];
             if (!field?.safe || !field.sources.length)
@@ -64,6 +66,7 @@ export function render(
             return rebaseMarkdown(field.value, field.sources[0]!, output);
           })
           .trim();
+        return managed ? wrap(id, rendered.replace(/\r\n/g, '\n')) : rendered;
       })
       .join('\n\n')
       .replace(/\r\n/g, '\n') + '\n'

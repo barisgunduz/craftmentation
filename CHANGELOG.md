@@ -8,6 +8,10 @@ No release version is assigned yet.
 
 ### Changed
 
+- Recognize Quick start/Getting started as Core usage; preserve UTF-8 BOM when inspecting
+  and updating documents, and explain actionable steps for missing usage/existing output.
+- Render declared npm scripts as copyable invocations without claiming execution.
+
 - Focus the product on a simple agent-assisted README workflow and optional local CLI.
 - Remove the standalone website and automated localization from active scope; retain
   English defaults and user-requested language guidance without a translation engine.
@@ -18,6 +22,12 @@ No release version is assigned yet.
 - Distinguish manually authored examples from the CLI's limited static population capabilities.
 
 ### Added
+
+- Practical local preview/review/save guide, --usage-file for reviewed Markdown, and
+  --expect to bind writes to the exact reviewed document hash.
+- Explicit --managed generation and default-preview update command; guarded --write
+  refreshes unchanged managed regions, preserves custom bytes, and retains an original backup.
+- Ownership/conflict, CRLF/BOM preservation, stale-review, backup, and failure regression tests.
 
 - Repository guide explaining the user entry path, optional CLI, and maintainer-only areas.
 - Preserved initial specification/roadmap archives and ADR 0009 for the owner-approved scope revision.

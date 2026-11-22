@@ -55,6 +55,7 @@ export function safeRelative(value: string): string {
 }
 const same = (a: { dev: number; ino: number }, b: { dev: number; ino: number }) =>
   a.dev === b.dev && a.ino === b.ino;
+export type Snapshot = { text: string; digest: string; dev: number; ino: number; mode: number };
 export class SafeFS {
   private constructor(
     public root: string,
@@ -167,11 +168,143 @@ export class SafeFS {
   }
   async text(relative: string): Promise<string> {
     try {
-      return new TextDecoder('utf-8', { fatal: true }).decode(await this.read(relative));
+      return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(
+        await this.read(relative),
+      );
     } catch (e) {
       if (e instanceof Failure) throw e;
       throw new Failure('E_IO', 4, 'Expected valid UTF-8 text.', relative);
     }
+  }
+  async snapshot(relative: string): Promise<Snapshot> {
+    const resolved = await this.resolve(relative),
+      before = await fs.lstat(resolved);
+    if (before.nlink !== 1)
+      throw new Failure(
+        'E_PATH',
+        3,
+        'Update requires a regular file without hard links.',
+        relative,
+      );
+    const text = await this.text(relative),
+      after = await fs.lstat(resolved);
+    if (
+      !same(before, after) ||
+      before.mtimeMs !== after.mtimeMs ||
+      before.ctimeMs !== after.ctimeMs
+    )
+      throw new Failure('E_CONCURRENT', 3, 'Document changed during inspection.', relative);
+    return { text, digest: hash(text), dev: after.dev, ino: after.ino, mode: after.mode };
+  }
+  async replace(
+    relative: string,
+    original: Snapshot,
+    bytes: string,
+    signal?: AbortSignal,
+  ): Promise<string> {
+    if (Buffer.byteLength(bytes, 'utf8') > 1024 * 1024)
+      throw new Failure('E_SCAN_LIMIT', 4, 'Generated document exceeds the 1 MiB output limit.');
+    const dest = await this.resolve(relative),
+      parent = path.dirname(dest),
+      parentStat = await fs.lstat(parent);
+    const token = randomUUID(),
+      lock = `${dest}.craftmentation.lock`,
+      temp = `${dest}.craftmentation-${token}.tmp`;
+    const backup = `${relative}.craftmentation-${token}.bak`,
+      backupDest = path.join(this.root, backup);
+    let lockHandle, stage, backupHandle;
+    let lockIdentity: { dev: number; ino: number } | undefined,
+      stageIdentity: { dev: number; ino: number } | undefined;
+    let committed = false,
+      backupCreated = false;
+    const guard = async () => {
+      if (signal?.aborted) throw new Failure('E_INTERRUPTED', 4, 'Operation interrupted.');
+      const current = await this.snapshot(relative);
+      if (
+        !same(current, original) ||
+        current.digest !== original.digest ||
+        current.mode !== original.mode ||
+        !same(parentStat, await fs.lstat(parent))
+      )
+        throw new Failure(
+          'E_CONCURRENT',
+          3,
+          'Document or parent changed; preview again before applying.',
+          relative,
+        );
+    };
+    try {
+      await guard();
+      lockHandle = await fs.open(lock, 'wx', 0o600);
+      lockIdentity = await lockHandle.stat();
+      await lockHandle.writeFile(token);
+      stage = await fs.open(temp, 'wx', 0o600);
+      stageIdentity = await stage.stat();
+      await stage.writeFile(bytes, 'utf8');
+      await stage.chmod(original.mode & 0o666);
+      await stage.sync();
+      await stage.close();
+      stage = undefined;
+      if (hash(await fs.readFile(temp)) !== hash(bytes))
+        throw new Failure('E_IO', 4, 'Staging integrity check failed.', relative);
+      await guard();
+      backupHandle = await fs.open(backupDest, 'wx', 0o600);
+      backupCreated = true;
+      await backupHandle.writeFile(original.text, 'utf8');
+      await backupHandle.sync();
+      await backupHandle.close();
+      backupHandle = undefined;
+      if (hash(await fs.readFile(backupDest)) !== original.digest)
+        throw new Failure('E_IO', 4, 'Backup integrity check failed.', relative);
+      await guard();
+      if (
+        !same(stageIdentity!, await fs.lstat(temp)) ||
+        !same(lockIdentity!, await fs.lstat(lock)) ||
+        (await fs.readFile(lock, 'utf8')) !== token
+      )
+        throw new Failure('E_CONCURRENT', 3, 'Operation ownership changed.', relative);
+      await fs.rename(temp, dest);
+      committed = true;
+    } catch (e) {
+      const failure = ioFailure(e, relative);
+      failure.data = {
+        committed,
+        backup: backupCreated ? backup : null,
+        originalHash: original.digest,
+        documentHash: hash(bytes),
+      };
+      throw failure;
+    } finally {
+      await stage?.close();
+      await backupHandle?.close();
+      try {
+        if (lockHandle) {
+          if (
+            !same(lockIdentity!, await fs.lstat(lock)) ||
+            (await fs.readFile(lock, 'utf8')) !== token
+          )
+            throw new Error('lock changed');
+          if (stageIdentity && !committed) {
+            if (!same(stageIdentity, await fs.lstat(temp))) throw new Error('stage changed');
+            await fs.unlink(temp);
+          }
+          await lockHandle.close();
+          lockHandle = undefined;
+          await fs.unlink(lock);
+        }
+      } catch {
+        throw new Failure(
+          'E_IO',
+          4,
+          'Owned update cleanup failed; inspect the reported backup and commit outcome.',
+          relative,
+          { committed, backup: backupCreated ? backup : null },
+        );
+      } finally {
+        await lockHandle?.close();
+      }
+    }
+    return backup;
   }
   async create(
     relative: string,

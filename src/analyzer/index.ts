@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { withoutMarkers } from '../renderer/managed.js';
 import path from 'node:path';
 import { SafeFS, hash, safeRelative } from '../filesystem/index.js';
 import { catalog, strictJSON } from '../shared/library.js';
@@ -101,7 +102,7 @@ export async function inventory(
       if (limits.bytesRead > 32 * 1024 * 1024) limit();
       let text;
       try {
-        text = new TextDecoder('utf-8', { fatal: true }).decode(buffer);
+        text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(buffer);
       } catch {
         skip.add('non-UTF-8 files');
         continue;
@@ -232,9 +233,11 @@ export async function analyze(
       safe: true,
     });
   }
-  const readme = [...scan.texts.keys()].find((x) => /^readme\.md$/i.test(x));
+  const readme = scan.texts.has(config.output)
+    ? config.output
+    : [...scan.texts.keys()].find((x) => /^readme\.md$/i.test(x));
   if (readme) {
-    const text = scan.texts.get(readme)!,
+    const text = withoutMarkers(scan.texts.get(readme)!),
       tree = parseMarkdown(text),
       nodes = tree.children ?? [];
     const title = nodes.find((n) => n.type === 'heading' && n.depth === 1);
@@ -253,7 +256,7 @@ export async function analyze(
       if (node.type !== 'heading' || node.depth !== 2) continue;
       const heading = plain(node).trim().toLowerCase(),
         section =
-          catalog.find((s) => s.standardItem.toLowerCase() === heading)?.id ?? aliases[heading];
+          aliases[heading] ?? catalog.find((s) => s.standardItem.toLowerCase() === heading)?.id;
       if (!section || ['project-name', 'description', 'license'].includes(section)) continue;
       const end =
         nodes.slice(i + 1).find((n) => n.type === 'heading' && n.depth! <= 2)?.position?.start
@@ -280,7 +283,9 @@ export async function analyze(
           set('requirements', [values.join('\n'), ''], 'package.json');
       }
       if (pkg.scripts && typeof pkg.scripts === 'object' && !Array.isArray(pkg.scripts)) {
-        const entries = Object.entries(pkg.scripts).filter(([, v]) => typeof v === 'string');
+        const entries = Object.entries(pkg.scripts).filter(
+          ([name, v]) => typeof v === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9:._-]*$/.test(name),
+        );
         if (entries.length && !content.scripts)
           set(
             'scripts',
@@ -288,7 +293,7 @@ export async function analyze(
               entries
                 .map(
                   ([name]) =>
-                    `- ${name} (declared in package.json; inspect the script before running it)`,
+                    `- \`npm run ${name}\` — declared in package.json; inspect before running. No successful execution is implied.`,
                 )
                 .join('\n'),
             ],
@@ -296,7 +301,7 @@ export async function analyze(
             'markdown',
           );
         for (const [name, value] of entries)
-          if (/^[a-zA-Z0-9_-]+$/.test(name))
+          if (/^[a-zA-Z0-9][a-zA-Z0-9:._-]*$/.test(name))
             facts.push({
               id: `script-${hash(name).slice(0, 12)}`,
               kind: 'command',

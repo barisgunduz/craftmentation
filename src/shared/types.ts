@@ -92,6 +92,10 @@ export type Options = {
   include?: string[];
   exclude?: string[];
   dryRun?: boolean;
+  managed?: boolean;
+  write?: boolean;
+  expect?: string;
+  usageFile?: string;
   document?: string;
   strict?: boolean;
   json?: boolean;

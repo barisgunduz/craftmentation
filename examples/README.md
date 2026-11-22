@@ -39,8 +39,8 @@ output, and no model/provider evaluation is implied.
 The current CLI can reuse supported sections of an existing README and JSON package
 metadata. Generating from these examples therefore reuses their curated documentation;
 it does not prove that the analyzer can infer all behavior from Python, HTML, or arbitrary
-source code. A repository without usage evidence still needs reviewed content. Improving
-that first-use experience is the next [roadmap](../docs/roadmap.md) priority.
+source code. A repository without usage evidence still needs reviewed content. The [practical workflow](../docs/workflow.md) explains reviewed usage input and safe
+managed updates; arbitrary source understanding is still outside the CLI’s capability.
 
 ## For framework maintainers
 

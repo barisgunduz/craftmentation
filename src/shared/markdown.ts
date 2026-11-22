@@ -12,7 +12,16 @@ export type MdNode = {
   position?: { start: { line: number; offset?: number }; end: { line: number; offset?: number } };
 };
 const processor = unified().use(remarkParse).use(remarkGfm);
-export const parseMarkdown = (text: string): MdNode => processor.parse(text) as MdNode;
+export function parseMarkdown(text: string): MdNode {
+  const tree = processor.parse(text) as MdNode;
+  // remark omits an initial UTF-8 BOM from its offsets; edits still index original bytes/text.
+  if (text.startsWith('\uFEFF'))
+    visit(tree, (node) => {
+      if (node.position?.start.offset !== undefined) node.position.start.offset++;
+      if (node.position?.end.offset !== undefined) node.position.end.offset++;
+    });
+  return tree;
+}
 export const plain = (node: MdNode): string =>
   node.type === 'html'
     ? ''

@@ -2,12 +2,13 @@
 
 ## Current state
 
-- Latest completed work: owner-approved product refocus and example quality, revised Phase 7.
+- Latest completed work: practical README preview/review/save and managed updates, revised Phase 8.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Next incomplete phase: Phase 8, Practical README Workflow; not started.
+- Next incomplete phase: Phase 9, Release Confidence and Distribution; not started.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
-- Existing CLI: init, analyze, generate, validate. No public release, provider SDK, or automatic updater.
+- Existing CLI: init, analyze, generate, validate, and preview-first managed update.
+  No public release, provider SDK, background updater, website, or localization engine.
 - Main limitation: deterministic population relies on package metadata and existing README
   sections; it cannot invent missing usage or replace an agent's repository understanding.
 - Native runtime verification covers macOS/Node 24 and 26. Linux/Windows remain release gates.
@@ -377,24 +378,53 @@ Blockers: none for this phase. Next action: Phase 8 only when the owner asks to 
 
 ## Phase 8: Practical README Workflow
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none. Remaining tasks:
+Completed tasks: all eight deliverables below. Remaining tasks: none.
 
-- [ ] Observe the complete journey on representative examples and Craftmentation itself;
+- [x] Observe the complete journey on representative examples and Craftmentation itself;
   include an external repository only when supplied/authorized by the owner.
-- [ ] Turn missing-information errors into clear minimal next steps.
-- [ ] Establish one preview/review/save path with safe existing-document preservation.
-- [ ] Improve verified field population where it improves the actual README.
-- [ ] Implement safe update proposals and explicit application with conflict/custom-content tests.
-- [ ] Add check/doctor/custom templates only for a demonstrated need; document deliberate exclusions.
-- [ ] Demonstrate output quality, offline operation, exact writes, and no target command execution.
-- [ ] Update the user guide, tests, architecture, changelog, and roadmap to actual behavior.
+- [x] Turn missing-information errors into clear minimal next steps.
+- [x] Establish one preview/review/save path with safe existing-document preservation.
+- [x] Improve verified field population where it improves the actual README.
+- [x] Implement safe update proposals and explicit application with conflict/custom-content tests.
+- [x] Add check/doctor/custom templates only for a demonstrated need; document deliberate exclusions.
+- [x] Demonstrate output quality, offline operation, exact writes, and no target command execution.
+- [x] Update the user guide, tests, architecture, changelog, and roadmap to actual behavior.
 
 Acceptance: a reviewable good README can be produced without studying internal metadata or
 replacing custom content. No invented facts, unsafe overwrite, or mandatory AI provider.
-Validation: not run. Blockers: none for local work; external targets are optional and need
-owner scope/authorization. Next action: execute this phase only on `devam`.
+Validation (2026-11-23, macOS):
+
+- Built with TypeScript; full 34-test Node suite passed on Node 24.22.3 and 26.13.1,
+  without skips. This includes all five real example generation/validation flows plus
+  managed draft/no-op update flows, a fresh manifest/usage-file journey, and read-only
+  generation/update previews against Craftmentation itself. No external repository was changed.
+- New coverage checks exact preview/save hashes, stale review rejection, original-byte
+  backups, legacy refusal, custom spans, CRLF/BOM preservation, malformed/edited/fenced
+  markers, hard links, lock conflicts, concurrent writers, interruption, staging permission,
+  precommit publication failure, and truthful postcommit cleanup outcomes.
+- Final human-reporting refinements were rebuilt/typechecked/formatted and separately
+  exercised on both runtimes: legacy guidance never suggests an ineligible write;
+  invalid generation hashes never suggest an unsupported --write flag.
+- `npm run test:legacy` passed all 18 Python tests plus 48 sections, 14 profiles,
+  18 policy cases, and five evidence inventories. `npm run typecheck`,
+  `npm run format:check`, and `git diff --check` passed.
+- Main README passed the actual CLI validator with zero errors/warnings. 121 Markdown
+  files and 271 local file/asset/heading references were checked without errors.
+- No dependency, application example source, license, config schema, or report schema change.
+  No target commands, external models, publication, commits, or pushes were performed.
+
+Deliberate exclusions: check/doctor, custom-template loading, providers, automatic ownership
+adoption, and automatic section insertion/removal add no necessary capability to this
+scoped workflow. Existing validation/help and agent reconciliation serve those needs.
+
+Limitations: CLI inference remains package/Markdown-based; reviewed usage is maintainer
+input, not inferred source behavior. Update writes require a quiet local workspace and
+have a final check-to-rename race with uncooperative editors. Backups remain local recovery
+artifacts. Native Linux/Windows, live HTTP/browser/GUI, and external model runs were not
+performed. Existing documents without ownership are never automatically rewritten.
+Blockers: none for Phase 8. Next action: execute Phase 9 only when the owner asks to continue.
 
 ## Phase 9: Release Confidence and Distribution
 

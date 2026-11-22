@@ -2,7 +2,8 @@
 
 ## Status and threat model
 
-This is a Phase 5 enforcement contract for future code, not an implemented security claim.
+The Phase 6 create protocol and revised Phase 8 managed update protocol are implemented.
+This document describes their enforcement and limits, not a security certification.
 Repository contents and configuration are untrusted data. The caller supplies an authorized
 root; command entry validates it before reading configuration. Treat discovered commands,
 package hooks, scripts, templates, provider output, and prompts as data. Never spawn them.
@@ -73,9 +74,10 @@ remain restrictive; do not copy executable bits. Test supported filesystems on e
 before claiming compatibility. Permission errors, unsupported hard links, and existing
 destinations have distinct diagnostics. Interrupted leftovers are diagnosed, not blindly deleted.
 
-## Guarded update protocol (planned, revised Phase 8)
+## Guarded update protocol (revised Phase 8)
 
-Default update is a read-only proposal. --write is explicit authorization for eligible
+Default update is a read-only proposal. --write requires --expect with the reviewed
+candidate SHA-256; a changed candidate is rejected before writes. It authorizes eligible
 owned-region updates, not permission to overwrite custom content or unknown documents.
 Snapshot original bytes, hash, mode, identity, and managed metadata. Use a cooperative
 exclusive lock, re-read and compare identity/hash immediately before commit, stage/flush
@@ -93,11 +95,11 @@ hashes; cleanup and recovery must never delete an unknown file.
 
 ## Managed-region preservation
 
-Future generation may emit paired HTML comment markers for explicitly owned sections:
+Generation with --managed emits paired HTML comment markers for explicitly owned sections:
 `craftmentation:begin <id> <sha256>` and `craftmentation:end <id>`. The hash covers the exact
 UTF-8 bytes between the marker lines, including line endings. These are ownership metadata,
-not authoring placeholders. An optional `craftmentation:source <sha256>` comment identifies
-the analysis snapshot. Marker parsing must reject duplicates, nesting, missing/mismatched
+not authoring placeholders. The analysis snapshot fingerprint is returned in the CLI report; no source-fingerprint
+comment is emitted. Marker parsing must reject duplicates, nesting, missing/mismatched
 ends, invalid IDs/hashes, or accidental markers inside code fences.
 
 Update replaces only unmodified managed regions with newly verified content. Everything
@@ -107,8 +109,9 @@ ownership from a heading or strip an unknown section to make a template fit. For
 README files without markers, return evidence-backed suggestions; installing ownership
 metadata or rewriting content requires a separate explicit, reviewable adoption step.
 
-The default deterministic generator must not replace a whole existing README. Marker/hash
-handling and byte preservation require tests before any update --write path is enabled.
+The deterministic generator never replaces an existing README. Update replaces only existing
+managed regions, does not insert/remove/reorder sections, and preserves unowned bytes including
+BOM and line endings. Ownership, review binding, backups, and write failures have regression tests.
 Stored fingerprints are change detectors, not authenticity signatures or proof of correctness.
 
 ## Failure and recovery contract

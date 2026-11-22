@@ -5,6 +5,7 @@
 The MVP loads and validates schemaVersion-1 configuration using Ajv 2020. [config.schema.json](../schemas/config.schema.json) is authoritative
 for structure. Semantic rules below are also required; passing JSON Schema alone does
 not prove paths are safe, source facts true, or capabilities implemented.
+For a task-oriented path, start with the [practical workflow](workflow.md).
 
 Use one UTF-8 JSON file named `craftmentation.config.json` in the explicitly selected
 repository root, or a root-confined `--config` path. There is no upward discovery, global
@@ -127,7 +128,10 @@ in the explicitly selected target. See [ADR 0004](decisions/0004-configuration-s
 Package names/descriptions/engine declarations and existing README sections can populate
 built-in fields. Complete extracted sections fill the first field and intentionally leave
 remaining subfields blank; this preserves their source prose without inventing extra facts.
-When Core usage is absent, generation fails with E_EVIDENCE. Supply the actual fields listed
+Quick start/Getting started satisfy Core usage. When it is absent, generation fails with
+E_EVIDENCE and actionable guidance. Prefer --usage-file with reviewed root-confined Markdown
+for a simple usage gap; it overrides usage content without a configuration file. For other
+missing information, supply the actual fields listed
 in templates/catalog.json through content, with real source paths or explicit maintainer
 attribution. Partial configured fields merge with existing extracted fields. An empty secondary
 field is permitted when explicitly provided or intentionally omitted within a complete source section.

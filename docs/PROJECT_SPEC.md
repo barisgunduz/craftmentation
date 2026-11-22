@@ -638,8 +638,8 @@ Create a cross-platform command-line application named:
 
 ## Command scope
 
-The implemented MVP includes init/analyze/generate/validate. Safe review/update behavior
-is the next workflow goal. check/doctor are conditional designs requiring a demonstrated
+The Phase 6 MVP includes init/analyze/generate/validate. Revised Phase 8 adds preview-first
+managed update with explicit reviewed-hash application and retained original backups. check/doctor are conditional designs requiring a demonstrated
 need, not mandatory release commands. The original command family is retained below as
 design context; see the CLI reference for actual availability.
 

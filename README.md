@@ -48,7 +48,7 @@ it does not need fabricated features or empty sections to look substantial.
 
 ## Optional: use the local CLI
 
-For repeated local checks or deterministic drafts, the MVP has four commands:
+For repeated local checks or deterministic drafts, the local CLI has five commands:
 
 | Command | What it does |
 |---|---|
@@ -56,6 +56,7 @@ For repeated local checks or deterministic drafts, the MVP has four commands:
 | `analyze` | Inspect static repository evidence |
 | `generate` | Create a missing README from supported facts and reviewed content |
 | `validate` | Check Markdown, placeholders, internal links, and configuration offline |
+| `update` | Preview managed changes; apply only an explicitly reviewed update with a backup |
 
 From this Craftmentation checkout, use Node.js 24 or 26 and npm:
 
@@ -68,7 +69,8 @@ node dist/cli/index.js generate --root examples/library --output README.preview.
 That command previews an existing example without writing a file. The CLI currently reads
 JSON package metadata and existing README sections. It cannot invent missing usage; it may
 need explicit source-backed content. It never executes your project's scripts or fetches
-external links. Existing output is protected. See the [CLI reference](docs/cli-reference.md).
+external links. Existing output is protected. Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
+safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
 The package is private at `0.0.0-dev.0`; there is no public npm release. Actual runtime
 checks cover macOS with Node 24/26; native Linux/Windows verification remains outstanding.

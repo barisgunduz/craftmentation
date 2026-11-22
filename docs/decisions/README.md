@@ -1,7 +1,7 @@
 # Architecture decision records
 
 Record significant technical choices here using sequential filenames such as
-`0010-next-decision.md`. Each record must include status, context, decision,
+`0011-next-decision.md`. Each record must include status, context, decision,
 alternatives considered, and consequences. Supersede earlier decisions explicitly
 rather than silently rewriting their rationale.
 
@@ -28,3 +28,6 @@ product scope without erasing earlier design rationale.
 
 - [0009: Usability and revised product scope](0009-usability-and-scope.md) — one primary
   user path, representative examples, optional CLI, and removal of website/localization automation.
+
+- [0010: Reviewed managed updates](0010-reviewed-managed-updates.md) — minimal usage input,
+  explicit managed generation, exact reviewed hashes, preserved custom spans, and original-byte backups.

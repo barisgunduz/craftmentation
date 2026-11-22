@@ -47,7 +47,9 @@ standalone offline archive of every linked development artifact.
 9. Verify unit, integration, packed-package data paths, and platform safety before accepting
    the MVP. Update roadmap/changelog and stop. Do not install, push, deploy, or release remotely.
 
-The implemented scripts are listed above. Update/check/doctor, custom templates/sections,
+The implemented scripts are listed above. Phase 8 implements default-preview update,
+explicit managed output, reviewed hash application, and minimal --usage-file input.
+Check/doctor, custom templates/sections,
 localization, providers, and general source-code understanding remain outside this MVP.
 
 ## Test architecture
@@ -66,7 +68,7 @@ the analyzer; tests may run newly authored isolated CLI fixtures under test cont
 | Filesystem | Traversal, root/ancestor symlinks, dangling links, case collisions, Windows devices/ADS, exclusive create, no-clobber conflict, hard-link unsupported path, permission faults, interrupted cleanup, no false success |
 | Commands | Help without scanning; unknown flags/commands; exact exit and JSON envelope behavior; read-only/dry-run has zero writes; config-only init; generate refuses existing output |
 | Packaging | Built package contains required data and notices, no fixture/secret payload, works outside the source cwd without install hooks |
-| Update, revised Phase 8 (planned) | Byte-identical custom spans, modified/ambiguous markers rejected, backup integrity, hash/identity recheck, preview-only default, concurrency limitations disclosed |
+| Update, revised Phase 8 (implemented) | Byte-identical custom spans, modified/ambiguous markers rejected, backup integrity, hash/identity recheck, preview-only default, concurrency limitations disclosed |
 | Historical localization design | Outside active scope; existing prompt/artifact regression checks remain, with no engine promised |
 
 Use temporary directories for all mutation tests. Inject permission/I/O/failure points for

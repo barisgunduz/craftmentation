@@ -3,7 +3,9 @@
 ## Status and delivery boundary
 
 The Phase 6 MVP implements init/analyze/generate/validate in TypeScript with locked
-dependencies and actual schema/command tests. The package remains private and unreleased.
+dependencies and actual schema/command tests. Phase 8 adds reviewed usage input, opt-in
+managed generation, and default-preview update with hash-bound guarded application.
+The package remains private and unreleased.
 This document preserves the architecture contract and distinguishes reserved capabilities.
 The [revised roadmap](roadmap.md) prioritizes usability and output quality, then a practical
 preview/review/save workflow and release confidence. Advanced commands/customization require

@@ -42,3 +42,6 @@ npm-debug.log*
 # Interrupted CLI operations (never ignore shared configuration or lockfiles)
 *.craftmentation.lock
 *.craftmentation-*.tmp
+
+# Original-byte recovery backups from explicit managed updates
+*.craftmentation-*.bak

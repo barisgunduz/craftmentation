@@ -8,7 +8,7 @@ Start with the route that matches your task.
 | Write a README with my existing AI tool | [Main quick start](../README.md#quick-start), [standard](standard.md), [starter](../README.template.md) |
 | See what a finished result should contain | [Example gallery](../examples/README.md) |
 | Analyze or update documentation repeatably | [Workflow prompts](../prompts/README.md) |
-| Run the optional local CLI | [CLI reference](cli-reference.md), then [configuration](configuration.md) only when needed |
+| Run the optional local CLI | [Practical workflow](workflow.md), [CLI reference](cli-reference.md), then [configuration](configuration.md) only when needed |
 | Understand what exists and what is next | [Current audit](audit.md#product-and-usability-review), [roadmap](roadmap.md) |
 | Contribute code or documentation | [Contributing](../CONTRIBUTING.md), [development checks](development.md) |
 
@@ -23,7 +23,7 @@ Start with the route that matches your task.
 | examples/ | Five real small source projects and curated READMEs explaining their choices | Authors comparing good results |
 | templates/ | Catalog, default layout, and fourteen profile recommendations | Template contributors and CLI |
 | sections/ | Forty-eight reusable Markdown fragments | Template contributors and CLI |
-| src/ | TypeScript implementation of the four-command CLI | CLI contributors |
+| src/ | TypeScript implementation of the five-command CLI | CLI contributors |
 | schemas/ | Machine-checkable structure for configuration, analysis, library data, and reports | CLI contributors; ordinary users rarely need to open them |
 | tests/node/ | CLI unit/integration test source; belongs in GitHub | Contributors and future CI |
 | tests/fixtures/ | Deliberately authored evidence, expected outputs, edge cases, and historical evaluation artifacts | Test contributors |

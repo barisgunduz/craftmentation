@@ -2,12 +2,12 @@
 
 ## Availability
 
-The MVP implements init, analyze, generate, and validate from this checkout. Build with
+The CLI implements init, analyze, generate, validate, and update from this checkout. Build with
 `npm run build` and invoke `node dist/cli/index.js`, or use the npm-created bin from an
 explicitly installed local package. The private development version is 0.0.0-dev.0; no
-public package release exists. Update/check/doctor are unimplemented design references
-and are rejected as unknown commands. The revised roadmap prioritizes a practical update
-workflow in Phase 8; check/doctor/custom libraries/providers require a demonstrated need.
+public package release exists. Update previews managed changes and applies only an explicitly
+reviewed candidate with a backup. Check/doctor are unimplemented design references and
+are rejected as unknown commands; custom libraries/providers require a demonstrated need.
 Localization automation is outside active scope. Tables mentioning these commands describe
 reserved interfaces, not commands users can run.
 
@@ -32,6 +32,10 @@ completion, stdin instruction stream, or command execution from repository metad
 | --language <tag> | generate, update | Explicit language override; reject unsupported capabilities |
 | --include <id> | generate, update | Repeatable explicit section include; unknown or unsupported evidence fails |
 | --exclude <id> | generate, update | Repeatable non-Core exclusion; Core cannot be excluded |
+| --usage-file <path> | generate, update | Reviewed UTF-8 Markdown usage body inside the target root; overrides usage content |
+| --managed | generate | Explicitly add invisible ownership markers to newly generated sections |
+| --expect <sha256> | generate, update | Require exactly the reviewed candidate hash; mandatory with update --write |
+| --write | update | Apply an eligible reviewed update in a quiet workspace, retaining an original backup |
 
 Repeated include/exclude values are deduplicated, then exclusions win; these list flags
 augment the effective section map instead of discarding unrelated configured choices.
@@ -48,7 +52,7 @@ is reserved for unrecoverable startup errors before the reporter can run.
 | analyze | 6 | Bounded static inspection, type signals, provenance and section evidence | Read-only; JSON envelope data is the canonical Analysis object |
 | generate | 6 | Resolve config, analyze, select evidence, render, validate | Create only a missing output document; refuse any existing output and direct users to update |
 | validate | 6 | Check configured/explicit document path, config, known publication rules and internal links | Read-only; --document <path> overrides the document being checked |
-| update | Planned: revised 8 | Analyze existing content; default preview of a focused reconciliation plan | No write by default; --write explicitly applies an eligible guarded update |
+| update | 8 | Analyze existing content; default preview of a focused reconciliation plan | No write by default; --write --expect applies an eligible guarded update and retains a backup |
 | check | Conditional | Run the same validators noninteractively with warnings treated as failure | Read-only; useful for CI, never rewrites README/config |
 | doctor | Conditional | Diagnose runtime, installed data/schema versions, root/config/capability issues | Read-only; no install, network, credential probe, or self-repair |
 
@@ -74,12 +78,15 @@ explicit SSRF/redirect/timeout policy and authorization; it is not part of this 
 
 Update has --write and --dry-run; their combination is rejected as contradictory.
 Without --write, produce a preview/report only. Preserve unowned/custom spans byte-for-byte.
-For managed sections, require unambiguous IDs and stored source/content fingerprints before
-applying any replacement. Missing/ambiguous ownership or modified managed content produces
-a conflict and a proposal, never a wholesale rewrite. Imported arbitrary READMEs are not
+For managed sections, require unambiguous IDs and exact stored body hashes. --write also
+requires --expect with the full candidate hash from the preview. Modified/ambiguous markers
+produce a conflict without writes. Legacy documents return unchanged preview and W_UNMANAGED;
+--write is rejected. New sections are not inserted and existing sections are never deleted. Imported arbitrary READMEs are not
 silently converted into owned regions. Metadata enabling ownership must be explicit and
 must not remove legal notices. [Safe operations](safe-file-operations.md) specifies the
-planned marker/hash protocol and concurrency limits.
+implemented marker/hash protocol and concurrency limits.
+The [practical guide](workflow.md) covers invocation, backup/recovery, and the final
+check-to-rename race requiring a quiet workspace.
 
 ## Diagnostics, exit codes, and JSON
 
@@ -92,7 +99,7 @@ be resolved, including unknown commands. With --json, explicit help/version also
 the result envelope (data contains help/version text); no repository scan is needed.
 Command data is Analysis for analyze; a write/preview summary for init/generate/update;
 validation summary for validate/check; diagnostic capability summary for doctor. Error data
-may be null. The schema defines success data shapes now; Phase 6/7 tests must implement them exactly:
+may be null. The schema defines success data shapes now; command tests must implement them exactly:
 
 | Data shape | Fields |
 |---|---|
@@ -106,7 +113,7 @@ content for a renderable dry-run; diff carries a focused update diff when availa
 Init's preview is JSON config text, not Markdown. No-op and init use empty selection lists.
 Committed reflects whether publication occurred even if later cleanup failed; error data
 may carry the same summary or null. A dry-run can never claim committed true.
-The four MVP commands emit these schema-validated shapes. There is no stable import SDK API.
+The five implemented commands emit these schema-validated shapes. There is no stable import SDK API.
 
 | Exit | Meaning | JSON status |
 |---|---|---|
@@ -118,7 +125,7 @@ The four MVP commands emit these schema-validated shapes. There is no stable imp
 | 5 | Internal invariant/unexpected implementation failure | error |
 | 6 | Optional provider failure, reserved until a provider is actually implemented | error |
 
-Representative codes: E_ARGUMENT, E_CONFIG, E_SCHEMA_VERSION, E_CAPABILITY,
+Representative codes: E_OWNERSHIP, E_ARGUMENT, E_CONFIG, E_SCHEMA_VERSION, E_CAPABILITY,
 E_EVIDENCE, E_LINK, E_PLACEHOLDER, E_PATH, E_SYMLINK, E_EXISTS, E_CONCURRENT,
 E_PERMISSION, E_IO, E_SCAN_LIMIT, E_INTERNAL, and E_PROVIDER. Do not map raw exception
 messages directly to user output. Retain redacted debug details only when deliberately
