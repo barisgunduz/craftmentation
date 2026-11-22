@@ -2,16 +2,16 @@
 
 ## Current state
 
-- Current phase: Phase 1 — Completed.
-- Current focus: open-source foundation established; awaiting authorization for Phase 2.
-- Next action: on `devam`, inspect repository state and execute Phase 2, README Standard v0.1, only.
+- Current phase: Phase 2 — Completed.
+- Current focus: README Standard v0.1 established; awaiting authorization for Phase 3.
+- Next action: on `devam`, inspect repository state and execute Phase 3, Modular Template System, only.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
   while preserving shareable examples.
 - Blockers: none for the completed phase. Confidential security and conduct reporting
   remain operational limitations; no private channel is advertised.
 - Known limitations: no CLI, package, automated test suite, modular library, translations,
   CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see Phase 1 results below. No executable test suite exists.
+- Validation: see phase results below. No executable test suite exists.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
 constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
@@ -96,31 +96,48 @@ route before sensitive details are shared. Browser preview remains a manual foll
 
 ## Phase 2: README Standard v0.1
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: all thirteen tasks below.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for Phase 2.
 
-- [ ] Classify README sections.
-- [ ] Define core sections.
-- [ ] Define recommended sections.
-- [ ] Define optional sections.
-- [ ] Define section ordering.
-- [ ] Define badge guidelines.
-- [ ] Define image and media standards.
-- [ ] Define code example standards.
-- [ ] Define link conventions.
-- [ ] Define accessibility requirements.
-- [ ] Define multilingual conventions.
-- [ ] Create the formal README specification.
-- [ ] Refine `README.template.md`.
+- [x] Classify README sections.
+- [x] Define core sections.
+- [x] Define recommended sections.
+- [x] Define optional sections.
+- [x] Define section ordering.
+- [x] Define badge guidelines.
+- [x] Define image and media standards.
+- [x] Define code example standards.
+- [x] Define link conventions.
+- [x] Define accessibility requirements.
+- [x] Define multilingual conventions.
+- [x] Create the formal README specification.
+- [x] Refine `README.template.md`.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: README Standard v0.1 defines all 48 specified catalog items with a
+classification and inclusion criteria, default ordering, quality requirements, and
+multilingual authoring conventions. The manual README template follows the standard;
+repository documentation now references it as the formal standard.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- All 48 content items from master specification section 6 matched to exactly one
+  catalog row, with nonempty inclusion criteria and all four classes represented.
+- 69 local links, asset references, and heading anchors checked. Master specification
+  and intentional README template authoring fields excluded from published-link checks.
+- Template reviewed against catalog ordering and inclusion rules: Core information
+  retained, conditional content identified, no sample badge URLs, fixed title anchor,
+  empty code fences, or unbalanced authoring comments.
+- LICENSE and master specification are byte-identical to HEAD; `git diff --check` passed.
+- Manual review confirmed documentation-only usage, conditional license handling,
+  separation of future work, and multilingual conventions without claiming automation.
+- No runtime tests apply; no dependency, translation, executable module, or CI was added.
+  Browser rendering and external link reachability were not tested in this phase.
+
+Blockers: none. Modular section metadata and complete profiles remain Phase 3 work;
+localization automation and executable validation remain assigned to later phases.
 
 ## Phase 3: Modular Template System
 

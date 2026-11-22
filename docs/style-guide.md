@@ -9,8 +9,9 @@ and examples. Keep the README concise and move detailed guidance into linked doc
 Use one descriptive H1 per document, followed by logically nested headings. The complete
 master specification preserves the owner's supplied heading structure. Separate headings,
 paragraphs, and lists with blank lines. Do not use empty sections or decorative badges.
-Formal README section classifications will be defined in Phase 2; the existing
-[standard](standard.md) remains a draft.
+The [README Standard v0.1](standard.md) defines section classifications, inclusion
+criteria, and publication requirements. It is the authoritative README content standard;
+this guide covers repository prose and review practices.
 
 ## Evidence and status
 

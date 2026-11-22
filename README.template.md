@@ -1,109 +1,117 @@
 <!--
-Craftmentation README template
-Instructions:
-- Replace every placeholder with verified information.
-- Remove optional sections that do not apply.
-- Never publish unresolved placeholders.
-- Do not invent features, commands, versions, dependencies, metrics, or links.
+Craftmentation README Standard v0.1 — manual authoring template, not publishable as-is.
+Consult docs/standard.md in the Craftmentation repository before adaptation.
+Double-brace tokens below are manual authoring fields, not an implemented template language.
+Replace every retained token with repository evidence. Remove all authoring comments.
+Core information: project name, description, overview, and useful usage instructions.
+Other sections are conditional: keep, merge, link, or remove according to the standard.
+Preserve existing accurate content and required copyright/permission notices.
+Never infer the target project's license from Craftmentation.
+Do not invent commands, dependencies, versions, compatibility, results, people, or URLs.
+Do not publish an empty heading, unresolved token, authoring instruction, or sample badge URL.
 -->
 
-<div align="center">
+# {{PROJECT_NAME}}
 
-# [Project Name]
+{{DESCRIPTION_AND_AUDIENCE}}
 
-[One clear sentence explaining what the project does and who it is for.]
-
-[![License](https://img.shields.io/badge/license-[LICENSE]-blue.svg)]([LICENSE_URL])
-[![Version](https://img.shields.io/badge/version-[VERSION]-informational.svg)]([RELEASES_URL])
-[![Build](https://img.shields.io/badge/build-[STATUS]-success.svg)]([CI_URL])
-
-[Documentation]([DOCS_URL]) · [Report a bug]([ISSUES_URL]) · [Request a feature]([ISSUES_URL])
-
-</div>
+<!-- Identity additions: verified logo, meaningful badges, and existing primary links only.
+Add language navigation only when at least two actual editions exist.
+Use existing assets with alt text; never copy Craftmentation branding as the target's identity.
+For a long README, add a table of contents with verified final heading anchors.
+-->
 
 ## Overview
 
-[Explain the problem, the intended users, and the project's approach.]
+{{VERIFIED_PURPOSE_PROBLEM_AND_CURRENT_STATE}}
 
+<!-- Recommended: keep Features only for implemented capabilities. -->
 ## Features
 
-- [Verified feature]
-- [Verified feature]
-- [Verified feature]
+- {{VERIFIED_CAPABILITY}}
 
-## Preview
+<!-- Optional Preview: add real screenshots, GIFs, demo or video links only when useful.
+Include alt text, captions, permission/attribution, and static or text alternatives.
+Optional Tech stack: include confirmed technologies only when relevant to readers.
+Project-specific Architecture and Project structure: summarize actual components/paths
+or link an existing guide. Do not add empty sections merely to match this template.
+-->
 
-[Add a screenshot, GIF, demo, or remove this section if no useful visual is available.]
-
-## Tech stack
-
-[List only technologies confirmed by the repository.]
-
-## Architecture
-
-[Describe important components and their relationships. Add a Mermaid diagram only when it improves understanding.]
-
+<!-- Recommended: combine prerequisites and requirements. Remove if none apply. -->
 ## Requirements
 
-- [Runtime / platform requirement]
-- [Required tool or service]
+{{VERIFIED_PREREQUISITES_AND_COMPATIBILITY}}
 
+<!-- Recommended: retain Installation only for a real install or adoption workflow.
+A Quick start may combine Installation and Usage to avoid duplication.
+Do not overwrite existing files without explaining preservation and review steps.
+-->
 ## Installation
 
-[Provide verified installation steps.]
-
-```bash
-# Replace with commands that have been checked against the project.
-```
+{{VERIFIED_SETUP_OR_ADOPTION_STEPS}}
 
 ## Usage
 
-[Show the smallest useful working example.]
+{{SMALLEST_USEFUL_EXAMPLE_OR_READING_WORKFLOW}}
 
-```text
-[Verified usage example]
-```
+<!-- Add fenced code blocks with the correct language only when real examples exist.
+Specify working directory, prerequisites, platform differences, and side effects.
+Distinguish illustrative output from captured output. Link larger existing examples.
+A non-executable repository may describe reading or adaptation steps instead of commands.
+-->
 
+<!-- Project-specific: keep Configuration only for actual settings. -->
 ## Configuration
 
-| Variable / Option | Description | Required | Default |
-|---|---|---:|---|
-| [NAME] | [What it controls] | [Yes/No] | [Value] |
+{{VERIFIED_OPTIONS_FILES_PRECEDENCE_AND_ENVIRONMENT_VARIABLES}}
 
-[Remove this section if the project has no configuration surface.]
+<!-- Document confirmed names, purpose, required status, and defaults without real secrets.
+Omit unknown defaults and report gaps separately. Do not imply a proposed schema exists.
+-->
 
-## Testing
+<!-- Recommended: keep Development when there is a verified contributor workflow. -->
+## Development
 
-[Explain how to run the project's actual tests and checks.]
+{{LOCAL_EDITING_OR_DEVELOPMENT_WORKFLOW}}
 
-## Deployment
+### Testing
 
-[Include only if deployment is relevant and supported by the repository.]
+{{ACTUAL_AUTOMATED_OR_MANUAL_CHECKS_AND_LIMITATIONS}}
 
+<!-- Project-specific Building, Deployment, and Scripts: include only implemented workflows.
+Optional Troubleshooting: include known symptoms and evidence-based remedies.
+-->
+
+<!-- Optional: link maintained plans or list agreed future work separately from features. -->
 ## Roadmap
 
-- [ ] [Planned item]
+{{MAINTAINED_PLAN_OR_EXISTING_ROADMAP_LINK}}
 
+<!-- Recommended: retain only with a maintainer-authorized contribution process. -->
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+{{VERIFIED_CONTRIBUTION_GUIDANCE_OR_EXISTING_GUIDE_LINK}}
 
+<!-- Link an adopted Code of conduct and actual Security policy when available.
+Optional Contributors and Discussions: verified attribution and enabled venues only.
+-->
+
+<!-- Recommended: include verified support channels and their limitations. -->
 ## Support
 
-[Explain where users can ask questions or report issues.]
+{{VERIFIED_HELP_AND_SECURITY_REPORTING_ROUTES}}
 
-## Acknowledgements
+<!-- Optional Sponsorship, Funding, Authors, Acknowledgements, and References:
+include only verified information and preserve required third-party credits.
+Recommended Maintainers: include confirmed responsibilities or contact route when useful.
+Project-specific Citation: use actual citation metadata, never invented authors or identifiers.
+-->
 
-[Credit libraries, people, datasets, or other work where appropriate.]
-
+<!-- Recommended only when licensing is verified. Otherwise remove and report the gap.
+For multiple licenses, state the relevant scopes. Do not assign MIT automatically.
+-->
 ## License
 
-[State the project's actual license and link to its license file.]
+{{VERIFIED_LICENSE_TERMS_AND_EXISTING_LICENSE_FILE_LINK}}
 
-## Authors
-
-[Project maintainers and contributors.]
-
----
-
-[Back to top](#project-name)
+<!-- Optional Back to top: add only with an anchor verified against the final project title. -->

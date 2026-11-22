@@ -22,7 +22,7 @@ Its approach combines relevant sections, verified examples, and reusable guidanc
 ## Available today
 
 - A [README template](README.template.md) to adapt by hand.
-- A [draft documentation standard](docs/standard.md) and [initial project profiles](docs/project-profiles.md).
+- The [README Standard v0.1](docs/standard.md) and [initial project profiles](docs/project-profiles.md).
 - A [generation prompt](prompts/generate-readme.md) and repository inspection guidance for coding agents.
 - [Brand assets and usage guidelines](assets/brand/brand-guidelines.md).
 
@@ -30,12 +30,12 @@ No AI service is required to use these materials. Agent compatibility has not ye
 
 ## Quick start
 
-1. Download or clone this repository and read the [draft standard](docs/standard.md).
+1. Download or clone this repository and read the [README Standard v0.1](docs/standard.md).
 2. Inspect your target project's manifests, source, tests, scripts, CI, and existing documentation.
 3. Copy `README.template.md` into your project as `README.md` only after reviewing and
    backing up any existing README. Preserve valid custom content.
 4. Keep relevant sections, fill them with verified information, and remove unused
-   sections and all authoring placeholders, including sample badge URLs.
+   sections, all authoring placeholders, and authoring comments.
 5. Check commands against the repository, verify links, and preview the result on GitHub.
 
 For AI assistance, use the [generation prompt](prompts/generate-readme.md) alongside
@@ -59,7 +59,7 @@ See the [licensing guide](docs/licensing.md).
 
 | Guide | Purpose |
 |---|---|
-| [Draft standard](docs/standard.md) | Current README ordering and writing rules |
+| [README Standard v0.1](docs/standard.md) | Section classifications, inclusion rules, and quality requirements |
 | [Project profiles](docs/project-profiles.md) | Initial category recommendations |
 | [Architecture](docs/architecture.md) | Current components and implementation boundaries |
 | [Style guide](docs/style-guide.md) | Repository documentation conventions |

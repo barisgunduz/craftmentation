@@ -11,7 +11,7 @@ in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
 
 | Component | Existing files | Responsibility |
 |---|---|---|
-| Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | Draft README order and initial profile recommendations |
+| Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and initial profile recommendations |
 | Template | `README.template.md` | Manually adapted Markdown starting point |
 | Agent guidance | `AGENTS.md`, `CLAUDE.md`, `prompts/generate-readme.md` | Repository inspection and evidence-based writing instructions |
 | Branding | `assets/brand/` | SVG symbols, wordmarks, favicon, palette and usage rules |
@@ -31,6 +31,10 @@ README template, selects relevant sections, and manually writes verified documen
 The generation prompt describes this workflow; no software enforces it yet.
 `CLAUDE.md` references the shared agent instructions rather than replacing them.
 Templates contain authoring placeholders and are not ready-to-publish project documentation.
+The README standard defines four section classes and evidence-based inclusion criteria.
+The default template uses double-brace manual authoring fields and conditional comments;
+these are not a renderer syntax or executable template engine. Localization conventions
+include manual source-revision/status tracking; automated drift detection is not implemented.
 
 ## Interfaces, configuration and extension points
 

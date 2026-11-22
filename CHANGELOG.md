@@ -8,6 +8,9 @@ No release version is assigned yet.
 
 ### Added
 
+- README Standard v0.1 with section classifications and inclusion rules, ordering,
+  badge/media/code/link/accessibility requirements, and manual multilingual conventions.
+
 - Code of Conduct, Security Policy, and Support guide with verified GitHub reporting limitations.
 - Bug and feature issue templates and a pull request review template.
 - Documentation style guide and release preparation conventions.
@@ -20,6 +23,10 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- README template aligned with Standard v0.1 using explicit manual authoring fields and
+  conditional guidance, without fabricated badge URLs or a fixed project-title anchor.
+- README, style guide, and architecture now reference the formal standard.
 
 - README now separates available manual materials from planned tooling and links project guides.
 - Contribution guidance now covers phase scope, evidence, verification, and safe AI assistance.
