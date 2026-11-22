@@ -8,6 +8,14 @@ No release version is assigned yet.
 
 ### Added
 
+- Shared vendor-neutral documentation workflow policy and reusable analysis, update,
+  and translation prompts alongside the refined generation prompt.
+- Thin GitHub Copilot entry point, Codex guidance, and documented Claude/Cursor/Windsurf
+  integration assessment with official sources and explicit client-test limitations.
+- Thirteen recorded manual AI workflow applications across five example repositories,
+  preservation, translation, and hostile-input cases, with five artifact regression tests.
+- Architecture decision for shared AI rules and distinct framework/target repository scope.
+
 - Version-1 modular library metadata, 48 reusable section fragments, a default layout,
   and all fourteen project profiles with domain evidence guidance.
 - Evidence-gated inclusion/exclusion reference, custom-section contract, library guide,
@@ -33,6 +41,11 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- AGENTS.md and CLAUDE.md now reference the shared workflow authority without duplicating
+  content standards; project continuity and phase boundaries remain explicit.
+- README, contribution guide, architecture, and roadmap describe AI workflows and their
+  actual verification scope.
 
 - README, architecture, contribution instructions, and standard references now describe
   the available modular library and development verification workflow.

@@ -1,0 +1,103 @@
+{
+  "formatVersion": 1,
+  "method": "manual walkthrough by the implementing agent; not external-client execution",
+  "prompt": "prompts/analyze-repository.md",
+  "targetRoot": "examples/desktop-app",
+  "inspectedFiles": [
+    "examples/desktop-app/app.py",
+    "examples/desktop-app/README.md",
+    "examples/desktop-app/selection.json"
+  ],
+  "selectionRequest": {
+    "profile": "desktop-app",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "expectedSelection": [
+    "project-name",
+    "description",
+    "overview",
+    "requirements",
+    "installation",
+    "usage"
+  ],
+  "facts": [
+    {
+      "claim": "The window is named Scratch Pad.",
+      "source": "examples/desktop-app/app.py",
+      "observedText": "root.title(\"Scratch Pad\")",
+      "verification": "inspected"
+    },
+    {
+      "claim": "The text widget uses word wrapping.",
+      "source": "examples/desktop-app/app.py",
+      "observedText": "tk.Text(root, wrap=\"word\"",
+      "verification": "inspected"
+    },
+    {
+      "claim": "A main loop drives the window.",
+      "source": "examples/desktop-app/app.py",
+      "observedText": "root.mainloop()",
+      "verification": "inspected"
+    }
+  ],
+  "limitations": [
+    "No file-save implementation, installer, screenshot, or platform matrix was found."
+  ],
+  "licenseFinding": "These are fixtures within Craftmentation, not independently licensed adopting repositories. No target LICENSE file is created.",
+  "scopeNotes": [
+    "This is a small local source fixture, not a complete external repository checkout.",
+    "No fixture-local manifest, lockfile, CI workflow, test suite, screenshot, or independent LICENSE was present in the inspected file inventory. Root Craftmentation tests and licensing are separate context.",
+    "Repository classification is a justified recommendation, not automated project detection."
+  ],
+  "fileInventory": [
+    "examples/desktop-app/README.md",
+    "examples/desktop-app/app.py",
+    "examples/desktop-app/selection.json"
+  ]
+}

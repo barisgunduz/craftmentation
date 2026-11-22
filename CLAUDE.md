@@ -1,9 +1,8 @@
 @AGENTS.md
 
-## Claude-specific guidance
+# Claude Code entry point
 
-When asked to create or update documentation:
-- Read `AGENTS.md` first.
-- Inspect the repository before drafting.
-- Explain any assumptions or unverifiable details in your final response.
-- Do not make unrelated code or configuration changes.
+The imported AGENTS.md is the Craftmentation development entry point. Follow its
+session protocol and read the shared documentation instructions it references before
+using a workflow prompt. If the import is not visible in the active context, read
+AGENTS.md explicitly. Do not assume Markdown links are automatic imports.

@@ -1,0 +1,106 @@
+{
+  "formatVersion": 1,
+  "method": "manual walkthrough by the implementing agent; not external-client execution",
+  "prompt": "prompts/analyze-repository.md",
+  "targetRoot": "examples/cli-tool",
+  "inspectedFiles": [
+    "examples/cli-tool/count_lines.py",
+    "examples/cli-tool/README.md",
+    "examples/cli-tool/selection.json",
+    "examples/cli-tool/sample.txt"
+  ],
+  "selectionRequest": {
+    "profile": "cli-tool",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py",
+          "examples/cli-tool/sample.txt"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "expectedSelection": [
+    "project-name",
+    "description",
+    "overview",
+    "requirements",
+    "installation",
+    "usage"
+  ],
+  "facts": [
+    {
+      "claim": "The command accepts one required file path.",
+      "source": "examples/cli-tool/count_lines.py",
+      "observedText": "parser.add_argument(\"path\", type=Path",
+      "verification": "inspected"
+    },
+    {
+      "claim": "It reads UTF-8 text and counts iterated lines.",
+      "source": "examples/cli-tool/count_lines.py",
+      "observedText": "args.path.open(encoding=\"utf-8\")",
+      "verification": "inspected"
+    },
+    {
+      "claim": "File/Unicode errors produce status 1.",
+      "source": "examples/cli-tool/count_lines.py",
+      "observedText": "parser.exit(1,",
+      "verification": "inspected"
+    }
+  ],
+  "limitations": [
+    "No package installer, shell-completion implementation, or configuration file was found."
+  ],
+  "licenseFinding": "These are fixtures within Craftmentation, not independently licensed adopting repositories. No target LICENSE file is created.",
+  "scopeNotes": [
+    "This is a small local source fixture, not a complete external repository checkout.",
+    "No fixture-local manifest, lockfile, CI workflow, test suite, screenshot, or independent LICENSE was present in the inspected file inventory. Root Craftmentation tests and licensing are separate context.",
+    "Repository classification is a justified recommendation, not automated project detection."
+  ],
+  "fileInventory": [
+    "examples/cli-tool/README.md",
+    "examples/cli-tool/count_lines.py",
+    "examples/cli-tool/sample.txt",
+    "examples/cli-tool/selection.json"
+  ]
+}

@@ -16,7 +16,9 @@ in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
 | Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
 | Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
 | Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
-| Agent guidance | `AGENTS.md`, `CLAUDE.md`, `prompts/generate-readme.md` | Repository inspection and evidence-based writing instructions |
+| Agent entry points | `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md` | Thin project-specific instruction routes |
+| Shared AI workflows | `docs/ai-instructions.md`, `prompts/`, `docs/ai-integrations.md` | One workflow policy and four operation prompts, with compatibility limits |
+| AI walkthrough verification | `docs/ai-evaluation.md`, `tests/fixtures/ai/`, `tests/test_ai_workflows.py` | Recorded manual outputs and deterministic artifact checks, not live provider evaluations |
 | Branding | `assets/brand/` | SVG symbols, wordmarks, favicon, palette and usage rules |
 | Governance and continuity | `docs/PROJECT_SPEC.md`, `docs/roadmap.md`, `docs/audit.md`, `CHANGELOG.md` | Requirements, progress, findings and change history |
 | Community and contribution guidance | `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`, `.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md` | Participation, reporting routes, and review inputs |
@@ -39,9 +41,14 @@ no runtime font dependency is introduced.
 
 A human or coding agent inspects the target repository, consults the standard and
 README template, selects relevant sections, and manually writes verified documentation.
-The generation prompt describes this workflow. The development checker validates metadata
+The analysis, generation, update, and translation prompts all reference a shared workflow
+policy, the standard, and the library contract. Operation prompts add scoped procedures;
+entry files do not duplicate policy. A target repository and framework root are distinct,
+so adopter instructions and licensing are preserved. The development checker validates metadata
 and explicit evidence inventories, but does not inspect repository contents or verify claims.
-`CLAUDE.md` references the shared agent instructions rather than replacing them.
+`CLAUDE.md` imports AGENTS.md, while Copilot requests explicit reads. Cursor reuses
+AGENTS.md; no legacy Windsurf adapter is installed. Official documentation review and
+manual fixture walkthroughs do not establish native client discovery or model reliability.
 Templates contain authoring placeholders and are not ready-to-publish project documentation.
 The README standard defines four section classes and evidence-based inclusion criteria.
 The default template uses double-brace manual authoring fields and conditional comments;
@@ -66,6 +73,10 @@ There is no stable programmatic API, automatic project detection, renderer, prov
 interface, or user configuration precedence model. See [the library contract](templates.md)
 and [ADR 0001](decisions/0001-template-library.md) for boundaries and extension rules.
 The configuration JSON in the specification is conceptual, not a supported format.
+AI analysis walkthroughs reuse the library selection request/evidence shape; their
+surrounding reports and source excerpts are evaluation artifacts, not a CLI analysis schema.
+Update artifacts demonstrate focused preservation; translation artifacts record a source
+fingerprint and Unreviewed status. No prompt or test starts an external agent/provider.
 
 ## Technology choices and constraints
 
@@ -75,5 +86,8 @@ has been selected. Phase 5 must evaluate choices and record ADRs before implemen
 Future components must share schemas, keep AI optional, use safe file operations,
 and treat target repositories as untrusted input. The framework's MIT license must
 never silently become an adopting repository's license.
+
+See [AI integrations](ai-integrations.md) and [ADR 0002](decisions/0002-shared-ai-workflows.md)
+for workflow boundaries and source-backed compatibility assessment.
 
 See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery order.

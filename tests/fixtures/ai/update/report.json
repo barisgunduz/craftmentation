@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "prompt": "prompts/update-readme.md",
+  "before": "tests/fixtures/ai/update/README.before.md",
+  "after": "tests/fixtures/ai/update/README.after.md",
+  "correction": {
+    "old": "The included sample prints `3`.",
+    "new": "The included sample prints `2`.",
+    "sources": [
+      "examples/cli-tool/count_lines.py",
+      "examples/cli-tool/sample.txt"
+    ]
+  },
+  "preserved": "Team workflow section and editorial comment retained byte-for-byte",
+  "scope": "Evaluation snapshots only; no example README was overwritten."
+}

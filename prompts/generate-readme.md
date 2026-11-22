@@ -1,30 +1,21 @@
 # Generate a README with Craftmentation
 
-Analyze this repository and create or update its `README.md` using the Craftmentation standard.
+Read and apply the [shared workflow policy](../docs/ai-instructions.md),
+[README standard](../docs/standard.md), and [library contract](../docs/templates.md)
+from the supplied framework root. Resolve the target root, requested language, and output;
+use README.md in the active repository by default. Respect a preview-only request.
 
-## Required process
+Inspect repository evidence before drafting. Select an evidenced profile and relevant
+sections; use the modular catalog or the manual starter. Fill retained fields with
+verified project information, not generic filler. Do not require a runtime or installation
+command for a non-executable repository. Keep detailed existing guides and link them.
 
-1. Read `AGENTS.md` and `README.template.md` if they exist.
-2. Inspect the repository structure, manifests, lockfiles, source code, scripts, tests, CI configuration, and existing docs.
-3. Determine the project type and intended audience from evidence.
-4. Identify real features, supported platforms, dependencies, configuration, and commands.
-5. Locate existing screenshots, GIFs, demos, diagrams, and examples. Do not fabricate visual assets.
-6. Write only sections relevant to this project.
-7. Verify commands and links against repository contents wherever possible.
-8. Preserve accurate existing information.
+If the output already exists, follow [Update](update-readme.md); do not replace it blindly.
+When a Core fact is unknown, report the gap and produce a clearly identified draft instead
+of claiming publication readiness. Resolve authoring fields and omit unsupported non-Core
+sections. Language navigation, badges, media, contributor and license content need evidence.
 
-## Strict constraints
-
-- Do not invent functionality, dependencies, commands, versions, compatibility claims, benchmarks, or links.
-- Do not guess environment variable names or defaults.
-- Do not claim a command was tested unless you actually ran it successfully.
-- Do not assign or change the project's license.
-- Remove unused sections and unresolved placeholders.
-- If essential information is missing, list questions for the maintainer instead of guessing.
-
-## Deliverables
-
-- A complete, GitHub-compatible `README.md`
-- A short summary of the files inspected
-- A list of commands or links verified
-- A separate list of unresolved questions or assumptions
+For an authorized file edit, apply only the requested documentation change through a safe,
+reviewable write. Otherwise return a draft. Check the publication checklist and return the
+shared report, including source evidence, section decisions, actual validation results,
+changed files, and unresolved information. Never call a generated draft a verified tool run.

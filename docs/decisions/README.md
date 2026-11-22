@@ -14,3 +14,6 @@ localization, and update safety decisions belong to their designated roadmap pha
 
 - [0001: Declarative Markdown template library](0001-template-library.md) — JSON metadata,
   evidence-gated selection, custom sections, and a development-only verification reference.
+
+- [0002: Shared AI workflow policy with thin entry points](0002-shared-ai-workflows.md) —
+  reusable prompts, shared evidence rules, and explicit evaluation limits.

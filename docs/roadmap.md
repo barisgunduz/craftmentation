@@ -2,9 +2,9 @@
 
 ## Current state
 
-- Current phase: Phase 3 — Completed.
-- Current focus: reusable template library delivered; awaiting authorization for Phase 4.
-- Next action: on `devam`, inspect repository state and execute Phase 4, AI Integration v0.1, only.
+- Current phase: Phase 4 — Completed.
+- Current focus: AI instruction/prompt framework delivered; awaiting authorization for Phase 5.
+- Next action: on `devam`, inspect repository state and execute Phase 5, CLI Architecture, only.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
   while preserving shareable examples. After Phase 2, branding was reconciled with the
   owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
@@ -16,7 +16,7 @@
   remain operational limitations; no private channel is advertised.
 - Known limitations: no CLI, product package, automatic README renderer/validator, translations,
   CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see phase results below; library checks and seven development tests pass.
+- Validation: see phase results below; library checks and twelve development tests pass.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
 constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
@@ -189,31 +189,55 @@ CLI technology and full configuration/schema design remain Phase 5 responsibilit
 
 ## Phase 4: AI Integration v0.1
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: all thirteen tasks below.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for Phase 4.
 
-- [ ] Refine shared agent instructions.
-- [ ] Refine Claude integration.
-- [ ] Add Copilot instructions.
-- [ ] Add Codex guidance.
-- [ ] Evaluate Cursor integration.
-- [ ] Evaluate Windsurf integration.
-- [ ] Create repository analysis prompts.
-- [ ] Create generation prompts.
-- [ ] Create update prompts.
-- [ ] Create translation prompts.
-- [ ] Test against representative repositories.
-- [ ] Document compatibility.
-- [ ] Implement hallucination-prevention guidance.
+- [x] Refine shared agent instructions.
+- [x] Refine Claude integration.
+- [x] Add Copilot instructions.
+- [x] Add Codex guidance.
+- [x] Evaluate Cursor integration.
+- [x] Evaluate Windsurf integration.
+- [x] Create repository analysis prompts.
+- [x] Create generation prompts.
+- [x] Create update prompts.
+- [x] Create translation prompts.
+- [x] Test against representative repositories.
+- [x] Document compatibility.
+- [x] Implement hallucination-prevention guidance.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: one shared AI workflow policy, four operation prompts, refined Claude and
+AGENTS entry points, a thin Copilot entry point, Codex guidance, and documented
+Cursor/Windsurf evaluations delivered. Representative fixture walkthroughs and regression
+checks are recorded without claiming native-client or cross-vendor model compatibility.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22; Python 3.13.2):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- Official instruction documentation reviewed for Codex, Claude Code, Copilot, Cursor,
+  and the redirected historical Windsurf route. Source links and limitations are in
+  `docs/ai-integrations.md`. No native client was launched for discovery or model testing.
+- Thirteen manual task applications recorded: five analyses, five generation drafts,
+  one focused update, one Turkish translation, and one hostile-input handling example.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` passed twelve tests, including
+  five new artifact tests for source excerpts/selection, unsupported-claim exclusions,
+  custom-content preservation, code/literal translation integrity, and shared entry points.
+  The translation test was corrected to compare inline-literal multisets, allowing natural
+  word order changes while preserving technical values and exact fenced code.
+- `python3 scripts/check_template_library.py` passed: 48 sections, 14 profiles, 18 policy
+  scenarios, and five canonical examples.
+- 204 local file/asset/anchor references checked. LICENSE, master specification, and all
+  canonical example files are unchanged; `git diff --check` passed.
+- No API service, provider dependency, AI client process, paid model call, automatic
+  documentation writer, live network server, GUI test, commit, or publication was introduced.
+
+Blockers: none for the instruction/prompt deliverable. Native client discovery and
+independent repeated model evaluations remain unverified. Artifact assertions do not
+prove model accuracy, secret detection, or arbitrary prompt-injection resistance.
+Legacy Windsurf behavior is unverified because its historical docs now redirect.
+CLI technology, provider abstraction, and configuration design remain Phase 5+ work.
 
 ## Phase 5: CLI Architecture
 

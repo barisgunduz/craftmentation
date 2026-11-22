@@ -12,7 +12,8 @@ Read the [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 3. Keep work within the current authorized phase. Later phases require separate approval.
 4. Inspect relevant files and Git status; preserve existing changes and accurate documentation.
 
-AI coding agents must also follow [AGENTS.md](AGENTS.md). Human review remains necessary.
+AI coding agents must also follow [AGENTS.md](AGENTS.md) and its referenced
+[shared workflow policy](docs/ai-instructions.md). Human review remains necessary.
 Disclose material AI assistance and explain how its output was verified.
 
 ## Local workflow
@@ -28,7 +29,9 @@ python3 scripts/check_template_library.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-The checker verifies metadata and selection cases; tests cover the small example projects.
+The checker verifies metadata and selection cases; tests cover the small example projects
+and recorded [AI workflow artifacts](docs/ai-evaluation.md). Artifact tests are not live
+model evaluations or native instruction-discovery tests.
 Neither is an implementation of the planned CLI. They do not write documentation or
 start a live server or GUI. Do not introduce dependencies just to validate documentation.
 

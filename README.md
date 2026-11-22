@@ -20,10 +20,12 @@ Its approach combines relevant sections, verified examples, and reusable guidanc
 - A [README template](README.template.md) to adapt by hand.
 - The [README Standard v0.1](docs/standard.md) and [14 project profiles](docs/project-profiles.md).
 - A [modular library](docs/templates.md) with 48 reusable sections and [five source-backed examples](examples/README.md).
-- A [generation prompt](prompts/generate-readme.md) and repository inspection guidance for coding agents.
+- Four [AI workflow prompts](prompts/README.md) for analysis, generation, updates, and translation,
+  backed by [shared instructions](docs/ai-instructions.md).
 - [Brand assets and usage guidelines](assets/brand/brand-guidelines.md).
 
-No AI service is required to use these materials. Agent compatibility has not yet been tested.
+No AI service is required to use these materials. [Integration guidance](docs/ai-integrations.md)
+distinguishes documented entry points, manual walkthroughs, and untested native client behavior.
 
 ## Quick start
 
@@ -35,7 +37,7 @@ No AI service is required to use these materials. Agent compatibility has not ye
    sections, all authoring placeholders, and authoring comments.
 5. Check commands against the repository, verify links, and preview the result on GitHub.
 
-For AI assistance, use the [generation prompt](prompts/generate-readme.md) alongside
+For AI assistance, choose a [workflow prompt](prompts/README.md) alongside
 your project's own instructions. Craftmentation's [AGENTS.md](AGENTS.md) governs
 contributions to this repository; do not overwrite another project's agent instructions.
 
@@ -60,6 +62,8 @@ See the [licensing guide](docs/licensing.md).
 | [Template library](docs/templates.md) | Metadata, composition, evidence gates, and custom sections |
 | [Project profiles](docs/project-profiles.md) | Recommendations for all 14 project categories |
 | [Examples](examples/README.md) | Five source-backed manual README compositions |
+| [AI integrations](docs/ai-integrations.md) | Tool entry points, shared policy, and compatibility limits |
+| [AI evaluation](docs/ai-evaluation.md) | Recorded walkthroughs and regression checks |
 | [Architecture](docs/architecture.md) | Current components and implementation boundaries |
 | [Style guide](docs/style-guide.md) | Repository documentation conventions |
 | [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |

@@ -1,0 +1,111 @@
+{
+  "formatVersion": 1,
+  "method": "manual walkthrough by the implementing agent; not external-client execution",
+  "prompt": "prompts/analyze-repository.md",
+  "targetRoot": "examples/web-app",
+  "inspectedFiles": [
+    "examples/web-app/index.html",
+    "examples/web-app/README.md",
+    "examples/web-app/selection.json"
+  ],
+  "selectionRequest": {
+    "profile": "web-app",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "features": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "expectedSelection": [
+    "project-name",
+    "description",
+    "overview",
+    "features",
+    "requirements",
+    "installation",
+    "usage"
+  ],
+  "facts": [
+    {
+      "claim": "The counter starts at zero and resets to zero.",
+      "source": "examples/web-app/index.html",
+      "observedText": "let sessions = 0;",
+      "verification": "inspected"
+    },
+    {
+      "claim": "Completion increments the displayed count.",
+      "source": "examples/web-app/index.html",
+      "observedText": "String(++sessions)",
+      "verification": "inspected"
+    },
+    {
+      "claim": "The page exposes an HTML status region.",
+      "source": "examples/web-app/index.html",
+      "observedText": "role=\"status\"",
+      "verification": "inspected"
+    }
+  ],
+  "limitations": [
+    "No persisted history, hosted demo, deployment workflow, or screenshots were found in the inspected fixture."
+  ],
+  "licenseFinding": "These are fixtures within Craftmentation, not independently licensed adopting repositories. No target LICENSE file is created.",
+  "scopeNotes": [
+    "This is a small local source fixture, not a complete external repository checkout.",
+    "No fixture-local manifest, lockfile, CI workflow, test suite, screenshot, or independent LICENSE was present in the inspected file inventory. Root Craftmentation tests and licensing are separate context.",
+    "Repository classification is a justified recommendation, not automated project detection."
+  ],
+  "fileInventory": [
+    "examples/web-app/README.md",
+    "examples/web-app/index.html",
+    "examples/web-app/selection.json"
+  ]
+}

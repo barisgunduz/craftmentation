@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "method": "manual AI-assisted walkthrough by the implementing agent; not vendor-client execution",
+  "source": "tests/fixtures/ai/translation/README.en.md",
+  "sourceSha256": "a4bd04e02696e47e05af23ba855270c90335ed90d70d1e6756ff7e185df576b4",
+  "target": "tests/fixtures/ai/translation/README.tr.md",
+  "language": "tr",
+  "status": "Unreviewed",
+  "aiAssisted": true,
+  "humanReviewed": false,
+  "notes": "Evaluation-only translation artifact; no product localization tooling or root README translation is introduced."
+}
