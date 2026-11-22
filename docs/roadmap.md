@@ -4,7 +4,8 @@
 
 - Latest completed work: practical README preview/review/save and managed updates, revised Phase 8.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Next incomplete phase: Phase 9, Release Confidence and Distribution; not started.
+- Current phase: Phase 9, AI-Assisted Source Understanding; connection-route research in progress.
+- Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
 - Existing CLI: init, analyze, generate, validate, and preview-first managed update.
@@ -426,7 +427,37 @@ artifacts. Native Linux/Windows, live HTTP/browser/GUI, and external model runs 
 performed. Existing documents without ownership are never automatically rewritten.
 Blockers: none for Phase 8. Next action: execute Phase 9 only when the owner asks to continue.
 
-## Phase 9: Release Confidence and Distribution
+## Phase 9: AI-Assisted Source Understanding
+
+Status: **In Progress**
+
+Completed tasks: inspected the existing proposal boundary and installed agent help; confirmed
+that the earlier Advanced CLI scope did not implement source interpretation. Owner explicitly
+requested this capability. No model was invoked and no adapter is implemented yet.
+
+Remaining tasks:
+
+- [ ] Confirm existing-agent versus direct-API connection with the owner.
+- [ ] Define bounded source evidence and observable selection/omission rules.
+- [ ] Implement a vendor-neutral proposal boundary and selected real adapter.
+- [ ] Check source references, unknowns, Markdown, paths, and license safeguards.
+- [ ] Integrate a clear preview/review/save journey with existing-document preservation.
+- [ ] Test timeout/cancellation/failure/unsafe evidence and unchanged offline operation.
+- [ ] Run explicitly authorized real model evaluations on source-only examples and Craftmentation.
+- [ ] Update user guidance, architecture/ADRs, changelog, and actual progress.
+
+Acceptance: without an existing README, inspect real application source and produce a useful
+project-specific draft through an explicitly selected model/agent. No invented claims,
+implicit source transmission, automatic application-code execution, unsafe overwrite, or
+mandatory AI dependency for existing deterministic commands. Model claims remain proposals.
+
+Validation: local codex exec/claude help inspected and official noninteractive references
+reviewed; these establish invocation options, not successful integration or model quality.
+Pending input: initial connection route. Other implementation/evaluation tasks remain open.
+Next action: resolve the pending connection question, implement the adapter, and resume this
+phase. Release Phase 10 must not start before this acceptance is met.
+
+## Phase 10: Release Confidence and Distribution
 
 Status: **Not Started**
 

@@ -34,6 +34,29 @@ records, not active requirements. Completed Phases 0–6 remain recorded work.
 - Release confidence still requires package, dependency/license, documentation, and
   platform checks. Publication/commits/pushes require explicit owner authorization.
 
+### Owner-approved addition — 2026-11-23
+
+The owner explicitly requested that the CLI interpret actual source code and produce a
+project-specific README, rather than relying only on existing documentation/package facts.
+AI-assisted source understanding is now a required opt-in capability before release.
+The deterministic offline commands remain available without a model or credentials.
+
+The next development phase must connect bounded repository evidence to a model/agent,
+obtain source-backed proposed content, report unknowns, validate the draft, and preserve
+review/write safeguards. Model output is proposed interpretation, never self-verified fact.
+Provider/agent invocation and transmission must be explicit; no target scripts or embedded
+repository instructions may gain execution authority. Keep authentication outside repository
+configuration and avoid a mandatory vendor SDK. Source selection/limits and provider cost
+must be visible; do not imply free or unlimited use of an existing agent subscription.
+
+The first connection route (existing Codex/Claude installation versus direct API credentials)
+is awaiting owner preference. Select and verify the adapter/security boundary before enabling
+it. A live model evaluation requires an explicitly scoped repository and cost/transmission
+authorization. Contract tests alone must not be presented as output-quality validation.
+
+Release preparation follows this capability. The historical Advanced CLI list did not
+implement or promise general semantic code understanding; this is an explicit scope addition.
+
 The revised future work is in section 16 and docs/roadmap.md. Do not resume removed
 phases from the historical copy or equate cancelled scope with completed functionality.
 
@@ -1184,7 +1207,25 @@ Tasks:
 
 Deliverable: a demonstrated end-to-end workflow with honest limits and no filler output.
 
-## PHASE 9: Release Confidence and Distribution
+## PHASE 9: AI-Assisted Source Understanding
+
+**Goal:** Produce a useful repository-specific README from source even when no README exists.
+
+Tasks:
+
+1. Confirm the first connection route and document the agent/provider security boundary.
+2. Select bounded source/manifests/tests/CI evidence; exclude credentials and report omissions.
+3. Implement a vendor-neutral proposal interface and the chosen real adapter.
+4. Require source references for proposed claims and report unresolved information separately.
+5. Validate generated Markdown, links, paths, and license handling without treating model claims as verified.
+6. Provide an understandable preview/review/save flow that preserves existing content and backups.
+7. Test failures, cancellation, time/output limits, hostile evidence, and zero-provider offline behavior.
+8. Evaluate actual drafts on representative source-only examples and Craftmentation, with authorized live calls.
+9. Update commands, guidance, architecture, decisions, changelog, and roadmap to actual capabilities.
+
+Deliverable: a working opt-in AI-assisted source-to-README workflow with honest evaluation evidence.
+
+## PHASE 10: Release Confidence and Distribution
 
 **Goal:** Prepare a reproducible, trustworthy first release candidate.
 

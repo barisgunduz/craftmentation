@@ -35,7 +35,7 @@ Package only compiled code and the required templates, sections, schemas, prompt
 linked framework documentation, README, and license/notices using an explicit allowlist.
 Exclude tests, fixture outputs, local files, and the large brand reference board unless
 an artifact is explicitly needed. Resolve shipped data from `import.meta.url`, never
-from the target working directory. Verify a packed archive before publishing in Phase 9.
+from the target working directory. Verify a packed archive before publishing in Phase 10.
 An installing user must not need build tools or a postinstall script.
 
 ## Planned module boundaries and interfaces
@@ -152,7 +152,7 @@ An orchestration layer applies an explicitly configured provider only after user
 and then runs the same deterministic validation/review pipeline. No credentials live in
 config; a future integration defines explicit credential lookup and transmission consent.
 
-No provider is shipped or invoked by the MVP; the active roadmap does not require one. `ai.enabled: true` fails with E_CAPABILITY
+No provider is shipped or invoked by the MVP; the new Phase 9 requires an opt-in source-aware adapter; none is implemented yet. `ai.enabled: true` fails with E_CAPABILITY
 until a concrete provider adapter is implemented and authorized; it never falls back to
 an implicit vendor. The reserved port covers generation/update/translation proposals;
 provider output is untrusted, cannot elevate its own provenance to verified, and cannot

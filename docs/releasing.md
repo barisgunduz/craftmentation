@@ -5,7 +5,7 @@
 Craftmentation has no public released version. package.json records private development
 version 0.0.0-dev.0 and the source-checkout build/install workflow is documented. This
 guide defines release preparation, not a public package announcement.
-Release readiness will be assessed in Phase 9 of the [roadmap](roadmap.md).
+Release readiness will be assessed in Phase 10 of the [roadmap](roadmap.md).
 
 ## Versioning and changelog
 

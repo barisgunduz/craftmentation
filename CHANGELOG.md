@@ -8,6 +8,10 @@ No release version is assigned yet.
 
 ### Changed
 
+- Add owner-requested opt-in AI-assisted source understanding as the next development
+  phase before release preparation. Connection selection and implementation remain pending;
+  no AI source-understanding capability is claimed by this scope update.
+
 - Recognize Quick start/Getting started as Core usage; preserve UTF-8 BOM when inspecting
   and updating documents, and explain actionable steps for missing usage/existing output.
 - Render declared npm scripts as copyable invocations without claiming execution.
