@@ -1,8 +1,4 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo-light.svg">
-  <img alt="Craftmentation" src="assets/brand/logo-light.svg" width="560">
-</picture>
+<img alt="Craftmentation — Craft better. Document smarter." src="assets/brand/logo-readme.svg" width="720">
 
 # Craftmentation
 

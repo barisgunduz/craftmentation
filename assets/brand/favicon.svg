@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Craftmentation favicon</title>
+  <desc id="desc">Yellow nested angular C symbol on a dark tile.</desc>
+  <!-- Inter outlined lettering; font attribution: inter-OFL.txt. -->
   <rect width="64" height="64" rx="13" fill="#1F1F23"/>
-  <path d="M46 10H22L10 22v20l12 12h24V42H25l-6-6V28l6-6h21z" fill="#FBBF24"/>
-  <path d="M34 26h12v12H34z" fill="#1F1F23"/>
+  <g transform="translate(7 6) scale(.3)">
+    <path fill="#FBBF24" d="M84 4 109 18 39 61V103L109 145 85 159 12 116V50Z"/>
+    <path fill="#FBBF24" d="M118 25 158 50 131 67 102 50 73 73V97L102 116 132 98 158 105V118L118 139 55 101V64Z"/>
+  </g>
 </svg>

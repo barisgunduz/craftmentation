@@ -8,6 +8,8 @@ No release version is assigned yet.
 
 ### Added
 
+- Owner-supplied brand identity board, theme-independent README lockup, and Inter font attribution.
+
 - README Standard v0.1 with section classifications and inclusion rules, ordering,
   badge/media/code/link/accessibility requirements, and manual multilingual conventions.
 
@@ -36,5 +38,9 @@ No release version is assigned yet.
   progress updates, and Turkish owner reports.
 
 ### Fixed
+
+- Restored the identity board's nested angular C mark across logos, symbols, and favicon.
+- README branding now uses a dark panel with high-contrast outlined Inter lettering,
+  avoiding theme-selection mismatches and installed-font rendering differences.
 
 - Light-theme wordmark text now uses the brand dark color for readable contrast.

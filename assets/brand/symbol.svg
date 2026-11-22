@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" role="img" aria-labelledby="title desc">
   <title id="title">Craftmentation symbol</title>
-  <path d="M91 19H43L18 44v40l25 25h48V88H50L36 74V54l14-14h41z" fill="#FBBF24"/>
-  <path d="M69 52h24v24H69z" fill="#1F1F23"/>
+  <desc id="desc">Two nested angular C forms with open right edges.</desc>
+  <!-- Inter outlined lettering; font attribution: inter-OFL.txt. -->
+  <path fill="#FBBF24" d="M84 4 109 18 39 61V103L109 145 85 159 12 116V50Z"/>
+    <path fill="#FBBF24" d="M118 25 158 50 131 67 102 50 73 73V97L102 116 132 98 158 105V118L118 139 55 101V64Z"/>
 </svg>

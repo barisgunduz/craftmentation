@@ -22,7 +22,15 @@ in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
 GitHub issue templates and the PR template collect reports and review evidence; they
 do not run validation or modify repository files. Issues is enabled; Discussions and
 private vulnerability reporting were verified disabled on 2026-11-22. No confidential
-reporting channel is established. The README selects local SVG wordmarks by theme.
+reporting channel is established. The README embeds a local SVG lockup with an explicit dark panel, avoiding a
+mismatch between browser color preference and the selected GitHub theme.
+
+Brand assets follow the owner-supplied `assets/brand/identity-board.png`: two nested
+angular C forms and Inter lettering. Wordmarks use outlined glyphs instead of SVG
+text, so installed fonts and text rendering differences cannot alter the lockup.
+Transparent light/dark variants, a light monochrome symbol, and a dark favicon
+share the same mark. Inter attribution is retained in `assets/brand/inter-OFL.txt`;
+no runtime font dependency is introduced.
 
 ## Current data flow and boundaries
 

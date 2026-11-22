@@ -6,7 +6,12 @@
 - Current focus: README Standard v0.1 established; awaiting authorization for Phase 3.
 - Next action: on `devam`, inspect repository state and execute Phase 3, Modular Template System, only.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
-  while preserving shareable examples.
+  while preserving shareable examples. After Phase 2, branding was reconciled with the
+  owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
+  Logo geometry, transparent variants, monochrome symbol, and favicon were updated.
+  Original reference and Inter attribution are retained under `assets/brand/`.
+  Local raster previews passed on light and dark backgrounds; live GitHub rendering
+  was not tested. This maintenance does not start Phase 3.
 - Blockers: none for the completed phase. Confidential security and conduct reporting
   remain operational limitations; no private channel is advertised.
 - Known limitations: no CLI, package, automated test suite, modular library, translations,
