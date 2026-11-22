@@ -1,78 +1,84 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo-light.svg">
+  <img alt="Craftmentation" src="assets/brand/logo-light.svg" width="560">
+</picture>
+
 # Craftmentation
 
 **Craft better. Document smarter.**
 
 A universal, AI-ready README and documentation framework for modern software projects.
 
-Craftmentation helps developers create consistent, useful, and maintainable project documentation. It combines a reusable README standard, modular documentation sections, and AI-agent instructions that adapt to the actual contents of a repository.
+Craftmentation helps developers, maintainers, engineering teams, technical writers, and
+coding agents write documentation grounded in the repository they are documenting.
+Its approach combines relevant sections, verified examples, and reusable guidance.
 
-> Status: Early development. The structure and conventions may evolve before the first stable release.
+> Early development: the current workflow is manual. The CLI, modular section library,
+> automated validation, localization tooling, and documentation website are planned.
 
-## What it aims to provide
+[Quick start](#quick-start) · [Documentation](#documentation) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
 
-- A reusable README structure for different kinds of software projects
-- Optional sections that adapt to the project's real features and needs
-- Clear installation, configuration, usage, testing, and contribution guidance
-- Support for screenshots, diagrams, demos, and other project assets
-- Multilingual README support
-- AI-agnostic instructions for repository-aware documentation generation
+## Available today
 
-## Principles
+- A [README template](README.template.md) to adapt by hand.
+- A [draft documentation standard](docs/standard.md) and [initial project profiles](docs/project-profiles.md).
+- A [generation prompt](prompts/generate-readme.md) and repository inspection guidance for coding agents.
+- [Brand assets and usage guidelines](assets/brand/brand-guidelines.md).
 
-1. **Evidence over assumptions.** Documentation must reflect the repository, not imagined features.
-2. **Relevant, not exhaustive.** Omit sections that do not apply.
-3. **Human-readable first.** AI tooling should improve documentation, not make it harder to maintain.
-4. **Markdown-native.** Generated README files should work on GitHub without a special renderer.
-5. **Modular by design.** Projects can adopt only the sections they need.
-6. **License-neutral for adopters.** Craftmentation does not assign a license to projects using its templates.
-
-## Repository structure
-
-```text
-craftmentation/
-├── README.md
-├── README.template.md
-├── LICENSE
-├── AGENTS.md
-├── CLAUDE.md
-├── CONTRIBUTING.md
-├── templates/
-├── sections/
-├── prompts/
-├── examples/
-├── docs/
-├── assets/
-│   └── brand/
-└── .github/
-```
+No AI service is required to use these materials. Agent compatibility has not yet been tested.
 
 ## Quick start
 
-1. Copy `README.template.md` into your project as `README.md`.
-2. Review the template and keep only sections relevant to your project.
-3. Follow `AGENTS.md` when using an AI coding assistant.
-4. Replace every placeholder with verified project information.
-5. Preview the Markdown on GitHub before publishing.
+1. Download or clone this repository and read the [draft standard](docs/standard.md).
+2. Inspect your target project's manifests, source, tests, scripts, CI, and existing documentation.
+3. Copy `README.template.md` into your project as `README.md` only after reviewing and
+   backing up any existing README. Preserve valid custom content.
+4. Keep relevant sections, fill them with verified information, and remove unused
+   sections and all authoring placeholders, including sample badge URLs.
+5. Check commands against the repository, verify links, and preview the result on GitHub.
 
-For AI-assisted generation, start with [`prompts/generate-readme.md`](prompts/generate-readme.md).
+For AI assistance, use the [generation prompt](prompts/generate-readme.md) alongside
+your project's own instructions. Craftmentation's [AGENTS.md](AGENTS.md) governs
+contributions to this repository; do not overwrite another project's agent instructions.
 
-## Project status
+Keep required Craftmentation copyright and permission notices when reusing substantial
+material. Do not copy its license as your project's license unless you have chosen MIT.
+See the [licensing guide](docs/licensing.md).
 
-Craftmentation is being developed in stages:
+## Principles
 
-- [x] Project name and initial identity direction
-- [x] Initial repository structure
-- [ ] README content standard
-- [ ] Modular section library
-- [ ] AI instruction compatibility checks
-- [ ] Example repositories and project profiles
-- [ ] Validation tooling
-- [ ] First stable release
+- **Evidence over assumptions:** document confirmed behavior and report unknowns separately.
+- **Relevant sections:** omit content that does not help the intended reader.
+- **Human-readable first:** keep documentation useful without AI tooling.
+- **GitHub-compatible Markdown:** use portable text, links, code examples, and accessible media.
+- **Modular direction:** build toward reusable sections and project profiles.
+- **License neutrality:** preserve each adopting project's licensing decisions.
 
-## Contributing
+## Documentation
 
-Ideas, issues, and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
+| Guide | Purpose |
+|---|---|
+| [Draft standard](docs/standard.md) | Current README ordering and writing rules |
+| [Project profiles](docs/project-profiles.md) | Initial category recommendations |
+| [Architecture](docs/architecture.md) | Current components and implementation boundaries |
+| [Style guide](docs/style-guide.md) | Repository documentation conventions |
+| [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |
+| [Master specification](docs/PROJECT_SPEC.md) | Complete product requirements |
+| [Release conventions](docs/releasing.md) | Versioning, changelog, and release preparation |
+| [Changelog](CHANGELOG.md) | Meaningful changes |
+
+The repository currently contains Markdown guidance, templates, prompts, and SVG assets.
+`sections/`, `templates/`, and `examples/` are reserved scaffolding; their libraries
+will be developed in later phases. There is no package installation or build step yet.
+
+## Community
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md)
+before participating. Use [Support](SUPPORT.md) for questions and bug reports, and
+[Security](SECURITY.md) for sensitive concerns. Private reporting is not currently enabled.
 
 ## License
 
-Craftmentation is available under the [MIT License](LICENSE). The license applies to Craftmentation and reused portions subject to its terms; it does not automatically determine the license of projects using its templates. See [Licensing guide](docs/licensing.md).
+Copyright © 2026 Barış Gündüz. Craftmentation is distributed under the [MIT License](LICENSE).
+Its license does not automatically determine the license of projects using its templates.

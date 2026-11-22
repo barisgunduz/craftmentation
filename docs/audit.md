@@ -107,3 +107,15 @@ No blocker prevents Phase 0 completion. Phase 1 must verify available support,
 conduct-enforcement, and confidential security-reporting routes. These are unresolved
 operational details, not permission to fabricate contacts or promises. Implementation
 technology selection remains deliberately deferred to Phase 5.
+
+## Phase 1 follow-up (2026-11-22)
+
+The foundation findings were addressed through README and contribution revisions,
+community policies, issue/PR templates, style and release guides, and the light
+wordmark color correction. This audit preserves its Phase 0 observations as history;
+see the roadmap and architecture for the current state. GitHub API inspection verified
+Issues enabled, Discussions disabled, and private vulnerability reporting disabled.
+The new reporting policies explicitly acknowledge the missing confidential route.
+No runtime, profiles, template modules, AI adapters, translations, CI, or website were
+implemented ahead of their phases. Visual browser validation remains outstanding;
+local rasterization tools did not produce a trustworthy typography preview.

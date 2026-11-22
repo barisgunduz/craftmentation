@@ -2,21 +2,20 @@
 
 ## Current state
 
-- Current phase: Phase 0 — Completed.
-- Current focus: continuity established; awaiting authorization for Phase 1.
-- Maintenance: added `.gitignore` for OS metadata, editor state, and local environment
-  files; verified ignore behavior and preservation of shared examples. Phase 1 remains Not Started.
-- Next action: on `devam`, inspect repository state and execute Phase 1 only, following
-  the [implementation sequence](audit.md#exact-phase-1-implementation-sequence).
-- Blockers: none for Phase 0. Phase 1 must verify support and confidential reporting channels.
-- Known limitations: no CLI, package, automated tests, module library, translations, CI, or website.
-- Validation: documentation and license inspection, five SVG XML parses, specification and
-  roadmap structure, continuity file links, and `git diff --check` passed. No executable
-  test suite exists. Visual rendering and external services were not tested.
+- Current phase: Phase 1 — Completed.
+- Current focus: open-source foundation established; awaiting authorization for Phase 2.
+- Next action: on `devam`, inspect repository state and execute Phase 2, README Standard v0.1, only.
+- Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
+  while preserving shareable examples.
+- Blockers: none for the completed phase. Confidential security and conduct reporting
+  remain operational limitations; no private channel is advertised.
+- Known limitations: no CLI, package, automated test suite, modular library, translations,
+  CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
+- Validation: see Phase 1 results below. No executable test suite exists.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
-constitute completed phases. The Phase 0 architecture inventory and changelog satisfy
-permanent-memory requirements; Phase 1 still must finalize its full foundation deliverable.
+constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
+memory requirements; Phase 1 finalized the repository foundation.
 
 ## Phase 0: Repository Audit and Permanent Specification
 
@@ -50,31 +49,50 @@ Blockers: none.
 
 ## Phase 1: Open-Source Foundation
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: all thirteen tasks below.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for Phase 1.
 
-- [ ] Finalize repository structure.
-- [ ] Improve the main README.
-- [ ] Finalize contribution guidelines.
-- [ ] Add Code of Conduct.
-- [ ] Add Security Policy.
-- [ ] Add Support documentation.
-- [ ] Add GitHub issue templates.
-- [ ] Add pull request template.
-- [ ] Initialize Changelog.
-- [ ] Establish release conventions.
-- [ ] Define documentation style guidelines.
-- [ ] Verify licensing.
-- [ ] Ensure repository consistency.
+- [x] Finalize repository structure.
+- [x] Improve the main README.
+- [x] Finalize contribution guidelines.
+- [x] Add Code of Conduct.
+- [x] Add Security Policy.
+- [x] Add Support documentation.
+- [x] Add GitHub issue templates.
+- [x] Add pull request template.
+- [x] Initialize Changelog.
+- [x] Establish release conventions.
+- [x] Define documentation style guidelines.
+- [x] Verify licensing.
+- [x] Ensure repository consistency.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: coherent repository foundation delivered with accurate README navigation,
+community policies, issue and PR templates, contribution/style/release conventions,
+and preserved MIT licensing. No future CLI capability is presented as implemented.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- 66 local Markdown links, asset references, and heading anchors checked, excluding
+  the preserved master specification and intentional README template placeholders.
+- Both issue-template YAML headers parsed using installed Ruby YAML; names,
+  descriptions, labels, and assignee fields checked.
+- Five SVGs parsed as XML; light/dark wordmark text contrast measured at 15.72:1
+  against the prescribed background colors. MIT LICENSE is byte-identical to HEAD.
+- Published foundation prose checked for unresolved authoring markers; `git diff --check` passed.
+- GitHub API confirmed Issues enabled, Discussions disabled, and private vulnerability
+  reporting disabled. Remote settings were read only; no account settings were changed.
+- Raster preview attempts: CairoSVG could not load Cairo; ImageMagick rendered using
+  the installed Arial fallback but produced overlapping glyphs. These previews are not
+  reliable browser validation. GitHub/browser rendering and Inter availability remain
+  unverified; SVG typography and geometry were preserved, with only the light text fill changed.
+- No executable tests or CI exist; no dependency was added. No commits or publication performed.
+
+Blockers: none. Maintainer follow-up: establish confidential security and conduct
+reporting routes. Policies explicitly describe the limitation and require a private
+route before sensitive details are shared. Browser preview remains a manual follow-up.
 
 ## Phase 2: README Standard v0.1
 
