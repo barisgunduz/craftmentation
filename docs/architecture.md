@@ -2,17 +2,20 @@
 
 ## Implementation state
 
-Craftmentation is currently a documentation-only framework under development.
-There is no executable, package manifest, runtime dependency, configuration schema,
-automated test suite, or GitHub Actions workflow. Planned capabilities are defined
+Craftmentation currently provides a documentation standard, declarative template library,
+manual authoring workflows, and a development-only checker. Small executable example
+projects and their behavior tests support the documentation. There is no product CLI,
+package manifest, runtime dependency, user configuration schema, or GitHub Actions workflow. Planned capabilities are defined
 in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
 
 ## Components and responsibilities
 
 | Component | Existing files | Responsibility |
 |---|---|---|
-| Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and initial profile recommendations |
-| Template | `README.template.md` | Manually adapted Markdown starting point |
+| Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and fourteen evidence-gated profile recommendations |
+| Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
+| Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
+| Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
 | Agent guidance | `AGENTS.md`, `CLAUDE.md`, `prompts/generate-readme.md` | Repository inspection and evidence-based writing instructions |
 | Branding | `assets/brand/` | SVG symbols, wordmarks, favicon, palette and usage rules |
 | Governance and continuity | `docs/PROJECT_SPEC.md`, `docs/roadmap.md`, `docs/audit.md`, `CHANGELOG.md` | Requirements, progress, findings and change history |
@@ -36,7 +39,8 @@ no runtime font dependency is introduced.
 
 A human or coding agent inspects the target repository, consults the standard and
 README template, selects relevant sections, and manually writes verified documentation.
-The generation prompt describes this workflow; no software enforces it yet.
+The generation prompt describes this workflow. The development checker validates metadata
+and explicit evidence inventories, but does not inspect repository contents or verify claims.
 `CLAUDE.md` references the shared agent instructions rather than replacing them.
 Templates contain authoring placeholders and are not ready-to-publish project documentation.
 The README standard defines four section classes and evidence-based inclusion criteria.
@@ -46,15 +50,27 @@ include manual source-revision/status tracking; automated drift detection is not
 
 ## Interfaces, configuration and extension points
 
-The only current interfaces are Markdown documents and SVG assets. Users can edit
-the template and choose sections manually. There is no programmatic API, automatic
-project detection, renderer, provider interface, or configuration precedence model.
-`templates/`, `sections/`, and `examples/` contain only `.gitkeep` files.
+Current interfaces are Markdown documents, SVG assets, and version-1 JSON metadata.
+Catalog IDs link standard content to fragments; profiles recommend IDs. The default layout
+selects Core/Recommended candidates plus profile and explicit inclusions. Explicit non-Core
+exclusions win; unknown, missing, sourceless, or unsafe evidence never produces a claim.
+Unresolved Core or explicitly requested sections block readiness. Stable ordering uses
+`(order, id)`. Custom sections share metadata with a reserved `custom-` prefix.
+
+Example inventories contain per-section evidence states, sources, safety assessments,
+and expected selections. The checker reads these declarative records and fragments without
+executing their contents, rejecting traversal and symlink fragment paths. It never renders
+or writes README files. Evidence truth and filled Markdown require human review.
+
+There is no stable programmatic API, automatic project detection, renderer, provider
+interface, or user configuration precedence model. See [the library contract](templates.md)
+and [ADR 0001](decisions/0001-template-library.md) for boundaries and extension rules.
 The configuration JSON in the specification is conceptual, not a supported format.
 
 ## Technology choices and constraints
 
-Markdown and SVG are the existing formats; no implementation language or CLI framework
+Markdown, SVG, and JSON are the library formats. The checker and example tests use the
+Python standard library only; this does not select the product runtime. No CLI implementation language or framework
 has been selected. Phase 5 must evaluate choices and record ADRs before implementation.
 Future components must share schemas, keep AI optional, use safe file operations,
 and treat target repositories as untrusted input. The framework's MIT license must

@@ -1,0 +1,69 @@
+{
+  "formatVersion": 1,
+  "request": {
+    "profile": "web-app",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "features": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "expected": [
+    "project-name",
+    "description",
+    "overview",
+    "features",
+    "requirements",
+    "installation",
+    "usage"
+  ]
+}

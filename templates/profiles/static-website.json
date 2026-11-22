@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "id": "static-website",
+  "name": "Static Website",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "project-structure",
+    "building",
+    "deployment"
+  ],
+  "notes": [
+    "Distinguish directly opened HTML from a site requiring a build.",
+    "Document hosting/build workflows only when implemented."
+  ]
+}

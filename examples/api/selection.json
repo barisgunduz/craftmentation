@@ -1,0 +1,82 @@
+{
+  "formatVersion": 1,
+  "request": {
+    "profile": "api",
+    "include": [
+      "custom-api-reference"
+    ],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "custom-api-reference": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": [
+      {
+        "id": "custom-api-reference",
+        "standardItem": "API reference",
+        "classification": "Project-specific",
+        "order": 245,
+        "path": "examples/api/api-reference.template.md",
+        "fields": [
+          "API_REFERENCE_CONTENT"
+        ]
+      }
+    ]
+  },
+  "expected": [
+    "project-name",
+    "description",
+    "overview",
+    "requirements",
+    "installation",
+    "usage",
+    "custom-api-reference"
+  ]
+}

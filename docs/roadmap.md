@@ -2,21 +2,21 @@
 
 ## Current state
 
-- Current phase: Phase 2 — Completed.
-- Current focus: README Standard v0.1 established; awaiting authorization for Phase 3.
-- Next action: on `devam`, inspect repository state and execute Phase 3, Modular Template System, only.
+- Current phase: Phase 3 — Completed.
+- Current focus: reusable template library delivered; awaiting authorization for Phase 4.
+- Next action: on `devam`, inspect repository state and execute Phase 4, AI Integration v0.1, only.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
   while preserving shareable examples. After Phase 2, branding was reconciled with the
   owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
   Logo geometry, transparent variants, monochrome symbol, and favicon were updated.
   Original reference and Inter attribution are retained under `assets/brand/`.
   Local raster previews passed on light and dark backgrounds; live GitHub rendering
-  was not tested. This maintenance does not start Phase 3.
+  was not tested. This maintenance preceded Phase 3.
 - Blockers: none for the completed phase. Confidential security and conduct reporting
   remain operational limitations; no private channel is advertised.
-- Known limitations: no CLI, package, automated test suite, modular library, translations,
+- Known limitations: no CLI, product package, automatic README renderer/validator, translations,
   CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see phase results below. No executable test suite exists.
+- Validation: see phase results below; library checks and seven development tests pass.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
 constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
@@ -146,27 +146,46 @@ localization automation and executable validation remain assigned to later phase
 
 ## Phase 3: Modular Template System
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: all nine tasks below.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for Phase 3.
 
-- [ ] Design template architecture.
-- [ ] Define section metadata.
-- [ ] Create reusable section modules.
-- [ ] Define project profiles.
-- [ ] Implement inclusion rules.
-- [ ] Implement exclusion rules.
-- [ ] Support custom sections.
-- [ ] Create realistic project examples.
-- [ ] Validate template consistency.
+- [x] Design template architecture.
+- [x] Define section metadata.
+- [x] Create reusable section modules.
+- [x] Define project profiles.
+- [x] Implement inclusion rules.
+- [x] Implement exclusion rules.
+- [x] Support custom sections.
+- [x] Create realistic project examples.
+- [x] Validate template consistency.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: versioned metadata, 48 reusable fragments, a default layout, all fourteen
+profiles, executable evidence-gated selection reference, custom-section support, and
+five source-backed README examples delivered. The library guide and ADR describe module
+boundaries and manual composition without claiming a product renderer or CLI.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22; Python 3.13.2):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- `python3 scripts/check_template_library.py` passed: 48 catalog/standard mappings,
+  14 profiles, 18 inclusion/exclusion policy cases, and five example evidence inventories.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` passed seven tests: CLI outputs,
+  argument/UTF-8 errors, API JSON/status/headers at handler level, library function results,
+  fixture syntax, duplicate JSON keys, symlink rejection, and unsupported/boolean versions.
+- 130 relative Markdown links, asset references, and anchors checked; verification Python
+  syntax and example prose checked. Intentional authoring fragments remain templates.
+- LICENSE and master specification are unchanged; `git diff --check` passed.
+- CLI and library fixture commands were verified in subprocess/behavior checks. The API
+  was tested without opening a listening socket. Browser interaction and desktop GUI
+  launch were not tested, and those limitations are stated in the examples.
+- No production runtime, package dependency, generated README writer, provider integration,
+  translation, workflow, commit, or publication was introduced.
+
+Blockers: none. Evidence inventories are human assertions, not scanner output; the
+checker does not verify source truth, secret safety, network reachability, or rendering.
+CLI technology and full configuration/schema design remain Phase 5 responsibilities.
 
 ## Phase 4: AI Integration v0.1
 

@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "ai-ml",
+  "name": "AI / Machine Learning",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "configuration",
+    "testing",
+    "references",
+    "citation"
+  ],
+  "notes": [
+    "Document actual model/data requirements, training/inference workflows, and limitations.",
+    "Only include verified metrics and preserve dataset/model licensing and provenance."
+  ]
+}

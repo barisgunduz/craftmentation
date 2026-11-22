@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "mobile-app",
+  "name": "Mobile Application",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "screenshots",
+    "configuration",
+    "building",
+    "testing"
+  ],
+  "notes": [
+    "Verify supported platforms and permissions from native configuration and source.",
+    "Document platform build steps only when present; never invent store listings."
+  ]
+}

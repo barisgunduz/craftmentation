@@ -9,3 +9,8 @@ No implementation technology has been selected during Phase 0. Product decisions
 already mandated by the owner are recorded in [PROJECT_SPEC.md](../PROJECT_SPEC.md#19-established-product-decisions).
 CLI technology, framework, configuration, rendering, provider abstractions,
 localization, and update safety decisions belong to their designated roadmap phases.
+
+## Accepted records
+
+- [0001: Declarative Markdown template library](0001-template-library.md) — JSON metadata,
+  evidence-gated selection, custom sections, and a development-only verification reference.

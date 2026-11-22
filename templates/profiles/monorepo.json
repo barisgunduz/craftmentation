@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "id": "monorepo",
+  "name": "Monorepo",
+  "recommendations": [
+    "project-structure",
+    "requirements",
+    "installation",
+    "usage",
+    "local-development",
+    "scripts",
+    "testing",
+    "building"
+  ],
+  "notes": [
+    "Describe actual workspace packages, package relationships, and shared scripts.",
+    "State the working directory for each command; do not infer all packages share requirements."
+  ]
+}

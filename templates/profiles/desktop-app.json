@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "id": "desktop-app",
+  "name": "Desktop Application",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "screenshots",
+    "building",
+    "testing"
+  ],
+  "notes": [
+    "Confirm platform/runtime requirements and packaging artifacts.",
+    "Include screenshots only when real, permitted assets exist."
+  ]
+}

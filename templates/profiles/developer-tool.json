@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "developer-tool",
+  "name": "Developer Tool",
+  "recommendations": [
+    "features",
+    "installation",
+    "usage",
+    "configuration",
+    "examples",
+    "testing",
+    "contributing"
+  ],
+  "notes": [
+    "Explain the developer workflow and verified integration surfaces.",
+    "Do not imply compatibility with untested tools or platforms."
+  ]
+}

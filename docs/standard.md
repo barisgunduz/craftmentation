@@ -245,5 +245,6 @@ create empty translations or a status table when no translations exist.
 - Legal notices and accurate custom content are preserved; the adopting project's license is unchanged.
 
 Follow the repository [style guide](style-guide.md) for prose and review practices.
-Reusable modules and complete project profiles are Phase 3 work; executable configuration,
-generation, and validation belong to later phases in the [roadmap](roadmap.md).
+Reusable modules and all fourteen profiles are available in the [template library](templates.md).
+The development checker verifies metadata and selection cases; executable user configuration,
+README generation, and general validation belong to later phases in the [roadmap](roadmap.md).

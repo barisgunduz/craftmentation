@@ -1,0 +1,15 @@
+{
+  "formatVersion": 1,
+  "id": "default",
+  "catalog": "templates/catalog.json",
+  "selection": {
+    "core": "required",
+    "recommended": "candidate",
+    "optional": "explicit-or-profile",
+    "projectSpecific": "explicit-or-profile"
+  },
+  "sort": [
+    "order",
+    "id"
+  ]
+}

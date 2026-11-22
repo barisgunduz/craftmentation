@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "id": "research",
+  "name": "Research Project",
+  "recommendations": [
+    "overview",
+    "usage",
+    "requirements",
+    "examples",
+    "references",
+    "citation",
+    "license"
+  ],
+  "notes": [
+    "Document reproducible methods, real datasets, and limitations.",
+    "Do not invent publication identifiers, authors, results, or citations."
+  ]
+}

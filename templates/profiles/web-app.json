@@ -1,0 +1,20 @@
+{
+  "formatVersion": 1,
+  "id": "web-app",
+  "name": "Web Application",
+  "recommendations": [
+    "features",
+    "requirements",
+    "installation",
+    "quick-start",
+    "usage",
+    "configuration",
+    "testing",
+    "deployment",
+    "screenshots"
+  ],
+  "notes": [
+    "Confirm browser/client behavior from source.",
+    "Include deployment only with an actual supported deployment workflow."
+  ]
+}

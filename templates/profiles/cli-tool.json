@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "id": "cli-tool",
+  "name": "CLI Tool",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "examples",
+    "configuration",
+    "testing"
+  ],
+  "notes": [
+    "Document actual commands, flags, exit behavior, and working directory under Usage.",
+    "Add custom shell-completion guidance only if completion is implemented."
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "formatVersion": 1,
+  "standardVersion": "0.1",
+  "sections": [
+    {
+      "id": "project-name",
+      "standardItem": "Project name",
+      "classification": "Core",
+      "order": 10,
+      "path": "sections/core/project-name.md",
+      "fields": [
+        "PROJECT_NAME_CONTENT"
+      ]
+    },
+    {
+      "id": "logo",
+      "standardItem": "Logo",
+      "classification": "Optional",
+      "order": 20,
+      "path": "sections/optional/logo.md",
+      "fields": [
+        "LOGO_CONTENT"
+      ]
+    },
+    {
+      "id": "description",
+      "standardItem": "Description",
+      "classification": "Core",
+      "order": 30,
+      "path": "sections/core/description.md",
+      "fields": [
+        "DESCRIPTION_CONTENT"
+      ]
+    },
+    {
+      "id": "badges",
+      "standardItem": "Badges",
+      "classification": "Optional",
+      "order": 40,
+      "path": "sections/optional/badges.md",
+      "fields": [
+        "BADGES_CONTENT"
+      ]
+    },
+    {
+      "id": "primary-links",
+      "standardItem": "Primary links",
+      "classification": "Recommended",
+      "order": 50,
+      "path": "sections/optional/primary-links.md",
+      "fields": [
+        "PRIMARY_LINKS_CONTENT"
+      ]
+    },
+    {
+      "id": "language-navigation",
+      "standardItem": "Language navigation",
+      "classification": "Recommended",
+      "order": 60,
+      "path": "sections/optional/language-navigation.md",
+      "fields": [
+        "LANGUAGE_NAVIGATION_CONTENT"
+      ]
+    },
+    {
+      "id": "overview",
+      "standardItem": "Overview",
+      "classification": "Core",
+      "order": 70,
+      "path": "sections/core/overview.md",
+      "fields": [
+        "PROJECT_PURPOSE_AND_PROBLEM",
+        "CURRENT_SCOPE_AND_LIMITATIONS"
+      ]
+    },
+    {
+      "id": "problem-statement",
+      "standardItem": "Problem statement",
+      "classification": "Recommended",
+      "order": 80,
+      "path": "sections/optional/problem-statement.md",
+      "fields": [
+        "PROBLEM_STATEMENT_CONTENT"
+      ]
+    },
+    {
+      "id": "purpose",
+      "standardItem": "Purpose",
+      "classification": "Recommended",
+      "order": 90,
+      "path": "sections/optional/purpose.md",
+      "fields": [
+        "PURPOSE_CONTENT"
+      ]
+    },
+    {
+      "id": "intended-audience",
+      "standardItem": "Intended audience",
+      "classification": "Recommended",
+      "order": 100,
+      "path": "sections/optional/intended-audience.md",
+      "fields": [
+        "INTENDED_AUDIENCE_CONTENT"
+      ]
+    },
+    {
+      "id": "benefits",
+      "standardItem": "Benefits",
+      "classification": "Optional",
+      "order": 110,
+      "path": "sections/optional/benefits.md",
+      "fields": [
+        "BENEFITS_CONTENT"
+      ]
+    },
+    {
+      "id": "features",
+      "standardItem": "Features",
+      "classification": "Recommended",
+      "order": 120,
+      "path": "sections/optional/features.md",
+      "fields": [
+        "VERIFIED_FEATURE_LIST"
+      ]
+    },
+    {
+      "id": "screenshots",
+      "standardItem": "Screenshots",
+      "classification": "Optional",
+      "order": 130,
+      "path": "sections/optional/screenshots.md",
+      "fields": [
+        "EXISTING_SCREENSHOTS_WITH_ALT_TEXT",
+        "SCREENSHOT_CONTEXT_AND_CAPTIONS"
+      ]
+    },
+    {
+      "id": "gif-previews",
+      "standardItem": "GIF previews",
+      "classification": "Optional",
+      "order": 140,
+      "path": "sections/optional/gif-previews.md",
+      "fields": [
+        "EXISTING_ANIMATION_WITH_ALT_TEXT",
+        "STATIC_OR_TEXT_ALTERNATIVE"
+      ]
+    },
+    {
+      "id": "demo",
+      "standardItem": "Demo",
+      "classification": "Optional",
+      "order": 150,
+      "path": "sections/optional/demo.md",
+      "fields": [
+        "DEMO_CONTENT"
+      ]
+    },
+    {
+      "id": "video",
+      "standardItem": "Video",
+      "classification": "Optional",
+      "order": 160,
+      "path": "sections/optional/video.md",
+      "fields": [
+        "VERIFIED_VIDEO_LINK_AND_SUMMARY",
+        "TRANSCRIPT_OR_EQUIVALENT_TEXT"
+      ]
+    },
+    {
+      "id": "technology-stack",
+      "standardItem": "Technology stack",
+      "classification": "Optional",
+      "order": 170,
+      "path": "sections/optional/technology-stack.md",
+      "fields": [
+        "TECHNOLOGY_STACK_CONTENT"
+      ]
+    },
+    {
+      "id": "architecture",
+      "standardItem": "Architecture",
+      "classification": "Project-specific",
+      "order": 180,
+      "path": "sections/optional/architecture.md",
+      "fields": [
+        "ACTUAL_COMPONENTS_AND_RELATIONSHIPS",
+        "EXISTING_ARCHITECTURE_GUIDE_OR_TEXT_DIAGRAM"
+      ]
+    },
+    {
+      "id": "project-structure",
+      "standardItem": "Project structure",
+      "classification": "Project-specific",
+      "order": 190,
+      "path": "sections/optional/project-structure.md",
+      "fields": [
+        "PROJECT_STRUCTURE_CONTENT"
+      ]
+    },
+    {
+      "id": "prerequisites",
+      "standardItem": "Prerequisites",
+      "classification": "Recommended",
+      "order": 200,
+      "path": "sections/optional/prerequisites.md",
+      "fields": [
+        "PREREQUISITES_CONTENT"
+      ]
+    },
+    {
+      "id": "requirements",
+      "standardItem": "Requirements",
+      "classification": "Recommended",
+      "order": 210,
+      "path": "sections/optional/requirements.md",
+      "fields": [
+        "RUNTIME_AND_PLATFORM_REQUIREMENTS",
+        "REQUIRED_TOOLS_OR_SERVICES"
+      ]
+    },
+    {
+      "id": "installation",
+      "standardItem": "Installation",
+      "classification": "Recommended",
+      "order": 220,
+      "path": "sections/optional/installation.md",
+      "fields": [
+        "SETUP_CONTEXT_AND_WORKING_DIRECTORY",
+        "VERIFIED_SETUP_STEPS"
+      ]
+    },
+    {
+      "id": "quick-start",
+      "standardItem": "Quick start",
+      "classification": "Recommended",
+      "order": 230,
+      "path": "sections/optional/quick-start.md",
+      "fields": [
+        "FIRST_USE_PREREQUISITES",
+        "SHORTEST_VERIFIED_WORKFLOW",
+        "FIRST_USE_EXPECTED_RESULT"
+      ]
+    },
+    {
+      "id": "usage",
+      "standardItem": "Usage",
+      "classification": "Core",
+      "order": 240,
+      "path": "sections/core/usage.md",
+      "fields": [
+        "USAGE_CONTEXT",
+        "VERIFIED_USAGE_EXAMPLE",
+        "EXPECTED_BEHAVIOR_AND_SIDE_EFFECTS"
+      ]
+    },
+    {
+      "id": "examples",
+      "standardItem": "Examples",
+      "classification": "Recommended",
+      "order": 250,
+      "path": "sections/optional/examples.md",
+      "fields": [
+        "EXAMPLES_CONTENT"
+      ]
+    },
+    {
+      "id": "configuration",
+      "standardItem": "Configuration",
+      "classification": "Project-specific",
+      "order": 260,
+      "path": "sections/optional/configuration.md",
+      "fields": [
+        "CONFIGURATION_FILES_AND_PRECEDENCE",
+        "VERIFIED_CONFIGURATION_TABLE_ROWS"
+      ]
+    },
+    {
+      "id": "environment-variables",
+      "standardItem": "Environment variables",
+      "classification": "Project-specific",
+      "order": 270,
+      "path": "sections/optional/environment-variables.md",
+      "fields": [
+        "VERIFIED_ENVIRONMENT_TABLE_ROWS",
+        "SAFE_CONFIGURATION_INSTRUCTIONS"
+      ]
+    },
+    {
+      "id": "local-development",
+      "standardItem": "Local development",
+      "classification": "Recommended",
+      "order": 280,
+      "path": "sections/optional/local-development.md",
+      "fields": [
+        "DEVELOPMENT_PREREQUISITES",
+        "LOCAL_WORKFLOW_AND_WORKING_DIRECTORY"
+      ]
+    },
+    {
+      "id": "testing",
+      "standardItem": "Testing",
+      "classification": "Recommended",
+      "order": 290,
+      "path": "sections/optional/testing.md",
+      "fields": [
+        "ACTUAL_TEST_OR_MANUAL_CHECK_STEPS",
+        "VERIFICATION_SCOPE_AND_LIMITATIONS"
+      ]
+    },
+    {
+      "id": "building",
+      "standardItem": "Building",
+      "classification": "Project-specific",
+      "order": 300,
+      "path": "sections/optional/building.md",
+      "fields": [
+        "BUILD_CONTEXT_AND_COMMANDS",
+        "ACTUAL_BUILD_OUTPUTS"
+      ]
+    },
+    {
+      "id": "deployment",
+      "standardItem": "Deployment",
+      "classification": "Project-specific",
+      "order": 310,
+      "path": "sections/optional/deployment.md",
+      "fields": [
+        "SUPPORTED_DEPLOYMENT_CONTEXT",
+        "VERIFIED_DEPLOYMENT_STEPS_AND_EFFECTS",
+        "ROLLBACK_OR_RECOVERY_GUIDANCE"
+      ]
+    },
+    {
+      "id": "scripts",
+      "standardItem": "Scripts",
+      "classification": "Project-specific",
+      "order": 320,
+      "path": "sections/optional/scripts.md",
+      "fields": [
+        "SCRIPTS_CONTENT"
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "standardItem": "Troubleshooting",
+      "classification": "Optional",
+      "order": 330,
+      "path": "sections/optional/troubleshooting.md",
+      "fields": [
+        "KNOWN_SYMPTOMS_AND_CAUSES",
+        "VERIFIED_REMEDIES_AND_LIMITATIONS"
+      ]
+    },
+    {
+      "id": "roadmap",
+      "standardItem": "Roadmap",
+      "classification": "Optional",
+      "order": 340,
+      "path": "sections/optional/roadmap.md",
+      "fields": [
+        "ROADMAP_CONTENT"
+      ]
+    },
+    {
+      "id": "contributing",
+      "standardItem": "Contributing",
+      "classification": "Recommended",
+      "order": 350,
+      "path": "sections/optional/contributing.md",
+      "fields": [
+        "AUTHORIZED_CONTRIBUTION_WORKFLOW_OR_GUIDE"
+      ]
+    },
+    {
+      "id": "contributors",
+      "standardItem": "Contributors",
+      "classification": "Optional",
+      "order": 360,
+      "path": "sections/optional/contributors.md",
+      "fields": [
+        "CONTRIBUTORS_CONTENT"
+      ]
+    },
+    {
+      "id": "code-of-conduct",
+      "standardItem": "Code of conduct",
+      "classification": "Recommended",
+      "order": 370,
+      "path": "sections/optional/code-of-conduct.md",
+      "fields": [
+        "CODE_OF_CONDUCT_CONTENT"
+      ]
+    },
+    {
+      "id": "security",
+      "standardItem": "Security",
+      "classification": "Recommended",
+      "order": 380,
+      "path": "sections/optional/security.md",
+      "fields": [
+        "VERIFIED_SECURITY_POLICY_OR_REPORTING_ROUTE",
+        "REPORTING_LIMITATIONS_AND_PRIVACY_GUIDANCE"
+      ]
+    },
+    {
+      "id": "support",
+      "standardItem": "Support",
+      "classification": "Recommended",
+      "order": 390,
+      "path": "sections/optional/support.md",
+      "fields": [
+        "VERIFIED_HELP_CHANNELS",
+        "SUPPORT_SCOPE_AND_LIMITATIONS"
+      ]
+    },
+    {
+      "id": "discussions",
+      "standardItem": "Discussions",
+      "classification": "Optional",
+      "order": 400,
+      "path": "sections/optional/discussions.md",
+      "fields": [
+        "DISCUSSIONS_CONTENT"
+      ]
+    },
+    {
+      "id": "sponsorship",
+      "standardItem": "Sponsorship",
+      "classification": "Optional",
+      "order": 410,
+      "path": "sections/optional/sponsorship.md",
+      "fields": [
+        "SPONSORSHIP_CONTENT"
+      ]
+    },
+    {
+      "id": "funding",
+      "standardItem": "Funding",
+      "classification": "Optional",
+      "order": 420,
+      "path": "sections/optional/funding.md",
+      "fields": [
+        "FUNDING_CONTENT"
+      ]
+    },
+    {
+      "id": "authors",
+      "standardItem": "Authors",
+      "classification": "Optional",
+      "order": 430,
+      "path": "sections/optional/authors.md",
+      "fields": [
+        "AUTHORS_CONTENT"
+      ]
+    },
+    {
+      "id": "maintainers",
+      "standardItem": "Maintainers",
+      "classification": "Recommended",
+      "order": 440,
+      "path": "sections/optional/maintainers.md",
+      "fields": [
+        "MAINTAINERS_CONTENT"
+      ]
+    },
+    {
+      "id": "acknowledgements",
+      "standardItem": "Acknowledgements",
+      "classification": "Optional",
+      "order": 450,
+      "path": "sections/optional/acknowledgements.md",
+      "fields": [
+        "ACKNOWLEDGEMENTS_CONTENT"
+      ]
+    },
+    {
+      "id": "references",
+      "standardItem": "References",
+      "classification": "Optional",
+      "order": 460,
+      "path": "sections/optional/references.md",
+      "fields": [
+        "REFERENCES_CONTENT"
+      ]
+    },
+    {
+      "id": "citation",
+      "standardItem": "Citation",
+      "classification": "Project-specific",
+      "order": 470,
+      "path": "sections/optional/citation.md",
+      "fields": [
+        "VERIFIED_CITATION_METADATA_OR_FILE_LINK"
+      ]
+    },
+    {
+      "id": "license",
+      "standardItem": "License",
+      "classification": "Recommended",
+      "order": 480,
+      "path": "sections/optional/license.md",
+      "fields": [
+        "ACTUAL_LICENSE_TERMS_AND_SCOPES",
+        "EXISTING_LICENSE_LINKS_AND_REQUIRED_NOTICES"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 <!--
 Craftmentation README Standard v0.1 — manual authoring template, not publishable as-is.
-Consult docs/standard.md in the Craftmentation repository before adaptation.
+Consult docs/standard.md and docs/templates.md in Craftmentation before adaptation.
+For modular composition, use templates/catalog.json and templates/default/layout.json.
+Choose a profile from templates/profiles/; profile suggestions never override evidence.
 Double-brace tokens below are manual authoring fields, not an implemented template language.
 Replace every retained token with repository evidence. Remove all authoring comments.
 Core information: project name, description, overview, and useful usage instructions.

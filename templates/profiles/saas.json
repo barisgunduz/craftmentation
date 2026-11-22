@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "id": "saas",
+  "name": "SaaS Product",
+  "recommendations": [
+    "features",
+    "requirements",
+    "quick-start",
+    "usage",
+    "configuration",
+    "deployment",
+    "support",
+    "security"
+  ],
+  "notes": [
+    "Verify hosted service URLs, access conditions, and local development separately.",
+    "Do not infer pricing, uptime, account availability, or security guarantees."
+  ]
+}

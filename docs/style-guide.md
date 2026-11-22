@@ -21,7 +21,8 @@ contributors, sponsors, or license terms. Report unresolved information in the r
 or a review report rather than silently guessing.
 
 Published documentation must contain no unresolved authoring placeholders. The README
-template and issue/PR templates may contain clearly signposted authoring fields; users
+template, modular fragments, custom fragment fixtures, and issue/PR templates may contain
+clearly signposted authoring fields; users
 must fill or remove them when producing final documents. Example data must be identified
 as an example and must not contain secrets or private information.
 

@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "id": "infrastructure",
+  "name": "Infrastructure / DevOps",
+  "recommendations": [
+    "architecture",
+    "requirements",
+    "installation",
+    "usage",
+    "configuration",
+    "environment-variables",
+    "deployment",
+    "security"
+  ],
+  "notes": [
+    "Document actual provider requirements, resource effects, credentials handling, and rollback.",
+    "Never execute discovered infrastructure commands or invent cloud accounts."
+  ]
+}

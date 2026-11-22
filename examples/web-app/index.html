@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focus Counter</title>
+<main>
+  <h1>Focus Counter</h1>
+  <p>Count completed focus sessions in this browser tab.</p>
+  <button id="add" type="button">Complete a session</button>
+  <button id="reset" type="button">Reset</button>
+  <p role="status">Sessions: <output id="count">0</output></p>
+</main>
+<script>
+  let sessions = 0;
+  const count = document.querySelector('#count');
+  document.querySelector('#add').addEventListener('click', () => {
+    count.textContent = String(++sessions);
+  });
+  document.querySelector('#reset').addEventListener('click', () => {
+    sessions = 0;
+    count.textContent = '0';
+  });
+</script>
+</html>

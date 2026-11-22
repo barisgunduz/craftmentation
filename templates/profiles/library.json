@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "id": "library",
+  "name": "Library / SDK",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "examples",
+    "testing",
+    "references"
+  ],
+  "notes": [
+    "Document compatibility and public API from package/source evidence.",
+    "Distinguish published package installation from local imports."
+  ]
+}

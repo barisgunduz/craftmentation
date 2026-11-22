@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "id": "api",
+  "name": "API / Backend Service",
+  "recommendations": [
+    "requirements",
+    "installation",
+    "usage",
+    "configuration",
+    "environment-variables",
+    "architecture",
+    "testing",
+    "deployment"
+  ],
+  "notes": [
+    "Document verified authentication, endpoints, and request/response examples under Usage.",
+    "Explicitly distinguish an API contract from a running service; never infer authentication."
+  ]
+}

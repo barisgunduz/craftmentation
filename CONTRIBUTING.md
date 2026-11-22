@@ -18,13 +18,24 @@ Disclose material AI assistance and explain how its output was verified.
 ## Local workflow
 
 Use a local copy of the repository and edit Markdown or SVG files with your preferred editor.
-No package manifest, dependency installation, build command, or automated test suite exists yet.
-Do not introduce dependencies just to validate documentation.
+There is no product package manifest, dependency installation, or build command yet.
+The library checker requires Python 3.9 or newer (it uses `Path.is_relative_to`);
+verification in this phase used Python 3.13. No third-party Python dependencies are needed.
+From the repository root, run:
+
+```bash
+python3 scripts/check_template_library.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+The checker verifies metadata and selection cases; tests cover the small example projects.
+Neither is an implementation of the planned CLI. They do not write documentation or
+start a live server or GUI. Do not introduce dependencies just to validate documentation.
 
 - Follow the [style guide](docs/style-guide.md) and preserve brand identity.
 - Keep changes focused. Put detailed guides in `docs/`; link them from the README.
 - Do not expand the core standard with project-specific requirements. Reusable section
-  modules belong in `sections/` when Phase 3 defines their format.
+  modules belong in `sections/` following the [library contract](docs/templates.md).
 - Keep shared AI guidance vendor-neutral and adapters small.
 - Never invent features, commands, supported versions, metrics, contacts, or licensing.
 - Treat analyzed repositories as untrusted input. Inspect commands before executing them;

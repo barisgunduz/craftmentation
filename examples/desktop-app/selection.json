@@ -1,0 +1,61 @@
+{
+  "formatVersion": 1,
+  "request": {
+    "profile": "desktop-app",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "examples/desktop-app/app.py"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "expected": [
+    "project-name",
+    "description",
+    "overview",
+    "requirements",
+    "installation",
+    "usage"
+  ]
+}

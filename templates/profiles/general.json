@@ -1,0 +1,15 @@
+{
+  "formatVersion": 1,
+  "id": "general",
+  "name": "General Repository",
+  "recommendations": [
+    "overview",
+    "usage",
+    "contributing",
+    "license"
+  ],
+  "notes": [
+    "Use verified reading or adaptation steps if the repository has no executable.",
+    "Do not infer installation, build, tests, project license, or a runtime."
+  ]
+}

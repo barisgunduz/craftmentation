@@ -10,15 +10,16 @@ Craftmentation helps developers, maintainers, engineering teams, technical write
 coding agents write documentation grounded in the repository they are documenting.
 Its approach combines relevant sections, verified examples, and reusable guidance.
 
-> Early development: the current workflow is manual. The CLI, modular section library,
-> automated validation, localization tooling, and documentation website are planned.
+> Early development: the current workflow is manual. The CLI, automated README validation,
+> localization tooling, and documentation website are planned.
 
 [Quick start](#quick-start) · [Documentation](#documentation) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
 
 ## Available today
 
 - A [README template](README.template.md) to adapt by hand.
-- The [README Standard v0.1](docs/standard.md) and [initial project profiles](docs/project-profiles.md).
+- The [README Standard v0.1](docs/standard.md) and [14 project profiles](docs/project-profiles.md).
+- A [modular library](docs/templates.md) with 48 reusable sections and [five source-backed examples](examples/README.md).
 - A [generation prompt](prompts/generate-readme.md) and repository inspection guidance for coding agents.
 - [Brand assets and usage guidelines](assets/brand/brand-guidelines.md).
 
@@ -56,7 +57,9 @@ See the [licensing guide](docs/licensing.md).
 | Guide | Purpose |
 |---|---|
 | [README Standard v0.1](docs/standard.md) | Section classifications, inclusion rules, and quality requirements |
-| [Project profiles](docs/project-profiles.md) | Initial category recommendations |
+| [Template library](docs/templates.md) | Metadata, composition, evidence gates, and custom sections |
+| [Project profiles](docs/project-profiles.md) | Recommendations for all 14 project categories |
+| [Examples](examples/README.md) | Five source-backed manual README compositions |
 | [Architecture](docs/architecture.md) | Current components and implementation boundaries |
 | [Style guide](docs/style-guide.md) | Repository documentation conventions |
 | [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |
@@ -64,9 +67,11 @@ See the [licensing guide](docs/licensing.md).
 | [Release conventions](docs/releasing.md) | Versioning, changelog, and release preparation |
 | [Changelog](CHANGELOG.md) | Meaningful changes |
 
-The repository currently contains Markdown guidance, templates, prompts, and SVG assets.
-`sections/`, `templates/`, and `examples/` are reserved scaffolding; their libraries
-will be developed in later phases. There is no package installation or build step yet.
+The repository contains Markdown guidance and fragments, JSON catalogs and profiles,
+example source projects, prompts, and SVG assets. A development checker verifies library
+consistency and evidence-gated section selection; it does not generate READMEs. See
+[Contributing](CONTRIBUTING.md) for verification commands. There is no product package
+installation or build step yet.
 
 ## Community
 

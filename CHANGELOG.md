@@ -8,6 +8,14 @@ No release version is assigned yet.
 
 ### Added
 
+- Version-1 modular library metadata, 48 reusable section fragments, a default layout,
+  and all fourteen project profiles with domain evidence guidance.
+- Evidence-gated inclusion/exclusion reference, custom-section contract, library guide,
+  and an architecture decision record.
+- Five source-backed example projects and manually composed READMEs with selection inventories.
+- Dependency-free development checker, 18 policy scenarios, four example behavior tests,
+  and three metadata/path guardrail tests.
+
 - Owner-supplied brand identity board, theme-independent README lockup, and Inter font attribution.
 
 - README Standard v0.1 with section classifications and inclusion rules, ordering,
@@ -25,6 +33,10 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- README, architecture, contribution instructions, and standard references now describe
+  the available modular library and development verification workflow.
+- Python verification bytecode is excluded from version control.
 
 - README template aligned with Standard v0.1 using explicit manual authoring fields and
   conditional guidance, without fabricated badge URLs or a fixed project-title anchor.

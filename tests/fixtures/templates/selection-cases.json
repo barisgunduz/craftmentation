@@ -1,0 +1,899 @@
+{
+  "formatVersion": 1,
+  "cases": [
+    {
+      "name": "general keeps only verified Core",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "name": "unknown Core blocks readiness",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {},
+        "customSections": []
+      },
+      "expected": {
+        "selected": [],
+        "unresolved": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ]
+      }
+    },
+    {
+      "name": "profile cannot invent screenshots or deployment",
+      "request": {
+        "profile": "web-app",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "name": "explicit include cannot bypass missing evidence",
+      "request": {
+        "profile": "general",
+        "include": [
+          "screenshots"
+        ],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": [
+          "screenshots"
+        ]
+      }
+    },
+    {
+      "name": "unknown license never inherits MIT",
+      "request": {
+        "profile": "general",
+        "include": [
+          "license"
+        ],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "license": {
+            "state": "unknown",
+            "sources": [],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": [
+          "license"
+        ]
+      }
+    },
+    {
+      "name": "exclusion wins over include and recommendation",
+      "request": {
+        "profile": "general",
+        "include": [
+          "features"
+        ],
+        "exclude": [
+          "features"
+        ],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "features": {
+            "state": "verified",
+            "sources": [
+              "synthetic: implemented feature"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "name": "Core cannot be excluded",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [
+          "usage"
+        ],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "error": "Cannot exclude Core information"
+    },
+    {
+      "name": "unsafe Core blocks publication",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": false
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview"
+        ],
+        "unresolved": [
+          "usage"
+        ]
+      }
+    },
+    {
+      "name": "verified label without sources is insufficient",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview"
+        ],
+        "unresolved": [
+          "usage"
+        ]
+      }
+    },
+    {
+      "name": "custom section follows usage",
+      "request": {
+        "profile": "general",
+        "include": [
+          "custom-api-reference"
+        ],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "custom-api-reference": {
+            "state": "verified",
+            "sources": [
+              "synthetic: routes verified"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": [
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Project-specific",
+            "order": 245,
+            "path": "examples/api/api-reference.template.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage",
+          "custom-api-reference"
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "name": "custom section requires explicit inclusion",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "custom-api-reference": {
+            "state": "verified",
+            "sources": [
+              "synthetic: routes verified"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": [
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Project-specific",
+            "order": 245,
+            "path": "examples/api/api-reference.template.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "name": "custom cannot introduce Core requirements",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": [
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Core",
+            "order": 245,
+            "path": "examples/api/api-reference.template.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          }
+        ]
+      },
+      "error": "Invalid custom section"
+    },
+    {
+      "name": "duplicate custom ID rejected",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": [
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Project-specific",
+            "order": 245,
+            "path": "examples/api/api-reference.template.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          },
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Project-specific",
+            "order": 245,
+            "path": "examples/api/api-reference.template.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          }
+        ]
+      },
+      "error": "Duplicate section ID"
+    },
+    {
+      "name": "custom traversal rejected",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": [
+          {
+            "id": "custom-api-reference",
+            "standardItem": "API reference",
+            "classification": "Project-specific",
+            "order": 245,
+            "path": "../README.md",
+            "fields": [
+              "API_REFERENCE_CONTENT"
+            ]
+          }
+        ]
+      },
+      "error": "Unsafe fragment path"
+    },
+    {
+      "name": "unknown section rejected",
+      "request": {
+        "profile": "general",
+        "include": [
+          "unregistered"
+        ],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "error": "Unknown section ID"
+    },
+    {
+      "name": "safety must be a boolean",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": "true"
+          }
+        },
+        "customSections": []
+      },
+      "error": "Invalid evidence safety"
+    },
+    {
+      "name": "unknown profile rejected",
+      "request": {
+        "profile": "invented",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "error": "Unknown profile"
+    },
+    {
+      "name": "missing evidence omits non-Core without blocking",
+      "request": {
+        "profile": "general",
+        "include": [],
+        "exclude": [],
+        "evidence": {
+          "project-name": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "description": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "overview": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "usage": {
+            "state": "verified",
+            "sources": [
+              "synthetic: policy fixture; not a repository claim"
+            ],
+            "safe": true
+          },
+          "features": {
+            "state": "missing",
+            "sources": [],
+            "safe": true
+          }
+        },
+        "customSections": []
+      },
+      "expected": {
+        "selected": [
+          "project-name",
+          "description",
+          "overview",
+          "usage"
+        ],
+        "unresolved": []
+      }
+    }
+  ]
+}

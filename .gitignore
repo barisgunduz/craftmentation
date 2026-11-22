@@ -21,5 +21,9 @@ Desktop.ini
 !.env.template
 !.env.*.template
 
-# Add tool-specific dependency and build outputs when tooling is selected.
+# Python verification bytecode
+__pycache__/
+*.pyc
+
+# Add other tool-specific dependency and build outputs when tooling is selected.
 # Keep lockfiles, documentation, templates, and brand assets versioned.
