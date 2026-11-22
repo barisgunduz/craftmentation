@@ -2,9 +2,10 @@
 
 ## Current state
 
-- Current phase: Phase 4 — Completed.
-- Current focus: AI instruction/prompt framework delivered; awaiting authorization for Phase 5.
-- Next action: on `devam`, inspect repository state and execute Phase 5, CLI Architecture, only.
+- Current phase: Phase 5 — Completed.
+- Current focus: CLI architecture accepted; awaiting authorization for Phase 6 implementation.
+- Next action: on `devam`, inspect repository state, prepare a supported Node runtime,
+  and execute Phase 6, CLI MVP, only. Follow docs/development.md implementation gates.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
   while preserving shareable examples. After Phase 2, branding was reconciled with the
   owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
@@ -16,7 +17,7 @@
   remain operational limitations; no private channel is advertised.
 - Known limitations: no CLI, product package, automatic README renderer/validator, translations,
   CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see phase results below; library checks and twelve development tests pass.
+- Validation: see phase results below; library checks and eighteen development tests pass.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
 constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
@@ -241,31 +242,56 @@ CLI technology, provider abstraction, and configuration design remain Phase 5+ w
 
 ## Phase 5: CLI Architecture
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: all thirteen tasks below.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for the Phase 5 architecture deliverable.
 
-- [ ] Evaluate technology choices.
-- [ ] Select implementation language.
-- [ ] Select CLI framework.
-- [ ] Design package structure.
-- [ ] Design command interfaces.
-- [ ] Define configuration schema.
-- [ ] Define repository analysis data model.
-- [ ] Define template rendering architecture.
-- [ ] Define validation architecture.
-- [ ] Define safe file operations.
-- [ ] Define error handling.
-- [ ] Define testing strategy.
-- [ ] Record architectural decisions.
+- [x] Evaluate technology choices.
+- [x] Select implementation language.
+- [x] Select CLI framework.
+- [x] Design package structure.
+- [x] Design command interfaces.
+- [x] Define configuration schema.
+- [x] Define repository analysis data model.
+- [x] Define template rendering architecture.
+- [x] Define validation architecture.
+- [x] Define safe file operations.
+- [x] Define error handling.
+- [x] Define testing strategy.
+- [x] Record architectural decisions.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: CLI architecture specification delivered with technology/parser selection,
+module/package/interface design, seven-command/exit/JSON contracts, four versioned schemas,
+provenance/selection model, deterministic rendering and AST validation, optional provider
+boundary, safe-write/update protocols, and a staged testing/implementation plan. No
+working CLI or package is claimed. ADRs 0003–0007 record the decisions and alternatives.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22; Python 3.13.2, local Node 20.19.4):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` passed eighteen tests, including
+  six new contract tests. Positive/negative cases cover schema versions, unknown properties,
+  Core exclusions, path forms, language/provider constraints, provenance/redaction,
+  report status/exit consistency, and dry-run/noncommit invariants.
+- Four schema resources and all URN references/used keywords checked by a narrow offline
+  Python oracle. Sixteen existing catalog/profile/layout documents remain structurally
+  compatible. Synthetic instance paths and zero hashes are explicitly illustrative.
+- `python3 scripts/check_template_library.py` passed: 48 sections, 14 profiles, 18 selection
+  scenarios, five source-backed examples.
+- 247 relative file/asset/anchor references checked; LICENSE, master specification,
+  canonical templates, profiles, fragments, and examples are unchanged. `git diff --check` passed.
+- Official primary docs reviewed for Node release status, Commander, TypeScript modules,
+  Ajv/schema options, JSON Schema, Markdown/GFM parsers, heading slugs, HTML parsing,
+  filesystem primitives, and alternative Python/Go parsers. Source links are in the ADRs.
+- No product dependency installation, package manifest, TypeScript source, CLI executable,
+  runtime upgrade, npm publication, commit, or deployment was performed.
+
+Blockers: none for the architecture phase. Phase 6 must prepare Node 24/26, resolve
+compatible exact dependencies/engines, compile schemas with real Ajv and validate against
+the metaschema, then implement/test the CLI. The Python subset helper is not a general
+JSON Schema engine. CLI runtime/OS/filesystem safety and update concurrency remain design
+requirements, not verified functionality. No Phase 6 work has started.
 
 ## Phase 6: CLI MVP
 

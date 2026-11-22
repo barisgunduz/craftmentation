@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:craftmentation:library:v1",
+  "title": "Craftmentation library metadata v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/catalog"
+    },
+    {
+      "$ref": "#/$defs/profile"
+    },
+    {
+      "$ref": "#/$defs/layout"
+    }
+  ],
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$"
+    },
+    "sectionId": {
+      "anyOf": [
+        {
+          "enum": [
+            "project-name",
+            "logo",
+            "description",
+            "badges",
+            "primary-links",
+            "language-navigation",
+            "overview",
+            "problem-statement",
+            "purpose",
+            "intended-audience",
+            "benefits",
+            "features",
+            "screenshots",
+            "gif-previews",
+            "demo",
+            "video",
+            "technology-stack",
+            "architecture",
+            "project-structure",
+            "prerequisites",
+            "requirements",
+            "installation",
+            "quick-start",
+            "usage",
+            "examples",
+            "configuration",
+            "environment-variables",
+            "local-development",
+            "testing",
+            "building",
+            "deployment",
+            "scripts",
+            "troubleshooting",
+            "roadmap",
+            "contributing",
+            "contributors",
+            "code-of-conduct",
+            "security",
+            "support",
+            "discussions",
+            "sponsorship",
+            "funding",
+            "authors",
+            "maintainers",
+            "acknowledgements",
+            "references",
+            "citation",
+            "license"
+          ]
+        },
+        {
+          "type": "string",
+          "pattern": "^custom-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        }
+      ]
+    },
+    "profileId": {
+      "enum": [
+        "ai-ml",
+        "api",
+        "cli-tool",
+        "desktop-app",
+        "developer-tool",
+        "general",
+        "infrastructure",
+        "library",
+        "mobile-app",
+        "monorepo",
+        "research",
+        "saas",
+        "static-website",
+        "web-app"
+      ]
+    },
+    "fieldName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+        },
+        "standardItem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "classification": {
+          "enum": [
+            "Core",
+            "Recommended",
+            "Optional",
+            "Project-specific"
+          ]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "standardItem",
+        "classification",
+        "order",
+        "path",
+        "fields"
+      ],
+      "additionalProperties": false
+    },
+    "customSection": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/section"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^custom-[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "classification": {
+              "enum": [
+                "Recommended",
+                "Optional",
+                "Project-specific"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "verified",
+            "missing",
+            "unknown"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "safe": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "state",
+        "sources",
+        "safe"
+      ],
+      "additionalProperties": false
+    },
+    "selectionRequest": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "enum": [
+            "ai-ml",
+            "api",
+            "cli-tool",
+            "desktop-app",
+            "developer-tool",
+            "general",
+            "infrastructure",
+            "library",
+            "mobile-app",
+            "monorepo",
+            "research",
+            "saas",
+            "static-website",
+            "web-app"
+          ]
+        },
+        "include": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sectionId"
+          },
+          "uniqueItems": true
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sectionId"
+          },
+          "uniqueItems": true
+        },
+        "evidence": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/sectionId"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "customSections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/customSection"
+          }
+        }
+      },
+      "required": [
+        "profile",
+        "include",
+        "exclude",
+        "evidence",
+        "customSections"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "formatVersion": {
+          "const": 1
+        },
+        "standardVersion": {
+          "const": "0.1"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/section"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "formatVersion",
+        "standardVersion",
+        "sections"
+      ],
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "formatVersion": {
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/$defs/profileId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sectionId"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "formatVersion",
+        "id",
+        "name",
+        "recommendations",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "layout": {
+      "const": {
+        "formatVersion": 1,
+        "id": "default",
+        "catalog": "templates/catalog.json",
+        "selection": {
+          "core": "required",
+          "recommended": "candidate",
+          "optional": "explicit-or-profile",
+          "projectSpecific": "explicit-or-profile"
+        },
+        "sort": [
+          "order",
+          "id"
+        ]
+      }
+    }
+  }
+}

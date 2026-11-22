@@ -5,8 +5,10 @@
 Craftmentation currently provides a documentation standard, declarative template library,
 manual authoring workflows, and a development-only checker. Small executable example
 projects and their behavior tests support the documentation. There is no product CLI,
-package manifest, runtime dependency, user configuration schema, or GitHub Actions workflow. Planned capabilities are defined
-in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
+package manifest, installed runtime dependency, configuration loader, or GitHub Actions
+workflow. Phase 5 defines CLI/configuration/analysis/report schemas and accepted design
+contracts, but no CLI implementation. Product requirements remain in
+[PROJECT_SPEC.md](PROJECT_SPEC.md).
 
 ## Components and responsibilities
 
@@ -15,6 +17,8 @@ in [PROJECT_SPEC.md](PROJECT_SPEC.md); they are not implemented interfaces.
 | Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and fourteen evidence-gated profile recommendations |
 | Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
 | Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
+| CLI design contracts | `docs/cli-architecture.md`, `docs/cli-reference.md`, `docs/configuration.md`, `docs/safe-file-operations.md`, `schemas/` | Accepted future command/data/safety architecture, not executable functionality |
+| Contract verification | `tests/schema_subset.py`, `tests/test_cli_contracts.py`, `tests/fixtures/contracts/` | Narrow structural oracle and synthetic instances, not full metaschema/Ajv validation |
 | Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
 | Agent entry points | `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md` | Thin project-specific instruction routes |
 | Shared AI workflows | `docs/ai-instructions.md`, `prompts/`, `docs/ai-integrations.md` | One workflow policy and four operation prompts, with compatibility limits |
@@ -69,10 +73,14 @@ and expected selections. The checker reads these declarative records and fragmen
 executing their contents, rejecting traversal and symlink fragment paths. It never renders
 or writes README files. Evidence truth and filled Markdown require human review.
 
-There is no stable programmatic API, automatic project detection, renderer, provider
-interface, or user configuration precedence model. See [the library contract](templates.md)
-and [ADR 0001](decisions/0001-template-library.md) for boundaries and extension rules.
-The configuration JSON in the specification is conceptual, not a supported format.
+There is no implemented public API, automatic project detection, renderer, provider
+adapter, or configuration loader. The [CLI architecture](cli-architecture.md) now specifies
+future module interfaces and data flow; [configuration](configuration.md) defines version-1
+structure, defaults, and precedence. Four [schemas](../schemas/README.md) encode design
+shapes using existing section/profile IDs and the same selection/evidence contract.
+The master-spec JSON was conceptual; the Phase 5 contract is the design authority for
+implementation, without claiming any setting is executable yet. See [the library contract](templates.md)
+and [ADR 0001](decisions/0001-template-library.md) for existing metadata boundaries.
 AI analysis walkthroughs reuse the library selection request/evidence shape; their
 surrounding reports and source excerpts are evaluation artifacts, not a CLI analysis schema.
 Update artifacts demonstrate focused preservation; translation artifacts record a source
@@ -81,13 +89,22 @@ fingerprint and Unreviewed status. No prompt or test starts an external agent/pr
 ## Technology choices and constraints
 
 Markdown, SVG, and JSON are the library formats. The checker and example tests use the
-Python standard library only; this does not select the product runtime. No CLI implementation language or framework
-has been selected. Phase 5 must evaluate choices and record ADRs before implementation.
+Python standard library only. The accepted product design selects TypeScript/Node.js ESM
+and Commander, with bundled Ajv schemas and Markdown/HTML AST parsers. Node 24 and 26 LTS
+are planned targets; exact dependency versions/engines and platform compatibility must be
+verified in Phase 6. The local Node 20 runtime was not upgraded or counted as CLI validation.
+The product pipeline separates bounded static analysis, evidence-based planning, literal
+rendering, validation, and confined writing. AI is an optional proposal port, not a core
+runtime dependency. Generate must refuse existing output; guarded update defaults to preview.
+See [safe operations](safe-file-operations.md) for explicit concurrency/filesystem limits.
+No package/dependency installation or TypeScript/product source is added by this phase.
 Future components must share schemas, keep AI optional, use safe file operations,
 and treat target repositories as untrusted input. The framework's MIT license must
 never silently become an adopting repository's license.
 
 See [AI integrations](ai-integrations.md) and [ADR 0002](decisions/0002-shared-ai-workflows.md)
 for workflow boundaries and source-backed compatibility assessment.
+Phase 5 decisions are indexed in [ADRs](decisions/README.md); [Development](development.md)
+defines the actual current checks and future implementation/test gates.
 
 See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery order.

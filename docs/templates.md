@@ -19,8 +19,10 @@ scanner, public CLI, or automatic README writer. It never executes target reposi
 | `scripts/check_template_library.py` | Development-only consistency checker and selection reference |
 
 The [standard](standard.md) remains authoritative for meaning and inclusion criteria.
-The metadata format is separate from the future user configuration schema. Phase 5
-must evaluate implementation technology and compatibility before exposing a public API.
+The metadata format is separate from the [CLI configuration contract](configuration.md).
+Phase 5 defines its schema and interfaces; the CLI is not implemented. The new
+[library schema](../schemas/library.schema.json) describes existing version-1 data
+without changing the catalog/profile files or exposing a public runtime API.
 
 ## Metadata contract (formatVersion 1)
 

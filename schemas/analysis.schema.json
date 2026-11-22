@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:craftmentation:analysis:v1",
+  "title": "Craftmentation repository analysis v1 \u2014 designed output",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "root": {
+      "const": "."
+    },
+    "sourceFingerprint": {
+      "$ref": "urn:craftmentation:library:v1#/$defs/sha256"
+    },
+    "projectType": {
+      "type": "object",
+      "properties": {
+        "detected": {
+          "$ref": "urn:craftmentation:library:v1#/$defs/profileId"
+        },
+        "selected": {
+          "$ref": "urn:craftmentation:library:v1#/$defs/profileId"
+        },
+        "signals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "$ref": "urn:craftmentation:library:v1#/$defs/relativePath"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "path",
+              "locator"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "detected",
+        "selected",
+        "signals"
+      ],
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "$ref": "urn:craftmentation:library:v1#/$defs/relativePath"
+          },
+          "sha256": {
+            "$ref": "urn:craftmentation:library:v1#/$defs/sha256"
+          },
+          "role": {
+            "enum": [
+              "manifest",
+              "source",
+              "script",
+              "test",
+              "ci",
+              "documentation",
+              "license",
+              "asset",
+              "configuration"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          },
+          "kind": {
+            "enum": [
+              "text",
+              "command",
+              "path",
+              "license"
+            ]
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": [
+              "verified",
+              "missing",
+              "unknown"
+            ]
+          },
+          "verification": {
+            "enum": [
+              "inspected",
+              "maintainer"
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "$ref": "urn:craftmentation:library:v1#/$defs/relativePath"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "path",
+                "locator"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "safe": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "value",
+          "state",
+          "verification",
+          "sources",
+          "safe"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "verified"
+                }
+              },
+              "required": [
+                "state"
+              ]
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sources": {
+                  "type": "array",
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "safe": {
+                  "const": false
+                }
+              },
+              "required": [
+                "safe"
+              ]
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "state": {
+                  "enum": [
+                    "missing",
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "selection": {
+      "$ref": "urn:craftmentation:library:v1#/$defs/selectionRequest"
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^E_[A-Z_]+$|^W_[A-Z_]+$|^I_[A-Z_]+$"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "$ref": "urn:craftmentation:library:v1#/$defs/relativePath"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "filesVisited": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bytesRead": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "skipped": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "filesVisited",
+        "bytesRead",
+        "truncated",
+        "skipped"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "root",
+    "sourceFingerprint",
+    "projectType",
+    "files",
+    "facts",
+    "selection",
+    "diagnostics",
+    "limits"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "diagnostic": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^E_[A-Z_]+$|^W_[A-Z_]+$|^I_[A-Z_]+$"
+        },
+        "severity": {
+          "enum": [
+            "error",
+            "warning",
+            "info"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "$ref": "urn:craftmentation:library:v1#/$defs/relativePath"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "code",
+        "severity",
+        "message"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

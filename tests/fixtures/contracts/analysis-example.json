@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "root": ".",
+  "sourceFingerprint": "0000000000000000000000000000000000000000000000000000000000000000",
+  "projectType": {
+    "detected": "library",
+    "selected": "library",
+    "signals": [
+      {
+        "path": "slug.py",
+        "locator": "slugify"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "slug.py",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "role": "source"
+    }
+  ],
+  "facts": [
+    {
+      "id": "public-api",
+      "kind": "text",
+      "value": "slugify(text: str) -> str",
+      "state": "verified",
+      "verification": "inspected",
+      "sources": [
+        {
+          "path": "slug.py",
+          "locator": "slugify"
+        }
+      ],
+      "safe": true
+    }
+  ],
+  "selection": {
+    "profile": "library",
+    "include": [],
+    "exclude": [],
+    "evidence": {
+      "project-name": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      },
+      "description": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      },
+      "overview": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      },
+      "usage": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      },
+      "requirements": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      },
+      "installation": {
+        "state": "verified",
+        "sources": [
+          "slug.py"
+        ],
+        "safe": true
+      }
+    },
+    "customSections": []
+  },
+  "diagnostics": [],
+  "limits": {
+    "filesVisited": 1,
+    "bytesRead": 0,
+    "truncated": false,
+    "skipped": []
+  }
+}

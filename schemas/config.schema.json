@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:craftmentation:configuration:v1",
+  "title": "Craftmentation configuration v1 \u2014 Phase 5 contract, not an implemented CLI",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "projectType": {
+      "enum": [
+        "auto",
+        "ai-ml",
+        "api",
+        "cli-tool",
+        "desktop-app",
+        "developer-tool",
+        "general",
+        "infrastructure",
+        "library",
+        "mobile-app",
+        "monorepo",
+        "research",
+        "saas",
+        "static-website",
+        "web-app"
+      ],
+      "default": "auto"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$",
+      "default": "en"
+    },
+    "additionalLanguages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "output": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$",
+      "default": "README.md"
+    },
+    "template": {
+      "anyOf": [
+        {
+          "const": "default"
+        },
+        {
+          "allOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$"
+            },
+            {
+              "type": "string",
+              "pattern": "^\\./.+$"
+            }
+          ]
+        }
+      ],
+      "default": "default"
+    },
+    "sections": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "urn:craftmentation:library:v1#/$defs/sectionId"
+      },
+      "properties": {
+        "project-name": {
+          "enum": [
+            true,
+            "auto"
+          ]
+        },
+        "description": {
+          "enum": [
+            true,
+            "auto"
+          ]
+        },
+        "overview": {
+          "enum": [
+            true,
+            "auto"
+          ]
+        },
+        "usage": {
+          "enum": [
+            true,
+            "auto"
+          ]
+        }
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "const": "auto"
+          }
+        ]
+      },
+      "default": {}
+    },
+    "customSections": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:craftmentation:library:v1#/$defs/customSection"
+      },
+      "default": []
+    },
+    "content": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "urn:craftmentation:library:v1#/$defs/sectionId"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "propertyNames": {
+          "$ref": "urn:craftmentation:library:v1#/$defs/fieldName"
+        },
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "format": {
+              "enum": [
+                "text",
+                "markdown"
+              ]
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "safe": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "value",
+            "format",
+            "sources",
+            "safe"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "default": {}
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$"
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "alt"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "ai": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+            }
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "enabled"
+            ]
+          },
+          "then": {
+            "required": [
+              "provider"
+            ],
+            "properties": {
+              "provider": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+              }
+            }
+          }
+        }
+      ],
+      "default": {
+        "enabled": false,
+        "provider": null
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "urn:craftmentation:library:v1#/$defs/profileId"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "sections": {
+            "type": "object",
+            "propertyNames": {
+              "$ref": "urn:craftmentation:library:v1#/$defs/sectionId"
+            },
+            "properties": {
+              "project-name": {
+                "enum": [
+                  true,
+                  "auto"
+                ]
+              },
+              "description": {
+                "enum": [
+                  true,
+                  "auto"
+                ]
+              },
+              "overview": {
+                "enum": [
+                  true,
+                  "auto"
+                ]
+              },
+              "usage": {
+                "enum": [
+                  true,
+                  "auto"
+                ]
+              }
+            },
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "const": "auto"
+                }
+              ]
+            },
+            "default": {}
+          },
+          "content": {
+            "type": "object",
+            "propertyNames": {
+              "$ref": "urn:craftmentation:library:v1#/$defs/sectionId"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "urn:craftmentation:library:v1#/$defs/fieldName"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "enum": [
+                      "text",
+                      "markdown"
+                    ]
+                  },
+                  "sources": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "safe": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "value",
+                  "format",
+                  "sources",
+                  "safe"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "default": {}
+          },
+          "template": {
+            "anyOf": [
+              {
+                "const": "default"
+              },
+              {
+                "allOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1024,
+                    "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^\\./.+$"
+                  }
+                ]
+              }
+            ],
+            "default": "default"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\u0000-\\u001f]).+$"
+                },
+                "alt": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "path",
+                "alt"
+              ],
+              "additionalProperties": false
+            },
+            "default": []
+          }
+        },
+        "additionalProperties": false
+      },
+      "default": {}
+    }
+  },
+  "required": [
+    "schemaVersion"
+  ],
+  "additionalProperties": false
+}

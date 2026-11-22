@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "projectType": "library",
+  "language": "en",
+  "additionalLanguages": [
+    "tr"
+  ],
+  "output": "docs/README.md",
+  "template": "default",
+  "sections": {
+    "usage": true,
+    "screenshots": false,
+    "license": "auto"
+  },
+  "customSections": [],
+  "content": {
+    "description": {
+      "DESCRIPTION_CONTENT": {
+        "value": "A source-backed library description.",
+        "format": "text",
+        "sources": [
+          "package.json"
+        ],
+        "safe": true
+      }
+    }
+  },
+  "assets": [
+    {
+      "path": "assets/logo.svg",
+      "alt": "Project symbol"
+    }
+  ],
+  "ai": {
+    "enabled": false,
+    "provider": null
+  },
+  "profiles": {
+    "library": {
+      "sections": {
+        "references": false
+      }
+    }
+  }
+}

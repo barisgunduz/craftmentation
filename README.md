@@ -65,6 +65,8 @@ See the [licensing guide](docs/licensing.md).
 | [AI integrations](docs/ai-integrations.md) | Tool entry points, shared policy, and compatibility limits |
 | [AI evaluation](docs/ai-evaluation.md) | Recorded walkthroughs and regression checks |
 | [Architecture](docs/architecture.md) | Current components and implementation boundaries |
+| [CLI design](docs/cli-architecture.md) | Accepted future commands, modules, schemas, and safety design |
+| [Configuration design](docs/configuration.md) | Version-1 schema and precedence; no loader implemented yet |
 | [Style guide](docs/style-guide.md) | Repository documentation conventions |
 | [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |
 | [Master specification](docs/PROJECT_SPEC.md) | Complete product requirements |
@@ -75,7 +77,8 @@ The repository contains Markdown guidance and fragments, JSON catalogs and profi
 example source projects, prompts, and SVG assets. A development checker verifies library
 consistency and evidence-gated section selection; it does not generate READMEs. See
 [Contributing](CONTRIBUTING.md) for verification commands. There is no product package
-installation or build step yet.
+installation or build step yet. The [CLI architecture](docs/cli-architecture.md) is defined
+for the next implementation phase; its commands are not available in this checkout.
 
 ## Community
 

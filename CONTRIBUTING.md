@@ -30,10 +30,14 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 The checker verifies metadata and selection cases; tests cover the small example projects
-and recorded [AI workflow artifacts](docs/ai-evaluation.md). Artifact tests are not live
+recorded [AI workflow artifacts](docs/ai-evaluation.md), and a narrow subset of the
+[Phase 5 schema contracts](docs/development.md#phase-5-schema-verification-boundary).
+The subset helper is not an Ajv/metaschema implementation. Artifact tests are not live
 model evaluations or native instruction-discovery tests.
-Neither is an implementation of the planned CLI. They do not write documentation or
+These checks are not an implementation of the planned CLI. They do not write documentation or
 start a live server or GUI. Do not introduce dependencies just to validate documentation.
+See [Development](docs/development.md) for the Phase 6 implementation sequence,
+supported-runtime preparation, and future product test gates.
 
 - Follow the [style guide](docs/style-guide.md) and preserve brand identity.
 - Keep changes focused. Put detailed guides in `docs/`; link them from the README.

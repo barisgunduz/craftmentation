@@ -8,6 +8,14 @@ No release version is assigned yet.
 
 ### Added
 
+- Accepted CLI architecture and seven-command interface design, including diagnostics,
+  exit codes, strict configuration precedence, provenance, and staged capability checks.
+- Four version-1 JSON Schemas for library metadata, configuration, analysis, and reports,
+  with synthetic contract instances and six structural design tests.
+- Safe-create/update protocols, explicit concurrency limits, and Phase 6 testing/implementation plan.
+- ADRs selecting TypeScript/Node.js/Commander, strict JSON/Ajv, literal rendering with
+  AST validation, safe update ownership, and optional AI/localization boundaries.
+
 - Shared vendor-neutral documentation workflow policy and reusable analysis, update,
   and translation prompts alongside the refined generation prompt.
 - Thin GitHub Copilot entry point, Codex guidance, and documented Claude/Cursor/Windsurf
@@ -41,6 +49,9 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- Architecture, README, library and contribution guides now distinguish accepted CLI
+  contracts from unimplemented runtime behavior. No product package or dependency was installed.
 
 - AGENTS.md and CLAUDE.md now reference the shared workflow authority without duplicating
   content standards; project continuity and phase boundaries remain explicit.
