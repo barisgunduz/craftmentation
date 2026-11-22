@@ -18,26 +18,26 @@ Disclose material AI assistance and explain how its output was verified.
 
 ## Local workflow
 
-Use a local copy of the repository and edit Markdown or SVG files with your preferred editor.
-There is no product package manifest, dependency installation, or build command yet.
-The library checker requires Python 3.9 or newer (it uses `Path.is_relative_to`);
-verification in this phase used Python 3.13. No third-party Python dependencies are needed.
-From the repository root, run:
+Use Node.js 24 or 26 for the CLI and Python 3.9+ for the existing development oracles.
+From the repository root:
 
 ```bash
-python3 scripts/check_template_library.py
-python3 -m unittest discover -s tests -p 'test_*.py'
+npm ci --ignore-scripts
+npm run typecheck
+npm run format:check
+npm test
+npm run test:legacy
 ```
 
-The checker verifies metadata and selection cases; tests cover the small example projects
-recorded [AI workflow artifacts](docs/ai-evaluation.md), and a narrow subset of the
-[Phase 5 schema contracts](docs/development.md#phase-5-schema-verification-boundary).
-The subset helper is not an Ajv/metaschema implementation. Artifact tests are not live
-model evaluations or native instruction-discovery tests.
-These checks are not an implementation of the planned CLI. They do not write documentation or
-start a live server or GUI. Do not introduce dependencies just to validate documentation.
-See [Development](docs/development.md) for the Phase 6 implementation sequence,
-supported-runtime preparation, and future product test gates.
+`npm test` builds TypeScript and runs Node unit/integration tests. The legacy command
+checks the library and eighteen Python tests, including recorded [AI workflow artifacts](docs/ai-evaluation.md)
+and the narrow Phase 5 schema oracle. Production configuration uses actual Ajv 2020;
+the Python helper does not replace it. Artifact tests are not live model evaluations.
+
+Tests use owned temporary directories and fixtures. No target scripts, live HTTP server,
+GUI, AI provider, or publication is invoked. Do not add dependencies just to validate prose.
+See [Development](docs/development.md) for verified runtimes, current limitations, and
+future implementation/test gates.
 
 - Follow the [style guide](docs/style-guide.md) and preserve brand identity.
 - Keep changes focused. Put detailed guides in `docs/`; link them from the README.

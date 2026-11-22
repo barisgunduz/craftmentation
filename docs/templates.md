@@ -4,8 +4,9 @@
 
 The library implements README Standard v0.1 as reusable Markdown fragments and JSON
 metadata. Humans and coding agents can compose sections today. The repository checker
-verifies the catalog and evaluates selection scenarios; there is no renderer, repository
-scanner, public CLI, or automatic README writer. It never executes target repository commands.
+verifies the catalog and evaluates selection scenarios. The CLI MVP additionally performs
+bounded static analysis, evidence-gated literal rendering, no-clobber generation, and offline
+validation. Neither the checker nor the CLI executes target repository commands.
 
 | File | Responsibility |
 |---|---|
@@ -20,7 +21,7 @@ scanner, public CLI, or automatic README writer. It never executes target reposi
 
 The [standard](standard.md) remains authoritative for meaning and inclusion criteria.
 The metadata format is separate from the [CLI configuration contract](configuration.md).
-Phase 5 defines its schema and interfaces; the CLI is not implemented. The new
+Phase 5 defined its schema and interfaces; the Phase 6 MVP now implements the four core commands. The new
 [library schema](../schemas/library.schema.json) describes existing version-1 data
 without changing the catalog/profile files or exposing a public runtime API.
 
@@ -58,7 +59,7 @@ related headings is allowed, provided Core information remains discoverable.
 ## Inclusion and exclusion algorithm
 
 1. Select a profile from actual repository evidence; use `general` when no more specific
-   profile is justified. No automated type detection is implemented. For mixed repositories,
+   profile is justified. The MVP provides initial JSON-manifest/static-HTML type hints; unsupported formats remain unknown. For mixed repositories,
    use one primary profile and explicitly include additional relevant sections.
 2. Reject unknown IDs, unsupported versions, duplicate IDs, and attempts to exclude Core.
 3. Candidate IDs are Core plus Recommended plus the profile's recommendations plus

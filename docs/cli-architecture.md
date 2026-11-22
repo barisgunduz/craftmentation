@@ -2,9 +2,9 @@
 
 ## Status and delivery boundary
 
-This is the accepted Phase 5 design, not an implemented executable or public API.
-No package manifest, lockfile, TypeScript source, installed dependency, or npm release
-is created in this phase. Phase 6 implements init/analyze/generate/validate; Phase 7 adds
+The Phase 6 MVP implements init/analyze/generate/validate in TypeScript with locked
+dependencies and actual schema/command tests. The package remains private and unreleased.
+This document preserves the architecture contract and distinguishes later capabilities. Phase 7 adds
 update/check/doctor and advanced customization. Phase 8 adds executable localization.
 Existing Python checkers and example programs remain development fixtures, not the CLI.
 
@@ -17,15 +17,13 @@ Python, runtime transpiler, plugin auto-discovery, or installation hook is neede
 
 Target the Node 24 and 26 LTS lines at implementation time; verify exact supported
 patch floors against resolved dependency engines before recording engines in Phase 6.
-The local Phase 5 runtime is Node 20.19.4 and was not upgraded or treated as a supported
-CLI test environment. Planned platform coverage is macOS, Linux, and Windows; no CLI
-platform compatibility has been tested yet. [ADR 0003](decisions/0003-cli-technology.md)
+Phase 5 used Node 20.19.4 only for design inspection. Phase 6 installed Node 24 and fetched
+Node 26 for actual CLI tests; see the roadmap for exact verified versions. Planned platform coverage is macOS, Linux, and Windows; actual runtime tests currently cover macOS only. Linux/Windows execution remains unverified. [ADR 0003](decisions/0003-cli-technology.md)
 records alternatives and official sources.
 
 Planned runtime dependencies are Commander, Ajv, unified, remark-parse, remark-gfm,
-github-slugger, and parse5. Each has a specific parsing/validation role. Exact compatible
-versions and the transitive tree must be inspected and locked during Phase 6; none is
-installed here. Use TypeScript and Node type declarations as development dependencies,
+github-slugger, and parse5. Each has a specific parsing/validation role. Exact versions are now locked and inspected; jsonc-parser additionally provides strict
+duplicate-key inspection (ADR 0008). Use TypeScript and Node type declarations as development dependencies,
 Node's built-in test runner, and no separate test framework initially.
 
 Package only compiled code and the required templates, sections, schemas, prompts,
@@ -37,7 +35,8 @@ An installing user must not need build tools or a postinstall script.
 
 ## Planned module boundaries and interfaces
 
-These names are design interfaces; no stable programmatic import API is published yet.
+The modules are implemented under src/; their functions are internal and no stable
+programmatic import API is published yet.
 `src/` directories should be created when their implementation becomes necessary.
 
 | Component | Responsibility | Proposed interface |
@@ -148,7 +147,7 @@ An orchestration layer applies an explicitly configured provider only after user
 and then runs the same deterministic validation/review pipeline. No credentials live in
 config; a future integration defines explicit credential lookup and transmission consent.
 
-No provider is shipped or invoked in Phases 5–7. `ai.enabled: true` fails with E_CAPABILITY
+No provider is shipped or invoked by the MVP; Phase 7 also reserves that boundary. `ai.enabled: true` fails with E_CAPABILITY
 until a concrete provider adapter is implemented and authorized; it never falls back to
 an implicit vendor. The reserved port covers generation/update/translation proposals;
 provider output is untrusted, cannot elevate its own provenance to verified, and cannot

@@ -1,7 +1,8 @@
-# Version-1 design schemas
+# Version-1 schemas
 
-These Draft 2020-12 schemas are Phase 5 architecture artifacts. There is no CLI loader,
-Ajv dependency, or schema-enforced runtime implementation yet.
+These Draft 2020-12 schemas originated in Phase 5 and are now loaded by the MVP with
+actual Ajv 2020 compilation and non-mutating validation. The Python subset remains an
+independent narrow oracle, not the production validator.
 
 | Schema | Resource ID and purpose |
 |---|---|
@@ -16,7 +17,7 @@ must be followed by semantic checks for IDs, ownership, paths, safety, capabilit
 truth. Existing library metadata is not rewritten or reversioned by the new schemas.
 
 See [Configuration](../docs/configuration.md), [CLI architecture](../docs/cli-architecture.md),
-and [verification limits](../docs/development.md#phase-5-schema-verification-boundary).
+and [verification limits](../docs/development.md#schema-verification-boundary).
 Synthetic [contract fixtures](../tests/fixtures/contracts/config-full.json) contain illustrative
 paths and hashes, not current repository facts. The Python subset helper does not replace
-Ajv compilation or formal metaschema validation, both required during Phase 6.
+Ajv compilation or formal metaschema validation, now exercised by Phase 6 Node tests.

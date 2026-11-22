@@ -2,8 +2,9 @@
 
 ## Current status
 
-Craftmentation has no released version or package manifest. This guide defines the
-release process; it does not announce a release or establish an installation command.
+Craftmentation has no public released version. package.json records private development
+version 0.0.0-dev.0 and the source-checkout build/install workflow is documented. This
+guide defines release preparation, not a public package announcement.
 Release readiness will be assessed in Phase 11 of the [roadmap](roadmap.md).
 
 ## Versioning and changelog
@@ -26,8 +27,9 @@ and compatibility changes where applicable, and retain Unreleased for subsequent
 3. Run applicable tests, static checks, and documentation validation. Record actual results.
    Until executable tooling exists, review Markdown, links, templates, and SVGs manually
    and run `git diff --check`; do not claim runtime or cross-platform testing.
-4. Once packaging exists, inspect package contents, audit dependencies, test installation
-   and supported platforms, and document upgrade procedures. No package manager has been selected yet.
+4. Inspect package contents, audit dependencies, test installation and supported platforms,
+   and document upgrade procedures. npm packaging is implemented for local smoke checks;
+   publishing remains disabled by private: true until explicit release authorization.
 5. Prepare version changes, dated changelog entries, release notes, known limitations,
    and upgrade guidance. Check that notes describe actual shipped functionality.
 6. Present the concrete release candidate and validation evidence to the owner for approval.

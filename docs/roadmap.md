@@ -2,12 +2,14 @@
 
 ## Current state
 
-- Current phase: Phase 5 — Completed.
-- Current focus: CLI architecture accepted; awaiting authorization for Phase 6 implementation.
-- Next action: on `devam`, inspect repository state, prepare a supported Node runtime,
-  and execute Phase 6, CLI MVP, only. Follow docs/development.md implementation gates.
+- Current phase: Phase 6 — Completed.
+- Current focus: CLI MVP delivered; awaiting authorization for Phase 7.
+- Next action: on `devam`, inspect repository state and execute Phase 7, Advanced CLI, only.
 - Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
-  while preserving shareable examples. After Phase 2, branding was reconciled with the
+  while preserving shareable examples. After Phase 6, ignore rules were reviewed to keep
+  test sources/fixtures and package-lock.json versioned while excluding coverage, build
+  caches, npm logs, and CLI operation artifacts. Phase 7 was not started by this maintenance.
+  After Phase 2, branding was reconciled with the
   owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
   Logo geometry, transparent variants, monochrome symbol, and favicon were updated.
   Original reference and Inter attribution are retained under `assets/brand/`.
@@ -15,9 +17,11 @@
   was not tested. This maintenance preceded Phase 3.
 - Blockers: none for the completed phase. Confidential security and conduct reporting
   remain operational limitations; no private channel is advertised.
-- Known limitations: no CLI, product package, automatic README renderer/validator, translations,
+- Known limitations: no advanced update/check/doctor commands, custom-template loader,
+  provider integration, localization engine, public package release,
   CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see phase results below; library checks and eighteen development tests pass.
+- Validation: see phase results below; 25 Node tests pass on each of Node 24/26,
+  plus eighteen Python tests and the library checker. Linux/Windows execution is unverified.
 
 Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
 constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
@@ -295,20 +299,55 @@ requirements, not verified functionality. No Phase 6 work has started.
 
 ## Phase 6: CLI MVP
 
-Status: **Not Started**
+Status: **Completed**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: working four-command MVP and all requirements below, with native OS coverage limited as recorded.
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+Remaining tasks: none for the MVP implementation phase. Native Linux/Windows execution
+remains an explicit release-verification gate, not a claimed result.
 
-- [ ] Implement real `init`, `analyze`, `generate`, and `validate` commands.
-- [ ] Verify cross-platform behavior, safe files, errors, unit/integration tests, documentation, and operation without AI.
+- [x] Implement real `init`, `analyze`, `generate`, and `validate` commands.
+- [x] Verify cross-platform behavior, safe files, errors, unit/integration tests, documentation, and operation without AI.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+Acceptance: real init/analyze/generate/validate commands with strict JSON/Ajv configuration,
+source-backed bounded analysis, evidence-gated literal generation, offline Markdown checks,
+safe no-clobber creates, useful JSON/exit diagnostics, dry-run, and unit/integration coverage.
+No AI service is required. Existing output is never replaced. Documentation and locked
+private development package/build tooling are included; no public release is claimed.
 
-Validation: not run; no completion claimed.
+Validation (2026-11-22, macOS):
 
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
+- Installed Node 24.22.3 and fetched Node 26.13.1 without replacing the Node 24 default.
+  The final functional implementation passed 25 Node tests on each runtime, with no skips.
+- Tests cover actual Ajv compilation/metaschema checks and corpus validation; all 18 selection
+  scenarios; CLI JSON/error/help/no-op behavior; five real example generation/validation
+  flows; unknown/prototype options; source/UTF-8 handling; no script execution; path/symlink/
+  device/case protection; concurrent no-clobber creates; permission/publication/cleanup fault
+  injection; offline links/anchors/HTML; literal code preservation; installed-style bin symlinks.
+- `npm run test:legacy` passed eighteen Python tests plus 48 sections, 14 profiles,
+  18 selection cases, and five canonical examples. `npm run typecheck`, `npm run format:check`,
+  and `git diff --check` passed. Fresh offline `npm ci --ignore-scripts` succeeded.
+- Local npm tarball inspected: required compiled code/library/schemas/notices present;
+  tests/examples/node_modules/brand board absent. Offline installation with --ignore-scripts
+  into a separate consumer succeeded; installed bin/version and all four commands worked
+  outside the source cwd. No npm publication or installation hook was used.
+- Direct dependency versions/engines/licenses were inspected and locked. Installation audit
+  reported zero known vulnerabilities; an offline cached audit also reported zero. This is
+  not a full legal/security release audit or a guarantee against future vulnerabilities.
+- README passed the actual offline CLI validator. 249 local Markdown file/asset/anchor
+  references checked; the root license, master specification, canonical library metadata,
+  fragments, profiles, and example files are unchanged.
+- package.json is private at 0.0.0-dev.0 (internal development metadata, not a released
+  version). No commits, pushes, releases, workflow deployment, or provider calls occurred.
+
+Blockers: none for the working MVP. Linux/Windows runtime/filesystem execution is not
+verified; portable-path cases and actual macOS filesystems were tested. Static population
+is limited to JSON metadata and existing README sections, not semantic code understanding.
+Secret/injection heuristics are conservative, not security guarantees. Unsupported custom
+libraries/sections, localization, providers, and Phase 7 commands fail explicitly.
+Filesystem writes assume a quiescent local workspace and supported no-clobber primitives.
+The next phase must preserve these boundaries and add advanced features without rewriting
+custom content or reintroducing mandatory AI/network access.
 
 ## Phase 7: Advanced CLI
 

@@ -1,7 +1,8 @@
 # Support
 
-Craftmentation currently provides manually adapted documentation materials. A CLI,
-automated validation, translations, and a hosted documentation site are not available yet.
+Craftmentation provides a local CLI MVP and manually adapted documentation materials.
+The CLI supports init, analyze, generate, and offline validate. Advanced updates,
+translations, a hosted documentation site, and a public package release are not available yet.
 
 ## Find guidance
 

@@ -4,7 +4,9 @@ Profiles recommend relevant content; they never force unsupported sections or ov
 [README Standard v0.1](standard.md). Fourteen JSON profiles are available. Choose a type
 from repository evidence, or use General Repository when no more specific category is
 justified. Mixed repositories may use a primary profile plus explicit section inclusions.
-Automatic project-type detection is not implemented.
+The MVP provides limited JSON-manifest and static-HTML hints; unsupported formats
+remain unknown. Explicit profile selection supports all fourteen categories without
+claiming complete automatic ecosystem detection.
 
 The shared default includes candidates for Core and Recommended content. Each profile
 adds the recommendations below; only verified, safe, sourced information is selected.

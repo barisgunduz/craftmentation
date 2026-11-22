@@ -2,8 +2,7 @@
 
 ## Status
 
-This is the Phase 5 configuration design. The schema and contract fixtures exist;
-no CLI loads them yet. [config.schema.json](../schemas/config.schema.json) is authoritative
+The MVP loads and validates schemaVersion-1 configuration using Ajv 2020. [config.schema.json](../schemas/config.schema.json) is authoritative
 for structure. Semantic rules below are also required; passing JSON Schema alone does
 not prove paths are safe, source facts true, or capabilities implemented.
 
@@ -118,5 +117,25 @@ version/release notes and older executables must reject unknown fields, not misr
 Synthetic [minimal](../tests/fixtures/contracts/config-minimal.json) and
 [full](../tests/fixtures/contracts/config-full.json) instances exercise the contract.
 They are not configuration for this repository and do not assert that referenced assets,
-packages, or maintainer values exist. No live craftmentation.config.json is added before init
-exists. See [ADR 0004](decisions/0004-configuration-schema.md) for the format decision.
+packages, or maintainer values exist. This repository does not need a live craftmentation.config.json; init creates it only
+in the explicitly selected target. See [ADR 0004](decisions/0004-configuration-schema.md) for the format decision.
+
+## MVP population details
+
+Package names/descriptions/engine declarations and existing README sections can populate
+built-in fields. Complete extracted sections fill the first field and intentionally leave
+remaining subfields blank; this preserves their source prose without inventing extra facts.
+When Core usage is absent, generation fails with E_EVIDENCE. Supply the actual fields listed
+in templates/catalog.json through content, with real source paths or explicit maintainer
+attribution. Partial configured fields merge with existing extracted fields. An empty secondary
+field is permitted when explicitly provided or intentionally omitted within a complete source section.
+
+For configured Markdown, relative links resolve from its first evidence file (or from the
+output context for a maintainer: attribution). Generated links are rebased to the output
+location. Structured assets explicitly request logo content; all asset paths must exist,
+pass confinement, and have safe alternative text. Explicit license content additionally
+requires an actual inspected target license notice. No package.json license alone is used.
+
+Init writes only craftmentation.config.json, never an arbitrary --config filename. Generate
+also rejects hidden agent/CI directories and protected policy filenames as output. New
+output is limited to 1 MiB. See [ADR 0008](decisions/0008-cli-mvp-implementation.md).

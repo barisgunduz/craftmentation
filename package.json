@@ -1,0 +1,60 @@
+{
+  "name": "craftmentation",
+  "version": "0.0.0-dev.0",
+  "private": true,
+  "description": "A universal, AI-ready README and documentation framework for modern software projects.",
+  "license": "MIT",
+  "author": "Barış Gündüz",
+  "type": "module",
+  "engines": {
+    "node": "^24.0.0 || ^26.0.0"
+  },
+  "bin": {
+    "craftmentation": "dist/cli/index.js"
+  },
+  "files": [
+    "dist/",
+    "templates/",
+    "sections/",
+    "schemas/",
+    "prompts/",
+    "docs/",
+    "README.template.md",
+    "LICENSE",
+    "assets/brand/logo-readme.svg",
+    "assets/brand/inter-OFL.txt",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "SUPPORT.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test tests/node/*.test.mjs",
+    "test:legacy": "python3 scripts/check_template_library.py && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/node/**/*.mjs\" package.json tsconfig.json",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/node/**/*.mjs\" package.json tsconfig.json"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "commander": "15.1.0",
+    "github-slugger": "2.0.0",
+    "jsonc-parser": "3.3.1",
+    "parse5": "8.1.1",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "prettier": "3.10.1",
+    "typescript": "7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barisgunduz/craftmentation.git"
+  }
+}

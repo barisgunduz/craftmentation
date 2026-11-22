@@ -25,5 +25,20 @@ Desktop.ini
 __pycache__/
 *.pyc
 
-# Add other tool-specific dependency and build outputs when tooling is selected.
 # Keep lockfiles, documentation, templates, and brand assets versioned.
+
+# Node.js dependencies and compiled output
+node_modules/
+/dist/
+*.tgz
+
+# Test coverage and TypeScript build cache
+/coverage/
+*.tsbuildinfo
+
+# npm diagnostic logs
+npm-debug.log*
+
+# Interrupted CLI operations (never ignore shared configuration or lockfiles)
+*.craftmentation.lock
+*.craftmentation-*.tmp

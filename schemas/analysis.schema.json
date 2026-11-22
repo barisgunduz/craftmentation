@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:craftmentation:analysis:v1",
-  "title": "Craftmentation repository analysis v1 \u2014 designed output",
+  "title": "Craftmentation repository analysis v1",
   "type": "object",
   "properties": {
     "schemaVersion": {

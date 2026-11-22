@@ -2,13 +2,12 @@
 
 ## Implementation state
 
-Craftmentation currently provides a documentation standard, declarative template library,
-manual authoring workflows, and a development-only checker. Small executable example
-projects and their behavior tests support the documentation. There is no product CLI,
-package manifest, installed runtime dependency, configuration loader, or GitHub Actions
-workflow. Phase 5 defines CLI/configuration/analysis/report schemas and accepted design
-contracts, but no CLI implementation. Product requirements remain in
-[PROJECT_SPEC.md](PROJECT_SPEC.md).
+Craftmentation implements the CLI MVP: init, analyze, generate, and offline validate.
+TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas. The
+48-section library, fourteen profiles, manual AI workflows, and source-backed examples
+remain available. The development package is private at 0.0.0-dev.0; no public release,
+CI workflow, provider integration, localization engine, or advanced CLI command exists.
+Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md).
 
 ## Components and responsibilities
 
@@ -17,8 +16,9 @@ contracts, but no CLI implementation. Product requirements remain in
 | Documentation guidance | `docs/standard.md`, `docs/project-profiles.md` | README Standard v0.1 and fourteen evidence-gated profile recommendations |
 | Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
 | Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
-| CLI design contracts | `docs/cli-architecture.md`, `docs/cli-reference.md`, `docs/configuration.md`, `docs/safe-file-operations.md`, `schemas/` | Accepted future command/data/safety architecture, not executable functionality |
-| Contract verification | `tests/schema_subset.py`, `tests/test_cli_contracts.py`, `tests/fixtures/contracts/` | Narrow structural oracle and synthetic instances, not full metaschema/Ajv validation |
+| CLI implementation | `src/cli/`, `src/configuration/`, `src/analyzer/`, `src/generator/`, `src/renderer/`, `src/validator/`, `src/filesystem/`, `src/shared/` | Four real commands, static provenance, literal rendering, offline checks, and no-clobber writes |
+| CLI design contracts | `docs/cli-architecture.md`, `docs/cli-reference.md`, `docs/configuration.md`, `docs/safe-file-operations.md`, `schemas/` | Implemented MVP contracts with future capabilities explicitly marked |
+| Contract verification | `tests/schema_subset.py`, `tests/test_cli_contracts.py`, `tests/fixtures/contracts/` | Narrow structural oracle and synthetic instances, independent of actual Ajv compilation/runtime validation |
 | Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
 | Agent entry points | `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md` | Thin project-specific instruction routes |
 | Shared AI workflows | `docs/ai-instructions.md`, `prompts/`, `docs/ai-integrations.md` | One workflow policy and four operation prompts, with compatibility limits |
@@ -43,8 +43,11 @@ no runtime font dependency is introduced.
 
 ## Current data flow and boundaries
 
-A human or coding agent inspects the target repository, consults the standard and
-README template, selects relevant sections, and manually writes verified documentation.
+Humans/agents can compose documentation manually. The CLI also loads strict JSON,
+confines a static inventory, extracts supported package/README facts, resolves profile
+overrides, selects evidence, renders literal fields, validates Markdown, and creates
+a missing output through exclusive staging/no-clobber publication. It never executes
+repository scripts, loads provider code, or fetches external links.
 The analysis, generation, update, and translation prompts all reference a shared workflow
 policy, the standard, and the library contract. Operation prompts add scoped procedures;
 entry files do not duplicate policy. A target repository and framework root are distinct,
@@ -56,7 +59,8 @@ manual fixture walkthroughs do not establish native client discovery or model re
 Templates contain authoring placeholders and are not ready-to-publish project documentation.
 The README standard defines four section classes and evidence-based inclusion criteria.
 The default template uses double-brace manual authoring fields and conditional comments;
-these are not a renderer syntax or executable template engine. Localization conventions
+the CLI renderer now performs one nonrecursive literal substitution pass. No expression,
+helper, include, or executable template engine is introduced. Localization conventions
 include manual source-revision/status tracking; automated drift detection is not implemented.
 
 ## Interfaces, configuration and extension points
@@ -73,14 +77,15 @@ and expected selections. The checker reads these declarative records and fragmen
 executing their contents, rejecting traversal and symlink fragment paths. It never renders
 or writes README files. Evidence truth and filled Markdown require human review.
 
-There is no implemented public API, automatic project detection, renderer, provider
-adapter, or configuration loader. The [CLI architecture](cli-architecture.md) now specifies
-future module interfaces and data flow; [configuration](configuration.md) defines version-1
-structure, defaults, and precedence. Four [schemas](../schemas/README.md) encode design
-shapes using existing section/profile IDs and the same selection/evidence contract.
-The master-spec JSON was conceptual; the Phase 5 contract is the design authority for
-implementation, without claiming any setting is executable yet. See [the library contract](templates.md)
-and [ADR 0001](decisions/0001-template-library.md) for existing metadata boundaries.
+Internal interfaces and the installed CLI are implemented for the four MVP commands.
+There is no stable import API, general source-code understanding, provider adapter,
+custom-template loader, localization engine, update/check/doctor implementation, or
+online link checker. JSON package fields and root Markdown provide initial facts;
+unsupported formats remain unclassified/unknown unless explicitly configured.
+[Configuration](configuration.md) describes supported defaults, merge rules, source-backed
+fields, and rejected future capabilities. Four [schemas](../schemas/README.md) are compiled
+with actual Ajv 2020, without coercion, unknown-field removal, or default mutation.
+Existing catalog/profile IDs and selection/evidence shapes are unchanged.
 AI analysis walkthroughs reuse the library selection request/evidence shape; their
 surrounding reports and source excerpts are evaluation artifacts, not a CLI analysis schema.
 Update artifacts demonstrate focused preservation; translation artifacts record a source
@@ -90,14 +95,14 @@ fingerprint and Unreviewed status. No prompt or test starts an external agent/pr
 
 Markdown, SVG, and JSON are the library formats. The checker and example tests use the
 Python standard library only. The accepted product design selects TypeScript/Node.js ESM
-and Commander, with bundled Ajv schemas and Markdown/HTML AST parsers. Node 24 and 26 LTS
-are planned targets; exact dependency versions/engines and platform compatibility must be
-verified in Phase 6. The local Node 20 runtime was not upgraded or counted as CLI validation.
-The product pipeline separates bounded static analysis, evidence-based planning, literal
-rendering, validation, and confined writing. AI is an optional proposal port, not a core
-runtime dependency. Generate must refuse existing output; guarded update defaults to preview.
-See [safe operations](safe-file-operations.md) for explicit concurrency/filesystem limits.
-No package/dependency installation or TypeScript/product source is added by this phase.
+and Commander, with bundled Ajv schemas, strict duplicate-key inspection via jsonc-parser,
+and Markdown/HTML AST parsers. Exact versions and direct license metadata are recorded
+in package-lock.json and THIRD_PARTY_NOTICES.md. Node 24/26 are runtime targets; exact
+macOS-tested patches and package smoke results are in the roadmap. Linux/Windows execution
+and release readiness remain unverified. Generation rejects existing output, protected
+paths, unsupported capabilities, and missing Core evidence. Filesystem safety assumes a
+quiescent workspace and supported local filesystem semantics; it is not a hostile-race sandbox.
+See [safe operations](safe-file-operations.md) and [ADR 0008](decisions/0008-cli-mvp-implementation.md).
 Future components must share schemas, keep AI optional, use safe file operations,
 and treat target repositories as untrusted input. The framework's MIT license must
 never silently become an adopting repository's license.

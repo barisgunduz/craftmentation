@@ -2,13 +2,32 @@
 
 ## Commands available now
 
-The current checkout has documentation, schemas, Python development checks, and example
-programs. It has no product package.json, npm build/test scripts, compiled CLI, or release.
-Use [Contributing](../CONTRIBUTING.md) for the existing Python library and test commands.
-The contract checker introduced in Phase 5 is exercised by the same unittest discovery.
-No extra dependency is required for these development checks.
+Use Node 24/26 and npm for the TypeScript CLI, plus Python 3.9+ for legacy checks:
 
-## Phase 6 implementation sequence
+```bash
+npm ci --ignore-scripts
+npm run build
+npm run typecheck
+npm run format:check
+npm test
+npm run test:legacy
+```
+
+Tests run real CLI processes in temporary directories, validate actual Ajv schemas, and
+cover the five source-backed examples. Product scripts are defined in package.json.
+`npm test` builds before running Node tests. No test invokes an external provider, target
+script, live network server, GUI, publish, or deployment. The package is private at an
+unreleased development version. Node engines target 24/26; exact tested patches and host
+platform are recorded in the roadmap. Other OS execution is not yet verified.
+
+For a local package smoke check, build, then run `npm pack --ignore-scripts` into an owned
+temporary directory and explicitly install that tarball into a separate consumer directory.
+The packed CLI must resolve data from its installed location and work outside the source cwd.
+No install hook is required. Developer evaluation reports refer to source-checkout fixtures;
+the npm tarball excludes tests, examples, and the large brand identity board. It is not a
+standalone offline archive of every linked development artifact.
+
+## Phase 6 implementation sequence (delivered MVP baseline)
 
 1. Re-read continuity docs and the accepted CLI contracts. Prepare a supported Node 24/26
    development environment; the Phase 5 machine's Node 20 is not a supported target.
@@ -28,8 +47,8 @@ No extra dependency is required for these development checks.
 9. Verify unit, integration, packed-package data paths, and platform safety before accepting
    the MVP. Update roadmap/changelog and stop. Do not install, push, deploy, or release remotely.
 
-Planned scripts will be named only when package.json actually defines them. This document
-is not evidence that npm commands, binaries, schemas, providers, or supported platforms work.
+The implemented scripts are listed above. Update/check/doctor, custom templates/sections,
+localization, providers, and general source-code understanding remain outside this MVP.
 
 ## Test architecture
 
@@ -58,7 +77,7 @@ Test min supported runtime and each claimed LTS line with exact package-engine c
 No performance benchmark, test coverage target, security certification, or cross-platform
 success is invented by this design.
 
-## Phase 5 schema verification boundary
+## Schema verification boundary
 
 Four Draft 2020-12 schemas and synthetic contract instances are checked by the narrow
 Python helper in `tests/schema_subset.py`. It supports only the keywords these files use,
@@ -67,7 +86,7 @@ It is an executable contract oracle, not a full JSON Schema implementation or me
 validator. It tests positive/negative structure, local references, and existing library
 compatibility without adding a documentation-validation dependency.
 
-Ajv compilation, formal metaschema validation, dependency installation, TypeScript build,
-CLI tests, and Node 24/26 runtime tests remain Phase 6 gates. The Python checks do not
+Ajv compilation/metaschema checks, dependency installation, TypeScript build, CLI tests,
+and Node 24/26 tests are now exercised separately by the implementation checks. The Python checks do not
 prove future filesystem safety, semantic source truth, or renderer correctness. Synthetic
 zero hashes and package/asset names in contract fixtures are not claims of an analysis run.

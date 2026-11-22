@@ -8,6 +8,15 @@ No release version is assigned yet.
 
 ### Added
 
+- Working TypeScript/Node.js CLI MVP with init, bounded static analyze, no-clobber generate,
+  and offline AST-based validate commands, including JSON diagnostics and dry-run.
+- Strict JSON loading, actual Ajv 2020 schemas, profile/configuration precedence, provenance,
+  source-backed field population, and explicit unsupported-capability diagnostics.
+- Confined reads, bounded inventory, symlink/device/path protections, owned locks/staging,
+  no-clobber publication, interruption handling, and truthful postcommit cleanup errors.
+- Locked npm dependencies, a private development package, TypeScript build/typecheck,
+  Node unit/integration tests, Prettier source format checks, and direct third-party license inventory.
+
 - Accepted CLI architecture and seven-command interface design, including diagnostics,
   exit codes, strict configuration precedence, provenance, and staged capability checks.
 - Four version-1 JSON Schemas for library metadata, configuration, analysis, and reports,
@@ -49,6 +58,13 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- Ignore coverage output, TypeScript build caches, npm diagnostic logs, and CLI
+  operation artifacts while retaining test sources, fixtures, and package-lock.json.
+
+- README, configuration/CLI/development guides, architecture and roadmap now document
+  the actual MVP, its available commands, and unverified platform/release boundaries.
+- Node dependencies and compiled tarball/build outputs are ignored; the lockfile remains tracked.
 
 - Architecture, README, library and contribution guides now distinguish accepted CLI
   contracts from unimplemented runtime behavior. No product package or dependency was installed.

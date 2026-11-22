@@ -10,12 +10,15 @@ Craftmentation helps developers, maintainers, engineering teams, technical write
 coding agents write documentation grounded in the repository they are documenting.
 Its approach combines relevant sections, verified examples, and reusable guidance.
 
-> Early development: the current workflow is manual. The CLI, automated README validation,
-> localization tooling, and documentation website are planned.
+> Early development: the CLI MVP is available from this checkout. No public npm release
+> has been published. Advanced updates, localization tooling, CI integration, and the
+> documentation website remain planned.
 
 [Quick start](#quick-start) · [Documentation](#documentation) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
 
 ## Available today
+
+- A local CLI with `init`, `analyze`, `generate`, and offline `validate` commands.
 
 - A [README template](README.template.md) to adapt by hand.
 - The [README Standard v0.1](docs/standard.md) and [14 project profiles](docs/project-profiles.md).
@@ -26,6 +29,30 @@ Its approach combines relevant sections, verified examples, and reusable guidanc
 
 No AI service is required to use these materials. [Integration guidance](docs/ai-integrations.md)
 distinguishes documented entry points, manual walkthroughs, and untested native client behavior.
+
+## CLI quick start
+
+Use Node.js 24 or 26 and npm. From this repository:
+
+```bash
+npm ci --ignore-scripts
+npm run build
+node dist/cli/index.js --help
+```
+
+Try the existing library fixture without changing it:
+
+```bash
+node dist/cli/index.js init --root examples/library --dry-run
+node dist/cli/index.js analyze --root examples/library --json
+node dist/cli/index.js generate --root examples/library --output README.generated.md --dry-run
+node dist/cli/index.js validate --root examples/library
+```
+
+Remove `--dry-run` only when you intend to create the requested file. Generation refuses
+existing output. Source-backed usage must exist in a README or explicit configuration;
+the CLI does not invent usage from package/dependency names. No AI key or service is required.
+See the [CLI reference](docs/cli-reference.md) and [configuration guide](docs/configuration.md).
 
 ## Quick start
 
@@ -65,20 +92,23 @@ See the [licensing guide](docs/licensing.md).
 | [AI integrations](docs/ai-integrations.md) | Tool entry points, shared policy, and compatibility limits |
 | [AI evaluation](docs/ai-evaluation.md) | Recorded walkthroughs and regression checks |
 | [Architecture](docs/architecture.md) | Current components and implementation boundaries |
-| [CLI design](docs/cli-architecture.md) | Accepted future commands, modules, schemas, and safety design |
-| [Configuration design](docs/configuration.md) | Version-1 schema and precedence; no loader implemented yet |
+| [CLI reference](docs/cli-reference.md) | Available commands, options, diagnostics, and planned commands |
+| [CLI architecture](docs/cli-architecture.md) | Pipeline, safety contracts, and implementation boundaries |
+| [Configuration](docs/configuration.md) | Version-1 schema, precedence, and capability limits |
 | [Style guide](docs/style-guide.md) | Repository documentation conventions |
 | [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |
 | [Master specification](docs/PROJECT_SPEC.md) | Complete product requirements |
 | [Release conventions](docs/releasing.md) | Versioning, changelog, and release preparation |
 | [Changelog](CHANGELOG.md) | Meaningful changes |
 
-The repository contains Markdown guidance and fragments, JSON catalogs and profiles,
-example source projects, prompts, and SVG assets. A development checker verifies library
-consistency and evidence-gated section selection; it does not generate READMEs. See
-[Contributing](CONTRIBUTING.md) for verification commands. There is no product package
-installation or build step yet. The [CLI architecture](docs/cli-architecture.md) is defined
-for the next implementation phase; its commands are not available in this checkout.
+The CLI statically reads JSON package metadata and existing Markdown. It does not execute
+project scripts or fetch external links. All fourteen profiles can be selected explicitly;
+automatic detection is currently limited to JSON manifest hints and a static HTML entry point.
+Only English output, bundled templates, and built-in sections are supported by the MVP.
+
+[Developer checks](docs/development.md) cover unit/integration behavior and package smoke
+installation. Node 24/26 tests were run on macOS; Linux and Windows execution remains
+unverified. The package is private at development version `0.0.0-dev.0`; this is not a public release.
 
 ## Community
 

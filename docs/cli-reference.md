@@ -2,10 +2,12 @@
 
 ## Availability
 
-All commands and flags on this page are the accepted Phase 5 design, not runnable
-instructions for the current checkout. There is no installed craftmentation executable,
-package version, npm script, or release. Phase 6 implements four commands; Phase 7 adds
-three more. Do not copy this page's syntax into the main README as an available workflow.
+The MVP implements init, analyze, generate, and validate from this checkout. Build with
+`npm run build` and invoke `node dist/cli/index.js`, or use the npm-created bin from an
+explicitly installed local package. The private development version is 0.0.0-dev.0; no
+public package release exists. Update/check/doctor are Phase 7 designs and are rejected
+as unknown commands rather than exposed as stubs. Localization/custom libraries/providers
+remain unsupported capabilities.
 
 ## Common interface
 
@@ -48,6 +50,9 @@ is reserved for unrecoverable startup errors before the reporter can run.
 | check | 7 | Run the same validators noninteractively with warnings treated as failure | Read-only; useful for CI, never rewrites README/config |
 | doctor | 7 | Diagnose runtime, installed data/schema versions, root/config/capability issues | Read-only; no install, network, credential probe, or self-repair |
 
+Init writes only a basename of craftmentation.config.json (including a safe nested
+--config location with an existing parent); arbitrary manifest/adapter destinations are
+rejected. Other explicit --config paths may be loaded by read-only commands.
 Init serializes only supported explicit defaults; it must not create a README, policy,
 LICENSE, agent adapter, or provider configuration. Analyze's stdout is human-readable
 summary by default and a report envelope with --json. Generate's --dry-run includes a
@@ -99,7 +104,7 @@ content for a renderable dry-run; diff carries a focused update diff when availa
 Init's preview is JSON config text, not Markdown. No-op and init use empty selection lists.
 Committed reflects whether publication occurred even if later cleanup failed; error data
 may carry the same summary or null. A dry-run can never claim committed true.
-These are designed interchange shapes, not a currently supported SDK API.
+The four MVP commands emit these schema-validated shapes. There is no stable import SDK API.
 
 | Exit | Meaning | JSON status |
 |---|---|---|

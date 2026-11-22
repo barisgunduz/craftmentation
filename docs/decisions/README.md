@@ -1,7 +1,7 @@
 # Architecture decision records
 
 Record significant technical choices here using sequential filenames such as
-`0008-next-decision.md`. Each record must include status, context, decision,
+`0009-next-decision.md`. Each record must include status, context, decision,
 alternatives considered, and consequences. Supersede earlier decisions explicitly
 rather than silently rewriting their rationale.
 
@@ -23,3 +23,6 @@ localization, and update safety decisions belong to their designated roadmap pha
 - [0005: Rendering and validation](0005-rendering-validation.md) — literal fields and Markdown/HTML ASTs.
 - [0006: Safe updates](0006-safe-updates.md) — no-clobber creation, owned regions, preview, and concurrency limits.
 - [0007: AI/localization boundaries](0007-ai-localization-boundaries.md) — optional proposal providers and source-tracked editions.
+
+- [0008: CLI MVP implementation refinements](0008-cli-mvp-implementation.md) — strict JSON,
+  locked dependencies, conservative population, and restricted init/write targets.

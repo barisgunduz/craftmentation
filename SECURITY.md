@@ -2,9 +2,10 @@
 
 ## Scope and support status
 
-Craftmentation is in early development and has no released versions or executable
-CLI. Security review currently focuses on documentation, templates, prompts, and
-repository configuration. There is no supported release series or response-time guarantee.
+Craftmentation is in early development with no public released versions. The local CLI
+MVP performs static reads, deterministic generation, offline validation, and no-clobber
+writes; review includes path confinement, untrusted configuration/templates, secret-bearing
+inputs, and filesystem assumptions as well as documentation/prompts. There is no supported release series or response-time guarantee.
 Report concerns against the current repository state, including the affected commit or files.
 
 ## Reporting a vulnerability

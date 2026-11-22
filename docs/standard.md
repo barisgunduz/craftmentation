@@ -4,7 +4,9 @@
 
 This standard defines repository-aware, GitHub-compatible README content for humans
 and coding agents. Version v0.1 identifies this document, not a Craftmentation software
-release. It is a manual authoring standard; no renderer or validator implements it yet.
+release. It governs manual authoring and the CLI MVP. Deterministic generation/offline validation
+implement supported structural and evidence checks; they cannot prove every semantic
+quality requirement automatically.
 The [README template](../README.template.md) is an authoring aid, not a required final layout.
 
 In this document, **must** indicates a requirement, **should** a default recommendation
