@@ -6,7 +6,21 @@ No release version is assigned yet.
 
 ## [Unreleased]
 
+### Changed
+
+- Focus the product on a simple agent-assisted README workflow and optional local CLI.
+- Remove the standalone website and automated localization from active scope; retain
+  English defaults and user-requested language guidance without a translation engine.
+- Replace the remaining broad feature roadmap with product clarity/examples, practical
+  preview/review/save, and release confidence/distribution phases.
+- Expand all five curated example READMEs with verified behavior, meaningful usage,
+  troubleshooting, testing boundaries, and explicit omission rationale; align selection inventories.
+- Distinguish manually authored examples from the CLI's limited static population capabilities.
+
 ### Added
+
+- Repository guide explaining the user entry path, optional CLI, and maintainer-only areas.
+- Preserved initial specification/roadmap archives and ADR 0009 for the owner-approved scope revision.
 
 - Working TypeScript/Node.js CLI MVP with init, bounded static analyze, no-clobber generate,
   and offline AST-based validate commands, including JSON diagnostics and dry-run.

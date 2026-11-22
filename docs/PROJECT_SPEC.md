@@ -7,6 +7,36 @@ Your responsibility is to transform the existing repository into a professional,
 
 This document is the authoritative development specification for the project.
 
+## Owner-approved scope revision — 2026-11-22
+
+The owner explicitly refocused Craftmentation on easy, high-quality README creation.
+This revision supersedes earlier requirements for a documentation website and automated
+multilingual support. The unmodified original specification is preserved in
+[history/PROJECT_SPEC.initial.md](history/PROJECT_SPEC.initial.md); the earlier roadmap
+is preserved in [history/roadmap.initial.md](history/roadmap.initial.md). They are historical
+records, not active requirements. Completed Phases 0–6 remain recorded work.
+
+- Primary experience: give a coding agent the standard/template and a short request,
+  inspect repository evidence, review a useful draft, and save only intended changes.
+- Repository documentation is English by default. An agent may write a requested document
+  in the user's chosen language; no translation matrix, automatic drift service, or
+  multilingual CLI engine is required.
+- Documentation lives in README.md and docs/. No standalone website, hosting, site search,
+  SEO project, or website deployment is planned.
+- Keep the working CLI, templates, safety protections, tests, and useful architecture.
+  Put developer machinery behind clear navigation; ordinary users do not need to study it.
+- Examples must demonstrate actual finished README quality, with useful commands,
+  behavior, limitations, and evidence. Keep small test fixtures honest; do not fabricate
+  product features or stretch a tiny project merely to fill headings.
+- Finish essential usability and safe update/review behavior before optional expansion.
+  check/doctor/custom templates/provider SDKs are not mandatory first-release checkboxes;
+  add a feature only when a concrete user workflow needs it.
+- Release confidence still requires package, dependency/license, documentation, and
+  platform checks. Publication/commits/pushes require explicit owner authorization.
+
+The revised future work is in section 16 and docs/roadmap.md. Do not resume removed
+phases from the historical copy or equate cancelled scope with completed functionality.
+
 **Do not treat Craftmentation as a simple README template, proof of concept, or demonstration project. It is a real developer product intended for public distribution and long-term maintenance.**
 
 Work systematically, make sound engineering decisions, preserve existing work, verify implementations, and maintain continuity across development sessions.
@@ -301,7 +331,7 @@ Do not generate a completely different brand identity.
 
 # 4. PRODUCT ARCHITECTURE
 
-Craftmentation consists of six major systems.
+Craftmentation has six conceptual areas; repository documentation replaces the previously planned website.
 
 ## 4.1 Documentation Standard
 
@@ -323,9 +353,11 @@ Provides local commands for initialization, analysis, generation, updates, and v
 
 Provides CI validation, documentation checks, and optional automation.
 
-## 4.6 Documentation Website
+## 4.6 Repository Documentation
 
-Provides public documentation, examples, configuration references, and integration guides.
+README.md and docs/ provide public documentation, examples, configuration references,
+and integration guides directly on GitHub. A separate website is out of scope under
+the owner-approved revision.
 
 These systems must share consistent schemas and conventions.
 
@@ -604,7 +636,12 @@ Create a cross-platform command-line application named:
 
 `craftmentation`
 
-## Planned commands
+## Command scope
+
+The implemented MVP includes init/analyze/generate/validate. Safe review/update behavior
+is the next workflow goal. check/doctor are conditional designs requiring a demonstrated
+need, not mandatory release commands. The original command family is retained below as
+design context; see the CLI reference for actual availability.
 
 ```bash
 craftmentation init
@@ -739,7 +776,7 @@ Support:
 - Custom templates.
 - Custom sections.
 - Output configuration.
-- Localization.
+- Requested output language through the manual AI workflow; no localization engine.
 - Asset paths.
 - Optional AI integrations.
 
@@ -747,32 +784,19 @@ Document configuration precedence and backward compatibility.
 
 ---
 
-# 11. MULTILINGUAL DOCUMENTATION
+# 11. DOCUMENT LANGUAGE
 
-English is the default language.
+English is the default language of Craftmentation documentation. Users may ask their
+chosen coding agent to write or adapt a README in another language. The agent must
+preserve commands, paths, identifiers, legal notices, and verified technical meaning.
+It must not claim human translation review without evidence.
 
-Support files such as:
-
-```text
-README.md
-README.tr.md
-README.de.md
-README.es.md
-README.fr.md
-```
-
-Requirements:
-
-- Language navigation.
-- Consistent structure.
-- Translation status tracking.
-- Detection of outdated translations.
-- Preservation of code examples.
-- Preservation of paths and commands.
-- Preservation of technical terminology.
-- Optional AI-assisted translation.
-
-Do not claim translations are human-reviewed unless verified.
+There is no product requirement for multiple maintained README editions, automated
+translation, language navigation management, translation status dashboards, or drift
+tracking. Existing translation prompts and evaluation fixtures are optional reusable
+materials, not unfinished localization features. The CLI's current English-only capability
+is documented; reserved version-1 config fields remain rejected when unsupported, rather
+than being silently ignored or treated as a commitment to implement localization.
 
 ---
 
@@ -803,42 +827,17 @@ Capabilities:
 
 ---
 
-# 13. DOCUMENTATION WEBSITE
+# 13. REPOSITORY DOCUMENTATION
 
-Develop an official documentation website after the framework and CLI reach sufficient stability.
+Use README.md for the product explanation, one recommended getting-started route,
+examples, current capabilities, and links to support/contribution guidance. Use docs/
+for detailed references and contributor material, with a short index explaining what
+ordinary users actually need. Preserve useful detailed documentation rather than
+replacing it with duplicated summaries.
 
-Sections:
-
-- Home
-- Introduction
-- Getting Started
-- Installation
-- CLI Reference
-- Configuration
-- Templates
-- Project Types
-- AI Integrations
-- GitHub Actions
-- Examples
-- Contributing
-- Changelog
-
-Requirements:
-
-- Minimal design.
-- Craftmentation branding.
-- Responsive layout.
-- Accessibility.
-- Fast loading.
-- SEO.
-- Light and dark modes.
-- Search.
-- Clear navigation.
-- High-quality code examples.
-
-Evaluate established documentation frameworks before selecting a solution.
-
-Do not build a custom documentation engine unnecessarily.
+Do not build or deploy a standalone documentation website. No site framework, hosting,
+website search, SEO, website analytics, or separate deployment pipeline is required.
+The established branding remains in repository assets and GitHub-compatible Markdown.
 
 ---
 
@@ -1149,122 +1148,61 @@ Deliverable:
 
 Working CLI MVP.
 
-## PHASE 7: Advanced CLI
+## PHASE 7: Product Clarity and Representative Examples
 
-**Goal:** Expand the CLI.
-
-Commands and features:
-
-```bash
-craftmentation update
-craftmentation check
-craftmentation doctor
-```
-
-Additional capabilities:
-
-- Dry-run.
-- Custom templates.
-- Configuration overrides.
-- Documentation preservation.
-- Improved project detection.
-- Advanced validation.
-- Better diagnostics.
-
-Deliverable:
-
-Feature-complete initial CLI.
-
-## PHASE 8: Localization
-
-**Goal:** Support multilingual documentation.
+**Goal:** Make the existing product understandable and useful before adding more machinery.
 
 Tasks:
 
-1. Design localization architecture.
-2. Implement language configuration.
-3. Implement language navigation.
-4. Detect translation drift.
-5. Preserve technical content.
-6. Support optional AI translation.
-7. Test English and Turkish.
-8. Document localization workflows.
+1. Reconcile owner-approved scope and preserve original records.
+2. Audit the actual repository and current user journey.
+3. Make the main README lead with one recommended, low-effort AI-assisted route.
+4. Explain which repository files users need and which are contributor/internal material.
+5. Improve all five source-backed README examples with relevant, finished content.
+6. Explain example design choices and distinguish curated output from current automatic output.
+7. Honor requested agent output language without introducing multilingual automation.
+8. Align active references, tests, architecture, changelog, and progress records.
 
-Deliverable:
+Deliverable: understandable onboarding, a repository guide, and credible showcase examples.
 
-Multilingual documentation support.
+## PHASE 8: Practical README Workflow
 
-## PHASE 9: GitHub Actions
-
-**Goal:** Enable CI documentation workflows.
+**Goal:** Turn a real repository into a useful reviewable README with minimal friction.
 
 Tasks:
 
-1. Create validation workflows.
-2. Add link checking.
-3. Add placeholder detection.
-4. Add configuration validation.
-5. Add documentation quality checks.
-6. Add optional update workflows.
-7. Add PR-based suggestions.
-8. Review workflow permissions.
-9. Document integration.
+1. Run complete user journeys on existing examples and Craftmentation itself as a real repository.
+   Add external repository trials only when the owner supplies or authorizes that target.
+2. Improve missing-information diagnostics into actionable next steps with minimal required input.
+3. Provide one clearly documented preview/review/save path; preserve existing README and custom content.
+4. Improve source-backed population only where it materially improves README quality.
+5. Implement safe update proposals and explicit application with preservation/conflict tests.
+6. Add check/doctor/customization only if the observed workflow cannot be served clearly
+   by existing validation/errors and built-in sections; record exclusions deliberately.
+7. Verify generated output quality, exact writes, no mandatory AI service, and no target script execution.
+8. Update the user guide and examples to match behavior actually implemented.
 
-Deliverable:
+Deliverable: a demonstrated end-to-end workflow with honest limits and no filler output.
 
-GitHub Actions integration.
+## PHASE 9: Release Confidence and Distribution
 
-## PHASE 10: Documentation Website
-
-**Goal:** Build the public documentation website.
-
-Tasks:
-
-1. Evaluate documentation frameworks.
-2. Select technology.
-3. Apply branding.
-4. Build navigation.
-5. Document installation.
-6. Document CLI commands.
-7. Document configuration.
-8. Document templates.
-9. Document AI integrations.
-10. Document GitHub Actions.
-11. Add examples.
-12. Verify accessibility.
-13. Verify responsive behavior.
-14. Prepare deployment configuration.
-
-Deliverable:
-
-Deployable documentation website.
-
-## PHASE 11: Release Preparation
-
-**Goal:** Prepare the first public release.
+**Goal:** Prepare a reproducible, trustworthy first release candidate.
 
 Tasks:
 
-1. Review repository completeness.
-2. Run tests.
-3. Run static analysis.
-4. Validate documentation.
-5. Review package contents.
-6. Audit dependencies.
-7. Review licenses.
-8. Test installation.
-9. Verify cross-platform behavior.
-10. Prepare release notes.
-11. Establish versioning.
-12. Prepare package publishing.
-13. Document upgrade procedures.
-14. Complete release checklist.
+1. Verify Node/runtime, package contents, installation, and upgrade behavior.
+2. Verify Linux and Windows execution in addition to current macOS results.
+3. Add minimal read-only GitHub checks for tests and document validity; no automatic README rewrites.
+4. Review dependency/security reports, licenses, third-party notices, and repository completeness.
+5. Resolve/document confidential reporting routes and operational limitations.
+6. Review examples, navigation, user workflow, and claims against the actual product.
+7. Choose a public version, prepare release notes and a concrete release checklist.
+8. Request explicit owner authorization before commits, pushes, publishing, deployment, or releases.
 
-Deliverable:
+Deliverable: release candidate and reviewable publication plan, not an automatic release.
 
-Release candidate.
-
-Do not publish, deploy, push commits, or create releases without explicit authorization.
+Standalone website and localization phases are removed from active scope, not marked
+as implemented. Historical phase numbering is preserved only in the archived roadmap.
 
 ---
 
@@ -1352,7 +1290,7 @@ The completed Craftmentation product should allow developers to:
 8. Validate documentation.
 9. Update documentation safely.
 10. Use AI coding agents.
-11. Support multiple languages.
+11. Let users request their coding agent's output language without requiring a translation platform.
 12. Integrate documentation checks into CI.
 13. Maintain consistency across multiple projects.
 
@@ -1382,9 +1320,9 @@ The following decisions are final unless the project owner explicitly changes th
 | Modular Templates | Required |
 | AI-Agnostic Design | Required |
 | CLI | Required |
-| Multilingual Support | Required |
+| Document Language | English default; agent follows requested language; no localization engine |
 | GitHub Actions | Required |
-| Documentation Website | Planned |
+| Documentation Website | Out of scope; use README.md and docs/ |
 | Safe Repository Analysis | Required |
 | Fabricated Documentation | Forbidden |
 | Permanent Project Specification | Required |
@@ -1395,7 +1333,7 @@ Do not reopen these decisions unnecessarily.
 
 ---
 
-# 20. FIRST EXECUTION INSTRUCTIONS
+# 20. FIRST EXECUTION INSTRUCTIONS (HISTORICAL; COMPLETED)
 
 Begin with **PHASE 0: Repository Audit and Permanent Specification**.
 
@@ -1478,4 +1416,4 @@ Do not repeatedly ask for previously established decisions.
 
 **The repository must remain the authoritative source of project state across all future Codex sessions.**
 
-Begin Phase 0 now.
+The initial Phase 0 instruction is historical. Continue only according to the current roadmap.

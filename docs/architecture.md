@@ -7,7 +7,10 @@ TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas.
 48-section library, fourteen profiles, manual AI workflows, and source-backed examples
 remain available. The development package is private at 0.0.0-dev.0; no public release,
 CI workflow, provider integration, localization engine, or advanced CLI command exists.
-Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md).
+Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). The active scope
+prioritizes an agent-based quick start and optional CLI, without a website or localization
+engine. See [ADR 0009](decisions/0009-usability-and-scope.md) and the
+[repository guide](README.md) for the user-facing organization.
 
 ## Components and responsibilities
 
@@ -61,7 +64,8 @@ The README standard defines four section classes and evidence-based inclusion cr
 The default template uses double-brace manual authoring fields and conditional comments;
 the CLI renderer now performs one nonrecursive literal substitution pass. No expression,
 helper, include, or executable template engine is introduced. Localization conventions
-include manual source-revision/status tracking; automated drift detection is not implemented.
+apply only to explicitly requested multiple editions. Existing optional prompts and fixtures
+remain; no localization engine or automated drift detection is planned.
 
 ## Interfaces, configuration and extension points
 

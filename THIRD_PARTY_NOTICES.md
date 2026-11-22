@@ -19,7 +19,7 @@ The following direct runtime dependency metadata was inspected for the Phase 6 l
 
 Development dependencies TypeScript 7.0.2, @types/node 24.19.2, and Prettier 3.10.1
 declare Apache-2.0, MIT, and MIT respectively. Installed dependencies include their own notices. This direct-package
-inventory is not an exhaustive legal audit of the transitive tree; Phase 11 reviews the
+inventory is not an exhaustive legal audit of the transitive tree; Phase 9 reviews the
 actual release package and dependency notices again before publication.
 
 The brand wordmark uses outlined Inter glyphs. Its copyright and SIL Open Font License

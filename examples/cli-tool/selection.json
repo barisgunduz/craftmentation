@@ -2,7 +2,9 @@
   "formatVersion": 1,
   "request": {
     "profile": "cli-tool",
-    "include": [],
+    "include": [
+      "troubleshooting"
+    ],
     "exclude": [],
     "evidence": {
       "project-name": {
@@ -47,6 +49,34 @@
           "examples/cli-tool/count_lines.py"
         ],
         "safe": true
+      },
+      "features": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "testing": {
+        "state": "verified",
+        "sources": [
+          "tests/test_template_examples.py"
+        ],
+        "safe": true
+      },
+      "troubleshooting": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
+      },
+      "examples": {
+        "state": "verified",
+        "sources": [
+          "examples/cli-tool/count_lines.py"
+        ],
+        "safe": true
       }
     },
     "customSections": []
@@ -55,8 +85,12 @@
     "project-name",
     "description",
     "overview",
+    "features",
     "requirements",
     "installation",
-    "usage"
+    "usage",
+    "examples",
+    "testing",
+    "troubleshooting"
   ]
 }

@@ -1,14 +1,13 @@
 # Architecture decision records
 
 Record significant technical choices here using sequential filenames such as
-`0009-next-decision.md`. Each record must include status, context, decision,
+`0010-next-decision.md`. Each record must include status, context, decision,
 alternatives considered, and consequences. Supersede earlier decisions explicitly
 rather than silently rewriting their rationale.
 
-No implementation technology has been selected during Phase 0. Product decisions
-already mandated by the owner are recorded in [PROJECT_SPEC.md](../PROJECT_SPEC.md#19-established-product-decisions).
-CLI technology, framework, configuration, rendering, provider abstractions,
-localization, and update safety decisions belong to their designated roadmap phases.
+Current product decisions are recorded in [PROJECT_SPEC.md](../PROJECT_SPEC.md#19-established-product-decisions).
+Phases 5–6 selected and implemented the CLI technology. ADR 0009 revises the future
+product scope without erasing earlier design rationale.
 
 ## Accepted records
 
@@ -26,3 +25,6 @@ localization, and update safety decisions belong to their designated roadmap pha
 
 - [0008: CLI MVP implementation refinements](0008-cli-mvp-implementation.md) — strict JSON,
   locked dependencies, conservative population, and restricted init/write targets.
+
+- [0009: Usability and revised product scope](0009-usability-and-scope.md) — one primary
+  user path, representative examples, optional CLI, and removal of website/localization automation.

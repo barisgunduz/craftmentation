@@ -65,7 +65,7 @@ embedding an independent standard. These are regression guardrails, not a langua
 Results are recorded in the Phase 4 [roadmap entry](roadmap.md#phase-4-ai-integration-v01).
 The canonical examples, product LICENSE, and application fixture sources are unchanged by
 these documentation workflows. The translation is marked Unreviewed: no human review was
-performed or claimed. It exists only as an evaluation fixture; Phase 8 localization tooling
-has not begun. Browser/GUI interaction, live API requests, real-world monorepos, secret
+performed or claimed. It exists only as an evaluation fixture; automated localization
+is outside the revised active scope. Browser/GUI interaction, live API requests, real-world monorepos, secret
 scanning, external link checking for generated outputs, and native vendor-client discovery
 remain outside this evaluation. A maintainer should extend the corpus before claiming broader coverage.

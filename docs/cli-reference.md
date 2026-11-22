@@ -5,9 +5,11 @@
 The MVP implements init, analyze, generate, and validate from this checkout. Build with
 `npm run build` and invoke `node dist/cli/index.js`, or use the npm-created bin from an
 explicitly installed local package. The private development version is 0.0.0-dev.0; no
-public package release exists. Update/check/doctor are Phase 7 designs and are rejected
-as unknown commands rather than exposed as stubs. Localization/custom libraries/providers
-remain unsupported capabilities.
+public package release exists. Update/check/doctor are unimplemented design references
+and are rejected as unknown commands. The revised roadmap prioritizes a practical update
+workflow in Phase 8; check/doctor/custom libraries/providers require a demonstrated need.
+Localization automation is outside active scope. Tables mentioning these commands describe
+reserved interfaces, not commands users can run.
 
 ## Common interface
 
@@ -46,9 +48,9 @@ is reserved for unrecoverable startup errors before the reporter can run.
 | analyze | 6 | Bounded static inspection, type signals, provenance and section evidence | Read-only; JSON envelope data is the canonical Analysis object |
 | generate | 6 | Resolve config, analyze, select evidence, render, validate | Create only a missing output document; refuse any existing output and direct users to update |
 | validate | 6 | Check configured/explicit document path, config, known publication rules and internal links | Read-only; --document <path> overrides the document being checked |
-| update | 7 | Analyze existing content; default preview of a focused reconciliation plan | No write by default; --write explicitly applies an eligible guarded update |
-| check | 7 | Run the same validators noninteractively with warnings treated as failure | Read-only; useful for CI, never rewrites README/config |
-| doctor | 7 | Diagnose runtime, installed data/schema versions, root/config/capability issues | Read-only; no install, network, credential probe, or self-repair |
+| update | Planned: revised 8 | Analyze existing content; default preview of a focused reconciliation plan | No write by default; --write explicitly applies an eligible guarded update |
+| check | Conditional | Run the same validators noninteractively with warnings treated as failure | Read-only; useful for CI, never rewrites README/config |
+| doctor | Conditional | Diagnose runtime, installed data/schema versions, root/config/capability issues | Read-only; no install, network, credential probe, or self-repair |
 
 Init writes only a basename of craftmentation.config.json (including a safe nested
 --config location with an existing parent); arbitrary manifest/adapter destinations are

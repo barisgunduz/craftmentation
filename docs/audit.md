@@ -119,3 +119,61 @@ The new reporting policies explicitly acknowledge the missing confidential route
 No runtime, profiles, template modules, AI adapters, translations, CI, or website were
 implemented ahead of their phases. Visual browser validation remains outstanding;
 local rasterization tools did not produce a trustworthy typography preview.
+
+## Product and usability review
+
+Review date: 2026-11-22. This section supersedes the initial implementation-state findings
+above; the earlier sections remain a record of Phases 0–1. The owner requested a simpler
+product, clearer examples, no separate website, and no localization automation.
+
+### Inspected state
+
+The local HEAD and GitHub master tree both resolved to
+`40ece6ad54679f7bd73f80c8297d4e1000e77f59` before these edits. Git status was clean.
+The review covered instructions/specification/roadmap, package and lockfile, source,
+Node/Python tests, schema contracts, prompts, templates, example sources, and documentation.
+No public package, CI workflow, advanced command, provider adapter, website, or localization
+engine was found. The CLI MVP implements init/analyze/generate/validate.
+
+A real CLI analysis of this checkout reported 198 inventoried files, 13 facts, and five
+`W_UNSAFE_CONTENT` warnings before documentation edits. These conservative text-heuristic
+warnings are not findings of five confirmed security vulnerabilities. File counts and
+source fingerprints change as the repository changes.
+
+A generation dry-run against the original library example selected identity, overview,
+requirements, installation, and usage and produced 114 words. That demonstrates a small
+working draft, not source-level semantic understanding. A temporary repository with only
+a package name/description and no usage failed with `E_EVIDENCE`. Temporary inputs were
+removed. The baseline CLI can reuse JSON metadata and existing README sections but does
+not turn arbitrary application source into a complete README automatically.
+
+### Findings and action
+
+| Finding | Consequence | Action |
+|---|---|---|
+| Many internal contracts precede the first useful result | New users cannot tell what to read | One recommended agent quick start; optional CLI; repository map |
+| The original roadmap treats every planned subsystem as mandatory | Maintenance cost exceeds the immediate README goal | Owner-approved scope revision and three focused remaining phases |
+| Tiny examples omit useful operational context | The framework's value is hard to assess | Source-backed usage, errors, testing boundaries, troubleshooting, and omission rationale |
+| Curated fixtures and deterministic generation are easy to confuse | Users may expect unsupported automatic inference | Explicitly distinguish authored examples from CLI output |
+| Missing Core usage blocks fresh generation | A first-time user faces internal evidence terminology | Next phase: actionable missing-information guidance and a preview/review/save journey |
+| Existing output is rejected | Content is protected, but recurring maintenance is incomplete | Next phase: reviewable updates with preservation/conflict checks |
+| Native platform evidence covers macOS only | Cross-platform intent is not verified support | Release phase must execute Linux/Windows checks |
+
+### Scope and retained value
+
+Phases 0–6 established a real standard, reusable sections/profiles, AI policies, a safe
+four-command CLI, schemas, and meaningful regression tests. These are retained. They are
+maintainer tools, not prerequisites to writing one README. `tests/node` remains tracked
+source; dependencies/build/cache artifacts remain ignored.
+
+A standalone website and automated localization/translation tracking are removed from
+active scope, not marked implemented or completed. English is the default; a user can ask
+their agent for another language. Reserved CLI fields continue to reject unsupported
+settings rather than silently pretending to work. Optional translation prompts and old
+fixtures remain historical/reusable material without committing to an engine.
+
+The revised order is product clarity/examples, practical README workflow, then release
+confidence/distribution. check/doctor/custom-template/provider capabilities need a
+specific user benefit before implementation. No runtime capability is added by this
+usability revision. Current validation results are recorded in the [roadmap](roadmap.md);
+prior macOS results do not establish native Linux/Windows or graphical behavior.

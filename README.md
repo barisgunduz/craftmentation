@@ -4,119 +4,93 @@
 
 **Craft better. Document smarter.**
 
-A universal, AI-ready README and documentation framework for modern software projects.
+Create a useful README for the project you actually have. Craftmentation gives you a
+reusable structure, evidence-based AI instructions, finished examples, and an optional
+local CLI for generation and validation.
 
-Craftmentation helps developers, maintainers, engineering teams, technical writers, and
-coding agents write documentation grounded in the repository they are documenting.
-Its approach combines relevant sections, verified examples, and reusable guidance.
+[Start here](#quick-start) · [See examples](examples/README.md) · [Repository guide](docs/README.md) · [Roadmap](docs/roadmap.md)
 
-> Early development: the CLI MVP is available from this checkout. No public npm release
-> has been published. Advanced updates, localization tooling, CI integration, and the
-> documentation website remain planned.
+## Quick start
 
-[Quick start](#quick-start) · [Documentation](#documentation) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
+The easiest route is your existing AI coding tool. You do not need to install the CLI,
+configure an API key, or read the framework internals.
 
-## Available today
+1. Open **your project** in your coding agent.
+2. Give it [the README standard](docs/standard.md) and [the starter template](README.template.md)
+   as files or accessible local references.
+3. Send this request:
 
-- A local CLI with `init`, `analyze`, `generate`, and offline `validate` commands.
+```text
+Create or improve this project's README using the supplied Craftmentation standard and template.
+Inspect the actual repository first. Keep relevant sections and preserve accurate custom content.
+Use verified installation, configuration, and usage examples. Do not invent missing facts.
+Write in English unless I request another language.
+Show me a reviewable draft and list unresolved questions separately before saving.
+```
 
-- A [README template](README.template.md) to adapt by hand.
-- The [README Standard v0.1](docs/standard.md) and [14 project profiles](docs/project-profiles.md).
-- A [modular library](docs/templates.md) with 48 reusable sections and [five source-backed examples](examples/README.md).
-- Four [AI workflow prompts](prompts/README.md) for analysis, generation, updates, and translation,
-  backed by [shared instructions](docs/ai-instructions.md).
-- [Brand assets and usage guidelines](assets/brand/brand-guidelines.md).
+Review the draft, fill genuine information gaps, then ask your agent to save the intended
+change. If a README already exists, preserve useful content and legal notices. Your
+project keeps its own license; Craftmentation does not assign one to it.
 
-No AI service is required to use these materials. [Integration guidance](docs/ai-integrations.md)
-distinguishes documented entry points, manual walkthroughs, and untested native client behavior.
+For repeatable analysis, updates, or a language-specific request, use the optional
+[workflow prompts](prompts/README.md). They work with the materials you provide; automatic
+instruction loading and output quality depend on your chosen tool and available context.
 
-## CLI quick start
+## What should the result look like?
 
-Use Node.js 24 or 26 and npm. From this repository:
+Start with the [example gallery](examples/README.md). It shows complete READMEs for a
+web app, CLI, API, library, and desktop app, with real source, meaningful examples,
+troubleshooting, and honest limits. Each explains why some sections were omitted.
+
+These are curated examples of documentation quality. They are not claims that the CLI
+can infer every detail automatically. A simple project needs a concise useful README;
+it does not need fabricated features or empty sections to look substantial.
+
+## Optional: use the local CLI
+
+For repeated local checks or deterministic drafts, the MVP has four commands:
+
+| Command | What it does |
+|---|---|
+| `init` | Create configuration without overwriting an existing file |
+| `analyze` | Inspect static repository evidence |
+| `generate` | Create a missing README from supported facts and reviewed content |
+| `validate` | Check Markdown, placeholders, internal links, and configuration offline |
+
+From this Craftmentation checkout, use Node.js 24 or 26 and npm:
 
 ```bash
 npm ci --ignore-scripts
 npm run build
-node dist/cli/index.js --help
+node dist/cli/index.js generate --root examples/library --output README.preview.md --dry-run
 ```
 
-Try the existing library fixture without changing it:
+That command previews an existing example without writing a file. The CLI currently reads
+JSON package metadata and existing README sections. It cannot invent missing usage; it may
+need explicit source-backed content. It never executes your project's scripts or fetches
+external links. Existing output is protected. See the [CLI reference](docs/cli-reference.md).
 
-```bash
-node dist/cli/index.js init --root examples/library --dry-run
-node dist/cli/index.js analyze --root examples/library --json
-node dist/cli/index.js generate --root examples/library --output README.generated.md --dry-run
-node dist/cli/index.js validate --root examples/library
-```
+The package is private at `0.0.0-dev.0`; there is no public npm release. Actual runtime
+checks cover macOS with Node 24/26; native Linux/Windows verification remains outstanding.
 
-Remove `--dry-run` only when you intend to create the requested file. Generation refuses
-existing output. Source-backed usage must exist in a README or explicit configuration;
-the CLI does not invent usage from package/dependency names. No AI key or service is required.
-See the [CLI reference](docs/cli-reference.md) and [configuration guide](docs/configuration.md).
+## What is in this repository?
 
-## Quick start
+Most users need only the standard, starter, and an example. `templates/` and `sections/`
+are reusable building blocks; `src/`, `schemas/`, tests, and architectural records maintain
+the optional CLI. [The repository guide](docs/README.md) explains every area and where to
+start. You do not have to learn their internal formats to write one README.
 
-1. Download or clone this repository and read the [README Standard v0.1](docs/standard.md).
-2. Inspect your target project's manifests, source, tests, scripts, CI, and existing documentation.
-3. Copy `README.template.md` into your project as `README.md` only after reviewing and
-   backing up any existing README. Preserve valid custom content.
-4. Keep relevant sections, fill them with verified information, and remove unused
-   sections, all authoring placeholders, and authoring comments.
-5. Check commands against the repository, verify links, and preview the result on GitHub.
+There is no separate documentation website or translation platform planned. Documentation
+lives here. Ask your AI tool for the output language you want; English is the default.
 
-For AI assistance, choose a [workflow prompt](prompts/README.md) alongside
-your project's own instructions. Craftmentation's [AGENTS.md](AGENTS.md) governs
-contributions to this repository; do not overwrite another project's agent instructions.
+## Contributing and support
 
-Keep required Craftmentation copyright and permission notices when reusing substantial
-material. Do not copy its license as your project's license unless you have chosen MIT.
-See the [licensing guide](docs/licensing.md).
-
-## Principles
-
-- **Evidence over assumptions:** document confirmed behavior and report unknowns separately.
-- **Relevant sections:** omit content that does not help the intended reader.
-- **Human-readable first:** keep documentation useful without AI tooling.
-- **GitHub-compatible Markdown:** use portable text, links, code examples, and accessible media.
-- **Modular direction:** build toward reusable sections and project profiles.
-- **License neutrality:** preserve each adopting project's licensing decisions.
-
-## Documentation
-
-| Guide | Purpose |
-|---|---|
-| [README Standard v0.1](docs/standard.md) | Section classifications, inclusion rules, and quality requirements |
-| [Template library](docs/templates.md) | Metadata, composition, evidence gates, and custom sections |
-| [Project profiles](docs/project-profiles.md) | Recommendations for all 14 project categories |
-| [Examples](examples/README.md) | Five source-backed manual README compositions |
-| [AI integrations](docs/ai-integrations.md) | Tool entry points, shared policy, and compatibility limits |
-| [AI evaluation](docs/ai-evaluation.md) | Recorded walkthroughs and regression checks |
-| [Architecture](docs/architecture.md) | Current components and implementation boundaries |
-| [CLI reference](docs/cli-reference.md) | Available commands, options, diagnostics, and planned commands |
-| [CLI architecture](docs/cli-architecture.md) | Pipeline, safety contracts, and implementation boundaries |
-| [Configuration](docs/configuration.md) | Version-1 schema, precedence, and capability limits |
-| [Style guide](docs/style-guide.md) | Repository documentation conventions |
-| [Roadmap](docs/roadmap.md) | Phase progress, limitations, and next work |
-| [Master specification](docs/PROJECT_SPEC.md) | Complete product requirements |
-| [Release conventions](docs/releasing.md) | Versioning, changelog, and release preparation |
-| [Changelog](CHANGELOG.md) | Meaningful changes |
-
-The CLI statically reads JSON package metadata and existing Markdown. It does not execute
-project scripts or fetch external links. All fourteen profiles can be selected explicitly;
-automatic detection is currently limited to JSON manifest hints and a static HTML entry point.
-Only English output, bundled templates, and built-in sections are supported by the MVP.
-
-[Developer checks](docs/development.md) cover unit/integration behavior and package smoke
-installation. Node 24/26 tests were run on macOS; Linux and Windows execution remains
-unverified. The package is private at development version `0.0.0-dev.0`; this is not a public release.
-
-## Community
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md)
-before participating. Use [Support](SUPPORT.md) for questions and bug reports, and
-[Security](SECURITY.md) for sensitive concerns. Private reporting is not currently enabled.
+See [Contributing](CONTRIBUTING.md), [Support](SUPPORT.md), [Code of Conduct](CODE_OF_CONDUCT.md),
+and [Security](SECURITY.md). The [roadmap](docs/roadmap.md) now prioritizes usability,
+output quality, safe maintenance, and release confidence.
 
 ## License
 
-Copyright © 2026 Barış Gündüz. Craftmentation is distributed under the [MIT License](LICENSE).
-Its license does not automatically determine the license of projects using its templates.
+Copyright © 2026 Barış Gündüz. Craftmentation uses the [MIT License](LICENSE).
+Keep required notices when reusing substantial material. Your project's license remains
+your own decision; see the [licensing guide](docs/licensing.md).

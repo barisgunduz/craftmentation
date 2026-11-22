@@ -98,11 +98,13 @@ Language syntax is deliberately a small tag subset, not full BCP 47. All tags ar
 not claims that a translation or UI locale exists. Additional languages cannot include
 the primary language, and derived README language paths must be distinct on all target
 filesystems. Phase 6 supports English output only; unsupported language/localization settings
-fail E_CAPABILITY instead of silently being ignored. Phase 8 defines actual edition writes,
-status tracking, navigation, and drift detection before enabling them.
+fail E_CAPABILITY instead of silently being ignored. Automated edition writes, status
+tracking, navigation, and drift detection are outside the active scope. These fields remain
+reserved for schema compatibility, without promising an implementation. Manual AI requests
+can use another language independently of the CLI.
 
-Likewise custom local libraries/sections are reserved for Phase 7 and providers for a future
-explicit integration. The schema can describe the accepted design before all features ship;
+Likewise custom local libraries/sections and providers are reserved, unimplemented capabilities.
+They require a demonstrated user need and an explicit implementation decision. The schema can describe the accepted design before all features ship;
 each staged CLI must diagnose valid-but-unimplemented settings. Disabled AI configuration
 does not trigger network access or credential discovery. There is no provider SDK dependency.
 

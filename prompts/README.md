@@ -12,7 +12,12 @@ and the [template library contract](../docs/templates.md).
 | Reconcile documentation with source | [Update](update-readme.md) | Focused draft/patch, or authorized write preserving custom content |
 | Translate a known source | [Translate](translate-readme.md) | Draft, or authorized target-language document |
 
-Specify the target repository root, Craftmentation framework root, requested operation,
+For a first README, [the main quick start](../README.md#quick-start) needs only
+the standard and manual starter. The modular library is optional for that route. Ask
+your agent for the output language you want; English is the default. No maintained
+translation set or multilingual CLI is required. Translation is an optional user task.
+
+For the full reusable prompts, specify the target repository root, Craftmentation framework root, requested operation,
 output document, language, and whether you want a preview or file edit. The default target
 is the active repository; the default generation output is its README.md. Never guess a
 framework checkout location or a translation language. If essential input is absent, inspect

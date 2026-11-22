@@ -3,7 +3,8 @@
   "request": {
     "profile": "api",
     "include": [
-      "custom-api-reference"
+      "custom-api-reference",
+      "troubleshooting"
     ],
     "exclude": [],
     "evidence": {
@@ -55,6 +56,27 @@
           "examples/api/server.py"
         ],
         "safe": true
+      },
+      "features": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
+      },
+      "testing": {
+        "state": "verified",
+        "sources": [
+          "tests/test_template_examples.py"
+        ],
+        "safe": true
+      },
+      "troubleshooting": {
+        "state": "verified",
+        "sources": [
+          "examples/api/server.py"
+        ],
+        "safe": true
       }
     },
     "customSections": [
@@ -74,9 +96,12 @@
     "project-name",
     "description",
     "overview",
+    "features",
     "requirements",
     "installation",
     "usage",
-    "custom-api-reference"
+    "custom-api-reference",
+    "testing",
+    "troubleshooting"
   ]
 }

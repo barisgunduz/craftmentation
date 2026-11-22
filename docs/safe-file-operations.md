@@ -73,7 +73,7 @@ remain restrictive; do not copy executable bits. Test supported filesystems on e
 before claiming compatibility. Permission errors, unsupported hard links, and existing
 destinations have distinct diagnostics. Interrupted leftovers are diagnosed, not blindly deleted.
 
-## Guarded update protocol (Phase 7)
+## Guarded update protocol (planned, revised Phase 8)
 
 Default update is a read-only proposal. --write is explicit authorization for eligible
 owned-region updates, not permission to overwrite custom content or unknown documents.
@@ -116,6 +116,6 @@ Stored fingerprints are change detectors, not authenticity signatures or proof o
 Plan and validate before writes. Preserve the original on every detected precommit failure.
 Report whether publication/replacement succeeded if later cleanup fails. Never run commands
 from a recovery journal. Never delete unrelated files, follow arbitrary symlinks, expose
-secret values in diagnostics, or call a provider to repair a write. Phase 8 multi-edition
-writes must explicitly define partial-commit/recovery behavior; single-file safety does
-not imply an all-or-nothing multi-document transaction.
+secret values in diagnostics, or call a provider to repair a write. Multi-edition writes
+are outside the active scope. Any future separately authorized multi-document operation
+must define partial-commit/recovery behavior; single-file safety is not a multi-file transaction.

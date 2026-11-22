@@ -43,7 +43,7 @@ standalone offline archive of every linked development artifact.
    Core/explicit content, and preserve attribution. No AI provider is required or installed.
 7. Implement AST-based Markdown/link/placeholder/config validation and its diagnostics.
 8. Wire init/analyze/generate/validate and dry-run/noninteractive/JSON behavior. Do not add
-   Phase 7 commands as fake stubs. Update docs to distinguish actually supported settings.
+   unimplemented commands as fake stubs. Update docs to distinguish actually supported settings.
 9. Verify unit, integration, packed-package data paths, and platform safety before accepting
    the MVP. Update roadmap/changelog and stop. Do not install, push, deploy, or release remotely.
 
@@ -66,8 +66,8 @@ the analyzer; tests may run newly authored isolated CLI fixtures under test cont
 | Filesystem | Traversal, root/ancestor symlinks, dangling links, case collisions, Windows devices/ADS, exclusive create, no-clobber conflict, hard-link unsupported path, permission faults, interrupted cleanup, no false success |
 | Commands | Help without scanning; unknown flags/commands; exact exit and JSON envelope behavior; read-only/dry-run has zero writes; config-only init; generate refuses existing output |
 | Packaging | Built package contains required data and notices, no fixture/secret payload, works outside the source cwd without install hooks |
-| Update, Phase 7 | Byte-identical custom spans, modified/ambiguous markers rejected, backup integrity, hash/identity recheck, preview-only default, concurrency limitations disclosed |
-| Localization, Phase 8 | Source revision drift, language navigation, technical literal preservation, edition path collisions and partial-commit recovery |
+| Update, revised Phase 8 (planned) | Byte-identical custom spans, modified/ambiguous markers rejected, backup integrity, hash/identity recheck, preview-only default, concurrency limitations disclosed |
+| Historical localization design | Outside active scope; existing prompt/artifact regression checks remain, with no engine promised |
 
 Use temporary directories for all mutation tests. Inject permission/I/O/failure points for
 portable tests, and perform actual filesystem tests on each target OS/filesystem before

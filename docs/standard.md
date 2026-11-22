@@ -212,7 +212,10 @@ be able to follow the documentation without loading optional images, animation, 
 
 ## Multilingual conventions
 
-These are authoring conventions; localization tooling and drift detection are not implemented.
+These conventions apply only when a target project requests multiple editions. Craftmentation
+does not require translations or plan a localization engine. English is the default; an agent
+may write a single README in the language its user requests. For optional multiple editions,
+the following authoring conventions keep technical content consistent.
 English is the default canonical edition at `README.md`. Use `README.tr.md`, `README.de.md`,
 `README.es.md`, or another `README.<language>.md` only for an actual translation. Use
 consistent language tags, including region subtags only when needed. Do not rename existing
@@ -248,5 +251,6 @@ create empty translations or a status table when no translations exist.
 
 Follow the repository [style guide](style-guide.md) for prose and review practices.
 Reusable modules and all fourteen profiles are available in the [template library](templates.md).
-The development checker verifies metadata and selection cases; executable user configuration,
-README generation, and general validation belong to later phases in the [roadmap](roadmap.md).
+The development checker verifies metadata and selection cases; the CLI MVP implements
+configuration, conservative generation, and offline validation. See its
+[reference and limits](cli-reference.md) and the current [roadmap](roadmap.md).

@@ -70,4 +70,5 @@ Re-evaluate discovery and model behavior in each tool/version before making a ru
 compatibility claim. Do not run external models, transmit repository content, incur provider
 charges, or install clients merely to exercise this framework without the necessary authorization.
 The provider boundary is designed but has no SDK/adapter. The four-command CLI MVP
-operates deterministically without AI; localization automation remains Phase 8.
+operates deterministically without AI. Automated localization is outside the active scope;
+users can request a language from their agent without installing a translation system.

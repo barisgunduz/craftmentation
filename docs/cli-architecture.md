@@ -4,8 +4,11 @@
 
 The Phase 6 MVP implements init/analyze/generate/validate in TypeScript with locked
 dependencies and actual schema/command tests. The package remains private and unreleased.
-This document preserves the architecture contract and distinguishes later capabilities. Phase 7 adds
-update/check/doctor and advanced customization. Phase 8 adds executable localization.
+This document preserves the architecture contract and distinguishes reserved capabilities.
+The [revised roadmap](roadmap.md) prioritizes usability and output quality, then a practical
+preview/review/save workflow and release confidence. Advanced commands/customization require
+a demonstrated need; executable localization and a website are outside active scope.
+See [ADR 0009](decisions/0009-usability-and-scope.md).
 Existing Python checkers and example programs remain development fixtures, not the CLI.
 
 ## Technology and packaging decision
@@ -30,7 +33,7 @@ Package only compiled code and the required templates, sections, schemas, prompt
 linked framework documentation, README, and license/notices using an explicit allowlist.
 Exclude tests, fixture outputs, local files, and the large brand reference board unless
 an artifact is explicitly needed. Resolve shipped data from `import.meta.url`, never
-from the target working directory. Verify a packed archive before publishing in Phase 11.
+from the target working directory. Verify a packed archive before publishing in Phase 9.
 An installing user must not need build tools or a postinstall script.
 
 ## Planned module boundaries and interfaces
@@ -48,7 +51,7 @@ programmatic import API is published yet.
 | renderer | Literal nonrecursive field substitution and Markdown assembly | `render(plan): RenderedDocument` |
 | validator | Schema, GFM structure, links, placeholders, and safety diagnostics | `validate(document, context): Diagnostic[]` |
 | filesystem | Confined reads, snapshots, staging and guarded writes | `snapshot(path)`, `commit(writePlan)` |
-| localization | Language navigation/status and later translation integrity | Reserved boundary; Phase 8 implementation |
+| localization | Historical language/translation design | No engine implemented or planned under current scope |
 | integrations | Optional provider port; no dependency from deterministic pipeline | Reserved boundary; see provider contract below |
 
 No module below cli reads process.argv, prints, calls process.exit, or decides prompts.
@@ -99,7 +102,7 @@ otherwise strong manifest/workspace evidence outranks source-extension hints. If
 signals lack a clear primary project, use general and explain ambiguity. An override
 changes section recommendations, never manufactures features. Begin Phase 6 with JSON
 manifest/README/static asset readers; unsupported formats remain unknown. All fourteen
-profiles can be chosen explicitly. Broader ecosystem detection belongs to Phase 7.
+profiles can be chosen explicitly. Broader detection should be added only where it improves the practical README workflow.
 
 Default bounds: 10,000 regular files, depth 20, 1 MiB per text file, and 32 MiB total
 text read. Sort before processing; record skipped directories/files, binary content,
@@ -134,8 +137,8 @@ creates only its requested README, keeping commits single-file operations.
 Custom templates remain data: local catalog/layout/fragment records using the versioned
 library contract, no expressions/includes/helpers or executable configuration. Custom
 section IDs use `custom-`, cannot replace Core, and participate in the same evidence gates.
-Phase 6 rejects custom templates/sections as unsupported if not implemented; Phase 7
-must implement them rather than silently ignore them. Future custom library paths are
+The MVP rejects custom templates/sections as unsupported. They remain optional future
+capabilities, not release requirements; they must never be silently ignored. Future custom library paths are
 root-confined, package namespaces are not dynamically imported, and remote templates are forbidden.
 
 ## Optional AI provider port
@@ -147,7 +150,7 @@ An orchestration layer applies an explicitly configured provider only after user
 and then runs the same deterministic validation/review pipeline. No credentials live in
 config; a future integration defines explicit credential lookup and transmission consent.
 
-No provider is shipped or invoked by the MVP; Phase 7 also reserves that boundary. `ai.enabled: true` fails with E_CAPABILITY
+No provider is shipped or invoked by the MVP; the active roadmap does not require one. `ai.enabled: true` fails with E_CAPABILITY
 until a concrete provider adapter is implemented and authorized; it never falls back to
 an implicit vendor. The reserved port covers generation/update/translation proposals;
 provider output is untrusted, cannot elevate its own provenance to verified, and cannot

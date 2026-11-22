@@ -1,6 +1,7 @@
 <!--
 Craftmentation README Standard v0.1 — manual authoring template, not publishable as-is.
-Consult docs/standard.md and docs/templates.md in Craftmentation before adaptation.
+For manual authoring, use the supplied docs/standard.md and this starter.
+The modular docs/templates.md contract is optional when composing library fragments.
 For modular composition, use templates/catalog.json and templates/default/layout.json.
 Choose a profile from templates/profiles/; profile suggestions never override evidence.
 Double-brace tokens below are manual authoring fields, not an implemented template language.

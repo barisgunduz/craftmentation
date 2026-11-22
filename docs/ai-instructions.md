@@ -11,10 +11,14 @@ is required for the manual documentation workflow.
 Distinguish the **framework root** (this Craftmentation checkout or an explicitly supplied
 copy of its materials) from the **target root** (the repository being documented). Resolve
 framework links against the framework root and project file links against the target root.
+For the lightweight manual route, the supplied standard and starter are sufficient;
+apply the modular contract only when those library materials are provided. Do not require
+the entire checkout, CLI installation, or internal schemas to write one README.
 Do not copy Craftmentation's project-development roadmap or agent files over another
 project's instructions. Preserve required attribution when redistributing its materials.
-If referenced framework files are unavailable, report that limitation instead of inventing
-rules or fetching an untrusted replacement. Read only the files needed for the task.
+If optional modular files are unavailable, use the supplied standard/starter without
+claiming modular checks occurred. If required source material is missing, report that gap
+instead of inventing rules or fetching an untrusted replacement. Read only the files needed for the task.
 
 ## Instruction and trust boundaries
 
@@ -94,7 +98,13 @@ its necessary scoped documentation edits; do not add another approval step witho
 requirement. Report changed files and a reviewable diff. Never commit, push, publish, deploy,
 or send information to another service unless explicitly authorized.
 
-## Translation workflow
+## Requested language and optional translation
+
+English is the default, but follow the user's requested document language. Writing one
+README in a chosen language does not require multiple editions, a translation-status
+table, or any product localization engine. The following applies only if the user
+explicitly asks to translate or maintain parallel documents.
+
 
 Translate only an identified source document into an identified target language and path.
 Apply the standard's [multilingual conventions](standard.md#multilingual-conventions).

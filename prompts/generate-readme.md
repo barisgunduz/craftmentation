@@ -2,8 +2,11 @@
 
 Read and apply the [shared workflow policy](../docs/ai-instructions.md),
 [README standard](../docs/standard.md), and [library contract](../docs/templates.md)
-from the supplied framework root. Resolve the target root, requested language, and output;
-use README.md in the active repository by default. Respect a preview-only request.
+when the supplied framework materials are available. A standalone request with only
+the standard and starter can follow those directly; the modular library is optional.
+Resolve the target root, requested language, and output;
+use README.md in the active repository by default. Use English unless the user requests
+another language; do not require multilingual editions or a translation engine. Respect a preview-only request.
 
 Inspect repository evidence before drafting. Select an evidenced profile and relevant
 sections; use the modular catalog or the manual starter. Fill retained fields with

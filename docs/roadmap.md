@@ -2,30 +2,20 @@
 
 ## Current state
 
-- Current phase: Phase 6 — Completed.
-- Current focus: CLI MVP delivered; awaiting authorization for Phase 7.
-- Next action: on `devam`, inspect repository state and execute Phase 7, Advanced CLI, only.
-- Maintenance: `.gitignore` excludes OS metadata, local editor state, and environment files
-  while preserving shareable examples. After Phase 6, ignore rules were reviewed to keep
-  test sources/fixtures and package-lock.json versioned while excluding coverage, build
-  caches, npm logs, and CLI operation artifacts. Phase 7 was not started by this maintenance.
-  After Phase 2, branding was reconciled with the
-  owner-supplied identity board; the README now uses a dark panel and outlined Inter text.
-  Logo geometry, transparent variants, monochrome symbol, and favicon were updated.
-  Original reference and Inter attribution are retained under `assets/brand/`.
-  Local raster previews passed on light and dark backgrounds; live GitHub rendering
-  was not tested. This maintenance preceded Phase 3.
-- Blockers: none for the completed phase. Confidential security and conduct reporting
-  remain operational limitations; no private channel is advertised.
-- Known limitations: no advanced update/check/doctor commands, custom-template loader,
-  provider integration, localization engine, public package release,
-  CI, or website. GitHub Discussions and private vulnerability reporting are disabled.
-- Validation: see phase results below; 25 Node tests pass on each of Node 24/26,
-  plus eighteen Python tests and the library checker. Linux/Windows execution is unverified.
+- Latest completed work: owner-approved product refocus and example quality, revised Phase 7.
+- Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
+- Next incomplete phase: Phase 8, Practical README Workflow; not started.
+- Out of scope: a standalone documentation website and multilingual/translation automation.
+- Language: English documentation by default; the chosen AI agent may write a user-requested language.
+- Existing CLI: init, analyze, generate, validate. No public release, provider SDK, or automatic updater.
+- Main limitation: deterministic population relies on package metadata and existing README
+  sections; it cannot invent missing usage or replace an agent's repository understanding.
+- Native runtime verification covers macOS/Node 24 and 26. Linux/Windows remain release gates.
+- Validation and the current usability audit are recorded in docs/audit.md and phase results.
 
-Acceptance requirements are in [PROJECT_SPEC.md](PROJECT_SPEC.md). Initial drafts do not
-constitute completed phases. Phase 0 architecture and changelog files fulfilled permanent
-memory requirements; Phase 1 finalized the repository foundation.
+The [current specification](PROJECT_SPEC.md) governs active scope. The
+[original roadmap](history/roadmap.initial.md) is historical. No removed feature is counted
+as completed. Work one phase at a time and stop before starting the next phase.
 
 ## Phase 0: Repository Audit and Permanent Specification
 
@@ -349,125 +339,85 @@ Filesystem writes assume a quiescent local workspace and supported no-clobber pr
 The next phase must preserve these boundaries and add advanced features without rewriting
 custom content or reintroducing mandatory AI/network access.
 
-## Phase 7: Advanced CLI
+## Phase 7: Product Clarity and Representative Examples
+
+Status: **Completed**
+
+Completed tasks: all eight refinement deliverables below. Remaining tasks: none.
+
+- [x] Amend the specification and preserve historical records.
+- [x] Record an evidence-based usability audit of the actual CLI and repository.
+- [x] Give the README one recommended AI-assisted entry path and an optional CLI route.
+- [x] Explain what each repository area is for, separating user material from implementation/tests.
+- [x] Improve five source-backed example READMEs without inventing capabilities or sections.
+- [x] Explain curated examples versus current CLI output and omitted unsupported sections.
+- [x] Align language guidance, active plans, architecture, and change history.
+- [x] Verify links, examples, source commands, and relevant regression checks.
+
+Acceptance: a new user can identify how to start, find a finished example, and understand
+what the tool can/cannot do without reading schemas, ADRs, or every module.
+Validation (2026-11-22, macOS, Node 24.22.3):
+
+- `npm test`: all 25 Node unit/integration tests passed, including generation and validation
+  for the five expanded examples; no skips. No new runtime capability is claimed.
+- `npm run test:legacy`: all 18 Python tests passed; the library checker passed 48 sections,
+  14 profiles, 18 policy cases, and five updated evidence inventories.
+- `npm run typecheck` and `npm run format:check` passed.
+- The actual CLI validator accepted the main README with zero errors/warnings.
+- Parsed 119 Markdown files and checked 258 local file/asset/heading references: no errors.
+- `git diff --check` passed. The original master specification archive is byte-identical
+  to the pre-revision version. Application/runtime source, dependencies, schemas, canonical
+  templates/sections, tests, and license are unchanged. Roadmap archive links were rebased
+  to preserve navigation; its historical tasks/statuses remain unchanged.
+
+Limitations: browser/desktop GUI interaction, live HTTP, native Linux/Windows execution,
+and external model evaluations were not performed. CLI static population remains limited;
+full workflow/update improvements belong to the next phase. No commits or pushes occurred.
+Blockers: none for this phase. Next action: Phase 8 only when the owner asks to continue.
+
+## Phase 8: Practical README Workflow
 
 Status: **Not Started**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: none. Remaining tasks:
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+- [ ] Observe the complete journey on representative examples and Craftmentation itself;
+  include an external repository only when supplied/authorized by the owner.
+- [ ] Turn missing-information errors into clear minimal next steps.
+- [ ] Establish one preview/review/save path with safe existing-document preservation.
+- [ ] Improve verified field population where it improves the actual README.
+- [ ] Implement safe update proposals and explicit application with conflict/custom-content tests.
+- [ ] Add check/doctor/custom templates only for a demonstrated need; document deliberate exclusions.
+- [ ] Demonstrate output quality, offline operation, exact writes, and no target command execution.
+- [ ] Update the user guide, tests, architecture, changelog, and roadmap to actual behavior.
 
-- [ ] Implement `update`, `check`, and `doctor`.
-- [ ] Deliver dry-run, custom templates, overrides, preservation, improved detection, validation, and diagnostics.
+Acceptance: a reviewable good README can be produced without studying internal metadata or
+replacing custom content. No invented facts, unsafe overwrite, or mandatory AI provider.
+Validation: not run. Blockers: none for local work; external targets are optional and need
+owner scope/authorization. Next action: execute this phase only on `devam`.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
-
-Validation: not run; no completion claimed.
-
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
-
-## Phase 8: Localization
-
-Status: **Not Started**
-
-Completed tasks: none accepted for this phase.
-
-Remaining tasks: all checklist items below and applicable specification requirements.
-
-- [ ] Design localization architecture.
-- [ ] Implement language configuration.
-- [ ] Implement language navigation.
-- [ ] Detect translation drift.
-- [ ] Preserve technical content.
-- [ ] Support optional AI translation.
-- [ ] Test English and Turkish.
-- [ ] Document localization workflows.
-
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
-
-Validation: not run; no completion claimed.
-
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
-
-## Phase 9: GitHub Actions
+## Phase 9: Release Confidence and Distribution
 
 Status: **Not Started**
 
-Completed tasks: none accepted for this phase.
+Completed tasks: none. Remaining tasks:
 
-Remaining tasks: all checklist items below and applicable specification requirements.
+- [ ] Verify package contents, runtime versions, installation, and upgrade guidance.
+- [ ] Run native Linux/Windows checks in addition to macOS.
+- [ ] Add minimal read-only GitHub test/document checks with least-privilege permissions.
+- [ ] Review dependencies, notices/licenses, security reports, and repository completeness.
+- [ ] Resolve/document private reporting and remaining operational limits.
+- [ ] Verify examples, navigation, and promises against the product.
+- [ ] Choose a public version and prepare release notes/checklist.
+- [ ] Present a concrete release candidate; publish only with explicit owner authorization.
 
-- [ ] Create validation workflows.
-- [ ] Add link checking.
-- [ ] Add placeholder detection.
-- [ ] Add configuration validation.
-- [ ] Add documentation quality checks.
-- [ ] Add optional update workflows.
-- [ ] Add PR-based suggestions.
-- [ ] Review workflow permissions.
-- [ ] Document integration.
+Acceptance: a reproducible release candidate with honest platform evidence and a concise user path.
+Validation: not run. Blockers: prior phase acceptance and publication authorization when applicable.
 
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
+## Removed from active scope
 
-Validation: not run; no completion claimed.
-
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
-
-## Phase 10: Documentation Website
-
-Status: **Not Started**
-
-Completed tasks: none accepted for this phase.
-
-Remaining tasks: all checklist items below and applicable specification requirements.
-
-- [ ] Evaluate documentation frameworks.
-- [ ] Select technology.
-- [ ] Apply branding.
-- [ ] Build navigation.
-- [ ] Document installation.
-- [ ] Document CLI commands.
-- [ ] Document configuration.
-- [ ] Document templates.
-- [ ] Document AI integrations.
-- [ ] Document GitHub Actions.
-- [ ] Add examples.
-- [ ] Verify accessibility.
-- [ ] Verify responsive behavior.
-- [ ] Prepare deployment configuration.
-
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
-
-Validation: not run; no completion claimed.
-
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
-
-## Phase 11: Release Preparation
-
-Status: **Not Started**
-
-Completed tasks: none accepted for this phase.
-
-Remaining tasks: all checklist items below and applicable specification requirements.
-
-- [ ] Review repository completeness.
-- [ ] Run tests.
-- [ ] Run static analysis.
-- [ ] Validate documentation.
-- [ ] Review package contents.
-- [ ] Audit dependencies.
-- [ ] Review licenses.
-- [ ] Test installation.
-- [ ] Verify cross-platform behavior.
-- [ ] Prepare release notes.
-- [ ] Establish versioning.
-- [ ] Prepare package publishing.
-- [ ] Document upgrade procedures.
-- [ ] Complete release checklist.
-
-Acceptance: satisfy the phase goal and deliverable in specification section 16.
-
-Validation: not run; no completion claimed.
-
-Blockers: no active blocker identified; prior phases and authorization are prerequisites.
-
+The former localization and website phases will not be implemented under the current owner
+decision. Existing optional translation prompts/evaluation artifacts and reserved config fields
+are retained without promising a future engine. Unsupported settings continue to fail clearly.
+Advanced CLI features not justified by the user journey are not release blockers merely because
+they appeared in the original broad plan. No automatic PR-writing/update service is required.

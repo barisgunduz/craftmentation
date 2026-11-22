@@ -2,7 +2,9 @@
   "formatVersion": 1,
   "request": {
     "profile": "web-app",
-    "include": [],
+    "include": [
+      "troubleshooting"
+    ],
     "exclude": [],
     "evidence": {
       "project-name": {
@@ -53,6 +55,20 @@
           "examples/web-app/index.html"
         ],
         "safe": true
+      },
+      "testing": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
+      },
+      "troubleshooting": {
+        "state": "verified",
+        "sources": [
+          "examples/web-app/index.html"
+        ],
+        "safe": true
       }
     },
     "customSections": []
@@ -64,6 +80,8 @@
     "features",
     "requirements",
     "installation",
-    "usage"
+    "usage",
+    "testing",
+    "troubleshooting"
   ]
 }

@@ -21,6 +21,14 @@ Write repository content, source code, and commit messages in English. Do not cr
 commits, push, publish, deploy, discard changes, or rewrite history without authorization.
 Make routine choices independently and preserve existing work.
 
+## Active product scope
+
+Follow the current specification's owner-approved scope revision and revised roadmap,
+not historical plans. Do not start a website or localization engine. Keep English as
+the repository default and honor agent users' requested document language. Prioritize
+clear onboarding, source-backed examples, useful drafts, and safe review/update behavior.
+The original specification/roadmap under docs/history are context, not active obligations.
+
 ## Documentation and AI workflows
 
 Read and follow the [shared documentation instructions](docs/ai-instructions.md) before
