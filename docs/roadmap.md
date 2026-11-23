@@ -2,7 +2,7 @@
 
 ## Current state
 
-- Latest completed work: release-candidate preparation and six-job native verification, revised Phase 10.
+- Latest completed work: metadata-only 0.1.1 publication with 17 npm keywords and verified registry installation.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
 - Phases 9 and 10 are completed. The private 0.1.0-rc.1 candidate is verified. The owner
   subsequently authorized the initial public 0.1.0 npm/GitHub release; publication and
@@ -632,7 +632,7 @@ v0.1.0 source tag or npm artifact.
 
 ## Package discoverability follow-up
 
-Status: **In Progress**
+Status: **Completed**
 
 The owner requested appropriate npm keywords. The published 0.1.0 metadata has none;
 GitHub topics are developer-tools, open-source, readme, readme-generator, and readme-template.
@@ -647,8 +647,32 @@ The package/lock root version is now 0.1.1; application code and dependency vers
 are unchanged. Current installation examples point to 0.1.1; historical 0.1.0 evidence
 and its immutable tag/artifact remain intact.
 
-Next action: verify metadata/format/docs and package contents, run native CI, publish
-the verified artifact, and confirm all 17 keywords in the registry and installed package.
+Verification and publication preparation:
+
+- Source commit 1294c69b143d4ea555553d3bf4ba7de47744238b is pushed to master and tagged v0.1.1.
+- All six [0.1.1 CI jobs](https://github.com/barisgunduz/craftmentation/actions/runs/45260095914)
+  passed. Local format/docs checks, unchanged-source/dependency checks, fresh npm audit
+  (0 known advisories), and reproducible package/installed-command smoke checks passed.
+- The verified 172-file, 191172-byte tarball contains all 17 keywords; SHA-256 is
+  ca8912b98797dc7394eb60ec84d27b8b7a63cd4678033d7a81791111c8bfe0be.
+  The CI package digest matches the local artifact. Do not repack from later documentation
+  status edits and substitute a different artifact for this frozen release source.
+- [GitHub v0.1.1](https://github.com/barisgunduz/craftmentation/releases/tag/v0.1.1)
+  is published, non-draft/non-prerelease, and latest, with the verified tarball, build
+  report, registry-install report, and checksum file. The v0.1.0 artifacts/tag are unchanged.
+- [npm 0.1.1](https://www.npmjs.com/package/craftmentation/v/0.1.1) is available and latest.
+  All 17 keywords match package.json in the public registry and installed package.
+  An earlier browser authentication session failed with E404; registry/stage inspection
+  confirmed no publication before retry. A fresh browser verification succeeded; the
+  accepted version became available after npm processing. No duplicate upload was made
+  after acceptance.
+- A fresh-cache installation into a temporary global prefix verified version/help, all
+  five commands, managed writes/updates, and no-model context preview. The npm tarball
+  is byte-identical to the local/CI artifact. No global user tools or AI model were used.
+
+Blockers: none. Next action: monitor feedback and package discoverability; future releases
+still need their own scope/approval. These post-publication notes do not alter the frozen
+v0.1.1 source tag or npm artifact.
 
 ## Removed from active scope
 

@@ -94,3 +94,20 @@ Phase 10's release-candidate verification is complete. The subsequent owner auth
 covers the initial public 0.1.0 publication; later releases need their own authorization. See
 [candidate notes](release-notes.md), [release conventions](releasing.md),
 [dependency evidence](dependency-licenses.md), and [installation/upgrade](upgrading.md).
+
+## Metadata patch 0.1.1
+
+The owner separately authorized 0.1.1 to add 17 npm keywords. Source/tag
+1294c69b143d4ea555553d3bf4ba7de47744238b / v0.1.1 passed all six
+[release CI jobs](https://github.com/barisgunduz/craftmentation/actions/runs/45260095914).
+Application code and all 103 dependency records are unchanged. Local format/docs/package
+checks and a fresh npm audit (0 known advisories) passed. The 172-file, 191172-byte package
+has SHA-256 ca8912b98797dc7394eb60ec84d27b8b7a63cd4678033d7a81791111c8bfe0be.
+
+[npm 0.1.1](https://www.npmjs.com/package/craftmentation/v/0.1.1) and
+[GitHub v0.1.1](https://github.com/barisgunduz/craftmentation/releases/tag/v0.1.1) are
+published and latest. All 17 keywords were verified in registry metadata and an installed
+package. A fresh-cache download into an isolated temporary global prefix was byte-identical
+to the local/CI tarball and passed all five commands, managed writes/updates, and no-model
+preview. The GitHub Release includes the build and registry-install reports and checksums.
+The initial 0.1.0 evidence above and its artifacts/tag remain unchanged.
