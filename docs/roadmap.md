@@ -4,12 +4,12 @@
 
 - Latest completed work: release-candidate preparation and six-job native verification, revised Phase 10.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Phases 9 and 10 are completed. The private 0.1.0-rc.1 candidate is verified; public
-  publication remains a separate owner-authorized operation, not completed functionality.
+- Phases 9 and 10 are completed. The private 0.1.0-rc.1 candidate is verified. The owner
+  subsequently authorized the initial public 0.1.0 npm/GitHub release; publication is In Progress.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
 - Existing CLI: init, analyze, generate, validate, and preview-first managed update.
-  No public release, provider SDK, background updater, website, or localization engine.
+  No provider SDK, background updater, website, or localization engine.
 - Source-aware --agent mode interprets bounded code excerpts through a trusted installed client.
   Without it, deterministic population still relies on metadata/Markdown/reviewed content.
   Model interpretations remain unreviewed proposals; context limits and unknowns are visible.
@@ -580,6 +580,29 @@ Next action: commit/push these verification notes under the existing source-uplo
 check their CI, then present the candidate/publication plan to the owner.
 Source-upload authorization is already granted; do not request it again for these notes.
 Publication/tagging/merging remain separate unauthorized actions.
+
+## Initial public distribution: 0.1.0
+
+Status: **In Progress**
+
+The owner explicitly authorized the proposed 0.1.0 npm publication, matching GitHub
+Release, installation verification, and confidential security reporting setup on 2026-11-23.
+This authorization includes the necessary version/docs commits, pushes, tag, and release
+assets; it does not authorize future versions or unrelated deployments.
+
+- [x] Confirm npm account barisgunduz and inspect the public registry name.
+- [x] Enable GitHub private vulnerability reporting and verify enabled:true.
+- [x] Prepare 0.1.0 package/lock metadata, explicit public registry configuration, release
+  notes, dated changelog, and npm/source/local-package installation guidance.
+- [ ] Verify final release metadata, package payload, and native CI.
+- [ ] Publish the exact verified npm tarball and inspect registry integrity/version.
+- [ ] Create v0.1.0 and a GitHub Release with the tarball and verification evidence.
+- [ ] Install the registry package into a clean consumer and verify the installed commands.
+
+Known limitation: Claude live generation still requires an authenticated Claude account;
+it is not covered by protocol tests or the successful Codex evaluation. Do not claim it ran.
+Next action: complete the release checks, publish within the granted authorization, then
+record actual registry/release URLs and installed-package results.
 
 ## Removed from active scope
 

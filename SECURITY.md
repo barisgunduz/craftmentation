@@ -2,29 +2,22 @@
 
 ## Scope and support status
 
-Craftmentation is in early development with no public released versions. The local CLI
+Craftmentation's initial release series is 0.1.x. The local CLI
 performs static reads, deterministic generation, offline validation, no-clobber
 creation, and explicitly reviewed managed updates. Opt-in agent drafting transmits selected
 source excerpts through a trusted installed client; review includes path confinement, untrusted configuration/templates, secret-bearing
-inputs, and filesystem assumptions as well as documentation/prompts. There is no supported release series or response-time guarantee.
-Report concerns against the current repository state, including the affected commit or files.
+inputs, and filesystem assumptions as well as documentation/prompts. Security fixes are
+considered for the latest 0.1.x version; there is no response-time guarantee. Include
+the affected version, commit, or files when reporting a concern.
 
 ## Reporting a vulnerability
 
-**GitHub private vulnerability reporting is currently disabled for this repository.**
-This setting was verified through the GitHub API on 2026-11-23. The 0.1.0-rc.1 candidate
-is local/private and has not established a supported public release series.
-No dedicated security email or other confidential channel has been established in
-this policy. Do not post exploit details, credentials, private repository content,
+**Use [GitHub's private vulnerability reporting form](https://github.com/barisgunduz/craftmentation/security/advisories/new).**
+Private reporting was enabled and verified through the GitHub API on 2026-11-23.
+Do not post exploit details, credentials, private repository content,
 or sensitive personal information in a public issue or pull request.
 
-For a sensitive concern, open a minimal [issue](https://github.com/barisgunduz/craftmentation/issues)
-requesting a confidential security reporting channel, without describing the vulnerability.
-Wait for an agreed private route before sending technical details. This initial request
-is public; if even its existence would disclose sensitive information, do not use it.
-This lack of a confidential route is a known operational limitation.
-
-Once a private route is agreed, provide affected files or commit, a concise description,
+In the private report, provide affected version/files or commit, a concise description,
 potential impact, safe reproduction steps, and any proposed fix. Use sanitized examples.
 Non-sensitive documentation mistakes can use the normal bug report template.
 

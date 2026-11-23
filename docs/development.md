@@ -19,8 +19,9 @@ Tests run real CLI processes in temporary directories, validate actual Ajv schem
 cover the five source-backed examples. Product scripts are defined in package.json.
 `npm test` builds before running Node tests. Normal automated tests invoke no external model, target script, live network server, GUI,
 publish, or deployment. Separately authorized live model evaluations are recorded in
-[AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package is private at local candidate version 0.1.0-rc.1. Node engines target 24/26; exact tested patches and host
-platform are recorded in the roadmap. Other OS execution is not yet verified.
+[AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package
+version is 0.1.0. Node engines target 24/26; native Linux/Windows/Intel macOS CI and separate
+local ARM64 macOS results are recorded in the roadmap.
 
 For a local package smoke check, build, then run `npm pack --ignore-scripts` into an owned
 temporary directory and explicitly install that tarball into a separate consumer directory.
@@ -99,8 +100,8 @@ zero hashes and package/asset names in contract fixtures are not claims of an an
 
 ## Release checks
 
-The private candidate workflow is defined in .github/workflows/verify.yml. It checks both
-Node floor versions on ubuntu-latest/windows-latest/macos-latest after an authorized push.
+The read-only verification workflow is defined in .github/workflows/verify.yml. It checks both
+Node floor versions on ubuntu-latest/windows-latest/macos-15-intel after an authorized push.
 The source artifact status and exact verified hosts are in [release readiness](release-readiness.md).
 Workflow preparation/linting does not constitute native OS execution. package:check records
 a local tarball/digest under ignored artifacts/, installs from that artifact outside the

@@ -11,10 +11,12 @@ free or unlimited service. Without --agent, the existing deterministic commands 
 
 ## Inspect, draft, review, save
 
-From a built Craftmentation checkout, replace the example project path with your target:
+Install `craftmentation@0.1.0` using the [installation guide](upgrading.md), then replace
+the example project path with your target. From a built source checkout, the equivalent
+entry point is `node dist/cli/index.js` instead of `craftmentation`.
 
 ```bash
-node dist/cli/index.js generate --agent codex --root /path/to/your-project --preview-context
+craftmentation generate --agent codex --root /path/to/your-project --preview-context
 ```
 
 This prints the exact bounded evidence bundle without calling a model. Check its included
@@ -25,7 +27,7 @@ are not authorized to send. There is no automatic upload without --agent.
 Then request a draft:
 
 ```bash
-node dist/cli/index.js generate --agent codex --root /path/to/your-project
+craftmentation generate --agent codex --root /path/to/your-project
 ```
 
 Use --agent claude instead for a compatible Claude installation. To retain complete
@@ -35,7 +37,7 @@ to retrieve metadata, since that would make another billable/quota-consuming req
 prints a draft without writing the target repository. To save a **new** review file:
 
 ```bash
-node dist/cli/index.js generate --agent codex --root /path/to/your-project --output README.draft.md
+craftmentation generate --agent codex --root /path/to/your-project --output README.draft.md
 ```
 
 An existing output is refused before a model call that would save over it; read-only
@@ -45,14 +47,14 @@ Finish factual review, resolve applicable questions, and remove the draft instru
 comment before publishing. If you edit the draft, validate it to obtain its current hash:
 
 ```bash
-node dist/cli/index.js validate --root /path/to/your-project --document README.draft.md
+craftmentation validate --root /path/to/your-project --document README.draft.md
 ```
 
 Validation prints Document hash. It checks structure/links, not semantic correctness.
 To save the exact reviewed draft as a missing README in the same directory:
 
 ```bash
-node dist/cli/index.js generate --root /path/to/your-project --from README.draft.md --expect REVIEWED_SHA256
+craftmentation generate --root /path/to/your-project --from README.draft.md --expect REVIEWED_SHA256
 ```
 
 Replace REVIEWED_SHA256 with the printed 64-character lowercase hash. This last command

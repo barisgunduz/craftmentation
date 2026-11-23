@@ -61,19 +61,19 @@ For repeated local checks or deterministic drafts, the local CLI has five comman
 | `validate` | Check Markdown, placeholders, internal links, and configuration offline |
 | `update` | Preview managed changes; apply only an explicitly reviewed update with a backup |
 
-From this Craftmentation checkout, use Node.js 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm:
+Use Node.js 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm:
 
 ```bash
-npm ci --ignore-scripts
-npm run build
-node dist/cli/index.js generate --root examples/library --output README.preview.md --dry-run
+npm install --global craftmentation@0.1.0
+craftmentation --help
+craftmentation analyze --root /path/to/your-project
 ```
 
-That command previews an existing example without writing a file. For source-code
+Replace the example path with your project directory. Analysis is read-only. For source-code
 interpretation, use an installed, authenticated Codex or Claude CLI explicitly:
 
 ```bash
-node dist/cli/index.js generate --agent codex --root /path/to/your-project
+craftmentation generate --agent codex --root /path/to/your-project
 ```
 
 Replace the example path with your project directory; use `--agent claude` for Claude.
@@ -89,10 +89,11 @@ Craftmentation does not execute project scripts. Model interpretations need fact
 Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
 safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
-The local candidate is private at `0.1.0-rc.1`; there is no public npm release. Actual runtime
+Version `0.1.0` includes the five commands and optional agent drafting described here. Runtime
 checks passed on Linux, Windows, and Intel macOS with both Node floors; macOS ARM64 was
 also tested locally. See [release readiness](docs/release-readiness.md) for exact evidence and limits.
-See [candidate notes](docs/release-notes.md) and [installation/upgrade guidance](docs/upgrading.md).
+See [release notes](docs/release-notes.md) and [installation/upgrade guidance](docs/upgrading.md)
+for npm, source-checkout, and local-package routes.
 
 ## What is in this repository?
 

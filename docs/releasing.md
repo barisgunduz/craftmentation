@@ -2,9 +2,9 @@
 
 ## Current status
 
-Craftmentation has no public released version. The local candidate is 0.1.0-rc.1 and
-package.json remains private: true. Preparation does not authorize commits, pushes, tags,
-releases, npm publication, or deployment. [Release readiness](release-readiness.md) tracks
+Version 0.1.0 is the initial public release target, explicitly authorized by the owner
+for npm and GitHub publication on 2026-11-23. Future preparation does not authorize
+commits, pushes, tags, releases, npm publication, or deployment. [Release readiness](release-readiness.md) tracks
 actual evidence, final-revision verification gates, and reporting limitations for Phase 10.
 
 ## Versioning and changelog
@@ -12,7 +12,7 @@ actual evidence, final-revision verification gates, and reporting limitations fo
 Use Semantic Versioning with v-prefixed Git tags only when authorized. Before 1.0,
 minor releases may introduce incompatible changes; document them explicitly. Patch
 releases should contain compatible corrections. Use -rc.1-style prerelease suffixes
-for candidates. 0.1.0-rc.1 identifies this first local candidate, not an available npm release.
+for candidates. The historical 0.1.0-rc.1 candidate was local/private; 0.1.0 is the first public version.
 
 Maintain CHANGELOG.md using Keep a Changelog categories. Unpublished work stays under
 Unreleased. On an authorized public release, move applicable entries into a dated version

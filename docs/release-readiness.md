@@ -1,7 +1,9 @@
-# Release readiness: 0.1.0-rc.1
+# Release verification: 0.1.0
 
-Status: **Release candidate verified — all six native CI jobs passed.** This is
-not a public release announcement. package.json remains private: true.
+The precursor 0.1.0-rc.1 candidate passed all six native CI jobs. The owner explicitly
+authorized public npm/GitHub publication of 0.1.0 on 2026-11-23. Publication uses the exact
+verified tarball after final release-metadata CI; registry and GitHub Release records are
+the source of truth for publication availability. This file preserves pre-release evidence.
 
 ## Candidate and scope
 
@@ -29,9 +31,9 @@ their own tarball, avoiding a self-referential package hash.
 | Remote macOS matrix | Intel macOS passed both Node floors on final verification commit 400cf57; ARM64 also tested locally |
 | Trusted-client launcher fix | Passed all six native jobs, including launcher/process regression tests |
 | Claude live account/client versions | Not verified; protocol-tested adapter, explicit candidate limitation |
-| Confidential security reporting | GitHub setting verified disabled; limitation documented in SECURITY.md |
-| Publication/version/registry approval | **Not authorized** — private candidate only |
-| npm terminal account | Successfully authenticated as barisgunduz on 2026-11-23; no publication performed |
+| Confidential security reporting | Enabled and verified through GitHub API on 2026-11-23; SECURITY.md links the private form |
+| Publication/version/registry approval | Owner explicitly authorized 0.1.0 to the public npm registry and matching GitHub Release |
+| npm terminal account | Successfully authenticated as barisgunduz on 2026-11-23 |
 
 Six jobs are defined in .github/workflows/verify.yml: macOS/Linux/Windows with both floor
 Node versions. They run tests, docs checks, and actual installed-package smoke checks,
@@ -74,7 +76,7 @@ Source-upload approval also covers the verification-note follow-up; do not ask a
 Claude is installed but its account is not authenticated on this host; its live test remains
 unverified. Do not infer all-vendor compatibility from the shared text instructions.
 
-Phase 10's release-candidate verification is complete. A separate
-explicit approval is still required for public npm/GitHub publication. See
+Phase 10's release-candidate verification is complete. The subsequent owner authorization
+covers the initial public 0.1.0 publication; later releases need their own authorization. See
 [candidate notes](release-notes.md), [release conventions](releasing.md),
 [dependency evidence](dependency-licenses.md), and [installation/upgrade](upgrading.md).

@@ -1,8 +1,8 @@
-# Candidate notes: 0.1.0-rc.1
+# Release notes: 0.1.0
 
-Status: **Release candidate verified; not published.** All six native CI jobs passed,
-including the launcher fix, using Linux, Windows, and Intel macOS.
-The package remains private and no Git tag, GitHub release, or npm publication exists.
+Initial release of Craftmentation. The precursor candidate passed all six native CI
+jobs, including the launcher fix, using Linux, Windows, and Intel macOS. Public
+publication of 0.1.0 and its GitHub Release was explicitly authorized on 2026-11-23.
 
 ## Included
 
@@ -32,16 +32,16 @@ automatic AI update/adoption, online link crawler, website, or localization engi
 Existing unowned READMEs are never automatically rewritten. Safe writes require a quiet
 local workspace; cooperative checks are not a hostile-filesystem transaction guarantee.
 
-## Distribution and release gates
+## Distribution
 
-The local candidate is produced with npm run package:check. It is installed and exercised
+The local package is produced with npm run package:check. It is installed and exercised
 in a temporary consumer, and artifacts/verification.json records its SHA-256 and host.
-The candidate contains compiled code, schemas/templates/prompts, documentation, and
+The package contains compiled code, schemas/templates/prompts, documentation, and
 required notices. Tests/examples/node_modules/private files and the large brand board
 are excluded. The full development repository is not the npm tarball.
 
-Before public distribution, native matrix jobs must pass, the owner must approve the
-exact candidate/version/registry destination and reporting limitations, and publishing
-must be authorized separately. Do not use npm install craftmentation as an available
-public-version instruction yet. See [release readiness](release-readiness.md),
+Install with `npm install --global craftmentation@0.1.0`. Source archives and the npm
+tarball are distributed through the matching GitHub Release. GitHub private vulnerability
+reporting is enabled; see [Security](../SECURITY.md) for confidential reports.
+Future publishing still requires explicit owner authorization. See [release readiness](release-readiness.md),
 [release conventions](releasing.md), and [upgrade guidance](upgrading.md).

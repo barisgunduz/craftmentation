@@ -5,7 +5,7 @@ the local init, analyze, generate, validate, and update commands. Explicit --age
 adds source-aware drafts through installed Codex/Claude clients; deterministic operation
 works offline without either client. Generated content still needs factual review.
 
-The current 0.1.0-rc.1 candidate is local/private, with no public npm release. A hosted
+Version 0.1.0 can be installed using the [installation guide](docs/upgrading.md). A hosted
 website and localization engine are outside active scope. Users can request another
 language from their agent when authoring documentation manually.
 

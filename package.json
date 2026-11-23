@@ -1,7 +1,6 @@
 {
   "name": "craftmentation",
-  "version": "0.1.0-rc.1",
-  "private": true,
+  "version": "0.1.0",
   "description": "A universal, AI-ready README and documentation framework for modern software projects.",
   "license": "MIT",
   "author": "Barış Gündüz",
@@ -60,5 +59,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/barisgunduz/craftmentation.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/barisgunduz/craftmentation#readme",
+  "bugs": {
+    "url": "https://github.com/barisgunduz/craftmentation/issues"
   }
 }

@@ -246,3 +246,12 @@ product versions. The five curated examples remain source-backed small teaching 
 not complete production applications or proof of arbitrary large-repository coverage.
 Native CI, live Claude verification, private reporting, and publication remain as recorded
 in release-readiness.md. Passing link checks alone did not establish this prose consistency.
+
+## Authorized initial distribution follow-up (2026-11-23)
+
+Later native CI passed all six jobs with Linux/Windows/Intel macOS and both Node floors.
+The macOS ARM hosted capacity failure and Intel replacement are recorded in the readiness
+report. The owner authorized initial 0.1.0 npm/GitHub publication. GitHub private vulnerability
+reporting is now enabled and API-verified; SECURITY.md links its confidential report form.
+The 103 dependency records are unchanged from the inspected candidate; the root version
+and public distribution metadata are updated. Publication results are tracked in the roadmap.

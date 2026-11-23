@@ -1,9 +1,12 @@
-# Candidate dependency license inventory
+# Dependency license inventory
 
-Recorded for the local 0.1.0-rc.1 candidate on 2026-11-23. Source: package-lock.json
+Recorded for 0.1.0 on 2026-11-23. Source: package-lock.json
 and installed package notice filenames, not an inferred license for adopting projects.
 
-Lockfile SHA-256 at inspection: `71bc5b700272d3b36b2ddf053eaa6af8cdd39481f67396e0d0f32d3267c99ffb`.
+Lockfile SHA-256 at inspection: `a13f09cbba19241f29727bc66c171c44eed073917818b62f3ac7e860bc2cad50`.
+All 103 dependency records are byte-for-byte-equivalent JSON values to the inspected
+0.1.0-rc.1 lockfile; only the root release version changed. Existing notice inspection
+therefore applies to the same dependency versions.
 
 The lockfile has 103 dependency entries: 79 runtime and 24 development entries.
 All 79 runtime entries have an inspected local license/notice file. Platform-specific

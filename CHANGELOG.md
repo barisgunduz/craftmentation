@@ -2,43 +2,17 @@
 
 All notable changes to Craftmentation will be documented in this file.
 The format follows Keep a Changelog. Released versions will follow Semantic Versioning.
-No release version is assigned yet.
 
 ## [Unreleased]
 
-### Changed
-
-- Align support and example guidance with the five commands and source-aware agent mode;
-  distinguish manual, agent-assisted, and deterministic usage without obsolete feature claims.
-
-- Require the tested Node floors ^24.22.3 or ^26.13.1 for the initial candidate.
-- Keep source/fixture checkout bytes stable across OSes with LF text attributes.
-- Select Python 3.9+ portably for contributor checks and build normal maintainer npm packs.
-
-- Remove empty optional table scaffolds when rendering a whole-section prose body.
-
-- Prioritize owner-requested opt-in AI-assisted source understanding before release
-  preparation, using installed clients first and deferring direct API credentials/SDKs.
-
-- Recognize Quick start/Getting started as Core usage; preserve UTF-8 BOM when inspecting
-  and updating documents, and explain actionable steps for missing usage/existing output.
-- Render declared npm scripts as copyable invocations without claiming execution.
-
-- Focus the product on a simple agent-assisted README workflow and optional local CLI.
-- Remove the standalone website and automated localization from active scope; retain
-  English defaults and user-requested language guidance without a translation engine.
-- Replace the remaining broad feature roadmap with product clarity/examples, practical
-  preview/review/save, and release confidence/distribution phases.
-- Expand all five curated example READMEs with verified behavior, meaningful usage,
-  troubleshooting, testing boundaries, and explicit omission rationale; align selection inventories.
-- Distinguish manually authored examples from the CLI's limited static population capabilities.
+## [0.1.0] - 2026-11-23
 
 ### Added
 
 - Local 0.1.0-rc.1 candidate, tarball payload/installed-bin smoke checks, offline docs checks,
   and candidate/upgrade/license evidence without enabling publication.
 - SHA-pinned contents-read GitHub validation matrix for three OS runners and both Node floors;
-  all six baseline jobs passed; the final agent-launcher correction requires a fresh run.
+  all six native jobs passed with the final agent-launcher correction.
 
 - Opt-in source-aware generation through installed Codex/Claude clients, bounded evidence
   previews, structured source-quoted proposals, unknowns, and factual-review diagnostics.
@@ -106,6 +80,31 @@ No release version is assigned yet.
 - Architecture decision record guidance for future technical selections.
 
 ### Changed
+
+- Align support and example guidance with the five commands and source-aware agent mode;
+  distinguish manual, agent-assisted, and deterministic usage without obsolete feature claims.
+
+- Require the tested Node floors ^24.22.3 or ^26.13.1 for the initial candidate.
+- Keep source/fixture checkout bytes stable across OSes with LF text attributes.
+- Select Python 3.9+ portably for contributor checks and build normal maintainer npm packs.
+
+- Remove empty optional table scaffolds when rendering a whole-section prose body.
+
+- Prioritize owner-requested opt-in AI-assisted source understanding before release
+  preparation, using installed clients first and deferring direct API credentials/SDKs.
+
+- Recognize Quick start/Getting started as Core usage; preserve UTF-8 BOM when inspecting
+  and updating documents, and explain actionable steps for missing usage/existing output.
+- Render declared npm scripts as copyable invocations without claiming execution.
+
+- Focus the product on a simple agent-assisted README workflow and optional local CLI.
+- Remove the standalone website and automated localization from active scope; retain
+  English defaults and user-requested language guidance without a translation engine.
+- Replace the remaining broad feature roadmap with product clarity/examples, practical
+  preview/review/save, and release confidence/distribution phases.
+- Expand all five curated example READMEs with verified behavior, meaningful usage,
+  troubleshooting, testing boundaries, and explicit omission rationale; align selection inventories.
+- Distinguish manually authored examples from the CLI's limited static population capabilities.
 
 - Ignore coverage output, TypeScript build caches, npm diagnostic logs, and CLI
   operation artifacts while retaining test sources, fixtures, and package-lock.json.
