@@ -4,8 +4,9 @@
 
 - Latest completed work: opt-in source-aware agent drafting and live evaluation, revised Phase 9.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Phase 9 is completed. Phase 10 is In Progress: baseline six-job native CI passed;
-  final Windows agent-launcher fix requires source-upload authorization and a fresh run.
+- Phase 9 is completed. Phase 10 is In Progress: source upload is authorized; the final
+  launcher passed Linux/Windows CI, and macOS CI is moving to Intel after ARM runner
+  capacity prevented either job from starting.
 - Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
@@ -555,9 +556,23 @@ Follow-up verification (2026-11-23):
   artifacts/verification.json. No client was installed, no model quota was consumed,
   and no commit, push, tag, or publication was performed by this verification step.
 
-Blocker: the final launcher revision needs authorized commit/push and fresh native CI.
-Publication/tagging/merging remain separate unauthorized actions. Next action: finish local
-checks, present the concrete diff, obtain source-upload authorization, and inspect fresh CI.
+Authorized source upload (2026-11-23):
+
+- The owner explicitly approved committing/pushing the launcher revision and checking CI.
+  Commit bec0246477622b5cdebc60f9a80e96f98de8929a was pushed to origin/master.
+- [Run 45230655922](https://github.com/barisgunduz/craftmentation/actions/runs/45230655922)
+  has four successful jobs: Linux and Windows on both Node floors. Both macOS jobs
+  were cancelled after 15 minutes without acquiring a runner; neither ran any test step.
+  GitHub annotations explicitly reported hosted arm64 capacity constraints. Overall run
+  conclusion is failure, not success; this does not indicate a macOS code/test failure.
+- Switch the two macOS CI jobs to the documented standard macos-15-intel pool. Preserve
+  both Node floors and all checks; local ARM results remain distinct from Intel CI.
+  Record rationale in ADR 0012. Full native results for this revised workflow are pending.
+
+Blocker: replacement macOS/native matrix verification is pending. Next action: push the
+runner correction and these notes, inspect the new run, and record actual native results.
+Source-upload authorization is already granted; do not request it again for these notes.
+Publication/tagging/merging remain separate unauthorized actions.
 
 ## Removed from active scope
 

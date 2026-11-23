@@ -1,6 +1,6 @@
 # Release readiness: 0.1.0-rc.1
 
-Status: **In Progress — baseline native CI passed; launcher fix requires fresh CI.** This is
+Status: **In Progress — final Linux/Windows CI passed; macOS runner replacement pending.** This is
 not a public release announcement. package.json remains private: true.
 
 ## Candidate and scope
@@ -37,6 +37,8 @@ Six jobs are defined in .github/workflows/verify.yml: macOS/Linux/Windows with b
 Node versions. They run tests, docs checks, and actual installed-package smoke checks,
 without model calls, source rewrites, shared caches, or publication credentials. Prepared
 workflow YAML and portable-path tests do not substitute for successful native execution.
+The revised macOS jobs use macos-15-intel, not the capacity-constrained arm64 pool.
+Local arm64 tests and historical remote arm64 runs remain separate from Intel CI results.
 
 ### Observed native run
 
@@ -51,10 +53,14 @@ This digest identifies the baseline, not subsequent source/documentation edits.
 
 ## Remaining action
 
-The owner uploaded the baseline, and its native results are now verified. Final review
-identified a Windows npm-agent launcher issue; the shell-free correction and regression
-tests need uploading and a fresh native matrix run. AGENTS.md prohibits commits/pushes
-without authorization. Review the concrete diff first, then obtain source-upload approval.
+The owner approved the final source commit/push. The shell-free launcher correction and
+regression tests are on master at bec0246477622b5cdebc60f9a80e96f98de8929a.
+[Run 45230655922](https://github.com/barisgunduz/craftmentation/actions/runs/45230655922)
+passed Linux/Windows on both Node floors. Both macOS jobs were cancelled without running
+any step: GitHub annotations state that a hosted runner was not acquired and identify
+arm64 capacity constraints. The overall run failed due to infrastructure, not a failed test.
+The workflow now selects the standard Intel macOS pool; a fresh native run is required.
+Source-upload approval also covers the verification-note follow-up; do not ask again.
 Claude is installed but its account is not authenticated on this host; its live test remains
 unverified. Do not infer all-vendor compatibility from the shared text instructions.
 

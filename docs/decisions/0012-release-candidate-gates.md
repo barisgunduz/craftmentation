@@ -48,3 +48,16 @@ Source tests stay in Git but not the tarball. Full developer/archive documentati
 repository material; packaged docs are not an offline copy of every linked test/example.
 Optional agents remain external trusted clients; offline CI does not consume model quota.
 Publication still requires a separate explicit authorization after readiness checks pass.
+
+## Operational follow-up: macOS runner capacity
+
+The owner subsequently authorized source uploads and CI verification. Run 45230655922
+passed Linux/Windows, but both macos-latest jobs were cancelled before any step ran.
+GitHub annotations reported that no hosted runner acquired the jobs and explicitly
+identified arm64 capacity constraints. This is infrastructure failure, not a test failure.
+
+Use the documented standard macos-15-intel runner for the two macOS CI jobs, retaining
+all steps and both Node floors. The official [runner table](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
+lists it as Intel, while macos-latest selects arm64. Local macOS arm64 checks remain
+separate evidence; the changed CI matrix must not be represented as remote arm64 coverage.
+No larger/paid runner, extra dependency, permission, or publishing automation is introduced.

@@ -139,6 +139,9 @@ No release version is assigned yet.
 
 ### Fixed
 
+- Use the standard Intel macOS CI runner after GitHub's arm64 capacity shortage
+  cancelled both jobs before tests started; retain the complete six-job check matrix.
+
 - Resolve Windows global npm agent JavaScript entries without a shell; exclude relative
   and repository-local npm PATH entries from trusted client lookup.
 
