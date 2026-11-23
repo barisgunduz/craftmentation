@@ -26,14 +26,28 @@ their own tarball, avoiding a self-referential package hash.
 | License/notices | All 79 runtime notice files inspected; all 103 lockfile declarations inventoried |
 | Documentation | 131 Markdown files / 330 local references passed; baseline actual README validator passed |
 | Workflow structure | actionlint 1.7.12 passed; action SHAs verified against official GitHub API refs |
-| Native Linux | Passed both Node floors on final verification commit 400cf57 |
-| Native Windows | Passed both Node floors on final verification commit 400cf57 |
-| Remote macOS matrix | Intel macOS passed both Node floors on final verification commit 400cf57; ARM64 also tested locally |
+| Native Linux | Passed both Node floors on release commit c5c8536 |
+| Native Windows | Passed both Node floors on release commit c5c8536 |
+| Remote macOS matrix | Intel macOS passed both Node floors on release commit c5c8536; ARM64 also tested locally |
 | Trusted-client launcher fix | Passed all six native jobs, including launcher/process regression tests |
 | Claude live account/client versions | Not verified; protocol-tested adapter, explicit candidate limitation |
 | Confidential security reporting | Enabled and verified through GitHub API on 2026-11-23; SECURITY.md links the private form |
 | Publication/version/registry approval | Owner explicitly authorized 0.1.0 to the public npm registry and matching GitHub Release |
 | npm terminal account | Successfully authenticated as barisgunduz on 2026-11-23 |
+| Public registry installation | 0.1.0 installed from a fresh cache into an isolated global prefix; all five commands passed |
+
+## Published result
+
+On 2026-11-23, [npm 0.1.0](https://www.npmjs.com/package/craftmentation/v/0.1.0) and
+[GitHub v0.1.0](https://github.com/barisgunduz/craftmentation/releases/tag/v0.1.0) were
+published from c5c8536f6e639444ed3dc34d3293c4146f76a90f after all six
+[release CI jobs](https://github.com/barisgunduz/craftmentation/actions/runs/45236960551)
+passed. npm latest resolves to 0.1.0. The registry download is byte-identical to the
+verified local/CI tarball: SHA-256
+362c30e98fc6c9b4aac046bcb8f6f5825314c7b091816c953448a990f39ce05c.
+The fresh-cache installation exercised all commands, managed writes/updates, and no-model
+preview on macOS arm64/Node 24.22.3. The GitHub Release retains package/checksum/build and
+registry-install reports. These later notes do not modify the immutable release artifact.
 
 Six jobs are defined in .github/workflows/verify.yml: macOS/Linux/Windows with both floor
 Node versions. They run tests, docs checks, and actual installed-package smoke checks,

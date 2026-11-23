@@ -8,7 +8,7 @@ Create a useful README for the project you actually have. Craftmentation gives y
 reusable structure, evidence-based AI instructions, finished examples, and an optional
 local CLI for source-aware drafting, generation, and validation.
 
-[Start here](#quick-start) · [See examples](examples/README.md) · [Repository guide](docs/README.md) · [Roadmap](docs/roadmap.md)
+[Start here](#quick-start) · [See examples](examples/README.md) · [npm](https://www.npmjs.com/package/craftmentation) · [Downloads](https://github.com/barisgunduz/craftmentation/releases/latest) · [Repository guide](docs/README.md) · [Roadmap](docs/roadmap.md)
 
 ## Quick start
 

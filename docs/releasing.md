@@ -2,7 +2,7 @@
 
 ## Current status
 
-Version 0.1.0 is the initial public release target, explicitly authorized by the owner
+Version 0.1.0 is the initial public release, explicitly authorized by the owner
 for npm and GitHub publication on 2026-11-23. Future preparation does not authorize
 commits, pushes, tags, releases, npm publication, or deployment. [Release readiness](release-readiness.md) tracks
 actual evidence, final-revision verification gates, and reporting limitations for Phase 10.

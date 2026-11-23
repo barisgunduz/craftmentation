@@ -5,7 +5,8 @@
 - Latest completed work: release-candidate preparation and six-job native verification, revised Phase 10.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
 - Phases 9 and 10 are completed. The private 0.1.0-rc.1 candidate is verified. The owner
-  subsequently authorized the initial public 0.1.0 npm/GitHub release; publication is In Progress.
+  subsequently authorized the initial public 0.1.0 npm/GitHub release; publication and
+  clean registry installation verification are Completed.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
 - Existing CLI: init, analyze, generate, validate, and preview-first managed update.
@@ -583,7 +584,7 @@ Publication/tagging/merging remain separate unauthorized actions.
 
 ## Initial public distribution: 0.1.0
 
-Status: **In Progress**
+Status: **Completed**
 
 The owner explicitly authorized the proposed 0.1.0 npm publication, matching GitHub
 Release, installation verification, and confidential security reporting setup on 2026-11-23.
@@ -594,15 +595,40 @@ assets; it does not authorize future versions or unrelated deployments.
 - [x] Enable GitHub private vulnerability reporting and verify enabled:true.
 - [x] Prepare 0.1.0 package/lock metadata, explicit public registry configuration, release
   notes, dated changelog, and npm/source/local-package installation guidance.
-- [ ] Verify final release metadata, package payload, and native CI.
-- [ ] Publish the exact verified npm tarball and inspect registry integrity/version.
-- [ ] Create v0.1.0 and a GitHub Release with the tarball and verification evidence.
-- [ ] Install the registry package into a clean consumer and verify the installed commands.
+- [x] Verify final release metadata, package payload, and native CI.
+- [x] Publish the exact verified npm tarball and inspect registry integrity/version.
+- [x] Create v0.1.0 and a GitHub Release with the tarball and verification evidence.
+- [x] Install the registry package into a clean consumer and verify the installed commands.
+
+Results (2026-11-23):
+
+- Release source/tag: c5c8536f6e639444ed3dc34d3293c4146f76a90f / v0.1.0.
+- All six [release CI jobs](https://github.com/barisgunduz/craftmentation/actions/runs/45236960551)
+  passed on Linux/Windows/Intel macOS with both Node floors. Local 45-test Node suite,
+  type/format/docs checks, actual tarball smoke checks, and fresh npm audit (0 known
+  advisories) passed. All 103 dependency records are unchanged from the inspected candidate.
+- [npm craftmentation@0.1.0](https://www.npmjs.com/package/craftmentation/v/0.1.0)
+  is available with latest pointing to 0.1.0. npm initially exposed a temporary
+  0.0.0-stage placeholder while processing, then made the approved 0.1.0 available.
+- [GitHub v0.1.0](https://github.com/barisgunduz/craftmentation/releases/tag/v0.1.0)
+  is published, non-draft/non-prerelease, with the tarball, SHA256SUMS,
+  verification.json, and registry-verification.json. GitHub also provides source archives.
+- Published tarball: 172 files, 189271 packed bytes; SHA-256
+  362c30e98fc6c9b4aac046bcb8f6f5825314c7b091816c953448a990f39ce05c.
+  A fresh-cache registry download was byte-identical to the local/CI-verified artifact.
+  All four public GitHub assets were downloaded; every checksum matched, and the GitHub
+  tarball was byte-identical to the npm/local/CI package.
+- A separate temporary global prefix verified version/help, all five commands, reviewed
+  managed creation/update, and no-model context preview on macOS arm64/Node 24.22.3.
+  It did not alter the owner's global tools or invoke an AI model.
+- GitHub private vulnerability reporting was enabled and rechecked through the API.
 
 Known limitation: Claude live generation still requires an authenticated Claude account;
 it is not covered by protocol tests or the successful Codex evaluation. Do not claim it ran.
-Next action: complete the release checks, publish within the granted authorization, then
-record actual registry/release URLs and installed-package results.
+Blockers: none for the authorized initial distribution. No additional phase or version
+is implicitly authorized. Next action: monitor real user feedback; further releases require
+their own scope and approval. These post-publication notes do not change the immutable
+v0.1.0 source tag or npm artifact.
 
 ## Removed from active scope
 
