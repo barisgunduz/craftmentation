@@ -43,11 +43,15 @@ These READMEs were composed and reviewed manually against source. They illustrat
 quality to aim for with a human or coding agent. They are **not** captured automatic CLI
 output, and no model/provider evaluation is implied.
 
-Without --agent, the CLI reuses supported sections of an existing README and JSON package
-metadata. With an explicit agent, it can interpret the selected source excerpts. Generating from these examples therefore reuses their curated documentation;
-it does not prove that the analyzer can infer all behavior from Python, HTML, or arbitrary
-source code. A repository without usage evidence still needs reviewed content. The [practical workflow](../docs/workflow.md) explains reviewed usage input and safe
-managed updates; arbitrary source understanding is still outside the CLI’s capability.
+Without --agent, generation from these examples reuses their curated Markdown and JSON
+metadata. It does not demonstrate semantic interpretation of their source. Missing Core
+usage in that deterministic mode requires reviewed content.
+
+With an explicit agent, the CLI can interpret bounded source excerpts even without a
+README. Those real source-only calls are recorded above. Source quotations do not prove
+that every interpretation is correct or that the entire repository was inspected. Review
+the draft and unknowns. The [practical workflow](../docs/workflow.md) covers offline
+input and managed updates; the [AI guide](../docs/ai-drafting.md) covers source-aware drafts.
 
 ## For framework maintainers
 

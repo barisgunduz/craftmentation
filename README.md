@@ -32,6 +32,9 @@ Review the draft, fill genuine information gaps, then ask your agent to save the
 change. If a README already exists, preserve useful content and legal notices. Your
 project keeps its own license; Craftmentation does not assign one to it.
 
+For manual writing, use the same standard and starter yourself. Fill relevant sections
+with verified facts and remove unused fields and sections.
+
 For repeatable analysis, updates, or a language-specific request, use the optional
 [workflow prompts](prompts/README.md). They work with the materials you provide; automatic
 instruction loading and output quality depend on your chosen tool and available context.
@@ -58,7 +61,7 @@ For repeated local checks or deterministic drafts, the local CLI has five comman
 | `validate` | Check Markdown, placeholders, internal links, and configuration offline |
 | `update` | Preview managed changes; apply only an explicitly reviewed update with a backup |
 
-From this Craftmentation checkout, use Node.js 24 or 26 and npm:
+From this Craftmentation checkout, use Node.js 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm:
 
 ```bash
 npm ci --ignore-scripts
@@ -86,8 +89,9 @@ Craftmentation does not execute project scripts. Model interpretations need fact
 Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
 safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
-The package is private at `0.0.0-dev.0`; there is no public npm release. Actual runtime
-checks cover macOS with Node 24/26; native Linux/Windows verification remains outstanding.
+The local candidate is private at `0.1.0-rc.1`; there is no public npm release. Actual runtime
+checks cover macOS with both Node floors; native Linux/Windows verification remains outstanding.
+See [candidate notes](docs/release-notes.md) and [installation/upgrade guidance](docs/upgrading.md).
 
 ## What is in this repository?
 

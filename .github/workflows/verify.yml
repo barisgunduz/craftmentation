@@ -1,0 +1,53 @@
+name: Verify candidate
+
+on:
+  pull_request:
+  push:
+    branches: [master, 'release/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: ${{ matrix.os }} / Node ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: ['24.22.3', '26.13.1']
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: Record runtime
+        run: node --version
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Check source formatting
+        run: npm run format:check
+      - name: Test CLI and filesystem guards
+        run: npm test
+      - name: Verify legacy contracts and examples
+        run: npm run test:legacy
+      - name: Check repository documentation
+        run: npm run docs:check
+      - name: Check main README publication rules
+        run: node dist/cli/index.js validate --json
+      - name: Pack and install the candidate outside the checkout
+        run: npm run package:check

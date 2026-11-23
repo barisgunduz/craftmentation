@@ -18,7 +18,7 @@ Disclose material AI assistance and explain how its output was verified.
 
 ## Local workflow
 
-Use Node.js 24 or 26 for the CLI and Python 3.9+ for the existing development oracles.
+Use Node.js 24.22.3+ (24.x) or 26.13.1+ (26.x) for the CLI and Python 3.9+ for the existing development oracles.
 From the repository root:
 
 ```bash
@@ -27,11 +27,15 @@ npm run typecheck
 npm run format:check
 npm test
 npm run test:legacy
+npm run docs:check
+npm run package:check
 ```
 
-`npm test` builds TypeScript and runs Node unit/integration tests. The legacy command
+`npm test` builds TypeScript and runs Node unit/integration tests. The legacy command selects an available Python 3.9+ interpreter and
 checks the library and eighteen Python tests, including recorded [AI workflow artifacts](docs/ai-evaluation.md)
-and the narrow Phase 5 schema oracle. Production configuration uses actual Ajv 2020;
+and the narrow Phase 5 schema oracle. docs:check verifies local Markdown links/anchors and
+published placeholders without external URL requests. package:check builds, packs, and
+installs the actual tarball into a temporary consumer; -- --offline uses existing npm cache. Production configuration uses actual Ajv 2020;
 the Python helper does not replace it. Artifact tests are not live model evaluations.
 
 Tests use owned temporary directories and fixtures. No target scripts, live HTTP server,

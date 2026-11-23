@@ -216,3 +216,33 @@ execution, website, or localization engine was added. Claude protocol tests do n
 live-account compatibility. Native platform/client testing and release readiness remain
 Phase 10. See the actual [evaluation](ai-source-evaluation.md), [guide](ai-drafting.md), and
 [ADR 0011](decisions/0011-source-aware-agent-drafting.md).
+
+
+## Release preparation follow-up (2026-11-23)
+
+The local private candidate is 0.1.0-rc.1, with tested Node floors ^24.22.3/^26.13.1.
+The source audit returned zero known registry advisories for the 103 locked entries;
+all 79 runtime dependency notice files were inspected and the full declared-license
+inventory was recorded. No dependency update or system/cache ownership change was made.
+The package smoke check builds/packs the actual candidate, checks payload inclusions and
+exclusions, installs into a separate consumer, and exercises every installed command,
+managed replacement/backup, and source-context preview without any live model call.
+
+A pinned read-only six-job native workflow is prepared and locally linted. GitHub currently
+has zero workflows; no upload or run is claimed. Docker is installed but its daemon socket
+is absent, and no Windows runtime is available. Phase 10 remains In Progress pending
+actual native OS evidence and owner authorization for the necessary source commit/push.
+Private vulnerability reporting remains verified disabled and is documented, not replaced
+with a fictional contact. See [readiness](release-readiness.md) and [candidate notes](release-notes.md).
+
+
+## User-facing consistency review (2026-11-23)
+
+A follow-up user-journey review found obsolete four-command wording in SUPPORT.md and a
+blanket source-understanding limitation in the example gallery. These were corrected to
+distinguish deterministic extraction from opt-in agent interpretation. The repository guide
+now explicitly includes human-only authoring and distinguishes usage modes from separate
+product versions. The five curated examples remain source-backed small teaching projects,
+not complete production applications or proof of arbitrary large-repository coverage.
+Native CI, live Claude verification, private reporting, and publication remain as recorded
+in release-readiness.md. Passing link checks alone did not establish this prose consistency.

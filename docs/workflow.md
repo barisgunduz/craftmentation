@@ -11,7 +11,7 @@ Only that explicit mode invokes a model/client; its own quota and local-state ru
 
 ## Build the local CLI
 
-From the Craftmentation checkout, using Node 24/26 and npm:
+From the Craftmentation checkout, using Node 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm:
 
 ```bash
 npm ci --ignore-scripts

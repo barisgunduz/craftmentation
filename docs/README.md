@@ -11,6 +11,7 @@ Start with the route that matches your task.
 | Let the CLI interpret source code | [AI drafting](ai-drafting.md); requires explicit Codex/Claude selection |
 | Run the optional local CLI | [Practical workflow](workflow.md), [CLI reference](cli-reference.md), then [configuration](configuration.md) only when needed |
 | Understand what exists and what is next | [Current audit](audit.md#product-and-usability-review), [roadmap](roadmap.md) |
+| Try or review the local candidate | [Release readiness](release-readiness.md), [candidate notes](release-notes.md), [upgrade/install guidance](upgrading.md) |
 | Contribute code or documentation | [Contributing](../CONTRIBUTING.md), [development checks](development.md) |
 
 ## What each area does
@@ -28,7 +29,7 @@ Start with the route that matches your task.
 | schemas/ | Machine-checkable structure for configuration, analysis, library data, and reports | CLI contributors; ordinary users rarely need to open them |
 | tests/node/ | CLI unit/integration test source; belongs in GitHub | Contributors and future CI |
 | tests/fixtures/ | Deliberately authored evidence, expected outputs, edge cases, and historical evaluation artifacts | Test contributors |
-| scripts/ | Development-only library verification | Contributors |
+| scripts/ | Development checks for templates, documentation, and package installation | Contributors |
 | assets/brand/ | Craftmentation's own identity; not a logo to copy into another project | Brand/documentation contributors |
 | AGENTS.md, CLAUDE.md, .github/copilot-instructions.md | Instructions for developing Craftmentation | Agents working on this repository, not automatic installation into yours |
 | docs/architecture.md and docs/decisions/ | Current implementation and reasons for significant choices | Maintainers |
@@ -36,12 +37,15 @@ Start with the route that matches your task.
 | docs/history/ | Earlier specification/roadmap preserved for context; not current obligations | Maintainers investigating history |
 | Community policies, LICENSE, and notices | Participation, support, reporting, and reuse terms | Contributors and people redistributing material |
 
-`node_modules/`, `dist/`, caches, coverage, logs, and CLI temporary operation files are
+`node_modules/`, `dist/`, `artifacts/`, caches, coverage, logs, and CLI temporary operation files are
 local/generated artifacts. They are ignored by Git. `package-lock.json`, source, schemas,
 fixtures, and tests are shared repository material. GitHub contents and the npm package
 have different purposes: test source belongs here even though the tarball excludes it.
 
-## Two different ways to use Craftmentation
+## Usage modes
+
+**Manual writing** uses the standard and starter directly, without installing a CLI or
+using an AI tool. Fill supported facts and remove unused fields/sections before publishing.
 
 **AI-assisted writing** uses your agent's repository access and the supplied standard.
 It can draft more contextual prose and follow the language you request. You review facts
@@ -55,6 +59,7 @@ It supplies a bounded context to the installed client and checks proposal struct
 quotes. It is model-assisted interpretation, not automatically verified semantic truth.
 No existing README is required. See [AI drafting](ai-drafting.md).
 
+These are usage modes of one framework, not separately maintained product versions.
 A useful draft can be checked using the CLI; no route requires learning all internals.
 
 The current improvement focus and remaining product gaps are in the [audit](audit.md).

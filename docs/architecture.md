@@ -5,8 +5,8 @@
 Craftmentation implements init, analyze, generate, offline validate, and preview-first update.
 TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas. The
 48-section library, fourteen profiles, manual AI workflows, and source-backed examples
-remain available. The development package is private at 0.0.0-dev.0; no public release,
-CI workflow, provider SDK, localization engine, check, or doctor command exists.
+remain available. The local candidate is private at 0.1.0-rc.1; no public release or remotely verified
+CI run exists. A local read-only matrix workflow is prepared. There is no provider SDK, localization engine, check, or doctor command exists.
 Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). Phase 9 implements opt-in source interpretation through installed Codex/Claude clients.
 Live Codex results and Claude protocol-only evidence are recorded separately. No existing
 README or API key managed by Craftmentation is necessary for this explicit mode. The active scope
@@ -116,7 +116,7 @@ Markdown, SVG, and JSON are the library formats. The checker and example tests u
 Python standard library only. The accepted product design selects TypeScript/Node.js ESM
 and Commander, with bundled Ajv schemas, strict duplicate-key inspection via jsonc-parser,
 and Markdown/HTML AST parsers. Exact versions and direct license metadata are recorded
-in package-lock.json and THIRD_PARTY_NOTICES.md. Node 24/26 are runtime targets; exact
+in package-lock.json and THIRD_PARTY_NOTICES.md. Node ^24.22.3 and ^26.13.1 are runtime targets; exact
 macOS-tested patches and package smoke results are in the roadmap. Linux/Windows execution
 and release readiness remain unverified. Generation rejects existing output, protected
 paths, unsupported capabilities, and missing Core evidence. Filesystem safety assumes a
@@ -141,3 +141,11 @@ See [ADR 0011](decisions/0011-source-aware-agent-drafting.md), the
 client trust assumptions, runtime limits, and review boundaries.
 
 See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery order.
+
+## Candidate verification
+
+Phase 10 adds offline repository documentation checks, a cross-platform Python launcher,
+and tarball/consumer smoke verification under scripts/. The six-job SHA-pinned workflow
+has contents-read permission and never invokes a model or publishes. Actual native remote
+runs remain pending owner authorization to commit/push. See [release readiness](release-readiness.md)
+and [ADR 0012](decisions/0012-release-candidate-gates.md).

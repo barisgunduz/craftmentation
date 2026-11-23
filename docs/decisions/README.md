@@ -1,7 +1,7 @@
 # Architecture decision records
 
 Record significant technical choices here using sequential filenames such as
-`0012-next-decision.md`. Each record must include status, context, decision,
+`0013-next-decision.md`. Each record must include status, context, decision,
 alternatives considered, and consequences. Supersede earlier decisions explicitly
 rather than silently rewriting their rationale.
 
@@ -34,3 +34,6 @@ product scope without erasing earlier design rationale.
 
 - [0011: Source-aware installed-agent drafting](0011-source-aware-agent-drafting.md) — explicit
   source transmission, bounded evidence, unreviewed proposals, client controls, and offline reviewed saves.
+
+- [0012: Private release candidate and verification gates](0012-release-candidate-gates.md) —
+  package/install smoke checks, pinned read-only CI, tested Node floors, and explicit remote/publication authorization.

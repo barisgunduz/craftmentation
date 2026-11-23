@@ -3,14 +3,17 @@
 ## Scope and support status
 
 Craftmentation is in early development with no public released versions. The local CLI
-MVP performs static reads, deterministic generation, offline validation, and no-clobber
-writes; review includes path confinement, untrusted configuration/templates, secret-bearing
+performs static reads, deterministic generation, offline validation, no-clobber
+creation, and explicitly reviewed managed updates. Opt-in agent drafting transmits selected
+source excerpts through a trusted installed client; review includes path confinement, untrusted configuration/templates, secret-bearing
 inputs, and filesystem assumptions as well as documentation/prompts. There is no supported release series or response-time guarantee.
 Report concerns against the current repository state, including the affected commit or files.
 
 ## Reporting a vulnerability
 
 **GitHub private vulnerability reporting is currently disabled for this repository.**
+This setting was verified through the GitHub API on 2026-11-23. The 0.1.0-rc.1 candidate
+is local/private and has not established a supported public release series.
 No dedicated security email or other confidential channel has been established in
 this policy. Do not post exploit details, credentials, private repository content,
 or sensitive personal information in a public issue or pull request.

@@ -1,13 +1,13 @@
 {
   "name": "craftmentation",
-  "version": "0.0.0-dev.0",
+  "version": "0.1.0-rc.1",
   "private": true,
   "description": "A universal, AI-ready README and documentation framework for modern software projects.",
   "license": "MIT",
   "author": "Barış Gündüz",
   "type": "module",
   "engines": {
-    "node": "^24.0.0 || ^26.0.0"
+    "node": "^24.22.3 || ^26.13.1"
   },
   "bin": {
     "craftmentation": "dist/cli/index.js"
@@ -28,15 +28,19 @@
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",
     "SECURITY.md",
-    "SUPPORT.md"
+    "SUPPORT.md",
+    "assets/brand/brand-guidelines.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && node --test tests/node/*.test.mjs",
-    "test:legacy": "python3 scripts/check_template_library.py && python3 -m unittest discover -s tests -p 'test_*.py'",
-    "format": "prettier --write \"src/**/*.ts\" \"tests/node/**/*.mjs\" package.json tsconfig.json",
-    "format:check": "prettier --check \"src/**/*.ts\" \"tests/node/**/*.mjs\" package.json tsconfig.json"
+    "test:legacy": "node scripts/check-legacy.mjs",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/node/**/*.mjs\" \"scripts/*.mjs\" package.json tsconfig.json",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/node/**/*.mjs\" \"scripts/*.mjs\" package.json tsconfig.json",
+    "docs:check": "node scripts/check-docs.mjs",
+    "package:check": "npm run build && node scripts/check-package.mjs",
+    "prepack": "npm run build"
   },
   "dependencies": {
     "ajv": "8.20.0",

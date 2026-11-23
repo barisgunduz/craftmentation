@@ -8,6 +8,13 @@ No release version is assigned yet.
 
 ### Changed
 
+- Align support and example guidance with the five commands and source-aware agent mode;
+  distinguish manual, agent-assisted, and deterministic usage without obsolete feature claims.
+
+- Require the tested Node floors ^24.22.3 or ^26.13.1 for the initial candidate.
+- Keep source/fixture checkout bytes stable across OSes with LF text attributes.
+- Select Python 3.9+ portably for contributor checks and build normal maintainer npm packs.
+
 - Remove empty optional table scaffolds when rendering a whole-section prose body.
 
 - Prioritize owner-requested opt-in AI-assisted source understanding before release
@@ -27,6 +34,11 @@ No release version is assigned yet.
 - Distinguish manually authored examples from the CLI's limited static population capabilities.
 
 ### Added
+
+- Local 0.1.0-rc.1 candidate, tarball payload/installed-bin smoke checks, offline docs checks,
+  and candidate/upgrade/license evidence without enabling publication.
+- SHA-pinned contents-read GitHub validation matrix for three OS runners and both Node floors;
+  remote/native execution remains pending an authorized source upload.
 
 - Opt-in source-aware generation through installed Codex/Claude clients, bounded evidence
   previews, structured source-quoted proposals, unknowns, and factual-review diagnostics.

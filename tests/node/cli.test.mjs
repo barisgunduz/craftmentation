@@ -8,6 +8,9 @@ import { fileURLToPath } from 'node:url';
 import { assertSchema, catalog } from '../../dist/shared/library.js';
 const root = fileURLToPath(new URL('../../', import.meta.url)),
   cli = path.join(root, 'dist/cli/index.js');
+const expectedVersion = JSON.parse(
+  await fs.readFile(path.join(root, 'package.json'), 'utf8'),
+).version;
 const fixture = async (t) => {
   const dir = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'craftmentation-cli-')));
   t.after(() => fs.rm(dir, { recursive: true, force: true }));
@@ -30,10 +33,10 @@ function invoke(dir, ...args) {
 const baseReadme =
   '# Fixture\n\nA verified example for CLI integration.\n\n## Overview\n\nLocal source documentation.\n\n## Usage\n\nRead `index.txt` for the fixture text.\n';
 
-test('help/version and invalid arguments never scan a missing root and remain JSON', () => {
+test('help/version and invalid arguments never scan a missing root and remain JSON', async () => {
   const nowhere = path.join(os.tmpdir(), 'craftmentation-no-such-root');
   assert.equal(invoke(nowhere, '--help').exitCode, 0);
-  assert.equal(invoke(nowhere, '--version').data.text, '0.0.0-dev.0');
+  assert.equal(invoke(nowhere, '--version').data.text, expectedVersion);
   for (const args of [
     ['not-a-command'],
     ['generate', '--force'],
@@ -222,5 +225,5 @@ test('npm-style symlink entry point executes the CLI outside source cwd', async 
     cwd: os.tmpdir(),
   });
   assert.equal(result.status, 0);
-  assert.equal(JSON.parse(result.stdout).data.text, '0.0.0-dev.0');
+  assert.equal(JSON.parse(result.stdout).data.text, expectedVersion);
 });

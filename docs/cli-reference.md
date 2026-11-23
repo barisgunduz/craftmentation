@@ -4,7 +4,7 @@
 
 The CLI implements init, analyze, generate, validate, and update from this checkout. Build with
 `npm run build` and invoke `node dist/cli/index.js`, or use the npm-created bin from an
-explicitly installed local package. The private development version is 0.0.0-dev.0; no
+explicitly installed local package. The private local candidate version is 0.1.0-rc.1; no
 public package release exists. Update previews managed changes and applies only an explicitly
 reviewed candidate with a backup. Generate additionally supports explicit source-aware --agent drafting. Check/doctor are unimplemented design references and
 are rejected as unknown commands; custom libraries/providers require a demonstrated need.

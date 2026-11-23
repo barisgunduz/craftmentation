@@ -45,3 +45,6 @@ npm-debug.log*
 
 # Original-byte recovery backups from explicit managed updates
 *.craftmentation-*.bak
+
+# Local release candidates and verification reports
+/artifacts/

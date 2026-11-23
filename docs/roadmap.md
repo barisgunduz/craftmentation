@@ -4,7 +4,7 @@
 
 - Latest completed work: opt-in source-aware agent drafting and live evaluation, revised Phase 9.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Phase 9 is completed. Next incomplete phase: Phase 10, Release Confidence and Distribution; not started.
+- Phase 9 is completed. Phase 10 is In Progress: private 0.1.0-rc.1 candidate prepared locally; native CI execution awaits authorized source upload.
 - Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
@@ -487,21 +487,55 @@ owner continuation; native platform and wider client verification belong to that
 
 ## Phase 10: Release Confidence and Distribution
 
-Status: **Not Started**
+Status: **In Progress**
 
-Completed tasks: none. Remaining tasks:
+Completed tasks: local candidate preparation and checks below. Remaining: actual native
+Linux/Windows/remote macOS execution and recording their results, then readiness assessment.
 
-- [ ] Verify package contents, runtime versions, installation, and upgrade guidance.
-- [ ] Run native Linux/Windows checks in addition to macOS.
-- [ ] Add minimal read-only GitHub test/document checks with least-privilege permissions.
-- [ ] Review dependencies, notices/licenses, security reports, and repository completeness.
-- [ ] Resolve/document private reporting and remaining operational limits.
-- [ ] Verify examples, navigation, and promises against the product.
-- [ ] Choose a public version and prepare release notes/checklist.
-- [ ] Present a concrete release candidate; publish only with explicit owner authorization.
+- [x] Verify package contents, runtime versions, installation, and upgrade guidance locally.
+- [ ] Run native Linux/Windows checks in addition to macOS (six-job workflow prepared; no remote run).
+- [ ] Add active minimal read-only GitHub checks (YAML implemented/linted; upload/execution pending).
+- [x] Review dependencies, notices/licenses, security reports, and repository completeness.
+- [x] Document private reporting and remaining operational/client limits.
+- [x] Verify examples, navigation, and promises against the product.
+- [x] Choose candidate 0.1.0-rc.1 and prepare release notes/checklist; package remains private.
+- [x] Prepare a concrete local candidate for owner review; no publication is authorized.
 
-Acceptance: a reproducible release candidate with honest platform evidence and a concise user path.
-Validation: not run. Blockers: prior phase acceptance and publication authorization when applicable.
+Local validation (2026-11-23, macOS arm64):
+
+- Full 43-test Node suite passed on Node 24.22.3 and 26.13.1 without skips. Version-report
+  tests now compare package metadata instead of stale development-version literals.
+- All 18 Python tests passed through the new cross-platform interpreter launcher, plus
+  48 sections, 14 profiles, 18 policy cases, and five canonical evidence inventories.
+- Build, typecheck, formatting, and git diff --check passed. The actual README validator
+  reported zero errors/warnings; 130 Markdown files and 325 local references passed the
+  reusable offline docs/placeholder check. External URLs were not crawled.
+- The actual npm tarball was installed into a separate consumer from cache with lifecycle
+  scripts disabled. Its installed npm bin exercised all five commands, managed update
+  publication/backup, and no-model context preview outside the source cwd. Final payload
+  and SHA-256 are in ignored artifacts/verification.json; no self-hashed report is shipped.
+- Fresh registry npm audit returned zero known advisories for 103 lockfile entries. All
+  79 runtime notice texts were read and matched their declared license identifiers;
+  metadata-only optional development packages are identified in docs/dependency-licenses.md.
+- actionlint 1.7.12 passed. Official action v6 refs were resolved through GitHub API and
+  pinned by SHA. Workflow uses contents:read, persist-credentials:false, no model calls,
+  and six native runner/floor-Node combinations. LF checkout attributes preserve fixture
+  quote/hash bytes on Windows without rewriting existing Git history.
+- Read-only GitHub API inspection: Actions enabled, zero remote workflows, private
+  vulnerability reporting disabled. No settings were changed and no contact was invented.
+- Docker executable exists but daemon socket is absent; no Linux or Windows native run
+  was performed. Prepared workflow or portable-path tests are not native execution proof.
+
+Candidate constraints: ^24.22.3 or ^26.13.1; private:true; no public npm install/version claim.
+Optional client/platform coverage remains as recorded in Phase 9. No dependency upgrade,
+AI request, global install, cache ownership change, commit, push, release, or deployment.
+
+Blocker: uploading the concrete workflow/source requires explicit commit/push authorization
+under AGENTS.md. After local review, request authorization for a release/0.1.0-rc.1 branch
+commit/push and CI execution. Keep this phase In Progress until actual results are checked.
+Publication/tagging/merging are separate actions and remain unauthorized.
+Next action: obtain that source-upload authorization, run native matrix jobs, fix verified
+failures, and record run URLs/commit/OS outcomes before assessing completion.
 
 ## Removed from active scope
 

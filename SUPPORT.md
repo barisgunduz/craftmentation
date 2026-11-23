@@ -1,13 +1,20 @@
 # Support
 
-Craftmentation provides a local CLI MVP and manually adapted documentation materials.
-The CLI supports init, analyze, generate, and offline validate. Advanced updates,
-translations, a hosted documentation site, and a public package release are not available yet.
+Craftmentation can be used through the standard/templates without a CLI, or through
+the local init, analyze, generate, validate, and update commands. Explicit --agent mode
+adds source-aware drafts through installed Codex/Claude clients; deterministic operation
+works offline without either client. Generated content still needs factual review.
+
+The current 0.1.0-rc.1 candidate is local/private, with no public npm release. A hosted
+website and localization engine are outside active scope. Users can request another
+language from their agent when authoring documentation manually.
 
 ## Find guidance
 
-Start with the [README](README.md), [draft standard](docs/standard.md),
+Start with the [README](README.md), [README Standard v0.1](docs/standard.md),
 [README template](README.template.md), and [roadmap](docs/roadmap.md).
+For the CLI, follow the [practical workflow](docs/workflow.md),
+[AI drafting guide](docs/ai-drafting.md), and [command reference](docs/cli-reference.md).
 For proposed contributions, read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Questions, bugs, and ideas

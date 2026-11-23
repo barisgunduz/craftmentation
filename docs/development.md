@@ -2,7 +2,7 @@
 
 ## Commands available now
 
-Use Node 24/26 and npm for the TypeScript CLI, plus Python 3.9+ for legacy checks:
+Use Node 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm for the TypeScript CLI, plus Python 3.9+ for legacy checks:
 
 ```bash
 npm ci --ignore-scripts
@@ -11,14 +11,15 @@ npm run typecheck
 npm run format:check
 npm test
 npm run test:legacy
+npm run docs:check
+npm run package:check
 ```
 
 Tests run real CLI processes in temporary directories, validate actual Ajv schemas, and
 cover the five source-backed examples. Product scripts are defined in package.json.
 `npm test` builds before running Node tests. Normal automated tests invoke no external model, target script, live network server, GUI,
 publish, or deployment. Separately authorized live model evaluations are recorded in
-[AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package is private at an
-unreleased development version. Node engines target 24/26; exact tested patches and host
+[AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package is private at local candidate version 0.1.0-rc.1. Node engines target 24/26; exact tested patches and host
 platform are recorded in the roadmap. Other OS execution is not yet verified.
 
 For a local package smoke check, build, then run `npm pack --ignore-scripts` into an owned
@@ -84,7 +85,7 @@ success is invented by this design.
 
 ## Schema verification boundary
 
-Four Draft 2020-12 schemas and synthetic contract instances are checked by the narrow
+Five Draft 2020-12 schemas and synthetic contract instances are checked by the narrow
 Python helper in `tests/schema_subset.py`. It supports only the keywords these files use,
 rejects unknown keywords, resolves known local URNs only, and performs no network fetch.
 It is an executable contract oracle, not a full JSON Schema implementation or metaschema
@@ -95,3 +96,12 @@ Ajv compilation/metaschema checks, dependency installation, TypeScript build, CL
 and Node 24/26 tests are now exercised separately by the implementation checks. The Python checks do not
 prove future filesystem safety, semantic source truth, or renderer correctness. Synthetic
 zero hashes and package/asset names in contract fixtures are not claims of an analysis run.
+
+## Release checks
+
+The private candidate workflow is defined in .github/workflows/verify.yml. It checks both
+Node floor versions on ubuntu-latest/windows-latest/macos-latest after an authorized push.
+The source artifact status and exact verified hosts are in [release readiness](release-readiness.md).
+Workflow preparation/linting does not constitute native OS execution. package:check records
+a local tarball/digest under ignored artifacts/, installs from that artifact outside the
+checkout, and exercises the actual installed bin. No model is invoked by these checks.
