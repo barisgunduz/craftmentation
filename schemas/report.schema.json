@@ -335,6 +335,9 @@
           "items": {
             "$ref": "urn:craftmentation:library:v1#/$defs/sectionId"
           }
+        },
+        "ai": {
+          "type": "object"
         }
       },
       "required": [
@@ -393,6 +396,9 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "documentHash": {
+          "$ref": "urn:craftmentation:library:v1#/$defs/sha256"
         }
       },
       "required": [

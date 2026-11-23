@@ -8,9 +8,10 @@ No release version is assigned yet.
 
 ### Changed
 
-- Add owner-requested opt-in AI-assisted source understanding as the next development
-  phase before release preparation. Connection selection and implementation remain pending;
-  no AI source-understanding capability is claimed by this scope update.
+- Remove empty optional table scaffolds when rendering a whole-section prose body.
+
+- Prioritize owner-requested opt-in AI-assisted source understanding before release
+  preparation, using installed clients first and deferring direct API credentials/SDKs.
 
 - Recognize Quick start/Getting started as Core usage; preserve UTF-8 BOM when inspecting
   and updating documents, and explain actionable steps for missing usage/existing output.
@@ -26,6 +27,13 @@ No release version is assigned yet.
 - Distinguish manually authored examples from the CLI's limited static population capabilities.
 
 ### Added
+
+- Opt-in source-aware generation through installed Codex/Claude clients, bounded evidence
+  previews, structured source-quoted proposals, unknowns, and factual-review diagnostics.
+- Validation document hashes and offline --from --expect saving of an exact reviewed local draft without a second model call.
+- Proposal schema and optional AI report metadata without promoting model claims into verified facts.
+- Agent timeout/output/cancellation controls, scratch isolation and cleanup, source freshness checks,
+  adapter protocol tests, and recorded live Codex source-only evaluations.
 
 - Practical local preview/review/save guide, --usage-file for reviewed Markdown, and
   --expect to bind writes to the exact reviewed document hash.

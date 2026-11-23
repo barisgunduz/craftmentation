@@ -15,8 +15,9 @@ npm run test:legacy
 
 Tests run real CLI processes in temporary directories, validate actual Ajv schemas, and
 cover the five source-backed examples. Product scripts are defined in package.json.
-`npm test` builds before running Node tests. No test invokes an external provider, target
-script, live network server, GUI, publish, or deployment. The package is private at an
+`npm test` builds before running Node tests. Normal automated tests invoke no external model, target script, live network server, GUI,
+publish, or deployment. Separately authorized live model evaluations are recorded in
+[AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package is private at an
 unreleased development version. Node engines target 24/26; exact tested patches and host
 platform are recorded in the roadmap. Other OS execution is not yet verified.
 
@@ -50,7 +51,9 @@ standalone offline archive of every linked development artifact.
 The implemented scripts are listed above. Phase 8 implements default-preview update,
 explicit managed output, reviewed hash application, and minimal --usage-file input.
 Check/doctor, custom templates/sections,
-localization, providers, and general source-code understanding remain outside this MVP.
+localization and provider SDKs remain outside the deterministic MVP. Phase 9 adds
+explicit installed-agent source interpretation and reviewed-file saves; static analysis
+does not become a semantic verifier.
 
 ## Test architecture
 

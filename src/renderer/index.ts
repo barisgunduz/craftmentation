@@ -35,6 +35,7 @@ export function render(
   fragments: Record<string, string>,
   output: string,
   managed = false,
+  outputRelativeLinks = false,
 ): string {
   return (
     selected
@@ -48,7 +49,7 @@ export function render(
           section.fields.some((f) => !tokens.includes(f))
         )
           throw new Failure('E_INTERNAL', 5, 'Bundled template field mismatch.');
-        const rendered = fragment
+        let rendered = fragment
           .replace(/\{\{([A-Z][A-Z0-9_]*)\}\}/g, (_, name: string) => {
             const field = fields[name];
             if (!field?.safe || !field.sources.length)
@@ -63,9 +64,24 @@ export function render(
                 'Configured or extracted Markdown contains unsafe content.',
               );
             }
-            return rebaseMarkdown(field.value, field.sources[0]!, output);
+            return outputRelativeLinks
+              ? field.value
+              : rebaseMarkdown(field.value, field.sources[0]!, output);
           })
           .trim();
+        // Whole-section prose may leave a template's optional table scaffold empty.
+        // Remove header-only tables without touching literal examples in code fences.
+        const emptyTables: { start: number; end: number }[] = [];
+        visit(parseMarkdown(rendered), (node) => {
+          if (node.type === 'table' && (node.children?.length ?? 0) < 2)
+            emptyTables.push({
+              start: node.position!.start.offset!,
+              end: node.position!.end.offset!,
+            });
+        });
+        for (const table of emptyTables.reverse())
+          rendered = rendered.slice(0, table.start) + rendered.slice(table.end);
+        rendered = rendered.trim();
         return managed ? wrap(id, rendered.replace(/\r\n/g, '\n')) : rendered;
       })
       .join('\n\n')

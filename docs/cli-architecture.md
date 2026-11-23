@@ -54,7 +54,7 @@ programmatic import API is published yet.
 | validator | Schema, GFM structure, links, placeholders, and safety diagnostics | `validate(document, context): Diagnostic[]` |
 | filesystem | Confined reads, snapshots, staging and guarded writes | `snapshot(path)`, `commit(writePlan)` |
 | localization | Historical language/translation design | No engine implemented or planned under current scope |
-| integrations | Optional provider port; no dependency from deterministic pipeline | Reserved boundary; see provider contract below |
+| integrations | Explicit installed-agent evidence/proposal bridge; no provider SDK dependency | Implemented source-aware adapters; see ADR 0011 |
 
 No module below cli reads process.argv, prints, calls process.exit, or decides prompts.
 Analyzer receives a confined reader; generator/renderer are pure and cannot spawn a
@@ -152,8 +152,9 @@ An orchestration layer applies an explicitly configured provider only after user
 and then runs the same deterministic validation/review pipeline. No credentials live in
 config; a future integration defines explicit credential lookup and transmission consent.
 
-No provider is shipped or invoked by the MVP; the new Phase 9 requires an opt-in source-aware adapter; none is implemented yet. `ai.enabled: true` fails with E_CAPABILITY
-until a concrete provider adapter is implemented and authorized; it never falls back to
+The deterministic MVP invokes no provider; Phase 9 implements opt-in installed-agent adapters without a provider SDK. `ai.enabled: true` fails with E_CAPABILITY
+because target configuration alone cannot authorize transmission. Use explicit --agent
+for the installed-client workflow; it never falls back to
 an implicit vendor. The reserved port covers generation/update/translation proposals;
 provider output is untrusted, cannot elevate its own provenance to verified, and cannot
 bypass Core, license, path, or secret-safety checks. Human prompts remain available without it.
@@ -169,3 +170,11 @@ There is no universal multi-file transaction or strong defense against an advers
 rewriting parent directories concurrently. The writer requires a quiescent authorized
 workspace and fails closed on detected changes. Native filesystem assumptions and race
 limits are explicit, not concealed by the word atomic.
+
+## Installed-agent implementation
+
+Phase 9 adds a bounded evidence selector, trusted client subprocess port, source-quoted
+proposal checks, and normal rendering/validation. Proposal state is separate from static
+Analysis. The implementation and trust boundaries are in [ADR 0011](decisions/0011-source-aware-agent-drafting.md)
+and the [AI guide](ai-drafting.md). Live/contract evidence is kept distinct in the
+[evaluation](ai-source-evaluation.md).

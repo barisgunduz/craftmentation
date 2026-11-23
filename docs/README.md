@@ -8,6 +8,7 @@ Start with the route that matches your task.
 | Write a README with my existing AI tool | [Main quick start](../README.md#quick-start), [standard](standard.md), [starter](../README.template.md) |
 | See what a finished result should contain | [Example gallery](../examples/README.md) |
 | Analyze or update documentation repeatably | [Workflow prompts](../prompts/README.md) |
+| Let the CLI interpret source code | [AI drafting](ai-drafting.md); requires explicit Codex/Claude selection |
 | Run the optional local CLI | [Practical workflow](workflow.md), [CLI reference](cli-reference.md), then [configuration](configuration.md) only when needed |
 | Understand what exists and what is next | [Current audit](audit.md#product-and-usability-review), [roadmap](roadmap.md) |
 | Contribute code or documentation | [Contributing](../CONTRIBUTING.md), [development checks](development.md) |
@@ -49,7 +50,12 @@ and changes; Craftmentation does not host a model, install an SDK, or promise to
 **Deterministic CLI generation** uses supported static metadata and existing Markdown,
 with explicit reviewed content for missing fields. It is repeatable and offline, but cannot
 understand every codebase or infer a working usage example from a dependency name.
-A useful AI draft can later be checked using the CLI; neither path requires learning all internals.
+**Source-aware CLI drafting** adds an explicit `--agent codex` or `--agent claude` bridge.
+It supplies a bounded context to the installed client and checks proposal structure/source
+quotes. It is model-assisted interpretation, not automatically verified semantic truth.
+No existing README is required. See [AI drafting](ai-drafting.md).
+
+A useful draft can be checked using the CLI; no route requires learning all internals.
 
 The current improvement focus and remaining product gaps are in the [audit](audit.md).
 Use the [roadmap](roadmap.md) for next work, not the superseded plan in history.

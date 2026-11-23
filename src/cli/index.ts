@@ -14,6 +14,9 @@ import { analyze, detect, inventory } from '../analyzer/index.js';
 import { generate } from '../generator/index.js';
 import { updatePlan, diff } from '../generator/update.js';
 import { regions } from '../renderer/managed.js';
+import { aiDraft } from '../integrations/draft.js';
+import { aiSections, recheckEvidence } from '../integrations/evidence.js';
+import type { Agent } from '../integrations/agents.js';
 import { validateDocument } from '../validator/index.js';
 import { assertSchema, version, catalog } from '../shared/library.js';
 import { Failure, ioFailure, diagnosticsOrder } from '../shared/errors.js';
@@ -46,6 +49,23 @@ async function execute(
   options: Options,
   signal?: AbortSignal,
 ): Promise<Omit<Report, 'schemaVersion' | 'command'>> {
+  if (options.agent && !['codex', 'claude'].includes(options.agent))
+    throw new Failure('E_CAPABILITY', 2, 'Choose --agent codex or --agent claude.');
+  if (
+    (options.previewContext && !options.agent) ||
+    (options.agent && (options.from || options.managed || options.expect || options.usageFile))
+  )
+    throw new Failure(
+      'E_ARGUMENT',
+      2,
+      'Use --preview-context with --agent. AI drafts cannot combine --from, --managed, --expect, or --usage-file; review a saved draft and use --from --expect to publish it.',
+    );
+  if (options.from && (!options.expect || options.managed))
+    throw new Failure(
+      'E_ARGUMENT',
+      2,
+      'Reviewed-file generation requires --from <draft.md> --expect <documentHash>, without --managed.',
+    );
   if (options.write && options.dryRun)
     throw new Failure('E_ARGUMENT', 2, '--write and --dry-run cannot be combined.');
   if (options.expect && !/^[a-f0-9]{64}$/.test(options.expect))
@@ -105,7 +125,8 @@ async function execute(
   if (command === 'validate') {
     const config = effectiveConfig(base, 'general', options),
       document = options.document ?? config.output;
-    const diagnostics = await validateDocument(await reader.text(document), document, reader);
+    const text = await reader.text(document);
+    const diagnostics = await validateDocument(text, document, reader);
     const errors = diagnostics.filter((d) => d.severity === 'error').length,
       warnings = diagnostics.filter((d) => d.severity === 'warning').length;
     const exitCode = errors || (options.strict && warnings) ? 1 : 0;
@@ -115,6 +136,7 @@ async function execute(
       diagnostics,
       data: {
         document,
+        documentHash: hash(text),
         errors,
         warnings,
         checks: [
@@ -128,8 +150,50 @@ async function execute(
       },
     };
   }
+  if (options.from) {
+    const config = effectiveConfig(base, 'general', options);
+    if (
+      options.from.split('/').slice(0, -1).join('/') !==
+      config.output.split('/').slice(0, -1).join('/')
+    )
+      throw new Failure(
+        'E_PATH',
+        3,
+        'Reviewed draft and output must share a directory so relative links keep their meaning.',
+      );
+    const text = await reader.text(options.from);
+    if (hash(text) !== options.expect)
+      throw new Failure(
+        'E_CONCURRENT',
+        3,
+        'Draft changed since review; inspect it again before saving.',
+        options.from,
+      );
+    const diagnostics = await validateDocument(text, config.output, reader);
+    if (diagnostics.some((d) => d.severity === 'error'))
+      return { status: 'invalid', exitCode: 1, diagnostics, data: null };
+    const committed = await reader.create(config.output, text, !!options.dryRun, signal);
+    return {
+      status: 'ok',
+      exitCode: 0,
+      diagnostics,
+      data: change(config.output, !!options.dryRun, committed, text),
+    };
+  }
   const scan = await inventory(reader, 10000, signal),
     config = effectiveConfig(base, detect(scan.texts).detected, options);
+  if (options.agent) {
+    const includes = Object.keys(config.sections).filter((id) => config.sections[id] === true);
+    if (
+      config.assets.length ||
+      includes.some((id) => id !== 'license' && !aiSections.some((s) => s.id === id))
+    )
+      throw new Failure(
+        'E_CAPABILITY',
+        2,
+        'AI drafts support source-focused sections only; use deterministic generation for requested branding/community sections.',
+      );
+  }
   const original = command === 'update' ? await reader.snapshot(config.output) : undefined;
   if (original && scan.files.find((f) => f.path === config.output)?.sha256 !== original.digest)
     throw new Failure(
@@ -193,13 +257,65 @@ async function execute(
       diagnostics: findings.analysis.diagnostics,
       data: findings.analysis,
     };
-  if (command === 'generate' && (await reader.exists(config.output)))
+  if (
+    command === 'generate' &&
+    (!options.agent || (options.output && !options.dryRun && !options.previewContext)) &&
+    (await reader.exists(config.output))
+  )
     throw new Failure(
       'E_EXISTS',
       3,
       'Output already exists. Use update for a safe preview, or generate --output README.draft.md --dry-run for a separate draft. Generation never replaces existing documentation.',
       config.output,
     );
+  if (options.agent) {
+    const result = await aiDraft(
+      scan,
+      findings,
+      config,
+      options.agent as Agent,
+      !!options.previewContext,
+      signal,
+    );
+    await recheckEvidence(reader, scan, result.ai.includedFiles);
+    const diagnostics: Diagnostic[] = [...findings.analysis.diagnostics];
+    if (!options.previewContext)
+      diagnostics.push(...(await validateDocument(result.text, config.output, reader)));
+    if (diagnostics.some((d) => d.severity === 'error'))
+      return { status: 'invalid', exitCode: 1, diagnostics, data: null };
+    const preview = !!options.previewContext || !!options.dryRun || options.output === undefined;
+    const committed = preview
+      ? false
+      : await reader.create(config.output, result.text, false, signal);
+    diagnostics.push({
+      code: options.previewContext ? 'I_AI_CONTEXT' : 'W_AI_REVIEW',
+      severity: options.previewContext ? 'info' : 'warning',
+      message: options.previewContext
+        ? 'Evidence preview only; no agent was invoked.'
+        : `AI-assisted draft requires factual review. Document hash: ${hash(result.text)}.`,
+      path: config.output,
+    });
+    if ('unknowns' in result.ai)
+      for (const question of result.ai.unknowns)
+        diagnostics.push({ code: 'W_AI_UNKNOWN', severity: 'warning', message: question });
+    return {
+      status: 'ok',
+      exitCode: 0,
+      diagnostics: diagnostics.sort(diagnosticsOrder),
+      data: {
+        ...change(
+          config.output,
+          preview,
+          committed,
+          result.text,
+          findings.analysis.sourceFingerprint,
+          result.selection,
+          options.previewContext ? 'noop' : 'create',
+        ),
+        ai: result.ai,
+      },
+    };
+  }
   if (original) {
     // Refresh every owned section, even when its profile would not recommend it today.
     findings.analysis.selection.include = [
@@ -320,7 +436,12 @@ export async function run(argv: string[], io: IO, signal?: AbortSignal): Promise
         )
         .allowExcessArguments(false);
       if (['init', 'generate', 'update'].includes(name))
-        sub.option('--dry-run', 'Preview without any filesystem writes');
+        sub.option(
+          '--dry-run',
+          name === 'generate'
+            ? 'Preview without target writes (AI clients may create their own temporary files)'
+            : 'Preview without any filesystem writes',
+        );
       if (['analyze', 'generate', 'update'].includes(name))
         sub.option('--project-type <id>', 'Explicit project profile');
       if (['generate', 'update'].includes(name))
@@ -342,7 +463,17 @@ export async function run(argv: string[], io: IO, signal?: AbortSignal): Promise
             [],
           );
       if (name === 'generate')
-        sub.option('--managed', 'Explicitly mark generated sections for later safe updates');
+        sub
+          .option('--managed', 'Explicitly mark generated sections for later safe updates')
+          .option(
+            '--agent <name>',
+            'Opt in to sending bounded source evidence to installed codex or claude; previews by default',
+          )
+          .option('--preview-context', 'Inspect selected evidence without invoking the agent')
+          .option(
+            '--from <path>',
+            'Create missing output from a reviewed local draft (requires --expect)',
+          );
       if (name === 'update')
         sub.option(
           '--write',
@@ -418,6 +549,8 @@ export async function run(argv: string[], io: IO, signal?: AbortSignal): Promise
       io.stdout(
         `Profile: ${a.projectType.selected}\nInspected files: ${a.files.length}\nSourced facts: ${a.facts.length}\nFingerprint: ${a.sourceFingerprint}\n`,
       );
+    } else if (report.status === 'ok' && report.command === 'validate') {
+      io.stdout(`Validation passed. Document hash: ${data?.documentHash}\n`);
     } else if (report.status === 'ok' && report.command === 'update') {
       if (report.diagnostics.some((d) => d.code === 'W_UNMANAGED'))
         io.stdout('Existing README preserved. Use your agent for a focused update.\n');

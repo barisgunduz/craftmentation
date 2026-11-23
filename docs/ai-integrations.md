@@ -69,6 +69,7 @@ regression checks; they cannot prove future AI output is correct or injection-re
 Re-evaluate discovery and model behavior in each tool/version before making a runtime
 compatibility claim. Do not run external models, transmit repository content, incur provider
 charges, or install clients merely to exercise this framework without the necessary authorization.
-The provider boundary is designed but has no SDK/adapter. The five-command local CLI
-operates deterministically without AI. Automated localization is outside the active scope;
+Installed Codex/Claude adapters now support explicit --agent source-aware drafts without
+a provider SDK. The five-command CLI still operates deterministically when no agent is
+selected. See [AI drafting](ai-drafting.md) and [actual live/contract results](ai-source-evaluation.md). Automated localization is outside the active scope;
 users can request a language from their agent without installing a translation system.

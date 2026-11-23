@@ -6,11 +6,10 @@ Craftmentation implements init, analyze, generate, offline validate, and preview
 TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas. The
 48-section library, fourteen profiles, manual AI workflows, and source-backed examples
 remain available. The development package is private at 0.0.0-dev.0; no public release,
-CI workflow, provider integration, localization engine, check, or doctor command exists.
-Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). The owner has now
-requested opt-in AI-assisted source understanding before release (Phase 9); adapter
-selection and implementation are pending. This is planned capability, not part of the
-current five-command runtime. The active scope
+CI workflow, provider SDK, localization engine, check, or doctor command exists.
+Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). Phase 9 implements opt-in source interpretation through installed Codex/Claude clients.
+Live Codex results and Claude protocol-only evidence are recorded separately. No existing
+README or API key managed by Craftmentation is necessary for this explicit mode. The active scope
 prioritizes an agent-based quick start and optional CLI, without a website or localization
 engine. See [ADR 0009](decisions/0009-usability-and-scope.md) and the
 [repository guide](README.md) for the user-facing organization.
@@ -23,12 +22,14 @@ engine. See [ADR 0009](decisions/0009-usability-and-scope.md) and the
 | Template library | `README.template.md`, `templates/`, `sections/`, `docs/templates.md` | Manual starter, version-1 metadata, 48 fragments, default selection and ordering |
 | Development verification | `scripts/check_template_library.py`, `tests/` | Metadata validation, selection reference, policy fixtures, and example behavior tests |
 | CLI implementation | `src/cli/`, `src/configuration/`, `src/analyzer/`, `src/generator/`, `src/renderer/`, `src/validator/`, `src/filesystem/`, `src/shared/` | Five real commands, static provenance, literal rendering, offline checks, no-clobber creation, and guarded managed updates |
+| Agent runtime bridge | `src/integrations/`, `schemas/proposal.schema.json` | Bounded evidence, explicit client subprocesses, source-quoted unreviewed proposals, and validated draft rendering |
 | CLI design contracts | `docs/cli-architecture.md`, `docs/cli-reference.md`, `docs/configuration.md`, `docs/safe-file-operations.md`, `schemas/` | Implemented MVP contracts with future capabilities explicitly marked |
 | Contract verification | `tests/schema_subset.py`, `tests/test_cli_contracts.py`, `tests/fixtures/contracts/` | Narrow structural oracle and synthetic instances, independent of actual Ajv compilation/runtime validation |
 | Documentation fixtures | `examples/` | Five real source projects with manually composed READMEs and evidence inventories |
 | Agent entry points | `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md` | Thin project-specific instruction routes |
 | Shared AI workflows | `docs/ai-instructions.md`, `prompts/`, `docs/ai-integrations.md` | One workflow policy and four operation prompts, with compatibility limits |
 | AI walkthrough verification | `docs/ai-evaluation.md`, `tests/fixtures/ai/`, `tests/test_ai_workflows.py` | Recorded manual outputs and deterministic artifact checks, not live provider evaluations |
+| Live source-aware evaluation | `docs/ai-source-evaluation.md`, `tests/fixtures/ai-live/`, `examples/library/README.ai.md` | Actual Codex source-only outcomes, input/output integrity, and explicit semantic review limitations |
 | Branding | `assets/brand/` | SVG symbols, wordmarks, favicon, palette and usage rules |
 | Governance and continuity | `docs/PROJECT_SPEC.md`, `docs/roadmap.md`, `docs/audit.md`, `CHANGELOG.md` | Requirements, progress, findings and change history |
 | Community and contribution guidance | `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`, `.github/ISSUE_TEMPLATE/`, `.github/PULL_REQUEST_TEMPLATE.md` | Participation, reporting routes, and review inputs |
@@ -57,8 +58,12 @@ generation adds exact-body ownership hashes. Update composes verified replacemen
 existing unmodified regions, preserves custom spans, validates the complete candidate, and
 defaults to diff/preview. --write --expect binds application to the reviewed candidate;
 identity/hash checks, a cooperative lock, flushed stage, and retained original-byte backup
-precede replacement. It never executes
-repository scripts, loads provider code, or fetches external links.
+precede replacement. The deterministic route never executes repository scripts, loads target provider code,
+or fetches external links. Explicit --agent invokes a trusted installed client in an owned
+scratch directory, with selected source passed through stdin and command tools disabled.
+The result is a proposal with exact-quote references, never verified static Analysis facts.
+Source freshness and document validation precede any no-clobber draft save. --from --expect
+can save exact reviewed bytes offline without regenerating nondeterministic model output.
 The analysis, generation, update, and translation prompts all reference a shared workflow
 policy, the standard, and the library contract. Operation prompts add scoped procedures;
 entry files do not duplicate policy. A target repository and framework root are distinct,
@@ -90,19 +95,20 @@ executing their contents, rejecting traversal and symlink fragment paths. It nev
 or writes README files. Evidence truth and filled Markdown require human review.
 
 Internal interfaces and the installed CLI are implemented for five commands.
-There is no stable import API, general source-code understanding, provider adapter,
+There is no stable import API, deterministic general source-code understanding, provider SDK,
 custom-template loader, localization engine, check/doctor implementation, or
 online link checker. JSON package fields and existing output/root Markdown provide initial facts;
 --usage-file adds explicitly reviewed Markdown without requiring configuration.
 unsupported formats remain unclassified/unknown unless explicitly configured.
 [Configuration](configuration.md) describes supported defaults, merge rules, source-backed
-fields, and rejected future capabilities. Four [schemas](../schemas/README.md) are compiled
+fields, and rejected future capabilities. Five [schemas](../schemas/README.md) are compiled
 with actual Ajv 2020, without coercion, unknown-field removal, or default mutation.
 Existing catalog/profile IDs and selection/evidence shapes are unchanged.
 AI analysis walkthroughs reuse the library selection request/evidence shape; their
 surrounding reports and source excerpts are evaluation artifacts, not a CLI analysis schema.
 Update artifacts demonstrate focused preservation; translation artifacts record a source
-fingerprint and Unreviewed status. No prompt or test starts an external agent/provider.
+fingerprint and Unreviewed status. Automated tests use controlled protocol responses and local child processes; live evaluation
+calls are recorded separately and require source/cost authorization.
 
 ## Technology choices and constraints
 
@@ -129,5 +135,9 @@ See [ADR 0010](decisions/0010-reviewed-managed-updates.md) for update/ownership 
 and the [practical workflow](workflow.md) for preview/review/save. The internal modules
 `renderer/managed.ts` and `generator/update.ts` parse ownership and plan edits without writing;
 `SafeFS.snapshot/replace` owns backup/publication and failure reporting.
+
+See [ADR 0011](decisions/0011-source-aware-agent-drafting.md), the
+[AI guide](ai-drafting.md), and [live evaluation](ai-source-evaluation.md) for source budgets,
+client trust assumptions, runtime limits, and review boundaries.
 
 See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery order.

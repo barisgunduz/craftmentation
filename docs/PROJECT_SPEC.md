@@ -50,8 +50,9 @@ configuration and avoid a mandatory vendor SDK. Source selection/limits and prov
 must be visible; do not imply free or unlimited use of an existing agent subscription.
 
 The first connection route (existing Codex/Claude installation versus direct API credentials)
-is awaiting owner preference. Select and verify the adapter/security boundary before enabling
-it. A live model evaluation requires an explicitly scoped repository and cost/transmission
+is the existing-agent route following owner continuation. Codex/Claude adapters are
+implemented with explicit opt-in, bounded evidence, and proposal validation; direct API
+credentials/SDKs are deferred. A live model evaluation requires an explicitly scoped repository and cost/transmission
 authorization. Contract tests alone must not be presented as output-quality validation.
 
 Release preparation follows this capability. The historical Advanced CLI list did not

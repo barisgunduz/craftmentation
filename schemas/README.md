@@ -9,6 +9,7 @@ independent narrow oracle, not the production validator.
 | [library.schema.json](library.schema.json) | `urn:craftmentation:library:v1`: existing catalog/profile/layout shapes and shared section/evidence definitions |
 | [config.schema.json](config.schema.json) | `urn:craftmentation:configuration:v1`: user configuration structure |
 | [analysis.schema.json](analysis.schema.json) | `urn:craftmentation:analysis:v1`: bounded static analysis/provenance and diagnostics |
+| [proposal.schema.json](proposal.schema.json) | `urn:craftmentation:proposal:v1`: unreviewed model sections, exact source quotations, and unknowns |
 | [report.schema.json](report.schema.json) | `urn:craftmentation:report:v1`: command JSON result envelope |
 
 Register bundled resources offline by their exact IDs. Cross-resource URNs are not network

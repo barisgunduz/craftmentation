@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:craftmentation:proposal:v1",
+  "title": "Unreviewed source-backed AI proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projectType": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 48,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16000
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 500
+                }
+              },
+              "required": [
+                "path",
+                "quote"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "content",
+          "sources"
+        ]
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      }
+    }
+  },
+  "required": [
+    "projectType",
+    "sections",
+    "unknowns"
+  ]
+}

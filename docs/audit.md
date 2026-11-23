@@ -195,3 +195,24 @@ was added. The next work is release confidence, including native Linux/Windows e
 Current verification is recorded in the roadmap; native platform/source-understanding and
 uncooperative-writer limitations remain. See the [workflow](workflow.md) and
 [ADR 0010](decisions/0010-reviewed-managed-updates.md).
+
+
+## Source-aware generation follow-up (2026-11-23)
+
+Revised Phase 9 implements explicit generate --agent codex|claude, source context inspection,
+a strict source-quoted proposal boundary, normal document validation, and offline exact
+reviewed-file saving. The existing-agent route was selected after owner continuation.
+The first live sandbox attempt failed; network/client access was approved for the concrete
+Codex integration tests on the repository's public fixture sources. Five source-only
+example calls and one read-only framework preview succeeded. No current README was replaced.
+
+This resolves the earlier manifest/README-only limit for the opt-in model-assisted route;
+the deterministic analyzer remains deliberately narrower. Proposed interpretation is not
+verified semantic fact. Large-context omissions and unknowns remain visible. A live empty
+configuration-table scaffold was fixed in the renderer and covered by a regression test.
+
+No provider SDK, direct credential store, automatic source upload, application-script
+execution, website, or localization engine was added. Claude protocol tests do not prove
+live-account compatibility. Native platform/client testing and release readiness remain
+Phase 10. See the actual [evaluation](ai-source-evaluation.md), [guide](ai-drafting.md), and
+[ADR 0011](decisions/0011-source-aware-agent-drafting.md).

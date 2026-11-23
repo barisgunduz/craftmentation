@@ -1,0 +1,364 @@
+{
+  "recordedAt": "2026-11-23",
+  "client": "codex-cli 0.171.0",
+  "review": "Agent-reviewed against source; not maintainer-reviewed. Not a model benchmark.",
+  "examples": [
+    {
+      "example": "library",
+      "inputs": {
+        "slug.py": "3054435cedbb4cb171ce8924358009503f08a82131653210ddc16521b2bc31c5"
+      },
+      "documentHash": "a13872d3e27d60efeef5d280639f295645b9c44df3edb6f3556d9e8dbf3d2115",
+      "markdown": "<!-- AI-assisted draft: review factual accuracy before publishing. -->\n\n# ASCII Slug Normalization Fixture\n\nA Python fixture that converts text to slugs made of lowercase ASCII letters, digits, and hyphens\\.\n\n## Overview\n\n`slugify` lowercases the input, replaces each consecutive run of characters outside `a-z` and `0-9` with a single hyphen, and strips hyphens from both ends. Characters still outside that range after lowercasing become separators. For example, `Café noir` becomes `caf-noir`. If no letters or digits remain, the result is an empty string.\n\n## Usage\n\nFrom a Python session where `slug.py` is importable, call `slugify` with a string.\n\n```python\nfrom slug import slugify\n\nslugify(\"  Hello, World!  \")  # 'hello-world'\nslugify(\"A__B 42\")            # 'a-b-42'\nslugify(\"!!!\")                # ''\n```\n"
+    },
+    {
+      "example": "web-app",
+      "inputs": {
+        "index.html": "916b0918bf78a98c35829e500f805776531aa583699376db651853ed430278fc"
+      },
+      "documentHash": "a43dd780b8b0d7f9417ab849aeb1eb220927eeef354a701f1b31c3fbef8da545",
+      "markdown": "<!-- AI-assisted draft: review factual accuracy before publishing. -->\n\n# Focus Counter\n\nA single\\-page counter for completed focus sessions in your browser tab\\.\n\n## Overview\n\nThe page stores the count in memory and starts at zero whenever it loads. Reloading the page clears your tally.\n\n## Usage\n\nOpen [index.html](index.html) in a browser with JavaScript enabled. Select **Complete a session** after each focus session to add one to the count. Select **Reset** to return the count to zero.\n",
+      "ai": {
+        "agent": "codex",
+        "reviewStatus": "unreviewed",
+        "fingerprint": "8ad0c02ef13574c3227d726fd2638f76e77ef7562690632e9cb9335f4a11066a",
+        "contextBytes": 765,
+        "includedFiles": [
+          "index.html"
+        ],
+        "omittedFiles": [],
+        "truncatedFiles": [],
+        "kind": "proposal",
+        "projectType": "static-website",
+        "unknowns": [
+          "Supported browsers and versions are unspecified. The evidence includes no browser test results."
+        ],
+        "citations": [
+          {
+            "id": "project-name",
+            "sources": [
+              {
+                "path": "index.html",
+                "quote": "<title>Focus Counter</title>"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "sources": [
+              {
+                "path": "index.html",
+                "quote": "<p>Count completed focus sessions in this browser tab.</p>"
+              }
+            ]
+          },
+          {
+            "id": "overview",
+            "sources": [
+              {
+                "path": "index.html",
+                "quote": "<p role=\"status\">Sessions: <output id=\"count\">0</output></p>"
+              },
+              {
+                "path": "index.html",
+                "quote": "let sessions = 0;"
+              }
+            ]
+          },
+          {
+            "id": "usage",
+            "sources": [
+              {
+                "path": "index.html",
+                "quote": "<button id=\"add\" type=\"button\">Complete a session</button>\n  <button id=\"reset\" type=\"button\">Reset</button>"
+              },
+              {
+                "path": "index.html",
+                "quote": "<script>\n  let sessions = 0;"
+              },
+              {
+                "path": "index.html",
+                "quote": "count.textContent = String(++sessions);"
+              },
+              {
+                "path": "index.html",
+                "quote": "sessions = 0;\n    count.textContent = '0';"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "example": "cli-tool",
+      "inputs": {
+        "count_lines.py": "a247e697e3bd78d985d84fb8694231d5b72a624c00e4674396aec729e016fcea",
+        "sample.txt": "ffdd19fec2c855bf5a5edc35a540b1992f440af0a18c549d01f35b5073e62cf9"
+      },
+      "documentHash": "9cb9eef51c627d0947a849bd0c3e4939335d3fc86a16aeb6b6c59f01815a90fe",
+      "markdown": "<!-- AI-assisted draft: review factual accuracy before publishing. -->\n\n# count\\_lines\n\nA small Python command\\-line script that counts lines in a UTF\\-8 file\\.\n\n## Overview\n\nThe script reads the file one line at a time and prints the total. Blank lines count, and a final line counts even without a trailing newline. If opening or reading the file raises an I/O or decoding error, the script prints an error to standard error and exits with status 1.\n\n## Usage\n\nFrom the repository root, run `python3 count_lines.py sample.txt`. The script takes one file path as a positional argument and prints its line count to standard output. The supplied evidence lists `sample.txt` but omits its contents, so the example's output is unknown.\n",
+      "ai": {
+        "agent": "codex",
+        "reviewStatus": "unreviewed",
+        "fingerprint": "9b31cbc69e5bfdcc26325b22e0f3ae704fafaf22f968e4fa3bc5e89de154ccf6",
+        "contextBytes": 540,
+        "includedFiles": [
+          "count_lines.py"
+        ],
+        "omittedFiles": [
+          "sample.txt"
+        ],
+        "truncatedFiles": [],
+        "kind": "proposal",
+        "projectType": "general",
+        "unknowns": [
+          "The project name is inferred from the script filename and error prefix. No formal project title is supplied.",
+          "The minimum supported Python version is unspecified.",
+          "The contents and line count of sample.txt are unknown because the file was omitted.",
+          "No tests or execution results were supplied."
+        ],
+        "citations": [
+          {
+            "id": "project-name",
+            "sources": [
+              {
+                "path": "count_lines.py",
+                "quote": "parser.exit(1, f\"count_lines: {error}\\n\")"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "sources": [
+              {
+                "path": "count_lines.py",
+                "quote": "Small documentation fixture: count lines in a UTF-8 file."
+              }
+            ]
+          },
+          {
+            "id": "overview",
+            "sources": [
+              {
+                "path": "count_lines.py",
+                "quote": "with args.path.open(encoding=\"utf-8\") as source:\n            count = sum(1 for _ in source)"
+              },
+              {
+                "path": "count_lines.py",
+                "quote": "except (OSError, UnicodeError) as error:\n        parser.exit(1, f\"count_lines: {error}\\n\")\n    print(count)"
+              }
+            ]
+          },
+          {
+            "id": "usage",
+            "sources": [
+              {
+                "path": "count_lines.py",
+                "quote": "parser.add_argument(\"path\", type=Path, help=\"UTF-8 file to count\")"
+              },
+              {
+                "path": "count_lines.py",
+                "quote": "print(count)\n\n\nif __name__ == \"__main__\":\n    main()"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "example": "api",
+      "inputs": {
+        "server.py": "5fe2477c948d41b8309449f958af2bd2b23d9256e70d52bb78c1abc43682230c"
+      },
+      "documentHash": "542813f401bfffe627bc87000281f471f8290a1bfe5d86c032d63f138367b9f2",
+      "markdown": "<!-- AI-assisted draft: review factual accuracy before publishing. -->\n\n# Health Endpoint Documentation Fixture\n\nA local Python HTTP fixture that serves a JSON health response for documentation examples\\.\n\n## Overview\n\nThe fixture uses Python’s standard library and listens on `127.0.0.1:8765`. It returns a fixed health status based on the request path.\n\n## Usage\n\nRun `server.py` directly with Python, then open `http://127.0.0.1:8765/health` in a browser. `GET /health` returns HTTP 200 with `{\"status\": \"ok\"}`. Every other GET path, including `/health/` and `/health?check=1`, returns HTTP 404 with `{\"error\": \"not found\"}`. Both responses use `application/json`. Press Ctrl+C to stop the server.\n",
+      "ai": {
+        "agent": "codex",
+        "reviewStatus": "unreviewed",
+        "fingerprint": "d1031f512311d92581fd99a4b45a0142091454ebd9d2baccc21d35ee9fad0051",
+        "contextBytes": 761,
+        "includedFiles": [
+          "server.py"
+        ],
+        "omittedFiles": [],
+        "truncatedFiles": [],
+        "kind": "proposal",
+        "projectType": "api",
+        "unknowns": [
+          "The repository evidence supplies no official project name. The proposed name comes from the module docstring.",
+          "The supported Python version range is unspecified.",
+          "The supplied evidence contains no test suite or execution results. The usage examples describe behavior inferred from source."
+        ],
+        "citations": [
+          {
+            "id": "project-name",
+            "sources": [
+              {
+                "path": "server.py",
+                "quote": "Local-only health endpoint documentation fixture"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "sources": [
+              {
+                "path": "server.py",
+                "quote": "Local-only health endpoint documentation fixture"
+              },
+              {
+                "path": "server.py",
+                "quote": "body = json.dumps({\"status\": \"ok\"} if found else {\"error\": \"not found\"}).encode()"
+              }
+            ]
+          },
+          {
+            "id": "overview",
+            "sources": [
+              {
+                "path": "server.py",
+                "quote": "import json\nfrom http.server import BaseHTTPRequestHandler, HTTPServer"
+              },
+              {
+                "path": "server.py",
+                "quote": "with HTTPServer((\"127.0.0.1\", 8765), Handler) as server:"
+              },
+              {
+                "path": "server.py",
+                "quote": "found = self.path == \"/health\"\n        body = json.dumps({\"status\": \"ok\"} if found else {\"error\": \"not found\"}).encode()"
+              }
+            ]
+          },
+          {
+            "id": "usage",
+            "sources": [
+              {
+                "path": "server.py",
+                "quote": "if __name__ == \"__main__\":\n    with HTTPServer((\"127.0.0.1\", 8765), Handler) as server:\n        try:\n            server.serve_forever()\n        except KeyboardInterrupt:\n            pass"
+              },
+              {
+                "path": "server.py",
+                "quote": "found = self.path == \"/health\"\n        body = json.dumps({\"status\": \"ok\"} if found else {\"error\": \"not found\"}).encode()\n        self.send_response(200 if found else 404)\n        self.send_header(\"Content-Type\", \"application/json\")"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "example": "desktop-app",
+      "inputs": {
+        "app.py": "207726f3dc51155ce64d330ee451283785313c7bde5873cebe2ebbb66d1ce3f5"
+      },
+      "documentHash": "e498f5bc9e415795229a9bac1eaea7e905882a9605ff2518efb352bca0b3ab56",
+      "markdown": "<!-- AI-assisted draft: review factual accuracy before publishing. -->\n\n# Scratch Pad\n\nA temporary desktop text pad built with Python and Tkinter\\.\n\n## Overview\n\nThe editor wraps text at word boundaries and expands to fill the window. Text is discarded when you close the app.\n\n## Usage\n\nRun `app.py` with a Python interpreter that has Tkinter available in a graphical desktop session. For example, from the repository root, use `python3 app.py` if `python3` points to that interpreter. Type directly in the editor when the Scratch Pad window opens.\n",
+      "ai": {
+        "agent": "codex",
+        "reviewStatus": "unreviewed",
+        "fingerprint": "ede5acdfd3bfc534bdd3a9b6767a29567035fc82f8144c8b7e41c7262df6a10f",
+        "contextBytes": 346,
+        "includedFiles": [
+          "app.py"
+        ],
+        "omittedFiles": [],
+        "truncatedFiles": [],
+        "kind": "proposal",
+        "projectType": "desktop-app",
+        "unknowns": [
+          "Supported Python versions and operating systems are unspecified.",
+          "The supplied evidence contains no tests or runtime verification."
+        ],
+        "citations": [
+          {
+            "id": "project-name",
+            "sources": [
+              {
+                "path": "app.py",
+                "quote": "root.title(\"Scratch Pad\")"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "sources": [
+              {
+                "path": "app.py",
+                "quote": "\"\"\"A transient text pad documentation fixture, with no file persistence.\"\"\""
+              },
+              {
+                "path": "app.py",
+                "quote": "import tkinter as tk"
+              }
+            ]
+          },
+          {
+            "id": "overview",
+            "sources": [
+              {
+                "path": "app.py",
+                "quote": "editor = tk.Text(root, wrap=\"word\", width=60, height=20)\n    editor.pack(fill=\"both\", expand=True)"
+              },
+              {
+                "path": "app.py",
+                "quote": "\"\"\"A transient text pad documentation fixture, with no file persistence.\"\"\""
+              }
+            ]
+          },
+          {
+            "id": "usage",
+            "sources": [
+              {
+                "path": "app.py",
+                "quote": "import tkinter as tk"
+              },
+              {
+                "path": "app.py",
+                "quote": "root = tk.Tk()"
+              },
+              {
+                "path": "app.py",
+                "quote": "editor.focus_set()\n    root.mainloop()"
+              },
+              {
+                "path": "app.py",
+                "quote": "if __name__ == \"__main__\":\n    main()"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "framework": {
+    "documentHash": "9a11a3e801cefa219644b05ebe270a4d349afb9d8e952d973669ddf32af022ac",
+    "contextBytes": 49070,
+    "includedFiles": [
+      "package.json",
+      "README.md",
+      "src/analyzer/index.ts",
+      "src/cli/index.ts",
+      "src/configuration/index.ts",
+      "src/filesystem/index.ts"
+    ],
+    "truncatedFiles": [
+      "src/analyzer/index.ts",
+      "src/cli/index.ts",
+      "src/filesystem/index.ts"
+    ],
+    "selected": [
+      "project-name",
+      "description",
+      "overview",
+      "usage",
+      "configuration",
+      "testing",
+      "license"
+    ],
+    "unknowns": [
+      "The supplied evidence includes test script declarations, but omits test bodies and execution results. Test coverage and current pass status are unverified.",
+      "The existing README reports macOS runtime checks with Node.js 24 and 26. The supplied evidence contains no runtime logs, and native Linux and Windows verification remains outstanding according to that README.",
+      "The setup and preview commands are documented in the existing README. Their execution is unverified in the supplied evidence."
+    ],
+    "notes": "Live preview only; no target write. An empty configuration-table scaffold was identified and then fixed in the renderer with an automated regression test."
+  }
+}

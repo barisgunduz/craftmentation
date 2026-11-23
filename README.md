@@ -6,7 +6,7 @@
 
 Create a useful README for the project you actually have. Craftmentation gives you a
 reusable structure, evidence-based AI instructions, finished examples, and an optional
-local CLI for generation and validation.
+local CLI for source-aware drafting, generation, and validation.
 
 [Start here](#quick-start) · [See examples](examples/README.md) · [Repository guide](docs/README.md) · [Roadmap](docs/roadmap.md)
 
@@ -46,7 +46,7 @@ These are curated examples of documentation quality. They are not claims that th
 can infer every detail automatically. A simple project needs a concise useful README;
 it does not need fabricated features or empty sections to look substantial.
 
-## Optional: use the local CLI
+## Optional: generate from source with the CLI
 
 For repeated local checks or deterministic drafts, the local CLI has five commands:
 
@@ -54,7 +54,7 @@ For repeated local checks or deterministic drafts, the local CLI has five comman
 |---|---|
 | `init` | Create configuration without overwriting an existing file |
 | `analyze` | Inspect static repository evidence |
-| `generate` | Create a missing README from supported facts and reviewed content |
+| `generate` | Draft from source with an opted-in agent, or generate deterministically from supported facts |
 | `validate` | Check Markdown, placeholders, internal links, and configuration offline |
 | `update` | Preview managed changes; apply only an explicitly reviewed update with a backup |
 
@@ -66,10 +66,24 @@ npm run build
 node dist/cli/index.js generate --root examples/library --output README.preview.md --dry-run
 ```
 
-That command previews an existing example without writing a file. The CLI currently reads
-JSON package metadata and existing README sections. It cannot invent missing usage; it may
-need explicit source-backed content. It never executes your project's scripts or fetches
-external links. Existing output is protected. Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
+That command previews an existing example without writing a file. For source-code
+interpretation, use an installed, authenticated Codex or Claude CLI explicitly:
+
+```bash
+node dist/cli/index.js generate --agent codex --root /path/to/your-project
+```
+
+Replace the example path with your project directory; use `--agent claude` for Claude.
+The command returns a reviewable draft, source citations, and unresolved questions. It
+works without an existing README. To save a new draft, add `--output README.draft.md`.
+Existing files are protected. See the [AI drafting guide](docs/ai-drafting.md) for reviewing
+what is sent and saving an exact reviewed draft.
+
+`--agent` explicitly sends bounded source excerpts through your selected client and may
+consume its quota or incur charges, including with `--dry-run`. Without it, generation
+stays offline and uses JSON package metadata, existing Markdown, and reviewed input.
+Craftmentation does not execute project scripts. Model interpretations need factual review.
+Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
 safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
 The package is private at `0.0.0-dev.0`; there is no public npm release. Actual runtime

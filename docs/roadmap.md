@@ -2,16 +2,17 @@
 
 ## Current state
 
-- Latest completed work: practical README preview/review/save and managed updates, revised Phase 8.
+- Latest completed work: opt-in source-aware agent drafting and live evaluation, revised Phase 9.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Current phase: Phase 9, AI-Assisted Source Understanding; connection-route research in progress.
+- Phase 9 is completed. Next incomplete phase: Phase 10, Release Confidence and Distribution; not started.
 - Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
 - Existing CLI: init, analyze, generate, validate, and preview-first managed update.
   No public release, provider SDK, background updater, website, or localization engine.
-- Main limitation: deterministic population relies on package metadata and existing README
-  sections; it cannot invent missing usage or replace an agent's repository understanding.
+- Source-aware --agent mode interprets bounded code excerpts through a trusted installed client.
+  Without it, deterministic population still relies on metadata/Markdown/reviewed content.
+  Model interpretations remain unreviewed proposals; context limits and unknowns are visible.
 - Native runtime verification covers macOS/Node 24 and 26. Linux/Windows remain release gates.
 - Validation and the current usability audit are recorded in docs/audit.md and phase results.
 
@@ -429,33 +430,60 @@ Blockers: none for Phase 8. Next action: execute Phase 9 only when the owner ask
 
 ## Phase 9: AI-Assisted Source Understanding
 
-Status: **In Progress**
+Status: **Completed**
 
-Completed tasks: inspected the existing proposal boundary and installed agent help; confirmed
-that the earlier Advanced CLI scope did not implement source interpretation. Owner explicitly
-requested this capability. No model was invoked and no adapter is implemented yet.
+Completed tasks: existing-agent route, bounded evidence, Codex/Claude transport, source-quoted
+proposal validation, reviewed-file saves, documentation, and authorized live Codex evaluations.
+All acceptance checks below passed. Remaining tasks: none. No release work has started.
 
 Remaining tasks:
 
-- [ ] Confirm existing-agent versus direct-API connection with the owner.
-- [ ] Define bounded source evidence and observable selection/omission rules.
-- [ ] Implement a vendor-neutral proposal boundary and selected real adapter.
-- [ ] Check source references, unknowns, Markdown, paths, and license safeguards.
-- [ ] Integrate a clear preview/review/save journey with existing-document preservation.
-- [ ] Test timeout/cancellation/failure/unsafe evidence and unchanged offline operation.
-- [ ] Run explicitly authorized real model evaluations on source-only examples and Craftmentation.
-- [ ] Update user guidance, architecture/ADRs, changelog, and actual progress.
+- [x] Confirm existing-agent versus direct-API connection with the owner.
+- [x] Define bounded source evidence and observable selection/omission rules.
+- [x] Implement a vendor-neutral proposal boundary and selected real adapter.
+- [x] Check source references, unknowns, Markdown, paths, and license safeguards.
+- [x] Integrate a clear preview/review/save journey with existing-document preservation.
+- [x] Test timeout/cancellation/failure/unsafe evidence and unchanged offline operation.
+- [x] Run explicitly authorized real model evaluations on source-only examples and Craftmentation.
+- [x] Update user guidance, architecture/ADRs, changelog, and actual progress.
 
 Acceptance: without an existing README, inspect real application source and produce a useful
 project-specific draft through an explicitly selected model/agent. No invented claims,
 implicit source transmission, automatic application-code execution, unsafe overwrite, or
 mandatory AI dependency for existing deterministic commands. Model claims remain proposals.
 
-Validation: local codex exec/claude help inspected and official noninteractive references
-reviewed; these establish invocation options, not successful integration or model quality.
-Pending input: initial connection route. Other implementation/evaluation tasks remain open.
-Next action: resolve the pending connection question, implement the adapter, and resume this
-phase. Release Phase 10 must not start before this acceptance is met.
+Validation (2026-11-23, macOS):
+
+- Full 43-test Node suite passed on Node 24.22.3 and 26.13.1 without skips. Includes
+  bounded evidence/metadata, exact quotes and URL checks, rejected legal/unsafe proposals,
+  adapter protocol shapes, real subprocess UTF-8/output/time limits, cancellation, source
+  freshness, reviewed-file hashes, offline saves, and all prior safe-update regressions.
+- `npm run test:legacy`: 18 Python tests, 48 sections, 14 profiles, 18 policy cases, and
+  five evidence inventories passed. Build/typecheck/Prettier and `git diff --check` passed.
+- Actual main README validation passed with zero errors/warnings. 125 Markdown files and
+  299 local file/asset/heading references checked with no failures.
+- After the initial sandboxed client attempt failed, the concrete Codex network/client
+  integration test was explicitly approved. Six live model calls succeeded: five authored
+  examples copied with source only (no README) and one read-only Craftmentation preview.
+  The framework preview selected seven sections from six included files (49,070 source
+  bytes, three truncated excerpts). No existing README or application source was changed.
+- The live framework preview exposed an empty optional table scaffold; AST-based removal
+  and a regression test fixed it without another model call. Observed snapshot bytes,
+  input hashes, and available citations are retained separately from mock protocol tests.
+- Actual source-only library output is readable in examples/library/README.ai.md; the
+  evaluation records unknowns and shortcomings rather than claiming broad model accuracy.
+
+Limits: quote matches are provenance, not semantic proof. Source text is capped at 48 KiB,
+12 KiB/file, 40 files; metadata lists at most 100 omissions with a full count. AI dry-run
+can use quota/client local state while leaving the target unwritten. Clients/admin policies
+must be trusted; this is not a hermetic sandbox or complete secret scanner. Live evaluation
+used Codex CLI 0.171.0 only; Claude is protocol-tested, with live-account compatibility not
+verified. Native Linux/Windows remain release gates. Deterministic mode requires no agent.
+Direct API SDKs, automatic AI update/adoption, and implicit config-triggered transmission
+remain outside this implementation. No commits, pushes, release, or deployment occurred.
+
+Blockers: none for Phase 9's selected-adapter acceptance. Next action: Phase 10 only on
+owner continuation; native platform and wider client verification belong to that phase.
 
 ## Phase 10: Release Confidence and Distribution
 

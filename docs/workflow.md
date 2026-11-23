@@ -4,9 +4,10 @@ For most projects, start with [your existing coding agent](../README.md#quick-st
 Supply the standard and starter, ask for a repository-backed draft, review it, then save.
 You do not need to install the CLI or maintain section metadata to use that route.
 
-The optional local CLI provides an offline workflow below. It never executes scripts it
-finds, calls a model, or downloads documentation. It reads JSON package metadata, existing
-Markdown, and explicitly supplied content; it does not understand arbitrary application code.
+The optional local CLI provides an offline workflow below. The deterministic route never executes scripts it
+finds, calls a model, or downloads documentation. Without --agent it reads JSON package metadata, existing Markdown, and explicitly supplied
+content. For interpreting application source, use [AI-assisted drafting](ai-drafting.md).
+Only that explicit mode invokes a model/client; its own quota and local-state rules apply.
 
 ## Build the local CLI
 

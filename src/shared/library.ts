@@ -58,9 +58,9 @@ const ajv = new Ajv2020({
   removeAdditional: false,
   useDefaults: false,
 });
-for (const name of ['library', 'config', 'analysis', 'report'])
+for (const name of ['library', 'config', 'analysis', 'report', 'proposal'])
   ajv.addSchema(await bundledJSON(`schemas/${name}.schema.json`));
-for (const id of ['library', 'configuration', 'analysis', 'report'])
+for (const id of ['library', 'configuration', 'analysis', 'report', 'proposal'])
   if (!ajv.getSchema(`urn:craftmentation:${id}:v1`)) throw new Error('Missing bundled schema');
 export function assertSchema(id: string, value: unknown, location?: string): void {
   const validator = ajv.getSchema(`urn:craftmentation:${id}:v1`)!;

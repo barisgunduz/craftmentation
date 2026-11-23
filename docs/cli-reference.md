@@ -6,7 +6,7 @@ The CLI implements init, analyze, generate, validate, and update from this check
 `npm run build` and invoke `node dist/cli/index.js`, or use the npm-created bin from an
 explicitly installed local package. The private development version is 0.0.0-dev.0; no
 public package release exists. Update previews managed changes and applies only an explicitly
-reviewed candidate with a backup. Check/doctor are unimplemented design references and
+reviewed candidate with a backup. Generate additionally supports explicit source-aware --agent drafting. Check/doctor are unimplemented design references and
 are rejected as unknown commands; custom libraries/providers require a demonstrated need.
 Localization automation is outside active scope. Tables mentioning these commands describe
 reserved interfaces, not commands users can run.
@@ -26,7 +26,7 @@ completion, stdin instruction stream, or command execution from repository metad
 | --json | All commands | One JSON result envelope on stdout; no human progress text in it |
 | --help | All commands | Static command help without scanning the repository |
 | --version | Top level | Installed package version once implementation exists, never an invented release value |
-| --dry-run | init, generate, update | No files, locks, temporary files, or directories written; return proposed change summary |
+| --dry-run | init, generate, update | No target writes; deterministic paths also create no operation files. Explicit AI may use client scratch/state and quota |
 | --project-type <id> | analyze, generate, update | Explicit known profile selection; no evidence bypass |
 | --output <path> | generate, update | Override configured Markdown destination within root |
 | --language <tag> | generate, update | Explicit language override; reject unsupported capabilities |
@@ -35,6 +35,9 @@ completion, stdin instruction stream, or command execution from repository metad
 | --usage-file <path> | generate, update | Reviewed UTF-8 Markdown usage body inside the target root; overrides usage content |
 | --managed | generate | Explicitly add invisible ownership markers to newly generated sections |
 | --expect <sha256> | generate, update | Require exactly the reviewed candidate hash; mandatory with update --write |
+| --agent <name> | generate | Explicit source transmission/invocation through installed codex or claude; defaults to preview |
+| --preview-context | generate with --agent | Print selected evidence without invoking a model |
+| --from <path> | generate | Save a local reviewed draft exactly; requires --expect and same output directory |
 | --write | update | Apply an eligible reviewed update in a quiet workspace, retaining an original backup |
 
 Repeated include/exclude values are deduplicated, then exclusions win; these list flags
@@ -74,6 +77,19 @@ External links are reported as not fetched: default operation is offline with no
 that silently enables arbitrary outbound HTTP. Optional online checking requires a later
 explicit SSRF/redirect/timeout policy and authorization; it is not part of this contract.
 
+## Source-aware generation
+
+See [AI drafting](ai-drafting.md). --agent is the explicit network/model opt-in; without
+it generation stays deterministic. No automatic provider is enabled by a target config.
+Default agent generation previews, while an explicit --output creates a missing draft
+unless --dry-run is set. --preview-context prints evidence without invoking the agent.
+Agent dry-run still has client scratch/authentication side effects and quota usage.
+
+Success data adds optional ai metadata: reviewStatus, source/context fingerprint and budget,
+included/omitted/truncated file paths, full omittedCount, source citations, project type,
+and unknowns. Exact-quote checks do not prove semantic correctness. --from --expect saves
+reviewed bytes without a second call; no automatic model-generated update/adoption exists.
+
 ## Update preservation contract
 
 Update has --write and --dry-run; their combination is rejected as contradictory.
@@ -104,7 +120,7 @@ may be null. The schema defines success data shapes now; command tests must impl
 | Data shape | Fields |
 |---|---|
 | Change summary | path, operation (create/noop/update), dryRun, committed, documentHash, sourceFingerprint, preview, diff, selected, omitted, unresolved |
-| Validation summary | document, errors, warnings, checks (names of checks performed) |
+| Validation summary | document, documentHash, errors, warnings, checks (names of checks performed) |
 | Doctor summary | checks: check name, pass/warning/fail status, and redacted message |
 | Top-level help/version | text |
 

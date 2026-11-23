@@ -96,6 +96,9 @@ export type Options = {
   write?: boolean;
   expect?: string;
   usageFile?: string;
+  agent?: string;
+  previewContext?: boolean;
+  from?: string;
   document?: string;
   strict?: boolean;
   json?: boolean;

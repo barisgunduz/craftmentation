@@ -30,14 +30,21 @@ program should have a complete, useful README without pretending to be a large a
 Browser/desktop interaction is documented as a manual check and has not been exercised in
 the recorded automated verification. API handler tests do not establish a live server test.
 
+## Actual source-only AI output
+
+The CLI has also been exercised without these curated READMEs. See the actual
+[library AI draft](library/README.ai.md) beside its source and the
+[live source-only evaluation](../docs/ai-source-evaluation.md) for all five examples.
+These are model proposals requiring review, not claims of automatically verified facts.
+
 ## Curated examples and CLI output
 
 These READMEs were composed and reviewed manually against source. They illustrate the
 quality to aim for with a human or coding agent. They are **not** captured automatic CLI
 output, and no model/provider evaluation is implied.
 
-The current CLI can reuse supported sections of an existing README and JSON package
-metadata. Generating from these examples therefore reuses their curated documentation;
+Without --agent, the CLI reuses supported sections of an existing README and JSON package
+metadata. With an explicit agent, it can interpret the selected source excerpts. Generating from these examples therefore reuses their curated documentation;
 it does not prove that the analyzer can infer all behavior from Python, HTML, or arbitrary
 source code. A repository without usage evidence still needs reviewed content. The [practical workflow](../docs/workflow.md) explains reviewed usage input and safe
 managed updates; arbitrary source understanding is still outside the CLI’s capability.

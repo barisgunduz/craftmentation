@@ -104,7 +104,9 @@ tracking, navigation, and drift detection are outside the active scope. These fi
 reserved for schema compatibility, without promising an implementation. Manual AI requests
 can use another language independently of the CLI.
 
-Likewise custom local libraries/sections and providers are reserved, unimplemented capabilities.
+Custom local libraries/sections and direct provider SDKs remain reserved. Installed-agent
+drafting is implemented via explicit --agent, not config-triggered invocation. ai.enabled
+still fails E_CAPABILITY; a target config cannot authorize transmission. See [AI drafting](ai-drafting.md).
 They require a demonstrated user need and an explicit implementation decision. The schema can describe the accepted design before all features ship;
 each staged CLI must diagnose valid-but-unimplemented settings. Disabled AI configuration
 does not trigger network access or credential discovery. There is no provider SDK dependency.
