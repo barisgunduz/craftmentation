@@ -38,7 +38,7 @@ No release version is assigned yet.
 - Local 0.1.0-rc.1 candidate, tarball payload/installed-bin smoke checks, offline docs checks,
   and candidate/upgrade/license evidence without enabling publication.
 - SHA-pinned contents-read GitHub validation matrix for three OS runners and both Node floors;
-  remote/native execution remains pending an authorized source upload.
+  all six baseline jobs passed; the final agent-launcher correction requires a fresh run.
 
 - Opt-in source-aware generation through installed Codex/Claude clients, bounded evidence
   previews, structured source-quoted proposals, unknowns, and factual-review diagnostics.
@@ -138,6 +138,9 @@ No release version is assigned yet.
   progress updates, and Turkish owner reports.
 
 ### Fixed
+
+- Resolve Windows global npm agent JavaScript entries without a shell; exclude relative
+  and repository-local npm PATH entries from trusted client lookup.
 
 - Restored the identity board's nested angular C mark across logos, symbols, and favicon.
 - README branding now uses a dark panel with high-contrast outlined Inter lettering,

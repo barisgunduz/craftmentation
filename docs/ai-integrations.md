@@ -2,6 +2,15 @@
 
 ## Available workflow
 
+There are two different integration routes:
+
+- **Shared instructions:** give the policy, standard, and prompt to a repository-capable
+  agent such as Claude Code, Codex, Copilot, or Cursor. Other tools can use the same text
+  when they can read the project, but automatic discovery and output quality vary.
+- **Direct CLI invocation:** `generate --agent codex` and `generate --agent claude` are
+  the only built-in adapters. There is no direct Copilot, Cursor, or Windsurf adapter.
+  Codex has live evaluation evidence; Claude currently has protocol tests only.
+
 Craftmentation provides shared instructions and four reusable prompts, not an AI SDK,
 API provider, or automatic agent installer. Read [shared instructions](ai-instructions.md),
 [README Standard v0.1](standard.md), and [the library contract](templates.md). Select an

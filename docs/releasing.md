@@ -5,7 +5,7 @@
 Craftmentation has no public released version. The local candidate is 0.1.0-rc.1 and
 package.json remains private: true. Preparation does not authorize commits, pushes, tags,
 releases, npm publication, or deployment. [Release readiness](release-readiness.md) tracks
-actual evidence, pending native platforms, and reporting limitations for Phase 10.
+actual evidence, final-revision verification gates, and reporting limitations for Phase 10.
 
 ## Versioning and changelog
 

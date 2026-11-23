@@ -1,6 +1,6 @@
 # Release readiness: 0.1.0-rc.1
 
-Status: **In Progress — local candidate prepared, native CI results pending.** This is
+Status: **In Progress — baseline native CI passed; launcher fix requires fresh CI.** This is
 not a public release announcement. package.json remains private: true.
 
 ## Candidate and scope
@@ -19,34 +19,46 @@ their own tarball, avoiding a self-referential package hash.
 | Gate | Evidence/status |
 |---|---|
 | Actual npm tarball and separate-consumer installation | Local macOS check passed; final artifact regenerated after documentation checks |
-| CLI/runtime, type, and formatting checks | 43 tests passed on both floor Node versions on macOS; type/format passed |
+| CLI/runtime, type, and formatting checks | Final launcher revision: 45 tests passed on both floor Node versions on macOS; type/format passed |
 | Source lockfile security query | npm audit returned 0 known advisories for 103 entries on 2026-11-23 |
 | License/notices | All 79 runtime notice files inspected; all 103 lockfile declarations inventoried |
-| Documentation | 130 Markdown files / 325 local references passed; actual README validator passed |
+| Documentation | 131 Markdown files / 330 local references passed; baseline actual README validator passed |
 | Workflow structure | actionlint 1.7.12 passed; action SHAs verified against official GitHub API refs |
-| Native Linux | **Pending** — Docker daemon is unavailable locally and remote workflow is not uploaded |
-| Native Windows | **Pending** — no local Windows runtime; remote workflow is not uploaded |
-| Remote macOS matrix | **Pending** — source workflow prepared, no remote run claimed |
+| Native Linux | Passed both Node floors on the baseline commit below |
+| Native Windows | Passed both Node floors on the baseline commit below |
+| Remote macOS matrix | Passed both Node floors on the baseline commit below |
+| Subsequent trusted-client launcher fix | Local verification recorded in the roadmap; fresh native CI required |
 | Claude live account/client versions | Not verified; protocol-tested adapter, explicit candidate limitation |
 | Confidential security reporting | GitHub setting verified disabled; limitation documented in SECURITY.md |
 | Publication/version/registry approval | **Not authorized** — private candidate only |
+| npm terminal account | Successfully authenticated as barisgunduz on 2026-11-23; no publication performed |
 
 Six jobs are defined in .github/workflows/verify.yml: macOS/Linux/Windows with both floor
 Node versions. They run tests, docs checks, and actual installed-package smoke checks,
 without model calls, source rewrites, shared caches, or publication credentials. Prepared
 workflow YAML and portable-path tests do not substitute for successful native execution.
 
+### Observed native run
+
+[GitHub Actions run 45221783275](https://github.com/barisgunduz/craftmentation/actions/runs/45221783275)
+passed all six jobs for commit 6459e645938ae14f4b7ba4bb0fbffd5e50f65b8d.
+Linux/Windows x64 and macOS arm64 each ran Node 24.22.3 and 26.13.1. Every job logged
+43 passing Node tests, zero failures/skips, 18 passing Python tests, documentation checks,
+and a successful separate-consumer installation with all five commands. No model was called.
+All six reproducible package checks produced SHA-256
+36a27f52a5490989fa62f4ea3b4c6e3b585e02d692aba4020273a90e76e9e2a6.
+This digest identifies the baseline, not subsequent source/documentation edits.
+
 ## Remaining action
 
-The GitHub API verified Actions enabled and zero workflows before this phase. Running the prepared native
-checks requires uploading the source changes. AGENTS.md explicitly prohibits commits and
-pushes without owner authorization. After local verification is complete, present the
-concrete diff/candidate and request authorization for a release branch commit/push and
-its CI checks. Do not merge, tag, publish, deploy, enable a reporting channel, or rewrite
-history as a side effect. Fix and rerun authorized verification failures before completion.
+The owner uploaded the baseline, and its native results are now verified. Final review
+identified a Windows npm-agent launcher issue; the shell-free correction and regression
+tests need uploading and a fresh native matrix run. AGENTS.md prohibits commits/pushes
+without authorization. Review the concrete diff first, then obtain source-upload approval.
+Claude is installed but its account is not authenticated on this host; its live test remains
+unverified. Do not infer all-vendor compatibility from the shared text instructions.
 
-Once native results are available, update this record and the roadmap with actual run URLs,
-commit and OS/runtime outcomes. Only then can Phase 10 acceptance be assessed. A separate
+Record the final revision's native results before assessing Phase 10 completion. A separate
 explicit approval is still required for public npm/GitHub publication. See
 [candidate notes](release-notes.md), [release conventions](releasing.md),
 [dependency evidence](dependency-licenses.md), and [installation/upgrade](upgrading.md).

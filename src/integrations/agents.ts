@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { Failure } from '../shared/errors.js';
 import { bundledText, strictJSON } from '../shared/library.js';
+import { clientDirectories, resolveClient } from './launcher.js';
 
 export type Agent = 'codex' | 'claude';
 export type Runner = (
@@ -16,8 +17,16 @@ export type Runner = (
 ) => Promise<string>;
 
 // No target-supplied executable, shell interpolation, or arbitrary argument configuration.
-export const runProcess: Runner = (command, args, input, cwd, signal, timeout = 180000) =>
-  new Promise((resolve, reject) => {
+export const runProcess: Runner = async (command, args, input, cwd, signal, timeout = 180000) => {
+  if (signal?.aborted) throw new Failure('E_PROVIDER', 6, 'Agent request cancelled.');
+  const pathKey = Object.keys(process.env).find((key) => key.toUpperCase() === 'PATH');
+  const directories = clientDirectories(process.env[pathKey ?? 'PATH'] ?? '');
+  if (command === 'codex' || command === 'claude') {
+    const client = await resolveClient(command, directories);
+    command = client.command;
+    args = [...client.prefix, ...args];
+  }
+  return new Promise((resolve, reject) => {
     if (signal?.aborted) {
       reject(new Failure('E_PROVIDER', 6, 'Agent request cancelled.'));
       return;
@@ -29,6 +38,7 @@ export const runProcess: Runner = (command, args, input, cwd, signal, timeout = 
         ),
       ),
     );
+    if (pathKey) env[pathKey] = directories.join(path.delimiter);
     const child = spawn(command, args, {
       cwd,
       env,
@@ -107,6 +117,7 @@ export const runProcess: Runner = (command, args, input, cwd, signal, timeout = 
     });
     child.stdin.end(input);
   });
+};
 
 export async function requestProposal(
   agent: Agent,

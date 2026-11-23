@@ -146,6 +146,9 @@ See the [audit](audit.md) for gaps and the [roadmap](roadmap.md) for delivery or
 
 Phase 10 adds offline repository documentation checks, a cross-platform Python launcher,
 and tarball/consumer smoke verification under scripts/. The six-job SHA-pinned workflow
-has contents-read permission and never invokes a model or publishes. Actual native remote
-runs remain pending owner authorization to commit/push. See [release readiness](release-readiness.md)
+has contents-read permission and never invokes a model or publishes. All six native jobs
+passed for commit 6459e645938ae14f4b7ba4bb0fbffd5e50f65b8d; the later shell-free
+Windows launcher change requires a new run. Agent lookup excludes relative/project npm
+PATH entries and uses trusted global/native clients; see [ADR 0013](decisions/0013-trusted-agent-launchers.md).
+See [release readiness](release-readiness.md)
 and [ADR 0012](decisions/0012-release-candidate-gates.md).

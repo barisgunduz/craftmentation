@@ -4,7 +4,8 @@
 
 - Latest completed work: opt-in source-aware agent drafting and live evaluation, revised Phase 9.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Phase 9 is completed. Phase 10 is In Progress: private 0.1.0-rc.1 candidate prepared locally; native CI execution awaits authorized source upload.
+- Phase 9 is completed. Phase 10 is In Progress: baseline six-job native CI passed;
+  final Windows agent-launcher fix requires source-upload authorization and a fresh run.
 - Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
@@ -13,7 +14,8 @@
 - Source-aware --agent mode interprets bounded code excerpts through a trusted installed client.
   Without it, deterministic population still relies on metadata/Markdown/reviewed content.
   Model interpretations remain unreviewed proposals; context limits and unknowns are visible.
-- Native runtime verification covers macOS/Node 24 and 26. Linux/Windows remain release gates.
+- Baseline native runtime verification covers macOS/Linux/Windows on both Node floors.
+  The final launcher revision still needs native CI; live Claude remains unverified.
 - Validation and the current usability audit are recorded in docs/audit.md and phase results.
 
 The [current specification](PROJECT_SPEC.md) governs active scope. The
@@ -489,12 +491,13 @@ owner continuation; native platform and wider client verification belong to that
 
 Status: **In Progress**
 
-Completed tasks: local candidate preparation and checks below. Remaining: actual native
-Linux/Windows/remote macOS execution and recording their results, then readiness assessment.
+Completed tasks: local candidate preparation and six-job baseline native verification.
+Remaining: verify the final launcher revision on native CI, then readiness assessment.
 
 - [x] Verify package contents, runtime versions, installation, and upgrade guidance locally.
-- [ ] Run native Linux/Windows checks in addition to macOS (six-job workflow prepared; no remote run).
-- [ ] Add active minimal read-only GitHub checks (YAML implemented/linted; upload/execution pending).
+- [x] Run native Linux/Windows checks in addition to macOS (baseline run recorded below).
+- [x] Add active minimal read-only GitHub checks (six successful jobs).
+- [ ] Run the final trusted-client launcher revision through the native matrix.
 - [x] Review dependencies, notices/licenses, security reports, and repository completeness.
 - [x] Document private reporting and remaining operational/client limits.
 - [x] Verify examples, navigation, and promises against the product.
@@ -530,12 +533,31 @@ Candidate constraints: ^24.22.3 or ^26.13.1; private:true; no public npm install
 Optional client/platform coverage remains as recorded in Phase 9. No dependency upgrade,
 AI request, global install, cache ownership change, commit, push, release, or deployment.
 
-Blocker: uploading the concrete workflow/source requires explicit commit/push authorization
-under AGENTS.md. After local review, request authorization for a release/0.1.0-rc.1 branch
-commit/push and CI execution. Keep this phase In Progress until actual results are checked.
-Publication/tagging/merging are separate actions and remain unauthorized.
-Next action: obtain that source-upload authorization, run native matrix jobs, fix verified
-failures, and record run URLs/commit/OS outcomes before assessing completion.
+Follow-up verification (2026-11-23):
+
+- The owner uploaded commit 6459e645938ae14f4b7ba4bb0fbffd5e50f65b8d. All six jobs in
+  [run 45221783275](https://github.com/barisgunduz/craftmentation/actions/runs/45221783275)
+  passed. Each logged 43 Node tests with no skips, 18 Python tests, documentation checks,
+  and successful installed-package smoke checks. All six tarballs matched SHA-256
+  36a27f52a5490989fa62f4ea3b4c6e3b585e02d692aba4020273a90e76e9e2a6.
+- Browser-authorized npm login completed; npm whoami confirmed barisgunduz. Login is
+  not publication authorization. Claude authentication is absent; no live Claude call ran.
+- Final review found the Windows npm .cmd client-launch limitation. ADR 0013 records the
+  shell-free global-package entry resolver and exclusion of relative/project npm PATH bins.
+  Earlier CI does not verify this later change. Local follow-up results are recorded below.
+- Final launcher revision: all 45 Node tests passed on both Node 24.22.3 and 26.13.1
+  on macOS, with zero failures/skips. Typecheck, formatting, 18 Python tests, library
+  checks, 131 Markdown files / 330 local references, and git diff --check passed.
+  Both trusted launchers returned their versions without a model call: Codex 0.171.0
+  and Claude Code 2.1.330. The actual tarball installed into a separate registry-backed
+  consumer; all five commands, managed backup, and no-model preview checks passed.
+  Package reproducibility passed; the final generated artifact/digest is in ignored
+  artifacts/verification.json. No client was installed, no model quota was consumed,
+  and no commit, push, tag, or publication was performed by this verification step.
+
+Blocker: the final launcher revision needs authorized commit/push and fresh native CI.
+Publication/tagging/merging remain separate unauthorized actions. Next action: finish local
+checks, present the concrete diff, obtain source-upload authorization, and inspect fresh CI.
 
 ## Removed from active scope
 

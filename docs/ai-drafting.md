@@ -117,6 +117,12 @@ The client runs in an owned temporary directory, receives source text through st
 and is not given the target working directory or copied source files. Shell interpolation,
 target-specified executables, and arbitrary provider arguments are not supported.
 
+Install clients globally or as native user installations on PATH. Relative PATH entries
+and node_modules directories are excluded; repository-local client installations are not
+executed. Windows native executables run directly. Global npm JavaScript clients run via
+Node using their known package's confined bin entry, without executing .cmd shell shims.
+See [ADR 0013](decisions/0013-trusted-agent-launchers.md).
+
 Codex uses read-only sandboxing, ignored user config/rules, disabled shell/unified-exec
 features and web search, and an ephemeral session. Unexpected tool events reject its
 result. Claude uses safe mode, no built-in tools, empty explicit MCP configuration,
@@ -136,6 +142,8 @@ shown, since they can contain sensitive material.
 
 Codex has been exercised with live model calls as recorded in the evaluation. Claude
 transport/options have automated protocol tests; native live-account compatibility must
-not be inferred from those alone. Windows client/process behavior remains a release gate.
+not be inferred from those alone. Offline native CI covers the earlier release candidate;
+the launcher revision requires a fresh matrix run, and live Windows client behavior is
+not established by protocol tests.
 See the [actual source-only library output](../examples/library/README.ai.md) and
 [evaluation record](ai-source-evaluation.md) for actual results and limitations.

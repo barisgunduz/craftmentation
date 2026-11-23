@@ -37,3 +37,6 @@ product scope without erasing earlier design rationale.
 
 - [0012: Private release candidate and verification gates](0012-release-candidate-gates.md) —
   package/install smoke checks, pinned read-only CI, tested Node floors, and explicit remote/publication authorization.
+
+- [0013: Trusted agent launchers](0013-trusted-agent-launchers.md) — global/native client
+  lookup and shell-free Windows npm entry points, excluding repository-local npm bins.

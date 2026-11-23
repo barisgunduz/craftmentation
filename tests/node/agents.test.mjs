@@ -11,8 +11,50 @@ import { defaults } from '../../dist/configuration/index.js';
 import { evidenceBundle, recheckEvidence } from '../../dist/integrations/evidence.js';
 import { aiDraft } from '../../dist/integrations/draft.js';
 import { requestProposal, runProcess } from '../../dist/integrations/agents.js';
+import { clientDirectories, resolveClient } from '../../dist/integrations/launcher.js';
 import { assertSchema } from '../../dist/shared/library.js';
 const root = fileURLToPath(new URL('../../', import.meta.url));
+test('trusted client lookup excludes repository npm bins and relative PATH entries', () => {
+  const trusted = path.resolve('trusted client');
+  const local = path.resolve('node_modules', '.bin');
+  assert.deepEqual(clientDirectories([local, '.', '', trusted].join(path.delimiter)), [trusted]);
+});
+test('Windows global npm clients launch JS directly with literal arguments, never the cmd shim', async (t) => {
+  const dir = await fixture(t);
+  const prefix = path.join(dir, 'global client & %space%');
+  const packageRoot = path.join(prefix, 'node_modules', '@openai', 'codex');
+  await fs.mkdir(packageRoot, { recursive: true });
+  await fs.writeFile(path.join(prefix, 'codex.cmd'), 'THIS SHELL SHIM MUST NOT RUN');
+  await fs.writeFile(
+    path.join(packageRoot, 'package.json'),
+    JSON.stringify({
+      name: '@openai/codex',
+      bin: { codex: 'cli.mjs' },
+    }),
+  );
+  await fs.writeFile(
+    path.join(packageRoot, 'cli.mjs'),
+    'process.stdout.write(JSON.stringify(process.argv.slice(2)))',
+  );
+  const client = await resolveClient('codex', [prefix], true);
+  assert.equal(client.command, process.execPath);
+  const args = ['', '{"value":"a & b %PATH%"}', 'space and quote "'];
+  assert.deepEqual(
+    JSON.parse(await runProcess(client.command, [...client.prefix, ...args], '', dir)),
+    args,
+  );
+  await fs.writeFile(
+    path.join(packageRoot, 'package.json'),
+    JSON.stringify({
+      name: '@openai/codex',
+      bin: { codex: '../outside.mjs' },
+    }),
+  );
+  await fs.writeFile(path.join(packageRoot, '..', 'outside.mjs'), 'process.exit(1)');
+  await assert.rejects(resolveClient('codex', [prefix], true), (e) => e.code === 'E_PROVIDER');
+  await fs.writeFile(path.join(packageRoot, 'package.json'), '{bad metadata');
+  await assert.rejects(resolveClient('codex', [prefix], true), (e) => e.code === 'E_PROVIDER');
+});
 async function fixture(t) {
   const dir = await fs.realpath(
     await fs.mkdtemp(path.join(os.tmpdir(), 'craftmentation-ai-test-')),
