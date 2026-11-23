@@ -2,12 +2,10 @@
 
 ## Current state
 
-- Latest completed work: opt-in source-aware agent drafting and live evaluation, revised Phase 9.
+- Latest completed work: release-candidate preparation and six-job native verification, revised Phase 10.
 - Phase 0–6 implementation history is retained below; it is not a requirement to build every earlier plan.
-- Phase 9 is completed. Phase 10 is In Progress: source upload is authorized; the final
-  launcher passed Linux/Windows CI, and macOS CI is moving to Intel after ARM runner
-  capacity prevented either job from starting.
-- Release confidence follows in Phase 10; source-aware AI is now an explicit pre-release goal.
+- Phases 9 and 10 are completed. The private 0.1.0-rc.1 candidate is verified; public
+  publication remains a separate owner-authorized operation, not completed functionality.
 - Out of scope: a standalone documentation website and multilingual/translation automation.
 - Language: English documentation by default; the chosen AI agent may write a user-requested language.
 - Existing CLI: init, analyze, generate, validate, and preview-first managed update.
@@ -15,8 +13,8 @@
 - Source-aware --agent mode interprets bounded code excerpts through a trusted installed client.
   Without it, deterministic population still relies on metadata/Markdown/reviewed content.
   Model interpretations remain unreviewed proposals; context limits and unknowns are visible.
-- Baseline native runtime verification covers macOS/Linux/Windows on both Node floors.
-  The final launcher revision still needs native CI; live Claude remains unverified.
+- Final native CI covers Linux/Windows/Intel macOS on both Node floors, with separate
+  local ARM64 macOS checks. Live Claude remains an explicit unverified limitation.
 - Validation and the current usability audit are recorded in docs/audit.md and phase results.
 
 The [current specification](PROJECT_SPEC.md) governs active scope. The
@@ -490,15 +488,15 @@ owner continuation; native platform and wider client verification belong to that
 
 ## Phase 10: Release Confidence and Distribution
 
-Status: **In Progress**
+Status: **Completed**
 
-Completed tasks: local candidate preparation and six-job baseline native verification.
-Remaining: verify the final launcher revision on native CI, then readiness assessment.
+Completed tasks: candidate preparation, final launcher verification, and successful native
+matrix execution. Remaining phase tasks: none. Publication is not this phase's deliverable.
 
 - [x] Verify package contents, runtime versions, installation, and upgrade guidance locally.
 - [x] Run native Linux/Windows checks in addition to macOS (baseline run recorded below).
 - [x] Add active minimal read-only GitHub checks (six successful jobs).
-- [ ] Run the final trusted-client launcher revision through the native matrix.
+- [x] Run the final trusted-client launcher revision through the native matrix.
 - [x] Review dependencies, notices/licenses, security reports, and repository completeness.
 - [x] Document private reporting and remaining operational/client limits.
 - [x] Verify examples, navigation, and promises against the product.
@@ -567,10 +565,19 @@ Authorized source upload (2026-11-23):
   conclusion is failure, not success; this does not indicate a macOS code/test failure.
 - Switch the two macOS CI jobs to the documented standard macos-15-intel pool. Preserve
   both Node floors and all checks; local ARM results remain distinct from Intel CI.
-  Record rationale in ADR 0012. Full native results for this revised workflow are pending.
+  Record rationale in ADR 0012. The replacement workflow completed successfully below.
+- Commit 400cf57cd65fb73fe836c3ff14ae89f13394fbe1 passed all six jobs in
+  [run 45233777732](https://github.com/barisgunduz/craftmentation/actions/runs/45233777732).
+  Both Intel macOS jobs passed, alongside Linux/Windows and both Node floors. macOS logs
+  confirm 45 Node tests, zero failures/skips, 18 Python tests, offline docs checks, and
+  reproducible package/installed-consumer smoke checks with zero agent invocations.
 
-Blocker: replacement macOS/native matrix verification is pending. Next action: push the
-runner correction and these notes, inspect the new run, and record actual native results.
+Acceptance: a verified private release candidate, documented operational/client limits,
+and a concrete publication checklist are delivered. No automatic publication occurred.
+Blockers: none for candidate preparation. Live Claude and confidential reporting remain
+documented limitations; public distribution still requires its own approval.
+Next action: commit/push these verification notes under the existing source-upload approval,
+check their CI, then present the candidate/publication plan to the owner.
 Source-upload authorization is already granted; do not request it again for these notes.
 Publication/tagging/merging remain separate unauthorized actions.
 

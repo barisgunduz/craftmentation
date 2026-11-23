@@ -1,6 +1,6 @@
 # Release readiness: 0.1.0-rc.1
 
-Status: **In Progress — final Linux/Windows CI passed; macOS runner replacement pending.** This is
+Status: **Release candidate verified — all six native CI jobs passed.** This is
 not a public release announcement. package.json remains private: true.
 
 ## Candidate and scope
@@ -24,10 +24,10 @@ their own tarball, avoiding a self-referential package hash.
 | License/notices | All 79 runtime notice files inspected; all 103 lockfile declarations inventoried |
 | Documentation | 131 Markdown files / 330 local references passed; baseline actual README validator passed |
 | Workflow structure | actionlint 1.7.12 passed; action SHAs verified against official GitHub API refs |
-| Native Linux | Passed both Node floors on the baseline commit below |
-| Native Windows | Passed both Node floors on the baseline commit below |
-| Remote macOS matrix | Passed both Node floors on the baseline commit below |
-| Subsequent trusted-client launcher fix | Local verification recorded in the roadmap; fresh native CI required |
+| Native Linux | Passed both Node floors on final verification commit 400cf57 |
+| Native Windows | Passed both Node floors on final verification commit 400cf57 |
+| Remote macOS matrix | Intel macOS passed both Node floors on final verification commit 400cf57; ARM64 also tested locally |
+| Trusted-client launcher fix | Passed all six native jobs, including launcher/process regression tests |
 | Claude live account/client versions | Not verified; protocol-tested adapter, explicit candidate limitation |
 | Confidential security reporting | GitHub setting verified disabled; limitation documented in SECURITY.md |
 | Publication/version/registry approval | **Not authorized** — private candidate only |
@@ -51,7 +51,17 @@ All six reproducible package checks produced SHA-256
 36a27f52a5490989fa62f4ea3b4c6e3b585e02d692aba4020273a90e76e9e2a6.
 This digest identifies the baseline, not subsequent source/documentation edits.
 
-## Remaining action
+### Final native verification
+
+[Run 45233777732](https://github.com/barisgunduz/craftmentation/actions/runs/45233777732)
+passed all six jobs for commit 400cf57cd65fb73fe836c3ff14ae89f13394fbe1: Linux x64,
+Windows x64, and Intel macOS, each with Node 24.22.3 and 26.13.1. The macOS logs confirm
+45 passing Node tests, no failures/skips, 18 passing Python tests, documentation checks,
+and successful reproducible package/consumer smoke checks with no agent invocation.
+This includes the final launcher code. Local macOS arm64 passed the same 45-test suite
+on both Node floors; the final hosted matrix does not claim remote arm64 verification.
+
+## Infrastructure failure and resolution
 
 The owner approved the final source commit/push. The shell-free launcher correction and
 regression tests are on master at bec0246477622b5cdebc60f9a80e96f98de8929a.
@@ -59,12 +69,12 @@ regression tests are on master at bec0246477622b5cdebc60f9a80e96f98de8929a.
 passed Linux/Windows on both Node floors. Both macOS jobs were cancelled without running
 any step: GitHub annotations state that a hosted runner was not acquired and identify
 arm64 capacity constraints. The overall run failed due to infrastructure, not a failed test.
-The workflow now selects the standard Intel macOS pool; a fresh native run is required.
+The workflow now selects the standard Intel macOS pool; the replacement run above passed.
 Source-upload approval also covers the verification-note follow-up; do not ask again.
 Claude is installed but its account is not authenticated on this host; its live test remains
 unverified. Do not infer all-vendor compatibility from the shared text instructions.
 
-Record the final revision's native results before assessing Phase 10 completion. A separate
+Phase 10's release-candidate verification is complete. A separate
 explicit approval is still required for public npm/GitHub publication. See
 [candidate notes](release-notes.md), [release conventions](releasing.md),
 [dependency evidence](dependency-licenses.md), and [installation/upgrade](upgrading.md).

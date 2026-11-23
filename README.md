@@ -90,8 +90,8 @@ Follow the [preview/review/save workflow](docs/workflow.md), including missing u
 safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
 The local candidate is private at `0.1.0-rc.1`; there is no public npm release. Actual runtime
-checks passed on macOS, Linux, and Windows with both Node floors. The final agent-launcher
-fix still requires a fresh CI run; see [release readiness](docs/release-readiness.md).
+checks passed on Linux, Windows, and Intel macOS with both Node floors; macOS ARM64 was
+also tested locally. See [release readiness](docs/release-readiness.md) for exact evidence and limits.
 See [candidate notes](docs/release-notes.md) and [installation/upgrade guidance](docs/upgrading.md).
 
 ## What is in this repository?

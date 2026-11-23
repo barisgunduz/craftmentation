@@ -142,8 +142,8 @@ shown, since they can contain sensitive material.
 
 Codex has been exercised with live model calls as recorded in the evaluation. Claude
 transport/options have automated protocol tests; native live-account compatibility must
-not be inferred from those alone. Offline native CI covers the earlier release candidate;
-the launcher revision requires a fresh matrix run, and live Windows client behavior is
-not established by protocol tests.
+not be inferred from those alone. Offline native CI covers process/launcher regression
+checks on Linux, Windows, and Intel macOS, with separate local ARM64 macOS results.
+Live Windows installed-client behavior is not established by those tests.
 See the [actual source-only library output](../examples/library/README.ai.md) and
 [evaluation record](ai-source-evaluation.md) for actual results and limitations.

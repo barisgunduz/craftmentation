@@ -1,6 +1,7 @@
 # Candidate notes: 0.1.0-rc.1
 
-Status: **Not published.** Baseline native CI passed; the launcher fix needs fresh CI.
+Status: **Release candidate verified; not published.** All six native CI jobs passed,
+including the launcher fix, using Linux, Windows, and Intel macOS.
 The package remains private and no Git tag, GitHub release, or npm publication exists.
 
 ## Included
@@ -21,8 +22,8 @@ is not verified semantic truth. Current limits are in the [AI guide](ai-drafting
 ## Compatibility and exclusions
 
 Node ^24.22.3 or ^26.13.1 is required. Existing unreleased configuration/schema versions
-remain 1; no automatic migration is performed. All six baseline native jobs passed;
-exact revision/results and the pending launcher recheck are in [release readiness](release-readiness.md).
+remain 1; no automatic migration is performed. All six final native jobs passed;
+exact revision/results and the separate local ARM64 coverage are in [release readiness](release-readiness.md).
 Live model evaluation covers Codex 0.171.0 only;
 Claude transport has protocol tests, not a verified live-account/client-version matrix.
 
