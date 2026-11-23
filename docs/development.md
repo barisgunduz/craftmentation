@@ -20,7 +20,7 @@ cover the five source-backed examples. Product scripts are defined in package.js
 `npm test` builds before running Node tests. Normal automated tests invoke no external model, target script, live network server, GUI,
 publish, or deployment. Separately authorized live model evaluations are recorded in
 [AI source evaluation](ai-source-evaluation.md); they are not part of npm test. The package
-version is 0.1.0. Node engines target 24/26; native Linux/Windows/Intel macOS CI and separate
+version is 0.1.1. Node engines target 24/26; native Linux/Windows/Intel macOS CI and separate
 local ARM64 macOS results are recorded in the roadmap.
 
 For a local package smoke check, build, then run `npm pack --ignore-scripts` into an owned

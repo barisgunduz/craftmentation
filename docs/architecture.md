@@ -5,7 +5,7 @@
 Craftmentation implements init, analyze, generate, offline validate, and preview-first update.
 TypeScript compiles to ESM with locked npm dependencies and bundled Ajv schemas. The
 48-section library, fourteen profiles, manual AI workflows, and source-backed examples
-remain available. Version 0.1.0 is packaged for npm with a read-only six-job native CI
+remain available. Version 0.1.1 is packaged for npm with a read-only six-job native CI
 matrix. There is no provider SDK, localization engine, check, or doctor command.
 Product requirements remain in [PROJECT_SPEC.md](PROJECT_SPEC.md). Phase 9 implements opt-in source interpretation through installed Codex/Claude clients.
 Live Codex results and Claude protocol-only evidence are recorded separately. No existing

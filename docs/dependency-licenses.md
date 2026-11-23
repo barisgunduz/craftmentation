@@ -1,9 +1,9 @@
 # Dependency license inventory
 
-Recorded for 0.1.0 on 2026-11-23. Source: package-lock.json
+Recorded for 0.1.1 on 2026-11-23. Source: package-lock.json
 and installed package notice filenames, not an inferred license for adopting projects.
 
-Lockfile SHA-256 at inspection: `a13f09cbba19241f29727bc66c171c44eed073917818b62f3ac7e860bc2cad50`.
+Lockfile SHA-256 at inspection: `070690f0d63c7f457b85ce36a2f8bc057bebf718129e3c5fafe7e29b645073dc`.
 All 103 dependency records are byte-for-byte-equivalent JSON values to the inspected
 0.1.0-rc.1 lockfile; only the root release version changed. Existing notice inspection
 therefore applies to the same dependency versions.

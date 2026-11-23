@@ -1,13 +1,13 @@
 # Installation and upgrade guidance
 
-Version 0.1.0 is the initial release.
+Version 0.1.1 adds npm discovery keywords to the initial 0.1.0 release; CLI behavior is unchanged.
 Use Node 24.22.3+ within 24.x or 26.13.1+ within 26.x. Python 3.9+ is needed only for
 contributor verification, not for the installed deterministic CLI.
 
 ## Install from npm
 
 ```bash
-npm install --global craftmentation@0.1.0
+npm install --global craftmentation@0.1.1
 craftmentation --version
 craftmentation --help
 ```
@@ -16,7 +16,7 @@ Run `craftmentation analyze --root /path/to/your-project` for read-only reposito
 For source interpretation, install and authenticate Codex CLI or Claude Code separately,
 then follow the [AI drafting guide](ai-drafting.md). Deterministic commands need neither.
 
-Without a global installation, use `npx --yes craftmentation@0.1.0 --help`, or install
+Without a global installation, use `npx --yes craftmentation@0.1.1 --help`, or install
 the package locally in a separate tooling directory and run it with npm exec.
 
 ## Source checkout
@@ -29,20 +29,20 @@ npm run build
 node dist/cli/index.js --version
 ```
 
-The CLI should report 0.1.0. No command updates Git or rewrites adopting projects.
+The CLI should report 0.1.1. No command updates Git or rewrites adopting projects.
 Existing older development installations need the newer Node floor before building.
 
 ## Try the local tarball
 
 From this checkout, npm run package:check builds and tests the artifact, then records
-artifacts/craftmentation-0.1.0.tgz and artifacts/verification.json. These are generated
+artifacts/craftmentation-0.1.1.tgz and artifacts/verification.json. These are generated
 local files ignored by Git. Verify the recorded digest before sharing an artifact.
 
 To test it yourself, create a separate empty directory and initialize its package.json
 with npm init --yes. From there, replace the path below with the actual candidate path:
 
 ```bash
-npm install --ignore-scripts /absolute/path/to/craftmentation/artifacts/craftmentation-0.1.0.tgz
+npm install --ignore-scripts /absolute/path/to/craftmentation/artifacts/craftmentation-0.1.1.tgz
 npm exec --offline -- craftmentation --version
 npm exec --offline -- craftmentation --help
 ```

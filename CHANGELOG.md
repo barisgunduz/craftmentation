@@ -5,6 +5,13 @@ The format follows Keep a Changelog. Released versions will follow Semantic Vers
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-23
+
+### Added
+
+- Relevant npm discovery keywords for README generation/templates, documentation,
+  Markdown validation, the CLI, repository analysis, and optional installed-agent drafting.
+
 ## [0.1.0] - 2026-11-23
 
 ### Added

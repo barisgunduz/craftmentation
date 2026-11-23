@@ -630,6 +630,26 @@ is implicitly authorized. Next action: monitor real user feedback; further relea
 their own scope and approval. These post-publication notes do not change the immutable
 v0.1.0 source tag or npm artifact.
 
+## Package discoverability follow-up
+
+Status: **In Progress**
+
+The owner requested appropriate npm keywords. The published 0.1.0 metadata has none;
+GitHub topics are developer-tools, open-source, readme, readme-generator, and readme-template.
+Added 17 relevant lower-case keywords to package.json, preserving those topics and covering
+the actual documentation/Markdown/CLI/source-analysis/optional-agent capabilities.
+No keyword search-volume data was obtained; these are relevance choices, not a claim
+that the terms are the most searched or guarantee ranking.
+
+The owner explicitly authorized metadata-only 0.1.1 publication on 2026-11-23. This covers
+the necessary version/docs commits, pushes, npm publication, and matching release/tag.
+The package/lock root version is now 0.1.1; application code and dependency versions
+are unchanged. Current installation examples point to 0.1.1; historical 0.1.0 evidence
+and its immutable tag/artifact remain intact.
+
+Next action: verify metadata/format/docs and package contents, run native CI, publish
+the verified artifact, and confirm all 17 keywords in the registry and installed package.
+
 ## Removed from active scope
 
 The former localization and website phases will not be implemented under the current owner

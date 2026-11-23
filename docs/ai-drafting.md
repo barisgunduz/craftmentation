@@ -11,7 +11,7 @@ free or unlimited service. Without --agent, the existing deterministic commands 
 
 ## Inspect, draft, review, save
 
-Install `craftmentation@0.1.0` using the [installation guide](upgrading.md), then replace
+Install `craftmentation@0.1.1` using the [installation guide](upgrading.md), then replace
 the example project path with your target. From a built source checkout, the equivalent
 entry point is `node dist/cli/index.js` instead of `craftmentation`.
 

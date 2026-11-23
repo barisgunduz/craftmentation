@@ -1,4 +1,16 @@
-# Release notes: 0.1.0
+# Release notes
+
+## 0.1.1
+
+Metadata-only patch adding 17 relevant npm keywords for README generation/templates,
+documentation, Markdown validation, the CLI, repository analysis, and optional installed
+Codex/Claude drafting. Application code, dependencies, configuration, and commands are
+unchanged. Install with `npm install --global craftmentation@0.1.1`.
+
+The owner explicitly authorized this patch publication on 2026-11-23. Keywords are
+chosen for relevance; no search-volume or ranking claim is made.
+
+## 0.1.0
 
 Initial release of Craftmentation. The precursor candidate passed all six native CI
 jobs, including the launcher fix, using Linux, Windows, and Intel macOS. Public

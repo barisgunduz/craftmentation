@@ -7,6 +7,10 @@ for npm and GitHub publication on 2026-11-23. Future preparation does not author
 commits, pushes, tags, releases, npm publication, or deployment. [Release readiness](release-readiness.md) tracks
 actual evidence, final-revision verification gates, and reporting limitations for Phase 10.
 
+The owner separately authorized metadata-only 0.1.1 publication on 2026-11-23 to add
+npm discovery keywords. The [roadmap](roadmap.md#package-discoverability-follow-up) tracks
+its checks and actual publication outcome. The 0.1.0 records remain historical evidence.
+
 ## Versioning and changelog
 
 Use Semantic Versioning with v-prefixed Git tags only when authorized. Before 1.0,

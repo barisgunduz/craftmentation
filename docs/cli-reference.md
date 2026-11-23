@@ -2,8 +2,8 @@
 
 ## Availability
 
-Version 0.1.0 implements init, analyze, generate, validate, and update. Install with
-`npm install --global craftmentation@0.1.0` and invoke `craftmentation`, or build this checkout
+Version 0.1.1 implements init, analyze, generate, validate, and update. Install with
+`npm install --global craftmentation@0.1.1` and invoke `craftmentation`, or build this checkout
 with `npm run build` and invoke `node dist/cli/index.js`. Update previews managed changes and applies only an explicitly
 reviewed candidate with a backup. Generate additionally supports explicit source-aware --agent drafting. Check/doctor are unimplemented design references and
 are rejected as unknown commands; custom libraries/providers require a demonstrated need.

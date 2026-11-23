@@ -11,7 +11,7 @@ Only that explicit mode invokes a model/client; its own quota and local-state ru
 
 ## Build the local CLI
 
-For the installed CLI, run `npm install --global craftmentation@0.1.0` and use
+For the installed CLI, run `npm install --global craftmentation@0.1.1` and use
 `craftmentation` instead of `node dist/cli/index.js` in the commands below. Use your own
 project path with --root; the examples/ paths belong to a Craftmentation source checkout.
 

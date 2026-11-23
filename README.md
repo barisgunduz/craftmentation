@@ -64,7 +64,7 @@ For repeated local checks or deterministic drafts, the local CLI has five comman
 Use Node.js 24.22.3+ (24.x) or 26.13.1+ (26.x) and npm:
 
 ```bash
-npm install --global craftmentation@0.1.0
+npm install --global craftmentation@0.1.1
 craftmentation --help
 craftmentation analyze --root /path/to/your-project
 ```
@@ -89,7 +89,7 @@ Craftmentation does not execute project scripts. Model interpretations need fact
 Follow the [preview/review/save workflow](docs/workflow.md), including missing usage and
 safe updates. See the [CLI reference](docs/cli-reference.md) for flags.
 
-Version `0.1.0` includes the five commands and optional agent drafting described here. Runtime
+Version `0.1.1` includes the five commands and optional agent drafting described here. Runtime
 checks passed on Linux, Windows, and Intel macOS with both Node floors; macOS ARM64 was
 also tested locally. See [release readiness](docs/release-readiness.md) for exact evidence and limits.
 See [release notes](docs/release-notes.md) and [installation/upgrade guidance](docs/upgrading.md)
